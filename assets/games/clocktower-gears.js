@@ -27,7 +27,7 @@ El.defineGame({
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     const lvl = () => L.levelIndex(cfg.skill, 4);
     // speech: every line below is in voice/manifest.json (tools/voice/build-manifest.js, Clocktower Gears section)
-    // cb runs once the line has really ended (watchdog: the clip's length + 1.5 s, voice/voice-then.js), never on a fixed timer that could
+    // cb runs once the line has really ended (ElVoice's onend: end, error, interruption or its clip watchdog; voice/voice-then.js), never on a fixed timer that could
     // cut a long line short; wd (old fixed watchdog) is ignored
     const speak = (t, cb) => praising ? false : host.sayThen(t, { rate: .95 }, cb ? () => { if (alive) cb(); } : null, 0).heard;
     // praise after a right answer, then the next question: only after the praise has ended (+ 300 ms), and at least `min` ms after the tap
@@ -84,7 +84,7 @@ El.defineGame({
         <div class="cg-window" id="cgWin"></div></div></div>
       <div class="cg-tray" id="cgTray"></div><div class="cg-fx" id="cgFx"></div></div>`;
     const $ = (id) => root.querySelector('#' + id), txt = $('cgTxt'), win = $('cgWin'), tray = $('cgTray'), fx = $('cgFx'), cgRoot = root.querySelector('.cg');
-    const replay = () => { if (praising) return; host.sfx.tap(); speak(prompt); }; // never over the praise
+    const replay = () => { if (praising || busy) return; host.sfx.tap(); speak(prompt); }; // never over the praise or a count-along / pattern song (each step goes on from the line's onend, which also fires when interrupted)
     $('cgSay').onclick = replay; $('cgWick').onclick = () => { cheer(); replay(); };
     const cheer = () => { const w = $('cgWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
 

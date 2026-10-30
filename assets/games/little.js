@@ -8,7 +8,7 @@
      kit.single(html)             -> one huge picture button (play-together / under-2 mode)
      kit.run(plan, ask)           ask(item, i, finish) ... finish(firstTry, {say, delay}) records mastery, plays the praise line and moves on
                                   only after it has finished (clip 'ended' + 300 ms, watchdog = clip length + 1.5 s); ends with host.end()
-     kit.say(lines, onend)        every onend has a watchdog (ElVoice.sayThen), and only the newest line's onend runs (a replay restarts a cue)
+     kit.say(lines, onend)        onend fires once (ElVoice contract: end, error, interruption or clip watchdog) and only the newest kit line's onend runs (a replay restarts a cue)
      kit.yes(btn) / kit.soft(btn) / kit.hint(btn), kit.T(fn, ms), kit.stop() */
 (function () {
   'use strict';

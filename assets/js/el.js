@@ -75,11 +75,11 @@
     say(text, o) { o = o || {}; const set = El.store.load().set;
       if (!set.voice || !this.core || !text) { this.stop(); if (o.onend) setTimeout(o.onend, 10); return false; }
       this.core.rate = set.rate || 1; return this.core.say(text, o); },
-    // sayThen: speak, then call then(why) once the line has really ended (+ gap ms, default 300) or its watchdog fired (voice/voice-then.js)
+    // sayThen: speak, then call then() once, gap ms (default 300) after the line's onend (voice/voice-then.js; ElVoice fires onend exactly once)
     sayThen(text, o, then, gap) { const c = this.core;
       if (c && c.sayThen) return c.sayThen(text, o, then, gap, (t, oo) => this.say(t, oo));
-      let f = false; const once = () => { if (!f) { f = true; setTimeout(() => then && then('ended'), gap == null ? 300 : gap); } };
-      const heard = this.say(text, Object.assign({}, o, { onend: once })); setTimeout(once, 12000); return { heard }; },
+      let f = false; const once = () => { if (!f) { f = true; setTimeout(() => then && then(), gap == null ? 300 : gap); } };
+      return { heard: this.say(text, Object.assign({}, o, { onend: once })), cancel() { f = true; } }; },
     stop() { if (this.core) this.core.stop(); }
   };
   root.addEventListener('pagehide', () => V.stop());

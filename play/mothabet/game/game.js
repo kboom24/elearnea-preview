@@ -391,10 +391,10 @@
         if (perfect) for (const p of w.it.pats) M.pts[p] = (M.pts[p] || 0) + 1; }
       // a missed word comes back later this round in an easier form (fewer decoys, slower moths)
       if (!perfect && !w.retry && this.queue.length - this.idx > 2) { const at = Math.min(this.queue.length, this.idx + 3); this.queue.splice(at, 0, { it: w.it, retry: true }); if (this.queue.length > this.cap()) this.queue.splice(this.cap()); }
-      // praise ("sun!"): the next word waits until it has been heard to its end (+ 300 ms; watchdog = clip length + 1.5 s), see update()
+      // praise ("sun!"): the next word waits for the cheer's onend (+ 300 ms; ElVoice's clip watchdog covers a stalled clip), see update(); 8 s cap in case MB.Voice drops a superseded onend
       this.praiseDone = !voiceOn();
       if (voiceOn()) setTimeout(() => { if (game.base !== this) return; const c = window.ElVoice, line = w.it.w + '!', o = { rate: .95, pitch: 1.2 };
-        if (c && c.sayThen) c.sayThen(line, o, () => { this.praiseDone = true; }, 300, (t, oo) => say(t, oo)); else { say(line, o); this.praiseDone = true; } }, 180);
+        if (c && c.sayThen) c.sayThen(line, o, () => { if (this.word === w) this.praiseDone = true; }, 300, (t, oo) => say(t, oo)); /* run token: only this word's cheer */ else { say(line, o); this.praiseDone = true; } }, 180);
       game.save.write();
     },
     endRound(why) {
