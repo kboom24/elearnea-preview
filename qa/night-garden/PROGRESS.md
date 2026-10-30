@@ -30,3 +30,5 @@ server pid 3695401 port 8871 (kill when done)
 - 02:40 queued full QA chain: /tmp/ng/qa-all.sh -> /tmp/ng/qa-all.log
 ## 02:44 resume
 - old waiting jobs killed (their outer `timeout 900` counted queue time); single chain /tmp/ng/chain.sh (pid 3790248): tts round 2 -> QA phone, ipad, desktop. log /tmp/ng/qa-all.log
+- 02:50 merged origin/main f7ce709 (conflicts sw.js/manifest/index resolved: theirs + rebuild, SW v12); switched speak() to host.sayThen + run token; NEED asr re-run on ng range (merge dropped ng asr records)
+- 03:04 chain still queued (other Elearnea builders hold 3 jobs; elslot.sh waits for <2). clip 200 check: 365/365 ok (curl, server 8871)

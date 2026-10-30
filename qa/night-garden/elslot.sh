@@ -5,5 +5,5 @@ count() { local n=0 ps; ps=$(pgrep -f "games/tools/qa-slot.sh" 2>/dev/null); for
     pp=$(awk '{print $4}' /proc/$p/stat 2>/dev/null); echo "$ps" | grep -qx "$pp" && continue
     c=$(readlink /proc/$p/cwd 2>/dev/null); a=$(tr '\0' ' ' < /proc/$p/cmdline 2>/dev/null)
     case "$c $a" in *"/home/box/elearnea"*) n=$((n+1));; esac; done; echo $n; }
-while [ "$(count)" -ge 2 ]; do sleep 20; done
+while [ "$(count)" -ge 2 ]; do sleep 3; done
 exec /home/box/games/tools/qa-slot.sh "$@"
