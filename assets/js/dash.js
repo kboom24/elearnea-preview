@@ -24,6 +24,12 @@
     'CCSS.MATH.CONTENT.K.G.A.2': 'Name shapes (any size or turn)',
     'CCSS.MATH.CONTENT.K.G.B.4': 'Compare shapes: sides and corners',
     'CCSS.MATH.PRACTICE.MP7': 'Patterns: look for structure (practice standard)',
+    // 2014 National Core Arts Standards, music (Art & Music realm)
+    'NCAS.MU:Cr1.1.Ka': 'Music: explore beat and melodic contour (K)',
+    'NCAS.MU:Cr1.1.Kb': 'Music: make musical ideas and motives (K)',
+    'NCAS.MU:Pr4.2.Ka': 'Music contrasts: high/low, loud/soft, fast/slow (K)',
+    'NCAS.MU:Pr4.2.1a': 'Music: melodic contour, going up and down (grade 1)',
+    'NCAS.MU:Pr4.2.1b': 'Music: perform rhythm patterns from iconic notation (grade 1)',
     // CSTA K-12 Computer Science Standards (2017), level 1A (grades K-2)
     'CSTA.1A-AP-08': 'Create and follow step-by-step algorithms',
     'CSTA.1A-AP-10': 'Programs with sequences and simple loops',
@@ -44,7 +50,7 @@
     'ELOF.P-MATH 4': 'Compares numbers: more and fewer (preschool)',
     'ELOF.P-MATH 9': 'Identifies and describes shapes (preschool)'
   };
-  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ').replace('CSTA.', 'CSTA ');
+  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ').replace('CSTA.', 'CSTA ').replace('NCAS.', 'Arts ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const DAY = 864e5;
   const dayNum = (t) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };

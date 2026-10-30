@@ -1,0 +1,107 @@
+/* Firefly Choir: night meadow, paper-cut hills and felt fireflies. Palette: #1E1B4B #F5B841 #7CC4A4 #F08A7E #9B8AD1 #F6EBD9. */
+.fc { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: 100%; overflow: hidden; padding-bottom: env(safe-area-inset-bottom); }
+.fc-prompt { position: relative; z-index: 4; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 2px 12px 4px; min-height: 84px; }
+.fc-prompt .bubble { flex: 0 1 auto; max-width: 520px; min-width: 0; font-size: clamp(1.15rem, 4.6vw, 1.7rem); text-align: center; padding: 12px 18px; }
+.fc-prompt .bubble::before { left: -12px; top: 50%; bottom: auto; transform: translateY(-50%); border: 10px solid transparent; border-right: 14px solid var(--cream); border-left: 0; }
+.fc-wick { width: 84px; flex: none; margin-right: 6px; }
+.fc-prompt .btn.round { flex: none; }
+.fc-scene { position: relative; min-height: 0; z-index: 2; }
+.fc-hills { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none;
+  background: radial-gradient(120% 70% at 20% 100%, #2F5E57 0 55%, transparent 56%), radial-gradient(110% 80% at 85% 100%, #3E7A6B 0 50%, transparent 51%), linear-gradient(transparent 60%, #2A4F4A 60%); opacity: .9; }
+.fc-hills::after { content: ""; position: absolute; inset: 0; background-image: var(--felt); opacity: .35; mix-blend-mode: overlay; }
+.fc-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.fc-tray { position: relative; z-index: 3; display: flex; justify-content: center; align-items: center; gap: clamp(14px, 5vw, 48px); padding: 8px 12px max(14px, env(safe-area-inset-bottom)); min-height: 120px; }
+.fc-fx { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+.fc-fx .spark { position: absolute; width: 12px; height: 12px; margin: -6px; border-radius: 50%; background: #FFE28A; box-shadow: 0 0 12px #F5B841; animation: fcSpark .85s ease-out forwards; }
+@keyframes fcSpark { to { transform: translate(var(--x), var(--y)) scale(.2); opacity: 0; } }
+
+.ffly { width: 100%; height: 100%; overflow: visible; display: block; }
+.ffly .halo { transition: opacity .25s; }
+.glow .ffly .halo, .ffly.glowing .halo { opacity: 1; }
+.pulse { animation: fcPulse .32s ease-out; }
+@keyframes fcPulse { 40% { transform: scale(1.14); } }
+.wob { animation: fcWob .45s ease-in-out; }
+@keyframes fcWob { 20% { transform: translateX(-9px) rotate(-4deg); } 50% { transform: translateX(8px) rotate(3deg); } 80% { transform: translateX(-4px); } }
+
+/* cards (choices) */
+.fc-card { width: clamp(124px, 34vw, 200px); height: clamp(124px, 34vw, 200px); border-radius: 28px; border: 0; padding: 12px; cursor: pointer; touch-action: manipulation;
+  background: rgba(42,33,82,.92); box-shadow: 0 6px 0 #110E33, inset 0 0 0 4px rgba(246,235,217,.25), 0 10px 24px rgba(0,0,0,.35); display: grid; place-items: center; color: var(--cream); }
+.fc-card svg { width: 100%; height: 100%; }
+.fc-card .tiny { width: 52%; height: 52%; display: block; opacity: .85; }
+.fc-card.glow { box-shadow: 0 6px 0 #110E33, inset 0 0 0 5px var(--gold), 0 0 40px 10px rgba(245,184,65,.55); }
+.fc-card:active { transform: translateY(4px); }
+
+/* 1. high / low: tall flower, high firefly at the top, low one in the grass, Wick's lantern firefly in the middle */
+.hl-col { position: relative; height: 100%; width: min(92vw, 520px); }
+.hl-col .stalk { position: absolute; left: 50%; top: 14%; bottom: 4%; width: 40px; height: 82%; transform: translateX(-50%); opacity: .85; }
+.hl-fly { position: absolute; left: 50%; width: clamp(112px, min(30vw, 19vh), 190px); height: clamp(112px, min(30vw, 19vh), 190px); transform: translateX(-50%); border: 0; border-radius: 50%; padding: 6px; cursor: pointer;
+  background: rgba(42,33,82,.55); box-shadow: inset 0 0 0 4px rgba(246,235,217,.25); touch-action: manipulation; }
+.hl-fly.hi { top: 2%; } .hl-fly.lo { bottom: 2%; }
+.hl-fly .tag { position: absolute; right: -6px; width: 44px; height: 44px; border-radius: 50%; background: var(--cream); color: var(--ink); display: grid; place-items: center; box-shadow: 0 3px 0 rgba(0,0,0,.3); }
+.hl-fly .tag svg { width: 30px; height: 30px; }
+.hl-fly.hi .tag { top: -4px; transform: rotate(90deg); } .hl-fly.lo .tag { bottom: -4px; transform: rotate(-90deg); }
+.hl-fly.glow { box-shadow: inset 0 0 0 5px var(--gold), 0 0 46px 14px rgba(245,184,65,.6); }
+.hl-lantern { position: absolute; left: calc(50% + clamp(70px, 18vw, 130px)); top: 50%; width: clamp(78px, min(20vw, 12vh), 120px); aspect-ratio: 1; transform: translate(-50%, -50%); transition: transform .6s cubic-bezier(.3,1.4,.5,1); }
+.hl-lantern.up { transform: translate(-50%, -95%); } .hl-lantern.down { transform: translate(-50%, -5%); }
+
+/* 2. tempo / dynamics */
+.tp-singer { width: clamp(140px, min(42vw, 30vh), 260px); aspect-ratio: 1; }
+.tp-singer.glow .ffly { animation: fcSing 1.2s ease-in-out infinite; }
+@keyframes fcSing { 50% { transform: translateY(-6px) rotate(3deg); } }
+
+/* 3. echo: iconic notation dots + moon drum */
+.ec-dots { position: absolute; left: 6%; right: 6%; top: 18%; height: 70px; }
+.ec-dots i { position: absolute; top: 0; width: clamp(44px, 10vw, 66px); height: clamp(44px, 10vw, 66px); margin-left: calc(clamp(44px, 10vw, 66px) / -2); border-radius: 50%; background: rgba(246,235,217,.18); box-shadow: inset 0 0 0 4px rgba(246,235,217,.5); transition: background .12s, box-shadow .12s; }
+.ec-dots i.lit { background: #F5B841; box-shadow: 0 0 26px 6px rgba(245,184,65,.7); }
+.ec-dots i.me { background: #7CC4A4; box-shadow: 0 0 22px 6px rgba(124,196,164,.7); }
+.ec-dots i.off { opacity: .45; }
+.ec-wick { position: absolute; left: 50%; top: 46%; width: clamp(90px, min(24vw, 16vh), 150px); aspect-ratio: 1; transform: translateX(-50%); }
+.fc-drum { width: clamp(170px, min(48vw, 26vh), 260px); height: clamp(170px, min(48vw, 26vh), 260px); border: 0; padding: 0; border-radius: 50%; background: none; cursor: pointer; touch-action: none; }
+.fc-drum svg { width: 100%; height: 100%; }
+.fc-drum.glow { filter: drop-shadow(0 0 26px rgba(245,184,65,.8)); }
+.echo-pad { min-height: 0; }
+
+/* 4. song branch */
+.pt-branch { position: relative; width: min(94vw, 900px); display: grid; grid-template-columns: repeat(8, 1fr); gap: clamp(4px, 1.2vw, 14px); padding: 26px 12px 34px; }
+.pt-branch::before { content: ""; position: absolute; left: 0; right: 0; bottom: 30px; height: 16px; border-radius: 10px; background: #7A4A2E; box-shadow: 0 5px 0 #5E3A24; }
+.pt-branch .spot { position: relative; z-index: 1; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 4px rgba(246,235,217,.35); background: rgba(20,17,58,.35); }
+.pt-branch .spot.kid:not(.on) { box-shadow: inset 0 0 0 4px rgba(246,235,217,.6); background: rgba(246,235,217,.08); }
+.pt-wrap { display: flex; flex-direction: column; align-items: center; gap: clamp(10px, 3vh, 28px); }
+.pt-branch .spot.next, .pt-branch .spot.kid.next { box-shadow: inset 0 0 0 5px var(--gold), 0 0 22px 4px rgba(245,184,65,.5); animation: fcNext 1.2s ease-in-out infinite; }
+@keyframes fcNext { 50% { transform: scale(1.08); } }
+.pt-branch .spot.on { background: none; box-shadow: none; }
+.fc-card.nt { width: clamp(110px, 28vw, 170px); height: clamp(110px, 28vw, 170px); border-radius: 50%; }
+.fc-songbtn { width: clamp(96px, 22vw, 130px); height: clamp(96px, 22vw, 130px); opacity: .45; transition: opacity .2s; }
+.fc-songbtn.ready { opacity: 1; }
+.fc-songbtn svg { width: 56%; height: 56%; }
+
+/* portrait phones: the song sits on two branches of four, so the repeat is easy to see and the fireflies are bigger */
+@media (max-width: 600px) { .pt-branch { grid-template-columns: repeat(4, 1fr); row-gap: 40px; width: min(88vw, 420px); }
+  .pt-branch::before { bottom: auto; top: calc(50% - 12px); box-shadow: 0 5px 0 #5E3A24, 0 calc(50% + 0px) 0 transparent; }
+  .pt-branch::after { content: ""; position: absolute; left: 0; right: 0; bottom: 30px; height: 16px; border-radius: 10px; background: #7A4A2E; box-shadow: 0 5px 0 #5E3A24; z-index: 0; } .pt-branch .spot { z-index: 1; } }
+
+/* demo hand + start */
+.fc-hand { position: absolute; z-index: 7; width: 56px; height: 66px; pointer-events: none; opacity: 0; transition: left .5s ease, top .5s ease, opacity .25s, transform .12s; }
+.fc-hand.on { opacity: 1; } .fc-hand.tap { transform: scale(.82) translateY(6px); }
+.fc-hand svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 4px rgba(0,0,0,.35)); }
+.fc-start { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgba(20,17,58,.35); transition: opacity .25s; }
+.fc-start.gone { opacity: 0; pointer-events: none; }
+.fc-start .btn.round.big { width: 150px; height: 150px; } .fc-start .btn svg { width: 70px; height: 70px; }
+
+/* short landscape phones (e.g. 844x390): Wick and the prompt move to a left column so the play area keeps its full height; targets stay >= 96px */
+@media (max-height: 520px) and (orientation: landscape) {
+  .fc { grid-template-columns: minmax(150px, 26%) 1fr; grid-template-rows: 1fr auto; padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  .fc-prompt { grid-row: 1 / span 2; grid-column: 1; flex-direction: column; justify-content: center; min-height: 0; gap: 6px; }
+  .fc-prompt .bubble { font-size: 1.15rem; padding: 10px 12px; }
+  .fc-prompt .bubble::before { left: 50%; top: -12px; transform: translateX(-50%); border: 10px solid transparent; border-bottom: 14px solid var(--cream); border-top: 0; }
+  .fc-wick { width: 70px; margin: 0; }
+  .fc-scene { grid-column: 2; grid-row: 1; } .fc-hills { left: -40vw; } /* meadow runs under the prompt column too (clipped by .fc) */
+  .fc-tray { grid-column: 2; grid-row: 2; min-height: 0; padding-top: 2px; }
+  .fc-tray:empty { padding: 0; }
+  .fc-card { width: 104px; height: 104px; } .fc-card.nt { width: 100px; height: 100px; } .fc-drum { width: 140px; height: 140px; }
+  .hl-fly { width: 100px; height: 100px; } .hl-lantern { width: 76px; }
+  .tp-singer { width: 150px; }
+  .ec-dots { top: 10%; } .ec-wick { top: 48%; width: 84px; }
+  .pt-wrap { flex-direction: row; gap: 14px; } .pt-branch { width: min(60vw, 560px); padding: 14px 8px 26px; } .fc-songbtn { width: 96px; height: 96px; }
+}
+@media (prefers-reduced-motion: reduce) { .pt-branch .spot.next, .tp-singer.glow .ffly { animation: none; } }

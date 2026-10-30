@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; CSTA K-12 CS Standards (2017) codes as CSTA.<id> (e.g. CSTA.1A-AP-10) for Logic & Coding; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only. Path pictures: lesson \"tile\" (its own picture, e.g. assets/img/tile-ll-r1.svg from tools/make-tiles.js) overrides the game tile; lesson \"tag\" is a short sticker on the card naming what it practises (for lessons that share a game picture).",
+  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; NCAS.* = 2014 National Core Arts Standards (music) for the Art & Music realm; CSTA K-12 CS Standards (2017) codes as CSTA.<id> (e.g. CSTA.1A-AP-10) for Logic & Coding; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only. Path pictures: lesson \"tile\" (its own picture, e.g. assets/img/tile-ll-r1.svg from tools/make-tiles.js) overrides the game tile; lesson \"tag\" is a short sticker on the card naming what it practises (for lessons that share a game picture).",
   "games": {
     "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
     "moth-bridge": { "name": "Moth Bridge", "path": "play/moth-bridge/", "tile": "assets/img/tile-bridge.svg", "kind": "module", "ages": "5-7" },
@@ -12,7 +12,8 @@
     "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" },
     "wicks-path": { "name": "Wick's Lantern Path", "path": "play/wicks-path/", "tile": "assets/img/tile-wicks-path.svg", "kind": "module", "ages": "4-9" },
     "zoo-parade": {"name": "Zoo Parade", "path": "play/zoo-parade/", "tile": "assets/img/tile-zoo-parade.webp", "kind": "module", "ages": "3-7"},
-    "word-stage": {"name": "Word Stage", "path": "play/word-stage/", "tile": "assets/img/tile-word-stage.webp", "kind": "module", "ages": "4-7"}
+    "word-stage": {"name": "Word Stage", "path": "play/word-stage/", "tile": "assets/img/tile-word-stage.webp", "kind": "module", "ages": "4-7"},
+    "firefly-choir": { "name": "Firefly Choir", "path": "play/firefly-choir/", "tile": "assets/img/tile-choir.svg", "kind": "module", "ages": "4-9" }
   },
   "subjects": [
     {
@@ -196,7 +197,42 @@
       }
     },
     { "id": "science", "name": "Nature & Science", "realm": { "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "soon", "color": "#7CC4A4", "icon": "leaf", "img": "assets/img/isle-nature", "say": "Nature land is still growing. Coming soon!", "skills": [] } },
-    { "id": "art-music", "name": "Art & Music", "realm": { "id": "art-music", "name": "Art & Music", "landmark": "Windmill", "status": "soon", "color": "#F08A7E", "icon": "palette", "img": "assets/img/isle-art", "say": "Art and music land is coming soon!", "skills": [] } },
+    {
+      "id": "art-music", "name": "Art & Music",
+      "realm": {
+        "id": "art-music", "name": "Art & Music", "landmark": "Windmill", "status": "open", "color": "#F08A7E", "icon": "palette",
+        "img": "assets/img/isle-art", "say": "Art and music land! Tap to go in.",
+        "standardsNote": "Music lessons are aligned to the 2014 National Core Arts Standards (NCAS) for music: MU:Cr1.1.K (Creating: imagine; a = explore music concepts such as beat and melodic contour, b = make musical ideas such as motives), MU:Pr4.2.K (Performing: analyze; a = music contrasts such as high/low and loud/soft) and MU:Pr4.2.1 (b = read and perform rhythmic patterns from iconic notation). The repeating-pattern lesson is also tagged CCSS Math MP7 (early algebraic thinking), as in Gear patterns.",
+        "skills": [
+          { "id": "mu.high-low", "name": "High and low sounds", "grade": "K", "standards": ["NCAS.MU:Pr4.2.Ka", "NCAS.MU:Pr4.2.1a"],
+            "lessons": [
+              { "id": "am-l1", "name": "High or low?", "tag": "high · low", "icon": "firefly", "grade": "K", "standards": ["NCAS.MU:Pr4.2.Ka", "NCAS.MU:Pr4.2.1a"], "say": "High or low? Let's listen!",
+                "lessonGoal": "Hear whether a note goes up high or down low (melodic contour).",
+                "game": { "id": "firefly-choir", "config": { "mode": "highlow", "rounds": 6 } } }
+            ] },
+          { "id": "mu.fast-slow-loud-soft", "name": "Fast and slow, loud and soft", "grade": "K", "standards": ["NCAS.MU:Pr4.2.Ka", "NCAS.MU:Cr1.1.Ka"],
+            "lessons": [
+              { "id": "am-l2", "name": "Fast, slow, loud, soft", "tag": "fast · slow", "icon": "ear", "grade": "K", "standards": ["NCAS.MU:Pr4.2.Ka", "NCAS.MU:Cr1.1.Ka"], "say": "Fast or slow? Loud or soft?",
+                "lessonGoal": "Tell music contrasts apart: fast/slow (tempo) and loud/soft (dynamics).",
+                "game": { "id": "firefly-choir", "config": { "mode": "tempo", "rounds": 8 } } }
+            ] },
+          { "id": "mu.echo-rhythm", "name": "Echo a rhythm", "grade": "K", "standards": ["NCAS.MU:Cr1.1.Ka", "NCAS.MU:Pr4.2.1b"],
+            "lessons": [
+              { "id": "am-l3", "name": "Echo the rhythm", "tag": "clap · echo", "icon": "firefly", "grade": "K", "standards": ["NCAS.MU:Cr1.1.Ka", "NCAS.MU:Pr4.2.1b"], "say": "Echo the firefly rhythm!",
+                "lessonGoal": "Listen to a short rhythm shown as dots, then tap it back in time.",
+                "game": { "id": "firefly-choir", "config": { "mode": "echo", "rounds": 6 } } }
+            ] },
+          { "id": "mu.melody-patterns", "name": "Song patterns (ABAB, AABB)", "grade": "K", "standards": ["NCAS.MU:Cr1.1.Kb", "CCSS.MATH.PRACTICE.MP7"],
+            "standardsNote": "Repeating ABAB and AABB patterns: the math side has no Kindergarten CCSS content code, so it is tagged MP7 (look for and make use of structure), as in Gear patterns.",
+            "lessons": [
+              { "id": "am-l4", "name": "Song patterns", "tag": "A B A B", "icon": "firefly", "grade": "K", "standards": ["NCAS.MU:Cr1.1.Kb", "CCSS.MATH.PRACTICE.MP7"], "say": "Make a firefly song pattern!",
+                "lessonGoal": "Finish a repeating ABAB or AABB melody pattern, then play the whole song.",
+                "game": { "id": "firefly-choir", "config": { "mode": "pattern", "rounds": 4 } } }
+            ] }
+        ],
+        "comingSoon": [ { "name": "Color mixing", "icon": "palette" }, { "name": "Draw shapes", "icon": "pencil" } ]
+      }
+    },
     { "id": "world", "name": "World & Languages", "realm": { "id": "world", "name": "World", "landmark": "Globe", "status": "soon", "color": "#7CC4A4", "icon": "globe", "img": "assets/img/isle-world", "say": "World land is coming soon!", "skills": [] } },
     { "id": "logic", "name": "Logic & Coding",
       "realm": {

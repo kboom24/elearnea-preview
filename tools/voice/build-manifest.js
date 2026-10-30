@@ -108,6 +108,20 @@ for (const s of CGS) {
 for (let n = 1; n <= 6; n++) add(NW[n], { type: 'number', game: CG, prefix: 'cg', screen: 'Clocktower Gears find/sort round', trigger: 'count-along: each side highlighted' });
 add('Here it is!', { type: 'feedback', game: CG, prefix: 'cg', screen: 'Clocktower Gears sort round', trigger: '2nd wrong drawer: the right drawer glows' });
 
+/* ================= Firefly Choir (Art & Music: high/low, fast/slow + loud/soft, echo rhythms, ABAB/AABB song patterns) ================= */
+const FC = 'firefly-choir';
+for (const [t, sc, tr, ty] of [['This firefly sings high.', 'high/low round', 'demo: the high firefly sings'], ['This firefly sings low.', 'high/low round', 'demo: the low firefly sings'],
+  ['Listen! High or low?', 'high/low round', 'each new note'], ['Fast or slow?', 'fast/slow round', 'each new tune; bubble text'], ['Loud or soft?', 'loud/soft round', 'each new tune; bubble text'],
+  ['This is fast.', 'fast/slow round', 'demo: the rabbit card glows'], ['This is slow.', 'fast/slow round', 'demo: the snail card glows'], ['This is loud.', 'loud/soft round', 'demo: the big firefly card glows'], ['This is soft.', 'loud/soft round', 'demo: the sleepy firefly card glows'],
+  ['Yes! High!', 'high/low round', 'right answer', 'praise'], ['Yes! Low!', 'high/low round', 'right answer', 'praise'], ['Yes! Fast!', 'fast/slow round', 'right answer', 'praise'], ['Yes! Slow!', 'fast/slow round', 'right answer', 'praise'],
+  ['Yes! Loud!', 'loud/soft round', 'right answer', 'praise'], ['Yes! Soft!', 'loud/soft round', 'right answer', 'praise'],
+  ['Listen again.', 'any listening round', '1st miss: the sound plays again', 'feedback'], ['Here it is!', 'high/low and fast/slow rounds', '2nd miss: the right answer glows and sings', 'feedback'],
+  ['Watch me first.', 'echo / pattern round', 'demo on the first item'], ['Listen, then tap it back!', 'echo round', 'each new rhythm'], ['Your turn!', 'echo round', 'after Wick plays the rhythm'],
+  ['Yes! You echoed it!', 'echo round', 'rhythm tapped back in time', 'praise'], ['Tap with the lights.', 'echo round', '2nd miss: guided play-along', 'feedback'],
+  ['Finish the song pattern!', 'pattern round', 'first pattern of the round'], ['What comes next?', 'pattern round', 'each pattern; after the hint'], ['Listen to the pattern.', 'pattern round', '1st wrong firefly: the song so far plays again', 'feedback'],
+  ['This one fits!', 'pattern round', '2nd wrong firefly: the right one glows', 'feedback'], ['Now play your song!', 'pattern round', 'pattern complete: press Play'], ['Your song repeats!', 'pattern round', 'whole song played', 'praise']])
+  add(t, { type: ty || 'instruction', game: FC, prefix: 'fc', screen: 'Firefly Choir ' + sc, trigger: tr });
+
 /* ================= Mothabet (clips: the Mothabet Bella batch, mapped by the Mothabet voice-script CSV) ================= */
 const M = 'mothabet';
 const IPA = { a: 'æ', b: 'bə', c: 'kə', d: 'də', e: 'ɛ', f: 'fːːː', g: 'ɡə', h: 'hə', i: 'ɪ', j: 'dʒə', l: 'lːːː', m: 'mːːː', n: 'nːːː', o: 'ɑ', p: 'pə', qu: 'kwə', r: 'ɹː', s: 'sːːː', t: 'tə', u: 'ʌ', v: 'vːːː', w: 'wə', x: 'ks', y: 'jə', z: 'zːːː', sh: 'ʃːːː', ch: 'tʃə', th: 'θː', ng: 'ɪŋ', ee: 'iː', k: 'kə' };
