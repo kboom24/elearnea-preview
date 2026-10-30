@@ -58,7 +58,7 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
     await step('realm-logic', async (sample) => { await page.goto(BASE + 'realm/logic/', { waitUntil: 'networkidle' }); await sleep(900); await sample(); await shot('realm-logic');
       const tiles = await page.$$eval('#path .tile .lbl', a => a.map(e => e.textContent)); for (const n of Object.values(NAMES)) if (!tiles.includes(n)) throw new Error('missing tile ' + n + ' in ' + tiles);
       const title = await page.$eval('#title', e => e.textContent); return `title="${title.trim()}" tiles=${JSON.stringify(tiles)}`; });
-    await step('realm-launch-kid-mode', async (sample) => { const t = await page.$('#path .tile:not(.locked)'); const lbl = await t.$eval('.lbl', e => e.textContent); await t.scrollIntoViewIfNeeded(); await tap(t);
+    await step('realm-launch-kid-mode', async (sample) => { const t = await page.$('#path .tile:not(.locked):not(.soon)'); const lbl = await t.$eval('.lbl', e => e.textContent); await t.scrollIntoViewIfNeeded(); await tap(t);
       await page.waitForURL(/play\/wicks-path\/\?lesson=lg-l/, { timeout: 15000 }); await page.waitForSelector('#wpTray .atile', { timeout: 15000 }); await sleep(1200); await sample();
       const before = await ds(); await tap('#wpTray .atile'); await tap('#wpGo'); await sleep(2500); const after = await ds(); const hook = await page.$eval('#stage', s => !!s._wpTest);
       const leak = QA_KEYS.filter(k => k in before || k in after); if (leak.length || hook) throw new Error('QA hooks without ?qa=1: ' + leak + (hook ? ' _wpTest' : ''));
