@@ -51,7 +51,8 @@ El.defineGame({
         id => ({ cue: G.shape(S[id]), yes: G.yesS(S[id]), that: G.thatS(S[id]), here: LN.common.here }), () => { col = rng.pick(pal); }, x => S[x].name);
     }
     function rhyme(D) { const R = {}; D.rhymes.forEach(r => { R[r.a] = r; }); const pool = D.rhymes.map(r => r.a), plan = L.pick(cfg.skill, pool, cfg.rounds || 5, rng);
-      kit.run(plan, (a, i, finish) => { const r = R[a]; let miss = 0;
+      // the non-rhyming picture is picked at random from 3 (content/early.json "c"), so the same word is not always paired with the same picture
+      const lastC = {}; kit.run(plan, (a, i, finish) => { const r0 = R[a], cs = [].concat(r0.c).filter(c => c !== lastC[a]); const r = Object.assign({}, r0, { c: rng.pick(cs.length ? cs : [].concat(r0.c)) }); lastC[a] = r.c; let miss = 0;
         kit.show.innerHTML = `<div class="ll-model has-word">${El.pic(r.a)}${kit.word(r.a)}</div>`;
         kit.labels('show'); // the question names both pictures, so their names (and the matching endings: cat / hat) show from the start
         const btns = kit.options(rng.shuffle([r.b, r.c]), x => El.pic(x), x => x), right = btns.find(b => b._it === r.b); kit.mark(right);

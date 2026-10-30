@@ -6,7 +6,7 @@
      kit.speak(lines)             speak + remember for "hear it again"; kit.say(lines, onend)
      kit.options(list, render)    -> big picture buttons in the answer row (render(item) returns inner HTML)
      kit.single(html)             -> one huge picture button (play-together / under-2 mode)
-     kit.run(plan, ask)           ask(item, i, finish) ... finish(firstTry, {say, delay}) records mastery, plays the praise line and moves on
+     kit.run(plan, ask, {repeats}) the plan is spread so no item comes twice in a row (unless repeats); ask(item, i, finish) ... finish(firstTry, {say, delay}) records mastery, plays the praise line and moves on
                                   only after it has finished (clip 'ended' + 300 ms, watchdog = clip length + 1.5 s); ends with host.end()
      kit.say(lines, onend)        onend fires once (ElVoice contract: end, error, interruption or clip watchdog) and only the newest kit line's onend runs (a replay restarts a cue)
      kit.yes(btn) / kit.soft(btn) / kit.hint(btn), kit.T(fn, ms), kit.stop()
@@ -70,7 +70,7 @@
         get praising() { return praising || busy; },
         // plan: items; ask(item, index, finish): finish(firstTry, m) records mastery once and goes to the next item when the feedback is over:
         //   m.say (+ m.delay): praise line (kit.praise); m.after(done): a custom feedback sequence; m.min: shortest pause (ms) from the tap
-        run(plan, ask) { let qi = 0, first = 0; const total = plan.length;
+        run(plan, ask, o) { if (!(o && o.repeats)) plan = El.Little.spread(plan); let qi = 0, first = 0; const total = plan.length; // never the same item twice in a row (o.repeats: allowed, e.g. loud/quiet)
           const next = () => { if (!alive) return; host.emit('progress', { done: qi, total }); if (qi >= total) { T(() => host.end({ total, done: total, firstTry: first }), 600); return; }
             const item = plan[qi]; let fin = false;
             ask(item, qi, (ft, m) => { if (fin) return; fin = true; m = m || {}; if (ft) first++; if (!m.noMastery) host.emit('mastery', { item: item.id || item, correct: true, firstTry: !!ft }); qi++;
@@ -93,6 +93,12 @@
     },
     // pick n distinct items from pool (excluding `not`), deterministic with rng
     data() { return this._d || (this._d = fetch(El.url('content/early.json'), { cache: 'no-cache' }).then(r => r.json())); },
+    // spread(plan): the same items, reordered so no item comes twice in a row when that is possible (L.pick tops up short pools at random)
+    spread(plan) { const key = (it) => JSON.stringify(it), left = plan.slice(), out = [];
+      while (left.length) { const last = out.length ? key(out[out.length - 1]) : null, cnt = {}; left.forEach(it => { cnt[key(it)] = (cnt[key(it)] || 0) + 1; });
+        let k = -1, best = -1; left.forEach((it, j) => { const c = cnt[key(it)]; if (key(it) !== last && c > best) { best = c; k = j; } }); // most-left first keeps it solvable
+        out.push(left.splice(k < 0 ? 0 : k, 1)[0]); }
+      return out; },
     others(rng, pool, n, not) { return rng.shuffle(pool.filter(x => !not.includes(x))).slice(0, n); },
     // 2 choices while learning, 3 once the shared engine's difficulty passes the midpoint (adaptive ~80% first-try)
     nChoices(L, skill, min, max) { return Math.min(max || 3, (min || 2) + L.levelIndex(skill, (max || 3) - (min || 2) + 1)); }

@@ -14,3 +14,13 @@
 .lb-dots i.on { background: var(--gold); box-shadow: 0 0 16px rgba(245,184,65,.8); transform: scale(1.12); }
 .lb-dots i.demo { background: var(--teal); box-shadow: 0 0 14px rgba(124,196,164,.8); }
 .ll-card.lb-drum { --sz: clamp(150px, 44vw, 260px); }
+/* loud or quiet: the loud picture is big with sound waves, the quiet one small with soft "shh" dots (same art, ELOF auditory discrimination) */
+.lq { position: relative; display: block; width: 100%; height: 100%; }
+.lq .pic { position: relative; z-index: 1; }
+.lq-quiet .pic { transform: scale(.6); }
+.lq-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.lq-loud .lq-fx path { fill: none; stroke: var(--coral, #F08A7E); stroke-width: 5; stroke-linecap: round; }
+.lq-quiet .lq-fx circle { fill: var(--lav, #9B8AD1); opacity: .55; }
+.ll-card:not(.done) .lq-loud .lq-fx { animation: lqwave 1.4s ease-in-out infinite; }
+@keyframes lqwave { 50% { transform: scale(1.05); opacity: .75; } }
+@media (prefers-reduced-motion: reduce) { .ll-card .lq-loud .lq-fx { animation: none; } }

@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T12:26:14.631Z",
+ "generated": "2026-10-30T12:47:16.320Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -64,7 +64,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -96,7 +96,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -128,7 +128,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -160,7 +160,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -192,7 +192,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -224,7 +224,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -256,7 +256,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -288,7 +288,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -320,14 +320,462 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.lion",
+   "files": [
+    "assets/sfx/loudquiet/lion.mp3",
+    "assets/sfx/loudquiet/lion.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 69570,
+    "title": "Lion loud.mp3",
+    "author": "Bidone",
+    "url": "https://freesound.org/people/Bidone/sounds/69570/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a lion roaring",
+    "cutFromSec": 23.52
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -3.71,
+    "audiosetTop": "Roar",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.kitten",
+   "files": [
+    "assets/sfx/loudquiet/kitten.mp3",
+    "assets/sfx/loudquiet/kitten.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 440697,
+    "title": "Kitten miaowing.wav",
+    "author": "barkenov",
+    "url": "https://freesound.org/people/barkenov/sounds/440697/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a kitten mewing",
+    "cutFromSec": 6.41
+   },
+   "measured": {
+    "durationSec": 0.7,
+    "lufs": -16.46,
+    "truePeakDbfs": -5.33,
+    "audiosetTop": "Meow",
+    "audiosetTargetProb": 0.61
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bigdrum",
+   "files": [
+    "assets/sfx/loudquiet/bigdrum.mp3",
+    "assets/sfx/loudquiet/bigdrum.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 509528,
+    "title": "Alfaia Hit",
+    "author": "Sassaby",
+    "url": "https://freesound.org/people/Sassaby/sounds/509528/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "one big hit on an alfaia (a large Brazilian bass drum)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.53,
+    "lufs": -16.43,
+    "truePeakDbfs": -1.88,
+    "audiosetTop": "Music",
+    "audiosetTargetProb": 0.37
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bell",
+   "files": [
+    "assets/sfx/loudquiet/bell.mp3",
+    "assets/sfx/loudquiet/bell.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 553214,
+    "title": "Small Bell",
+    "author": "NachtmahrTV",
+    "url": "https://freesound.org/people/NachtmahrTV/sounds/553214/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a small hand bell ringing once",
+    "cutFromSec": 0.45
+   },
+   "measured": {
+    "durationSec": 0.84,
+    "lufs": -16.49,
+    "truePeakDbfs": -1.17,
+    "audiosetTop": "Ding",
+    "audiosetTargetProb": 0.38
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.siren",
+   "files": [
+    "assets/sfx/loudquiet/siren.mp3",
+    "assets/sfx/loudquiet/siren.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 315758,
+    "title": "Fire Truck Siren",
+    "author": "contramundum",
+    "url": "https://freesound.org/people/contramundum/sounds/315758/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a fire truck siren wailing",
+    "cutFromSec": 0.21
+   },
+   "measured": {
+    "durationSec": 1.88,
+    "lufs": -16.44,
+    "truePeakDbfs": -10.38,
+    "audiosetTop": "Police car (siren)",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bikebell",
+   "files": [
+    "assets/sfx/loudquiet/bikebell.mp3",
+    "assets/sfx/loudquiet/bikebell.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 688055,
+    "title": "Traditional Bicycle Bell.wav",
+    "author": "trpete",
+    "url": "https://freesound.org/people/trpete/sounds/688055/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a traditional bicycle bell ringing",
+    "cutFromSec": 1.79
+   },
+   "measured": {
+    "durationSec": 0.98,
+    "lufs": -18.04,
+    "truePeakDbfs": -4.83,
+    "audiosetTop": "Bicycle bell",
+    "audiosetTargetProb": 0.76
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.thunder",
+   "files": [
+    "assets/sfx/loudquiet/thunder.mp3",
+    "assets/sfx/loudquiet/thunder.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 652690,
+    "title": "Thunder strike",
+    "author": "AyaDrevis",
+    "url": "https://freesound.org/people/AyaDrevis/sounds/652690/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a thunder strike rumbling",
+    "cutFromSec": 0.58
+   },
+   "measured": {
+    "durationSec": 1.46,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.7,
+    "audiosetTop": "Explosion",
+    "audiosetTargetProb": 0
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.rain",
+   "files": [
+    "assets/sfx/loudquiet/rain.mp3",
+    "assets/sfx/loudquiet/rain.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 398740,
+    "title": "rain - drops on porch.wav",
+    "author": "Anthousai",
+    "url": "https://freesound.org/people/Anthousai/sounds/398740/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "raindrops pattering on a porch",
+    "cutFromSec": 3.63
+   },
+   "measured": {
+    "durationSec": 1.21,
+    "lufs": -16.48,
+    "truePeakDbfs": 0.59,
+    "audiosetTop": "Sound effect",
+    "audiosetTargetProb": 0.02
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.chick",
+   "files": [
+    "assets/sfx/loudquiet/chick.mp3",
+    "assets/sfx/loudquiet/chick.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 826677,
+    "title": "Fowl - Chicken; Baby Chick, Peep",
+    "author": "TheKingOfGeeks360",
+    "url": "https://freesound.org/people/TheKingOfGeeks360/sounds/826677/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a baby chick peeping",
+    "cutFromSec": 5.95
+   },
+   "measured": {
+    "durationSec": 1.39,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.91,
+    "audiosetTop": "Bird",
+    "audiosetTargetProb": 0.51
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.trumpet",
+   "files": [
+    "assets/sfx/loudquiet/trumpet.mp3",
+    "assets/sfx/loudquiet/trumpet.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 374162,
+    "title": "Trumpet - sustain - F#4 (Sum_SHTrumpet_sus_G3_v3_rr1.wav)",
+    "author": "sgossner",
+    "url": "https://freesound.org/people/sgossner/sounds/374162/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a trumpet holding one long note (F#4)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -5.93,
+    "audiosetTop": "Trumpet",
+    "audiosetTargetProb": 0.27
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.flute",
+   "files": [
+    "assets/sfx/loudquiet/flute.mp3",
+    "assets/sfx/loudquiet/flute.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 441682,
+    "title": "flute_fa.wav",
+    "author": "alpayozbay",
+    "url": "https://freesound.org/people/alpayozbay/sounds/441682/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a flute playing a short phrase",
+    "cutFromSec": 0.91
+   },
+   "measured": {
+    "durationSec": 1.83,
+    "lufs": -16.44,
+    "truePeakDbfs": -8.19,
+    "audiosetTop": "Music",
+    "audiosetTargetProb": 0.11
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.whimper",
+   "files": [
+    "assets/sfx/loudquiet/whimper.mp3",
+    "assets/sfx/loudquiet/whimper.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 742053,
+    "title": "Dog whine",
+    "author": "T_saurus",
+    "url": "https://freesound.org/people/T_saurus/sounds/742053/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a dog whining softly",
+    "cutFromSec": 7.5
+   },
+   "measured": {
+    "durationSec": 1.09,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.69,
+    "audiosetTop": "Animal",
+    "audiosetTargetProb": 0.24
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.elephant",
+   "files": [
+    "assets/sfx/loudquiet/elephant.mp3",
+    "assets/sfx/loudquiet/elephant.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 819668,
+    "title": "Elephant sound",
+    "author": "ikbenraar",
+    "url": "https://freesound.org/people/ikbenraar/sounds/819668/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "an elephant calling",
+    "cutFromSec": 1.65
+   },
+   "measured": {
+    "durationSec": 1.18,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.99,
+    "audiosetTop": "Roar",
+    "audiosetTargetProb": 0.27
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.mouse",
+   "files": [
+    "assets/sfx/loudquiet/mouse.mp3",
+    "assets/sfx/loudquiet/mouse.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 435708,
+    "title": "Mouse squeak.m4a",
+    "author": "Alexepoch_YT",
+    "url": "https://freesound.org/people/Alexepoch_YT/sounds/435708/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a mouse squeaking",
+    "cutFromSec": 6.81
+   },
+   "measured": {
+    "durationSec": 1.57,
+    "lufs": -16.45,
+    "truePeakDbfs": -0.54,
+    "audiosetTop": "Squeak",
+    "audiosetTargetProb": 0.87
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
     ]
    }
   }
  ],
  "counts": {
-  "total": 2257,
-  "spoken": 2240,
+  "total": 2338,
+  "spoken": 2321,
   "reserved": 17,
   "byGame": {
    "elearnea": 66,
@@ -335,17 +783,17 @@
    "firefly-count": 72,
    "clocktower-gears": 35,
    "mothabet": 1489,
-   "lantern-barn": 81,
-   "picture-garden": 121,
+   "lantern-barn": 147,
+   "picture-garden": 136,
    "glow-jars": 8,
    "wicks-path": 39,
    "moth-bridge": 19
   },
   "byType": {
-   "instruction": 627,
+   "instruction": 660,
    "label": 135,
-   "feedback": 216,
-   "praise": 207,
+   "feedback": 217,
+   "praise": 254,
    "number": 10,
    "word": 551,
    "phoneme": 56,
@@ -353,7 +801,7 @@
    "sentence": 430
   },
   "needsHumanCheck": 299,
-  "withClip": 2242,
+  "withClip": 2323,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
@@ -71781,6 +72229,90 @@
    ]
   },
   {
+   "id": "ll.shh-listen",
+   "key": "shh listen",
+   "text": "Shh... listen!",
+   "render": "Shh... listen!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "before the sound (varies by round)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.shh-listen.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-carefully",
+   "key": "listen carefully",
+   "text": "Listen carefully!",
+   "render": "Listen carefully!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "before the sound (varies by round)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-carefully.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-that-loud-or-quiet",
+   "key": "was that loud or quiet",
+   "text": "Was that loud, or quiet?",
+   "render": "Was that loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "after the sound (things rounds; varies by round); tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.was-that-loud-or-quiet.mp3"
+   ]
+  },
+  {
    "id": "ll.loud-or-quiet",
    "key": "loud or quiet",
    "text": "Loud, or quiet?",
@@ -71790,7 +72322,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: loud or quiet",
-     "trigger": "after the drum beats"
+     "trigger": "after the sound (things rounds; varies by round); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -71809,16 +72341,16 @@
    ]
   },
   {
-   "id": "ll.yes-that-was-loud-like-the-elephant",
-   "key": "yes that was loud like the elephant",
-   "text": "Yes! That was loud, like the elephant!",
-   "render": "Yes! That was loud, like the elephant!",
-   "type": "praise",
+   "id": "ll.hmm-loud-or-quiet",
+   "key": "hmm loud or quiet",
+   "text": "Hmm... loud, or quiet?",
+   "render": "Hmm... loud, or quiet?",
+   "type": "instruction",
    "uses": [
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: loud or quiet",
-     "trigger": "elephant tapped after a loud drum"
+     "trigger": "after the sound (things rounds; varies by round); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -71833,20 +72365,20 @@
     "reasons": []
    },
    "files": [
-    "voice/clips/ll.yes-that-was-loud-like-the-elephant.mp3"
+    "voice/clips/ll.hmm-loud-or-quiet.mp3"
    ]
   },
   {
-   "id": "ll.yes-that-was-quiet-like-the-mouse",
-   "key": "yes that was quiet like the mouse",
-   "text": "Yes! That was quiet, like the mouse!",
-   "render": "Yes! That was quiet, like the mouse!",
+   "id": "ll.yes-that-was-loud-like-a-lion",
+   "key": "yes that was loud like a lion",
+   "text": "Yes! That was loud, like a lion!",
+   "render": "Yes! That was loud, like a lion!",
    "type": "praise",
    "uses": [
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: loud or quiet",
-     "trigger": "mouse tapped after a quiet drum"
+     "trigger": "loud round: lion picture tapped after the lion sound (assets/sfx/loudquiet)"
     }
    ],
    "source": {
@@ -71860,8 +72392,1836 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
    "files": [
-    "voice/clips/ll.yes-that-was-quiet-like-the-mouse.mp3"
+    "voice/clips/ll.yes-that-was-loud-like-a-lion.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-lion-loud-or-quiet",
+   "key": "was the lion loud or quiet",
+   "text": "Was the lion loud, or quiet?",
+   "render": "Was the lion loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the lion sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
+   "files": [
+    "voice/clips/ll.was-the-lion-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-roar",
+   "key": "yes a loud roar",
+   "text": "Yes! A loud roar!",
+   "render": "Yes! A loud roar!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud lion picture tapped after the LOUD the lion sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-roar.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-roar",
+   "key": "yes a quiet roar",
+   "text": "Yes! A quiet roar!",
+   "render": "Yes! A quiet roar!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet lion picture tapped after the QUIET the lion sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-roar.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-kitten",
+   "key": "yes that was quiet like a kitten",
+   "text": "Yes! That was quiet, like a kitten!",
+   "render": "Yes! That was quiet, like a kitten!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: kitten picture tapped after the kitten sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-kitten.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-kitten-loud-or-quiet",
+   "key": "was the kitten loud or quiet",
+   "text": "Was the kitten loud, or quiet?",
+   "render": "Was the kitten loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the kitten sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
+   "files": [
+    "voice/clips/ll.was-the-kitten-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-meow",
+   "key": "yes a loud meow",
+   "text": "Yes! A loud meow!",
+   "render": "Yes! A loud meow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud kitten picture tapped after the LOUD the kitten sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-meow.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-meow",
+   "key": "yes a quiet meow",
+   "text": "Yes! A quiet meow!",
+   "render": "Yes! A quiet meow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet kitten picture tapped after the QUIET the kitten sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-meow.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-a-big-drum",
+   "key": "yes that was loud like a big drum",
+   "text": "Yes! That was loud, like a big drum!",
+   "render": "Yes! That was loud, like a big drum!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: big drum picture tapped after the big drum sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-a-big-drum.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-big-drum-loud-or-quiet",
+   "key": "was the big drum loud or quiet",
+   "text": "Was the big drum loud, or quiet?",
+   "render": "Was the big drum loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the big drum sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
+   "files": [
+    "voice/clips/ll.was-the-big-drum-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-boom",
+   "key": "yes a loud boom",
+   "text": "Yes! A loud boom!",
+   "render": "Yes! A loud boom!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud big drum picture tapped after the LOUD the big drum sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-boom.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-boom",
+   "key": "yes a quiet boom",
+   "text": "Yes! A quiet boom!",
+   "render": "Yes! A quiet boom!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet big drum picture tapped after the QUIET the big drum sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-boom.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-little-bell",
+   "key": "yes that was quiet like a little bell",
+   "text": "Yes! That was quiet, like a little bell!",
+   "render": "Yes! That was quiet, like a little bell!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: little bell picture tapped after the little bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-little-bell.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-little-bell-loud-or-quiet",
+   "key": "was the little bell loud or quiet",
+   "text": "Was the little bell loud, or quiet?",
+   "render": "Was the little bell loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the little bell sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
+   "files": [
+    "voice/clips/ll.was-the-little-bell-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-ding",
+   "key": "yes a loud ding",
+   "text": "Yes! A loud ding!",
+   "render": "Yes! A loud ding!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud little bell picture tapped after the LOUD the little bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-ding.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-ding",
+   "key": "yes a quiet ding",
+   "text": "Yes! A quiet ding!",
+   "render": "Yes! A quiet ding!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet little bell picture tapped after the QUIET the little bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-ding.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-a-fire-truck",
+   "key": "yes that was loud like a fire truck",
+   "text": "Yes! That was loud, like a fire truck!",
+   "render": "Yes! That was loud, like a fire truck!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: fire truck picture tapped after the fire truck sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-a-fire-truck.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-fire-truck-loud-or-quiet",
+   "key": "was the fire truck loud or quiet",
+   "text": "Was the fire truck loud, or quiet?",
+   "render": "Was the fire truck loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the fire truck sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
+   "files": [
+    "voice/clips/ll.was-the-fire-truck-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-siren",
+   "key": "yes a loud siren",
+   "text": "Yes! A loud siren!",
+   "render": "Yes! A loud siren!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud fire truck picture tapped after the LOUD the fire truck sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-siren.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-siren",
+   "key": "yes a quiet siren",
+   "text": "Yes! A quiet siren!",
+   "render": "Yes! A quiet siren!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet fire truck picture tapped after the QUIET the fire truck sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-siren.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-bicycle-bell",
+   "key": "yes that was quiet like a bicycle bell",
+   "text": "Yes! That was quiet, like a bicycle bell!",
+   "render": "Yes! That was quiet, like a bicycle bell!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: bicycle bell picture tapped after the bicycle bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-bicycle-bell.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-bicycle-bell-loud-or-quiet",
+   "key": "was the bicycle bell loud or quiet",
+   "text": "Was the bicycle bell loud, or quiet?",
+   "render": "Was the bicycle bell loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the bicycle bell sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
+   "files": [
+    "voice/clips/ll.was-the-bicycle-bell-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-ring-ring",
+   "key": "yes a loud ring ring",
+   "text": "Yes! A loud ring-ring!",
+   "render": "Yes! A loud ring-ring!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud bicycle bell picture tapped after the LOUD the bicycle bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-ring-ring.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-ring-ring",
+   "key": "yes a quiet ring ring",
+   "text": "Yes! A quiet ring-ring!",
+   "render": "Yes! A quiet ring-ring!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet bicycle bell picture tapped after the QUIET the bicycle bell sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-ring-ring.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-thunder",
+   "key": "yes that was loud like thunder",
+   "text": "Yes! That was loud, like thunder!",
+   "render": "Yes! That was loud, like thunder!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: thunder picture tapped after the thunder sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-thunder.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-thunder-loud-or-quiet",
+   "key": "was the thunder loud or quiet",
+   "text": "Was the thunder loud, or quiet?",
+   "render": "Was the thunder loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the thunder sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
+   "files": [
+    "voice/clips/ll.was-the-thunder-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-rumble",
+   "key": "yes a loud rumble",
+   "text": "Yes! A loud rumble!",
+   "render": "Yes! A loud rumble!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud thunder picture tapped after the LOUD the thunder sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-rumble.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-rumble",
+   "key": "yes a quiet rumble",
+   "text": "Yes! A quiet rumble!",
+   "render": "Yes! A quiet rumble!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet thunder picture tapped after the QUIET the thunder sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-rumble.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-raindrops",
+   "key": "yes that was quiet like raindrops",
+   "text": "Yes! That was quiet, like raindrops!",
+   "render": "Yes! That was quiet, like raindrops!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: rain picture tapped after the rain sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-raindrops.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-rain-loud-or-quiet",
+   "key": "was the rain loud or quiet",
+   "text": "Was the rain loud, or quiet?",
+   "render": "Was the rain loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the rain sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
+   "files": [
+    "voice/clips/ll.was-the-rain-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-pitter-patter",
+   "key": "yes a loud pitter patter",
+   "text": "Yes! A loud pitter-patter!",
+   "render": "Yes! A loud pitter-patter!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud rain picture tapped after the LOUD the rain sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-pitter-patter.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-pitter-patter",
+   "key": "yes a quiet pitter patter",
+   "text": "Yes! A quiet pitter-patter!",
+   "render": "Yes! A quiet pitter-patter!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet rain picture tapped after the QUIET the rain sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-pitter-patter.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-a-cow",
+   "key": "yes that was loud like a cow",
+   "text": "Yes! That was loud, like a cow!",
+   "render": "Yes! That was loud, like a cow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: cow picture tapped after the cow sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-a-cow.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-cow-loud-or-quiet",
+   "key": "was the cow loud or quiet",
+   "text": "Was the cow loud, or quiet?",
+   "render": "Was the cow loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the cow sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
+   "files": [
+    "voice/clips/ll.was-the-cow-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-moo",
+   "key": "yes a loud moo",
+   "text": "Yes! A loud moo!",
+   "render": "Yes! A loud moo!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud cow picture tapped after the LOUD the cow sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-moo.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-moo",
+   "key": "yes a quiet moo",
+   "text": "Yes! A quiet moo!",
+   "render": "Yes! A quiet moo!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet cow picture tapped after the QUIET the cow sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-moo.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-baby-chick",
+   "key": "yes that was quiet like a baby chick",
+   "text": "Yes! That was quiet, like a baby chick!",
+   "render": "Yes! That was quiet, like a baby chick!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: chick picture tapped after the chick sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-baby-chick.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-chick-loud-or-quiet",
+   "key": "was the chick loud or quiet",
+   "text": "Was the chick loud, or quiet?",
+   "render": "Was the chick loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the chick sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
+   "files": [
+    "voice/clips/ll.was-the-chick-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-peep",
+   "key": "yes a loud peep",
+   "text": "Yes! A loud peep!",
+   "render": "Yes! A loud peep!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud chick picture tapped after the LOUD the chick sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-peep.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-peep",
+   "key": "yes a quiet peep",
+   "text": "Yes! A quiet peep!",
+   "render": "Yes! A quiet peep!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet chick picture tapped after the QUIET the chick sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-peep.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-a-trumpet",
+   "key": "yes that was loud like a trumpet",
+   "text": "Yes! That was loud, like a trumpet!",
+   "render": "Yes! That was loud, like a trumpet!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: trumpet picture tapped after the trumpet sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-a-trumpet.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-trumpet-loud-or-quiet",
+   "key": "was the trumpet loud or quiet",
+   "text": "Was the trumpet loud, or quiet?",
+   "render": "Was the trumpet loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the trumpet sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
+   "files": [
+    "voice/clips/ll.was-the-trumpet-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-toot",
+   "key": "yes a loud toot",
+   "text": "Yes! A loud toot!",
+   "render": "Yes! A loud toot!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud trumpet picture tapped after the LOUD the trumpet sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-toot.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-toot",
+   "key": "yes a quiet toot",
+   "text": "Yes! A quiet toot!",
+   "render": "Yes! A quiet toot!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet trumpet picture tapped after the QUIET the trumpet sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-toot.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-flute",
+   "key": "yes that was quiet like a flute",
+   "text": "Yes! That was quiet, like a flute!",
+   "render": "Yes! That was quiet, like a flute!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: flute picture tapped after the flute sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-flute.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-flute-loud-or-quiet",
+   "key": "was the flute loud or quiet",
+   "text": "Was the flute loud, or quiet?",
+   "render": "Was the flute loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the flute sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
+   "files": [
+    "voice/clips/ll.was-the-flute-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-flute-song",
+   "key": "yes a loud flute song",
+   "text": "Yes! A loud flute song!",
+   "render": "Yes! A loud flute song!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud flute picture tapped after the LOUD the flute sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-flute-song.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-flute-song",
+   "key": "yes a quiet flute song",
+   "text": "Yes! A quiet flute song!",
+   "render": "Yes! A quiet flute song!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet flute picture tapped after the QUIET the flute sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-flute-song.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-a-barking-dog",
+   "key": "yes that was loud like a barking dog",
+   "text": "Yes! That was loud, like a barking dog!",
+   "render": "Yes! That was loud, like a barking dog!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: dog picture tapped after the dog sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-a-barking-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-dog-loud-or-quiet",
+   "key": "was the dog loud or quiet",
+   "text": "Was the dog loud, or quiet?",
+   "render": "Was the dog loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the dog sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
+   "files": [
+    "voice/clips/ll.was-the-dog-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-woof",
+   "key": "yes a loud woof",
+   "text": "Yes! A loud woof!",
+   "render": "Yes! A loud woof!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud dog picture tapped after the LOUD the dog sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-woof.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-woof",
+   "key": "yes a quiet woof",
+   "text": "Yes! A quiet woof!",
+   "render": "Yes! A quiet woof!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet dog picture tapped after the QUIET the dog sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-woof.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-sleepy-puppy",
+   "key": "yes that was quiet like a sleepy puppy",
+   "text": "Yes! That was quiet, like a sleepy puppy!",
+   "render": "Yes! That was quiet, like a sleepy puppy!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: puppy picture tapped after the puppy sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-sleepy-puppy.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-puppy-loud-or-quiet",
+   "key": "was the puppy loud or quiet",
+   "text": "Was the puppy loud, or quiet?",
+   "render": "Was the puppy loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the puppy sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
+   "files": [
+    "voice/clips/ll.was-the-puppy-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-whimper",
+   "key": "yes a loud whimper",
+   "text": "Yes! A loud whimper!",
+   "render": "Yes! A loud whimper!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud puppy picture tapped after the LOUD the puppy sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-whimper.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-whimper",
+   "key": "yes a quiet whimper",
+   "text": "Yes! A quiet whimper!",
+   "render": "Yes! A quiet whimper!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet puppy picture tapped after the QUIET the puppy sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-whimper.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-an-elephant",
+   "key": "yes that was loud like an elephant",
+   "text": "Yes! That was loud, like an elephant!",
+   "render": "Yes! That was loud, like an elephant!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "loud round: elephant picture tapped after the elephant sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-an-elephant.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-elephant-loud-or-quiet",
+   "key": "was the elephant loud or quiet",
+   "text": "Was the elephant loud, or quiet?",
+   "render": "Was the elephant loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the elephant sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
+   "files": [
+    "voice/clips/ll.was-the-elephant-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-elephant-call",
+   "key": "yes a loud elephant call",
+   "text": "Yes! A loud elephant call!",
+   "render": "Yes! A loud elephant call!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud elephant picture tapped after the LOUD the elephant sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-elephant-call.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-elephant-call",
+   "key": "yes a quiet elephant call",
+   "text": "Yes! A quiet elephant call!",
+   "render": "Yes! A quiet elephant call!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet elephant picture tapped after the QUIET the elephant sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-elephant-call.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-a-mouse",
+   "key": "yes that was quiet like a mouse",
+   "text": "Yes! That was quiet, like a mouse!",
+   "render": "Yes! That was quiet, like a mouse!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "quiet round: mouse picture tapped after the mouse sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-a-mouse.mp3"
+   ]
+  },
+  {
+   "id": "ll.was-the-mouse-loud-or-quiet",
+   "key": "was the mouse loud or quiet",
+   "text": "Was the mouse loud, or quiet?",
+   "render": "Was the mouse loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: after the mouse sound (assets/sfx/loudquiet) played loud or quiet; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
+   "files": [
+    "voice/clips/ll.was-the-mouse-loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-loud-squeak",
+   "key": "yes a loud squeak",
+   "text": "Yes! A loud squeak!",
+   "render": "Yes! A loud squeak!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: loud mouse picture tapped after the LOUD the mouse sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
+   "files": [
+    "voice/clips/ll.yes-a-loud-squeak.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-quiet-squeak",
+   "key": "yes a quiet squeak",
+   "text": "Yes! A quiet squeak!",
+   "render": "Yes! A quiet squeak!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "same-sound round: quiet mouse picture tapped after the QUIET the mouse sound (assets/sfx/loudquiet)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
+   "files": [
+    "voice/clips/ll.yes-a-quiet-squeak.mp3"
    ]
   },
   {
@@ -71874,7 +74234,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: loud or quiet",
-     "trigger": "first miss (the drum replays)"
+     "trigger": "first miss (the sound plays again)"
     },
     {
      "game": "moth-bridge",
@@ -75729,7 +78089,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -75745,6 +78105,62 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-cat-hat-or-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-cat-hat-or-cup",
+   "key": "which one rhymes with cat hat or cup",
+   "text": "Which one rhymes with cat? hat, or cup?",
+   "render": "Which one rhymes with cat? hat, or cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-cat-hat-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-cat-hat-or-fish",
+   "key": "which one rhymes with cat hat or fish",
+   "text": "Which one rhymes with cat? hat, or fish?",
+   "render": "Which one rhymes with cat? hat, or fish?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-cat-hat-or-fish.mp3"
    ]
   },
   {
@@ -75813,7 +78229,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -75829,6 +78245,62 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-car-star-or-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-car-star-or-ball",
+   "key": "which one rhymes with car star or ball",
+   "text": "Which one rhymes with car? star, or ball?",
+   "render": "Which one rhymes with car? star, or ball?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-car-star-or-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-car-star-or-duck",
+   "key": "which one rhymes with car star or duck",
+   "text": "Which one rhymes with car? star, or duck?",
+   "render": "Which one rhymes with car? star, or duck?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-car-star-or-duck.mp3"
    ]
   },
   {
@@ -75897,7 +78369,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -75913,6 +78385,62 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-bee-tree-or-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-bee-tree-or-cup",
+   "key": "which one rhymes with bee tree or cup",
+   "text": "Which one rhymes with bee? tree, or cup?",
+   "render": "Which one rhymes with bee? tree, or cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-bee-tree-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-bee-tree-or-sun",
+   "key": "which one rhymes with bee tree or sun",
+   "text": "Which one rhymes with bee? tree, or sun?",
+   "render": "Which one rhymes with bee? tree, or sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-bee-tree-or-sun.mp3"
    ]
   },
   {
@@ -75981,7 +78509,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -75997,6 +78525,62 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-moon-spoon-or-car",
+   "key": "which one rhymes with moon spoon or car",
+   "text": "Which one rhymes with moon? spoon, or car?",
+   "render": "Which one rhymes with moon? spoon, or car?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-moon-spoon-or-hat",
+   "key": "which one rhymes with moon spoon or hat",
+   "text": "Which one rhymes with moon? spoon, or hat?",
+   "render": "Which one rhymes with moon? spoon, or hat?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-hat.mp3"
    ]
   },
   {
@@ -76065,7 +78649,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -76081,6 +78665,62 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-frog-log-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-frog-log-or-bee",
+   "key": "which one rhymes with frog log or bee",
+   "text": "Which one rhymes with frog? log, or bee?",
+   "render": "Which one rhymes with frog? log, or bee?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-frog-log-or-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-frog-log-or-moon",
+   "key": "which one rhymes with frog log or moon",
+   "text": "Which one rhymes with frog? log, or moon?",
+   "render": "Which one rhymes with frog? log, or moon?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-frog-log-or-moon.mp3"
    ]
   },
   {
@@ -76137,6 +78777,146 @@
    },
    "files": [
     "voice/clips/ll.listen-frog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-sun",
+   "key": "which one rhymes with dog log or sun",
+   "text": "Which one rhymes with dog? log, or sun?",
+   "render": "Which one rhymes with dog? log, or sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-apple",
+   "key": "which one rhymes with dog log or apple",
+   "text": "Which one rhymes with dog? log, or apple?",
+   "render": "Which one rhymes with dog? log, or apple?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-car",
+   "key": "which one rhymes with dog log or car",
+   "text": "Which one rhymes with dog? log, or car?",
+   "render": "Which one rhymes with dog? log, or car?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-dog-log-they-rhyme",
+   "key": "yes dog log they rhyme",
+   "text": "Yes! dog, log. They rhyme!",
+   "render": "Yes! dog, log. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-dog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-dog-log-they-rhyme",
+   "key": "listen dog log they rhyme",
+   "text": "Listen: dog, log. They rhyme!",
+   "render": "Listen: dog, log. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-dog-log-they-rhyme.mp3"
    ]
   },
   {

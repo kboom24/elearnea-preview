@@ -2,10 +2,10 @@
    Modes (catalog config.mode):
    - tiny:      under-2 play-together peekaboo. One huge barn door; every tap opens it, an animal pops out and "says" its sound.
    - animals:   hear an animal sound, tap who made it (2 choices, 3 once first-try success is high).
-   - loudquiet: hear a drum, tap the elephant (loud) or the mouse (quiet).
+   - loudquiet: hear a sound, tap loud or quiet: 8 loud/quiet pairs (lion/kitten, thunder/rain, ...), a new pair every round, contrast gets subtler.
    - clap:      syllable clapping. Wick claps a word on the drum, then the child claps it (counts the beats).
    No fail states and no timers: a miss replays the sound with a gentle hint; a second miss shows the answer.
-   Contract: start(config, host) -> {stop}; host.emit('progress'|'mastery'); host.end(results). Sounds: assets/js/sfx-animals.js (recorded CC0 animal sounds, synthesized drum). */
+   Contract: start(config, host) -> {stop}; host.emit('progress'|'mastery'); host.end(results). Sounds: assets/js/sfx-animals.js (recorded CC0 sounds: assets/sfx/animals, assets/sfx/loudquiet; synthesized clap drum). */
 El.defineGame({
   id: 'lantern-barn',
   start(cfg, host) {
@@ -16,12 +16,12 @@ El.defineGame({
     const kit = El.Little.setup(host, cfg, { scene: 'barn', bg: barn, tip: mode === 'tiny' ? tips.tiny : null });
     const say = kit.say, T = kit.T;
     const sfx = (id, o) => El.animal.play(id, o) || 0;
-    El.animal.load(); // the recorded animal sounds (assets/sfx/animals), decoded once; the barn waits for them below (max 2.5 s)
-    const ready = Promise.race([El.animal.load(), new Promise(r => setTimeout(r, 2500))]);
+    // the recorded sounds this mode needs, decoded once; the barn waits for them (max 2.5 s; loud/quiet: 6 s, it has 16 files)
+    const ready = Promise.race([El.animal.load(mode === 'loudquiet' ? El.animal.LQ : null), new Promise(r => setTimeout(r, mode === 'loudquiet' ? 6000 : 2500))]);
     Promise.all([El.Little.data(), ready]).then(([D]) => { if (!kit.alive) return;
       const A = {}; D.animals.forEach(a => { A[a.id] = a; });
       if (mode === 'tiny') return tiny(D, A);
-      if (mode === 'loudquiet') return loudquiet();
+      if (mode === 'loudquiet') return loudquiet(D);
       if (mode === 'clap') return clap(D);
       return animals(D, A);
     });
@@ -59,19 +59,43 @@ El.defineGame({
       });
     }
 
-    // loud or quiet?
-    function loudquiet() {
-      const plan = L.pick(cfg.skill, ['loud', 'quiet'], cfg.rounds || 6, rng);
-      kit.run(plan, (id, i, finish) => { let miss = 0;
-        const btns = kit.options(rng.shuffle(['elephant', 'mouse']), x => El.pic(x), x => x === 'elephant' ? 'Loud, like the elephant' : 'Quiet, like the mouse');
-        const right = btns.find(b => b._it === (id === 'loud' ? 'elephant' : 'mouse')); kit.mark(right);
-        const beat = () => { const g = id === 'loud' ? 1 : .12; sfx('drum', { gain: g }); T(() => sfx('drum', { gain: g }), 420); T(() => sfx('drum', { gain: g }), 840); };
-        const cue = () => say(LN.barn.listen, () => { if (kit.praising) return; beat(); T(() => say(LN.barn.lq), 1500); });
-        kit.cue(cue);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: id === 'loud' ? LN.barn.loud : LN.barn.quiet, delay: 400 }); return; }
-          miss++; kit.soft(b); if (miss === 1) T(() => say(LN.barn.again, () => T(cue, 300)), 500); else { kit.hint(right); T(() => say(LN.common.here), 500); } }; });
-      });
+    // loud or quiet? (content/early.json "loudquiet": 8 loud/quiet pairs, e.g. lion/kitten, thunder/rain; sounds: assets/sfx/loudquiet + animals)
+    // Every round is a new pair (least recently heard first, remembered across plays; never the same pair twice in a row), picture sides
+    // are shuffled, and the contrast gets subtler over the lesson:
+    //   first third   "things": a loud thing vs a quiet thing, each at its own level (loud 1.0, quiet 0.12 = about -18 dB)
+    //   middle third  "same":   ONE sound, played loud (1.0) or quiet (0.14); pictures: the same thing big + waves vs small + "shh"
+    //   last third    subtler:  things/same alternating, quiet at 0.32 (about -10 dB)
+    function loudquiet(D) {
+      const B = LN.barn, total = cfg.rounds || 6, plan = L.pick(cfg.skill, ['loud', 'quiet'], total, rng);
+      const ok = (m) => El.animal.canPlay(m.sfx); // decoded recording (or a synthesized stand-in); a pair whose file failed to load is skipped
+      const pairs = (D.loudquiet || []).filter(p => ok(p.loud) && ok(p.quiet)), order = lqOrder(pairs.length ? pairs : D.loudquiet, total);
+      const stage = (i) => { const t = i / Math.max(1, total - 1); return t < 1 / 3 - 1e-9 ? { kind: 'things', q: .12 } : t < 2 / 3 - 1e-9 ? { kind: 'same', q: .14 } : { kind: i % 2 ? 'same' : 'things', q: .32 }; };
+      const fx = { loud: '<svg class="lq-fx" viewBox="0 0 120 120" aria-hidden="true"><path d="M14 44q-8 16 0 32M4 36q-12 24 0 48M106 44q8 16 0 32M116 36q12 24 0 48"/></svg>',
+        quiet: '<svg class="lq-fx" viewBox="0 0 120 120" aria-hidden="true"><circle cx="96" cy="26" r="3"/><circle cx="104" cy="18" r="2.2"/><circle cx="110" cy="11" r="1.6"/></svg>' };
+      const art = (it) => `<span class="lq lq-${it.style}">${El.pic(it.m.id)}${fx[it.style]}</span>`;
+      const cap = (t) => t[0].toUpperCase() + t.slice(1);
+      kit.run(plan, (id, i, finish) => { let miss = 0; const loud = id === 'loud', pr = order[i], st = stage(i);
+        const m = st.kind === 'things' ? (loud ? pr.loud : pr.quiet) : (rng.next() < .5 ? pr.loud : pr.quiet), gain = loud ? 1 : st.q;
+        const items = st.kind === 'things' ? [{ m: pr.loud, style: 'loud', right: loud }, { m: pr.quiet, style: 'quiet', right: !loud }]
+          : [{ m, style: 'loud', right: loud }, { m, style: 'quiet', right: !loud }];
+        const btns = kit.options(rng.shuffle(items), art, it => st.kind === 'things' ? `${cap(it.m.name)}: ${it.style}` : `${cap(it.style)} ${it.m.name}`);
+        Object.assign(kit.opts.dataset, { pair: pr.id, kind: st.kind, level: String(gain) }); // QA: which pair / round type / quiet level
+        const right = btns.find(b => b._it.right); kit.mark(right);
+        const ask = st.kind === 'things' ? B.lqAsk[i % B.lqAsk.length] : B.lqWas(m), praise = st.kind === 'things' ? B.lqThing(m, loud) : B.lqSame(m, loud);
+        const sound = () => { if (kit.praising) return; const d = sfx(m.sfx, { gain }); T(() => { if (!kit.praising) say(ask); }, d * 1000 + 350); };
+        kit.cue(() => say(B.lqListen[i % B.lqListen.length], sound));
+        btns.forEach(b => { b.onclick = () => { if (kit.praising) return; if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: praise, delay: 400 }); return; }
+          miss++; kit.soft(b); if (miss === 1) T(() => say(B.again, () => T(sound, 300)), 500); else { kit.hint(right); T(() => say(LN.common.here), 500); } }; });
+      }, { repeats: true }); // loud, loud, quiet... is fine (the pair changes every round); alternating would be guessable
     }
+    // pair order for a lesson: least recently heard pairs first (localStorage, last 8 shown), shuffled within ties; no pair twice in a row
+    function lqOrder(pairs, n) { const K = 'elearnea:lq-recent'; let recent = []; try { recent = JSON.parse(localStorage.getItem(K) || '[]'); } catch (e) {}
+      const age = (p) => { const k = recent.indexOf(p.id); return k < 0 ? -1 : k; }; // -1: not heard lately; bigger index = heard more recently
+      const out = []; let pool = [];
+      while (out.length < n) { if (!pool.length) pool = rng.shuffle(pairs.slice()).sort((a, b) => age(a) - age(b));
+        let k = 0; if (out.length && pool[0].id === out[out.length - 1].id && pool.length > 1) k = 1; out.push(pool.splice(k, 1)[0]); }
+      try { const r = recent.filter(id => !out.some(p => p.id === id)).concat(out.map(p => p.id)); localStorage.setItem(K, JSON.stringify([...new Set(r.reverse())].reverse().slice(-8))); } catch (e) {}
+      return out; }
 
     // clap the syllables
     function clap(D) {

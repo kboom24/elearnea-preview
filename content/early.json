@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "about": "Little Lanterns (ages 0-4) content for the early-learner games. Every spoken line is built from these fields by the game code AND by tools/voice/early-lines.js (same templates), so the voice manifest always covers it. Pictures are drawn in code (assets/js/pics.js); animal sounds are real CC0 recordings in assets/sfx/animals/ (sources and licenses: LICENSES.md there), played by assets/js/sfx-animals.js.",
+  "about": "Little Lanterns (ages 0-4) content for the early-learner games. Every spoken line is built from these fields by the game code AND by tools/voice/early-lines.js (same templates), so the voice manifest always covers it. Pictures are drawn in code (assets/js/pics.js); animal sounds are real CC0 recordings in assets/sfx/animals/ and the loud/quiet pairs (\"loudquiet\") are real CC0 recordings in assets/sfx/loudquiet/ (sources and licenses: LICENSES.md in each folder), played by assets/js/sfx-animals.js.",
   "animals": [
     { "id": "cow", "name": "cow", "sound": "moo" },
     { "id": "duck", "name": "duck", "sound": "quack" },
@@ -34,12 +34,16 @@
     { "id": "circle", "name": "circle" }, { "id": "square", "name": "square" }, { "id": "triangle", "name": "triangle" },
     { "id": "star", "name": "star" }, { "id": "heart", "name": "heart" }
   ],
-  "rhymes": [
-    { "a": "cat", "b": "hat", "c": "sun" },
-    { "a": "car", "b": "star", "c": "fish" },
-    { "a": "bee", "b": "tree", "c": "ball" },
-    { "a": "moon", "b": "spoon", "c": "duck" },
-    { "a": "frog", "b": "log", "c": "cup" }
+  "rhymes": [{"a":"cat","b":"hat","c":["sun","cup","fish"]},{"a":"car","b":"star","c":["fish","ball","duck"]},{"a":"bee","b":"tree","c":["ball","cup","sun"]},{"a":"moon","b":"spoon","c":["duck","car","hat"]},{"a":"frog","b":"log","c":["cup","bee","moon"]},{"a":"dog","b":"log","c":["sun","apple","car"]}],
+  "loudquiet": [
+    {"id": "lion", "loud": {"id": "lion", "name": "lion", "like": "like a lion", "sound": "roar", "sfx": "lion"}, "quiet": {"id": "kitten", "name": "kitten", "like": "like a kitten", "sound": "meow", "sfx": "kitten"}},
+    {"id": "drum", "loud": {"id": "drum", "name": "big drum", "like": "like a big drum", "sound": "boom", "sfx": "bigdrum"}, "quiet": {"id": "bell", "name": "little bell", "like": "like a little bell", "sound": "ding", "sfx": "bell"}},
+    {"id": "truck", "loud": {"id": "firetruck", "name": "fire truck", "like": "like a fire truck", "sound": "siren", "sfx": "siren"}, "quiet": {"id": "bicycle", "name": "bicycle bell", "like": "like a bicycle bell", "sound": "ring-ring", "sfx": "bikebell"}},
+    {"id": "storm", "loud": {"id": "thunder", "name": "thunder", "like": "like thunder", "sound": "rumble", "sfx": "thunder"}, "quiet": {"id": "rain", "name": "rain", "like": "like raindrops", "sound": "pitter-patter", "sfx": "rain"}},
+    {"id": "farm", "loud": {"id": "cow", "name": "cow", "like": "like a cow", "sound": "moo", "sfx": "cow"}, "quiet": {"id": "chick", "name": "chick", "like": "like a baby chick", "sound": "peep", "sfx": "chick"}},
+    {"id": "band", "loud": {"id": "trumpet", "name": "trumpet", "like": "like a trumpet", "sound": "toot", "sfx": "trumpet"}, "quiet": {"id": "flute", "name": "flute", "like": "like a flute", "sound": "flute song", "sfx": "flute"}},
+    {"id": "dogs", "loud": {"id": "dog", "name": "dog", "like": "like a barking dog", "sound": "woof", "sfx": "dog"}, "quiet": {"id": "puppy", "name": "puppy", "like": "like a sleepy puppy", "sound": "whimper", "sfx": "whimper"}},
+    {"id": "zoo", "loud": {"id": "elephant", "name": "elephant", "like": "like an elephant", "sound": "elephant call", "sfx": "elephant"}, "quiet": {"id": "mouse", "name": "mouse", "like": "like a mouse", "sound": "squeak", "sfx": "mouse"}}
   ],
   "claps": [
     { "id": "cat", "word": "cat", "n": 1 }, { "id": "sun", "word": "sun", "n": 1 }, { "id": "ball", "word": "ball", "n": 1 },

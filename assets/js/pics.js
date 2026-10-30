@@ -47,6 +47,40 @@
       + line('M54 84h8M54 94h8', '#8F87B8', 2.4),
     mouse: () => cut(C(36, 40, 20, '#C9C2DA'), '#9F97B8') + cut(C(84, 40, 20, '#C9C2DA'), '#9F97B8') + C(36, 40, 12, PINK) + C(84, 40, 12, PINK) + line('M84 92c16 4 24 14 26 24', '#9F97B8', 4)
       + cut(E(60, 72, 28, 26, '#C9C2DA'), '#9F97B8') + eye(50, 68, 4) + eye(70, 68, 4) + C(60, 80, 4.5, CORAL) + line('M48 84 28 82M48 88 30 92M72 84l20-2M72 88l18 4', INK, 1.6),
+    // loud / quiet pairs (Lantern Barn loudquiet): lion/kitten, big drum (drum)/little bell, fire truck/bicycle, thunder/rain, cow/chick,
+    // trumpet/flute, dog/puppy, elephant/mouse
+    lion: () => Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return cut(C(60 + 38 * Math.cos(a), 62 + 36 * Math.sin(a), 15, '#E0873E'), '#B5662A'); }).join('')
+      + cut(C(40, 38, 9, GOLD), '#C98A1C') + cut(C(80, 38, 9, GOLD), '#C98A1C') + C(40, 38, 4.5, CORAL, ' opacity=".7"') + C(80, 38, 4.5, CORAL, ' opacity=".7"')
+      + cut(E(60, 64, 30, 28, '#F5C76A'), '#C98A1C') + cut(E(60, 78, 14, 10, CREAM), '#D9C6A5') + P('M53 70h14l-7 7z', BROWN_D)
+      + line('M60 77v4M60 81c-3 4-8 4-10 0M60 81c3 4 8 4 10 0', INK, 2.6) + eye(49, 58) + eye(71, 58) + cheek(42, 72) + cheek(78, 72),
+    kitten: () => cut(P('M32 50 30 20l22 16z', '#F6C79A'), '#D9A06A') + cut(P('M88 50l2-30-22 16z', '#F6C79A'), '#D9A06A') + P('M35 42 34 28l10 8z', PINK) + P('M85 42l1-14-10 8z', PINK)
+      + cut(E(60, 68, 34, 30, '#F6C79A'), '#D9A06A') + P('M50 40c3 5 3 9 1 12M60 38v12M70 40c-3 5-3 9-1 12', 'none', ` stroke="#E0A060" stroke-width="3.4" stroke-linecap="round"`)
+      + eye(47, 64, 6.5) + eye(73, 64, 6.5) + P('M56 75h8l-4 5z', CORAL) + line('M60 80c-2 3-6 3-8 0M60 80c2 3 6 3 8 0', INK, 2.2)
+      + line('M40 78 22 75M40 83 23 87M80 78l18-3M80 83l17 4', CREAM, 2) + cheek(40, 76) + cheek(80, 76),
+    bell: () => line('M60 22a7 7 0 1 1 0.1 0', BROWN_D, 4) + cut(P('M60 26c-20 0-30 18-30 42v12l-8 10h76l-8-10V68c0-24-10-42-30-42z', GOLD), '#C98A1C')
+      + E(46, 54, 5, 12, '#fff', ' opacity=".45" transform="rotate(15 46 54)"') + cut(C(60, 98, 8, BROWN), BROWN_D) + cut(P('M60 30l-12-8v14zM60 30l12-8v14z', CORAL), '#C25F54') + C(60, 30, 4, CORAL),
+    firetruck: () => cut(R(6, 50, 80, 40, 6, '#E0584F'), '#A8372F') + cut(P('M78 34h20c6 0 10 6 12 12l4 12v24a8 8 0 0 1-8 8H78z', '#E0584F'), '#A8372F')
+      + R(86, 42, 18, 16, 3, '#BFE0F2') + R(6, 72, 108, 6, 2, CREAM) + line('M12 44h60M12 44v-6M72 44v-6M12 38h60M22 38v6M32 38v6M42 38v6M52 38v6M62 38v6', '#D9D4E8', 3)
+      + cut(R(84, 26, 14, 8, 3, '#5DA9D6'), '#3A7BA6') + cut(C(28, 92, 12, INK), '#000') + C(28, 92, 5, '#C9C2DA') + cut(C(92, 92, 12, INK), '#000') + C(92, 92, 5, '#C9C2DA') + C(110, 76, 4, GOLD),
+    bicycle: () => `<circle cx="30" cy="80" r="21" fill="none" stroke="${INK}" stroke-width="6"/><circle cx="90" cy="80" r="21" fill="none" stroke="${INK}" stroke-width="6"/>`
+      + C(30, 80, 4, '#C9C2DA') + C(90, 80, 4, '#C9C2DA') + line('M30 80 50 52h32L90 80M50 52l10 28H30M60 80 82 52', TEAL, 5) + line('M82 52 78 36h12', INK, 4.4) + line('M44 46h14', BROWN_D, 6)
+      + cut(C(92, 30, 7, GOLD), '#C98A1C') + C(60, 80, 5, CORAL),
+    thunder: () => cut(C(38, 50, 20, '#8C84B8'), '#6E5FAA') + cut(C(62, 38, 26, '#8C84B8'), '#6E5FAA') + cut(C(86, 52, 18, '#8C84B8'), '#6E5FAA') + cut(R(22, 50, 80, 22, 11, '#8C84B8'), '#6E5FAA')
+      + cut(P('M64 60 46 90h14l-8 26 28-36H66l10-20z', GOLD), '#C98A1C') + eye(52, 54, 3.6) + eye(70, 54, 3.6),
+    rain: () => cut(C(40, 40, 18, '#E3F1FA'), '#A9CDE3') + cut(C(62, 30, 22, '#E3F1FA'), '#A9CDE3') + cut(C(84, 42, 16, '#E3F1FA'), '#A9CDE3') + cut(R(24, 40, 76, 20, 10, '#E3F1FA'), '#A9CDE3')
+      + [[38, 70], [60, 80], [82, 70], [48, 96], [72, 98]].map(([x, y]) => cut(P(`M${x} ${y}c-5 8-7 12-7 15a7 7 0 0 0 14 0c0-3-2-7-7-15z`, '#5DA9D6'), '#3A7BA6')).join('') + eye(54, 42, 3) + eye(70, 42, 3) + smile(62, 50, 4),
+    chick: () => line('M48 100v10M44 110h8M72 100v10M68 110h8', '#F0975A', 3.4) + cut(C(60, 68, 34, '#FFD95A'), '#C98A1C') + cut(P('M56 36c-2-8 2-12 6-12-1 4 1 8 2 12z', '#FFD95A'), '#C98A1C')
+      + cut(E(86, 74, 10, 16, '#F5C341', ' transform="rotate(-20 86 74)"')) + cut(E(34, 74, 10, 16, '#F5C341', ' transform="rotate(20 34 74)"')) + eye(50, 60, 5) + eye(70, 60, 5)
+      + cut(P('M54 70h12l-6 8z', '#F0975A'), '#C2672E') + cheek(42, 72) + cheek(78, 72),
+    trumpet: () => line('M28 70c0 14 8 20 22 20h26c8 0 10-6 10-12', '#C98A1C', 6) + cut(R(14, 56, 70, 12, 6, GOLD), '#C98A1C') + cut(P('M78 62c14 0 26-12 34-22v56c-8-10-20-22-34-22z', GOLD), '#C98A1C')
+      + cut(R(6, 57, 12, 10, 3, '#C98A1C')) + [40, 52, 64].map(x => cut(R(x, 40, 7, 18, 3, '#E8CFA2'), '#C9A877')).join('') + E(98, 54, 4, 10, '#fff', ' opacity=".45"')
+      + C(30, 30, 5, LAV) + line('M35 30V12l8 4', LAV, 2.6),
+    flute: () => `<g transform="rotate(-24 60 62)">` + cut(R(6, 56, 108, 12, 6, '#D9D4E8'), '#A9A3C9') + [30, 44, 58, 72, 86].map(x => C(x, 62, 2.6, INK)).join('') + R(18, 56, 4, 12, 1, '#A9A3C9') + R(96, 56, 4, 12, 1, '#A9A3C9') + `</g>`
+      + C(86, 30, 5, LAV) + line('M91 30V14l8 4', LAV, 2.6) + C(28, 96, 4, TEAL) + line('M32 96V82l6 3', TEAL, 2.2),
+    puppy: () => cut(P('M32 42c-12 2-14 26-6 36 8 2 12-10 14-18z', '#C9935A'), '#9C6A36') + cut(P('M88 42c12 2 14 26 6 36-8 2-12-10-14-18z', '#C9935A'), '#9C6A36')
+      + cut(E(60, 64, 30, 30, '#F2D6A8'), '#D9B27A') + E(72, 50, 9, 8, '#E8BE86') + cut(E(60, 80, 15, 11, CREAM), '#D9C6A5') + E(60, 74, 6, 4.5, INK)
+      + line('M44 62q5 4 10 0M66 62q5 4 10 0', INK, 2.8) + line('M60 79v3M60 82c-2 3-5 3-7 0M60 82c2 3 5 3 7 0', INK, 2.2) + cheek(42, 74) + cheek(78, 74)
+      + `<text x="92" y="30" font-family="sans-serif" font-weight="700" font-size="14" fill="${LAV}">z</text><text x="102" y="20" font-family="sans-serif" font-weight="700" font-size="10" fill="${LAV}">z</text>`,
     fish: () => cut(P('M84 60l26-22v44z', '#F0975A'), '#C2672E') + cut(E(54, 60, 38, 26, CORAL), '#C25F54') + P('M44 36c6 10 6 38 0 48M60 36c6 10 6 38 0 48', 'none', ` stroke="#F7B8AE" stroke-width="5" stroke-linecap="round"`)
       + cut(P('M50 34c8-12 22-12 30-4-10 0-20 2-30 4z', '#F0975A')) + eye(30, 54, 5) + smile(28, 68, 4),
     ball: () => cut(C(60, 62, 42, CORAL), '#C25F54') + P('M60 20a42 42 0 0 1 0 84c-14-10-22-26-22-42s8-32 22-42z', GOLD) + P('M60 20c14 10 22 26 22 42s-8 32-22 42a42 42 0 0 0 0-84z', TEAL) + E(46, 42, 9, 6, '#fff', ' opacity=".45" transform="rotate(-30 46 42)"'),

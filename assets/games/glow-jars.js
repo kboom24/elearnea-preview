@@ -15,18 +15,21 @@ El.defineGame({
     const say = kit.say, T = kit.T;
     // dice-like layouts (subitizing patterns) in jar coordinates
     const POS = { 1: [[60, 92]], 2: [[44, 76], [76, 108]], 3: [[42, 108], [60, 76], [78, 108]], 4: [[44, 76], [76, 76], [44, 108], [76, 108]], 5: [[42, 72], [78, 72], [60, 92], [42, 112], [78, 112]] };
-    const jar = (n, uid) => `<svg class="gj-jar" viewBox="0 0 120 150" aria-hidden="true"><defs><radialGradient id="gj${uid}" cx="50%" cy="60%" r="55%"><stop offset="0" stop-color="#FFE9A0" stop-opacity=".9"/><stop offset="1" stop-color="#F5B841" stop-opacity="0"/></radialGradient></defs>
+    // every round looks a little different: a new glow color, and each jar's pattern may be mirrored (still the same dice-like shape)
+    const GLOW = [['#FFE9A0', '#F5B841'], ['#C8F5E2', '#7CC4A4'], ['#FFD3CC', '#F08A7E'], ['#E2DAFF', '#9B8AD1']]; let glow = GLOW[rng.int(0, GLOW.length - 1)];
+    const jar = (n, uid) => { const g = glow, flip = rng.next() < .5; return jar0(n, uid, g, flip); };
+    const jar0 = (n, uid, g, flip) => `<svg class="gj-jar" viewBox="0 0 120 150" aria-hidden="true"><defs><radialGradient id="gj${uid}" cx="50%" cy="60%" r="55%"><stop offset="0" stop-color="${g[0]}" stop-opacity=".9"/><stop offset="1" stop-color="${g[1]}" stop-opacity="0"/></radialGradient></defs>
       <ellipse cx="60" cy="96" rx="64" ry="60" fill="url(#gj${uid})" opacity="${Math.min(1, .25 + n * .18).toFixed(2)}"/>
       <path d="M26 38h68v8c10 6 14 16 14 28v52c0 12-8 20-20 20H32c-12 0-20-8-20-20V74c0-12 4-22 14-28z" fill="rgba(200,220,255,.18)" stroke="#F6EBD9" stroke-width="4.5"/>
       <path d="M22 20h76a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4z" fill="#8E5427" stroke="#5C3416" stroke-width="3"/>
       <path d="M24 64c-3 10-3 40 0 60" stroke="rgba(255,255,255,.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
-      ${(POS[n] || []).map(([x, y], i) => `<g class="gj-ff" data-i="${i}" transform="translate(${x} ${y})"><circle r="15" fill="#F5B841" opacity=".35"/><ellipse cx="-7" cy="-9" rx="5" ry="8" fill="#F6EBD9" opacity=".85" transform="rotate(-25 -7 -9)"/><ellipse cx="7" cy="-9" rx="5" ry="8" fill="#F6EBD9" opacity=".85" transform="rotate(25 7 -9)"/><circle r="8.5" fill="#FFE28A"/><circle r="4" fill="#FFFBE0"/></g>`).join('')}</svg>`;
+      ${(POS[n] || []).map(([x, y], i) => `<g class="gj-ff" data-i="${i}" transform="translate(${flip ? 120 - x : x} ${y})"><circle r="15" fill="#F5B841" opacity=".35"/><ellipse cx="-7" cy="-9" rx="5" ry="8" fill="#F6EBD9" opacity=".85" transform="rotate(-25 -7 -9)"/><ellipse cx="7" cy="-9" rx="5" ry="8" fill="#F6EBD9" opacity=".85" transform="rotate(25 7 -9)"/><circle r="8.5" fill="#FFE28A"/><circle r="4" fill="#FFFBE0"/></g>`).join('')}</svg>`;
     let uid = 0; const J1 = (n) => jar(n, ++uid);
     // light each firefly in turn and count aloud (no time pressure; just a count-along)
     function countAlong(el, n, then) { const ffs = el.querySelectorAll('.gj-ff'); let k = 0;
       const step = () => { ffs.forEach(f => f.classList.remove('hl')); if (k >= n) { if (then) T(then, 350); return; } ffs[k].classList.add('hl'); host.sfx.step(k); say(C.n(k + 1)); k++; T(step, 750); }; step(); }
     function answerRound(plan, build) {
-      kit.run(plan, (item, i, finish) => { const q = build(item); let miss = 0;
+      kit.run(plan, (item, i, finish) => { const q = build(item); let miss = 0; glow = GLOW[(GLOW.indexOf(glow) + 1 + rng.int(0, GLOW.length - 2)) % GLOW.length]; // a new glow color each round
         kit.show.innerHTML = q.model != null ? `<div class="ll-model gj-model">${J1(q.model)}</div>` : '';
         kit.labels('reveal', n => LN.NW[n]); // the count IS the question: the number word shows on tap and with the answer
         const btns = kit.options(q.list, n => J1(n), n => 'Jar'), right = btns.find(b => b._it === q.right); kit.mark(right);
@@ -42,7 +45,7 @@ El.defineGame({
         return answerRound(L.pick(cfg.skill, pool, cfg.rounds || 6, rng), (id) => { const n = +id, k = El.Little.nChoices(L, cfg.skill, 2, 3);
           const list = rng.shuffle([n, ...El.Little.others(rng, Array.from({ length: top }, (_, j) => j + 1), k - 1, [n])]);
           return { model: n, list, right: n, cue: J.matches, yes: C.yesN(n), here: C.here, recount: (b, then) => countAlong(kit.show, n, then) }; }); }
-      if (mode === 'more') { const lvl = L.levelIndex(cfg.skill, 3), pairs = [[[1, 4], [1, 5], [2, 5]], [[1, 3], [2, 4], [3, 5]], [[2, 3], [3, 4], [4, 5]]][lvl].map(p => p.join('v'));
+      if (mode === 'more') { const lvl = L.levelIndex(cfg.skill, 3), pairs = [[[1, 4], [1, 5], [2, 5], [1, 3]], [[1, 3], [2, 4], [3, 5], [1, 2], [2, 5]], [[2, 3], [3, 4], [4, 5], [2, 4], [3, 5]]][lvl].map(p => p.join('v'));
         return answerRound(L.pick(cfg.skill, pairs, cfg.rounds || 6, rng), (id) => { const [a, b] = id.split('v').map(Number), list = rng.shuffle([a, b]);
           return { model: null, list, right: b, cue: J.more, yes: J.yesMore, here: J.thisMore,
             recount: (btn, then) => { const els = [...kit.opts.children]; countAlong(els[0], els[0]._it, () => countAlong(els[1], els[1]._it, then)); } }; }); }

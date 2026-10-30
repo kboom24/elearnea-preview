@@ -7,6 +7,8 @@ const CHROME = process.env.QA_CHROME || '/usr/bin/google-chrome';
 const VP = {
   phone: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
   ipad: { width: 1024, height: 1366, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
+  phone375: { width: 375, height: 667, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, // small phone (iPhone SE)
+  tablet768: { width: 768, height: 1024, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, // small tablet (iPad mini portrait)
   desktop: { width: 1280, height: 800, isMobile: false, hasTouch: false, deviceScaleFactor: 1 }
 };
 const launch = (extra) => pw.chromium.launch({ executablePath: CHROME, headless: true, args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'].concat(extra || []) });
