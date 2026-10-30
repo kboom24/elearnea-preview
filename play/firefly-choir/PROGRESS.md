@@ -14,3 +14,4 @@
 - 04:23 PDT ASR 29/29 ok (score 1.0), 0 flagged; manifest rebuilt with the results; voice check 0 problems. phone regression 7/7 PASS. Pushed; server stopped.
 - 04:32 PDT origin/main still ab84135 (included). Voice check 0 problems; catalog valid with wicks-path + firefly-choir; sw.js has both. Post-merge QA queued per viewport (phone job 97209 + chain ipad/desktop/ipadL/phoneL) -> qa/firefly-choir/post-merge2/, final4-*.log.
 - 04:52 PDT post-merge QA: phone 7/7, ipad 7/7; desktop running.
+- 05:20 PDT post-merge QA on merged HEAD (main ab84135): phone 7/7, ipad 7/7, desktop 7/7, ipadL 7/7, phoneL 7/7 (35/35, 0 errors, 0 external). Voice check 0 problems; catalog JSON valid. Screens/results: /home/box/elearnea/qa/firefly-choir/post-merge2/. Pushing.
