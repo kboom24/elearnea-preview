@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "about": "Little Lanterns (ages 0-4) content for the early-learner games. Every spoken line is built from these fields by the game code AND by tools/voice/early-lines.js (same templates), so the voice manifest always covers it. Pictures are drawn in code (assets/js/pics.js); animal sounds are real CC0 recordings in assets/sfx/animals/ (sources and licenses: LICENSES.md there), played by assets/js/sfx-animals.js.",
+  "about": "Little Lanterns (ages 0-4) content for the early-learner games. Every spoken line is built from these fields by the game code AND by tools/voice/early-lines.js (same templates), so the voice manifest always covers it. Pictures are drawn in code (assets/js/pics.js); animal sounds are real CC0 recordings in assets/sfx/animals/ and the loud/quiet pairs (\"loudquiet\") are real CC0 recordings in assets/sfx/loudquiet/ (sources and licenses: LICENSES.md in each folder), played by assets/js/sfx-animals.js.",
   "animals": [
     { "id": "cow", "name": "cow", "sound": "moo" },
     { "id": "duck", "name": "duck", "sound": "quack" },

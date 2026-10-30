@@ -5,7 +5,7 @@
   'use strict';
   const INK = '#2A2152', CREAM = '#F6EBD9', GOLD = '#F5B841', TEAL = '#7CC4A4', CORAL = '#F08A7E', LAV = '#9B8AD1', BROWN = '#B5733A', BROWN_D = '#8E5427', PINK = '#F4A9A0';
   // cut piece: a darker copy 3px lower (the paper edge), then the piece
-  const cut = (svg, dark) => (dark ? svg.replace(/fill="[^"]*"/, `fill="${dark}"`).replace(/^<(\w+)/, '<$1 transform="translate(0 3)"') : '') + svg;
+  const cut = (svg, dark) => (dark ? (/^<\w+[^>]*\stransform="/.test(svg) ? svg.replace(/fill="[^"]*"/, `fill="${dark}"`).replace(/\stransform="/, ' transform="translate(0 3) ') : svg.replace(/fill="[^"]*"/, `fill="${dark}"`).replace(/^<(\w+)/, '<$1 transform="translate(0 3)"')) : '') + svg;
   const E = (cx, cy, rx, ry, f, ex) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}"${ex || ''}/>`;
   const C = (cx, cy, r, f, ex) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${f}"${ex || ''}/>`;
   const P = (d, f, ex) => `<path d="${d}" fill="${f}"${ex || ''}/>`;
