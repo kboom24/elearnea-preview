@@ -191,12 +191,12 @@
     function scoreSpell(e) { if (e.scored) return; e.scored = true; if (!e.built) { e.ui.fill(); e.first = false; } else if (e.first == null) e.first = false;
       scoreUnit('spell ' + e.word, true, e.built && e.first, e.word); }
     // "Then sneezes the letters, Achoo!": the built word's letters fly all over; the child catches them in order to build it again (practice, no score)
-    function sneeze(e) { const wrap = e.ui.wrap, word = e.word; wrap.classList.add('achoo'); bounce(wrap.querySelector('.sa-tgt'), 'sneeze');
+    function sneeze(e) { const wrap = e.ui.wrap, word = e.word; wrap.classList.add('achoo'); play.classList.add('catching'); bounce(wrap.querySelector('.sa-tgt'), 'sneeze');
       e.ui.slots.forEach(s => { s.classList.remove('fill', 'auto', 'sung'); s.querySelector('b').textContent = ''; if (!s.querySelector('.gh')) s.insertAdjacentHTML('afterbegin', `<i class="gh">${word[+s.dataset.k]}</i>`); });
       wrap.classList.remove('built'); const tl = wrap.querySelector('.sa-tiles'); if (tl) tl.remove();
       const sp = document.createElement('div'); sp.className = 'sa-catch'; const order = rng.shuffle(word.split('').map((c, k) => ({ c, k })));
-      // scatter spots: a loose ring around the middle of the play area, so the letters never sit on top of each other
-      sp.innerHTML = order.map((o, i) => { const a = (i / order.length) * Math.PI * 2 + rng.next() * .5; return `<button class="sa-tile flying" data-c="${o.c}" aria-label="${o.c.toUpperCase()}" style="--x:${(Math.cos(a) * 38).toFixed(1)}%;--y:${(Math.sin(a) * 30).toFixed(1)}%;--k:${i}">${o.c}</button>`; }).join('');
+      // scatter spots: across the floor under the word (two staggered rows), so the letters never cover the panda, the slots or each other
+      sp.innerHTML = order.map((o, i) => `<button class="sa-tile flying" data-c="${o.c}" aria-label="${o.c.toUpperCase()}" style="--x:${(((i + .5) / order.length) * 100).toFixed(1)}%;--y:${i % 2 ? 88 : 70}%;--k:${i}">${o.c}</button>`).join('');
       play.appendChild(sp); let next = 0; const btns = [...sp.querySelectorAll('.sa-tile')];
       const nextBtn = () => { btns.forEach(b => { b.classList.remove('hint'); if (QA) delete b.dataset.ok; }); const r = btns.find(b => !b.disabled && b.dataset.c === word[next]); if (r && QA) r.dataset.ok = '1'; return r; };
       const put = (b, auto) => { const s = e.ui.slots[next]; s.querySelector('b').textContent = word[next]; s.classList.add(auto ? 'auto' : 'fill'); bounce(s, 'pop'); if (b) { b.disabled = true; b.classList.add('used'); }
@@ -223,7 +223,7 @@
     function sparkle(b, n) { n = n || 10; const r = b.getBoundingClientRect(), rr = root.getBoundingClientRect(); for (let i = 0; i < n; i++) { const s = document.createElement('i'); s.className = 'll-spark'; const a = i / n * Math.PI * 2, d = 50 + (i % 3) * 20;
       s.style.left = (r.left - rr.left + r.width / 2) + 'px'; s.style.top = (r.top - rr.top + r.height / 2) + 'px'; s.style.setProperty('--dx', Math.cos(a) * d + 'px'); s.style.setProperty('--dy', Math.sin(a) * d + 'px'); s.style.background = ['#F5B841', '#7CC4A4', '#F08A7E', '#9B8AD1', '#F6EBD9'][(i + rng.int(0, 4)) % 5];
       root.appendChild(s); setTimeout(() => s.remove(), 900); } }
-    function openM(e) { e.on = true; play.innerHTML = ''; H[e.type].start(e); if (play.firstElementChild) play.firstElementChild.dataset.type = e.type; if (sync) sync.events.push({ type: e.type, word: e.word, open: e.open, ct: audio.currentTime }); }
+    function openM(e) { e.on = true; play.classList.remove('catching'); play.innerHTML = ''; H[e.type].start(e); if (play.firstElementChild) play.firstElementChild.dataset.type = e.type; if (sync) sync.events.push({ type: e.type, word: e.word, open: e.open, ct: audio.currentTime }); }
     function closeM(e) { e.closed = true; H[e.type].close(e); }
     function moments(t) {
       for (const e of S.events) if (e.type === 'roll' && e.open == null) { e.k = e.k || 0; while (e.k < e.times.length && e.times[e.k] <= t) roll(e, e.k++); } // passive roll call (shelf only)

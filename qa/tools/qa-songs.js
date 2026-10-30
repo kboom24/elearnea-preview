@@ -21,7 +21,7 @@ function audit(MIN) { const W = document.documentElement.clientWidth, H = innerH
   const vis = (e) => { const r = e.getBoundingClientRect(); if (!r.width || !r.height) return false; for (let p = e; p; p = p.parentElement) { const s = getComputedStyle(p); if (s.display === 'none' || s.visibility === 'hidden' || +s.opacity === 0 || s.pointerEvents === 'none') return false; } return true; };
   const nm = (e) => e.tagName.toLowerCase() + '.' + [...e.classList].join('.') + (e.getAttribute('aria-label') ? `[${e.getAttribute('aria-label')}]` : '');
   const t = [...document.querySelectorAll('.topbar a, .topbar button, #stage button, #res.on button, #res.on a[href]')].filter(vis).filter(e => !e.disabled && !e.closest('.out'));
-  const small = [], outside = []; for (const e of t) { const r = e.getBoundingClientRect(); if (Math.min(r.width, r.height) < MIN - .5) small.push(`${nm(e)} ${Math.round(r.width)}x${Math.round(r.height)}`);
+  const small = [], outside = []; for (const e of t) { const r = e.getBoundingClientRect(); /* size = layout size (a bounce animation scales the box for a moment) */ if (Math.min(e.offsetWidth || r.width, e.offsetHeight || r.height) < MIN - .5) small.push(`${nm(e)} ${Math.round(r.width)}x${Math.round(r.height)}`);
     // shelf chips scroll sideways inside the shelf (only the visible part has to be on screen)
     if (e.classList.contains('sa-chip')) continue; if (r.left < -.5 || r.right > W + .5 || r.top < -.5 || r.bottom > H + .5) outside.push(`${nm(e)} [${Math.round(r.left)},${Math.round(r.top)},${Math.round(r.right)},${Math.round(r.bottom)}]`); }
   return { W, sw: de.scrollWidth, bsw: document.body.scrollWidth, small, outside }; }
