@@ -42,7 +42,7 @@
   const drawRoad = () => { const W = path.clientWidth, rh = path.querySelector('.row').offsetHeight, top = 16; const H = top + n * rh;
     let d = ''; pts.forEach((p, i) => { const x = p / 100 * W, y = top + i * rh + rh / 2; if (!i) d = `M${x} ${y}`; else { const px = pts[i - 1] / 100 * W, py = top + (i - 1) * rh + rh / 2; d += ` C${px} ${py + rh * .5} ${x} ${y - rh * .5} ${x} ${y}`; } });
     document.getElementById('road').outerHTML = `<svg id="road" class="road" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="${d}" fill="none" stroke="#8C6A45" stroke-width="58" stroke-linecap="round" opacity=".55"/><path d="${d}" fill="none" stroke="#E8CFA2" stroke-width="44" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#C9A877" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/></svg>`; };
-  const placeTiles = () => { const W = path.clientWidth; for (const t of tiles) { const tw = t.offsetWidth, nx = t._x / 100 * W; let x = t._l ? nx + 72 : nx - 72 - tw; x = Math.max(10, Math.min(W - tw - 10, x)); t.style.left = x + 'px'; } };
+  const placeTiles = () => { const W = path.clientWidth; for (const t of tiles) { const tw = t.offsetWidth, nx = t._x / 100 * W; let x = t._l ? nx + 86 : nx - 86 - tw; x = Math.max(10, Math.min(W - tw - 10, x)); t.style.left = x + 'px'; } };
   drawRoad(); placeTiles(); addEventListener('resize', () => { drawRoad(); placeTiles(); });
   const sc = document.getElementById('scroller');
   requestAnimationFrame(() => { const target = curEl || path.lastElementChild; sc.scrollTop = Math.max(0, target.offsetTop - sc.clientHeight / 2 + target.offsetHeight / 2 + 40); });
