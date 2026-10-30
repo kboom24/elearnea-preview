@@ -77,7 +77,7 @@ function audit(MIN) { const W = document.documentElement.clientWidth, H = innerH
           await seek(dur - 1.5);
         } else {
           // real time, an eager kid: taps whatever the song is asking for every ~0.45 s; samples targets; measures the longest stretch with nothing to tap
-          let last = null; const t0 = Date.now(); let shotsAt = [20, 60, 75, 79.5];
+          let last = null; const t0 = Date.now(); let shotsAt = process.env.QA_RT_SHOTS === '0' ? [] : [20, 60, 75, 79.5]; // a screenshot stalls the page for a frame: QA_RT_SHOTS=0 for a clean drift run
           while (Date.now() - t0 < (dur + 40) * 1000) {
             const st = await page.evaluate(() => { const a = window.__sing.audio(); const live = [...document.querySelectorAll('#saPlay button')].filter(b => { const r = b.getBoundingClientRect(); const cs = getComputedStyle(b);
                 return r.width > 0 && !b.disabled && !b.classList.contains('used') && !b.classList.contains('gone') && !b.classList.contains('wait') && cs.visibility !== 'hidden' && +cs.opacity > .2; }).length;
