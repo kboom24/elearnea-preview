@@ -20,6 +20,7 @@ kill $PID                                      # stop your own server
 - **`?qa=1`:** game QA hooks exist only with `?qa=1` on the play page URL:
   - Mothabet: `window.__qa` inside its frame. The adapter forwards `?qa=1` to the frame.
   - Clocktower Gears: `data-want` / `data-busy` on `#stage`.
+  - Little Lanterns: the kit marks the right card with `data-ok`. Note that this marker is always present, not only with `?qa=1`.
   - Without the flag the hooks are absent, and `qa-mothabet-integration.js` checks that they are.
 - **Service workers** are blocked in every context, so each run sees the files as served.
 
@@ -29,8 +30,8 @@ kill $PID                                      # stop your own server
 | `qa-mothabet-integration.js` | Mothabet lessons: El.Learn word pick/records, Elearnea results card, Path back with stars, dashboard rows, consent key, `__qa` absent without `?qa=1` (rd-l3/l5/l7) |
 | `qa-mothabet-polish.js` | Integration checks plus one sound button and one pause in lessons, the sound button muting the game (gain 0, speech blocked, muted after reload), unreached words unrecorded, 0 attempted gives no record, `__qa.state()` safe before play |
 | `qa-stars-grid.js` | Mothabet star cap (4 attempted gives 2 stars, 5 attempted gives 3; card, record and path agree), plus no horizontal overflow on the games, realms and map |
-| `qa-overflow-pages.js` | Landing, waitlist, grown-ups gate, dashboard (sample and device), portfolio record, plus the regression pages: scrollWidth <= clientWidth, every control inside the viewport, no clipped text. The waitlist form is **never** submitted. |
-| `qa-ingame.js` | Full rounds through to the results card of Lily Pad Hop (rd-l2), Firefly Count (ma-l1 count, ma-l3 add) and Clocktower Gears (ma-l5/l6/l7). One deliberate miss on round 2. Real taps; targets >= 64 CSS px and inside the viewport; no overflow. |
+| `qa-overflow-pages.js` | Landing, waitlist, grown-ups gate, dashboard (sample and device), portfolio record, plus the regression pages: scrollWidth <= clientWidth, every control inside the viewport, no clipped text. The waitlist form is **never** submitted. Age band switch: grown-ups "Who is playing" (>= 44px, saves the band) and the map's lantern switch in both bands (>= 64px; targets under 96px in Little Lanterns are listed). |
+| `qa-ingame.js` | Full rounds through to the results card. K-3 games: Lily Pad Hop (rd-l2), Firefly Count (ma-l1 count, ma-l3 add), Clocktower Gears (ma-l5/l6/l7). Little Lanterns, ages 0-4: Lantern Barn, Picture Garden and Glow Jars, every `ll-*` lesson, with the age band set as a parent would. One deliberate miss on round 2 where the mode has choices. Real taps; targets inside the viewport and >= 64 CSS px (>= 96 for Little Lanterns, top bar and results buttons included); no overflow. Fourth argument: `all`, `k3`, `early`, or a list of lesson ids. |
 | `lib.js` | Shared launch, settings and viewports |
 | `serve.sh` | Static server for this checkout under `/elearnea-preview/` |
 
