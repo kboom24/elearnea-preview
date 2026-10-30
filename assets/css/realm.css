@@ -1,0 +1,39 @@
+html, body { height: 100%; } body { overflow: hidden; }
+.app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto 1fr; }
+.lantern { position: relative; width: 76px; height: 76px; display: grid; place-items: center; border: 0; background: none; padding: 0; cursor: pointer; }
+.lantern svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lantern b { position: relative; top: 8px; font: 700 1.05rem var(--display); color: var(--ink); }
+.scroller { position: relative; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.path { position: relative; width: min(680px, 100%); margin: 0 auto; padding: 16px 0 calc(190px + var(--safe-b)); }
+.road { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; }
+.row { position: relative; height: 158px; }
+.node { position: absolute; top: 50%; width: 100px; height: 100px; margin: -50px 0 0 -50px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; display: grid; place-items: center;
+  background: var(--gold); background-image: var(--felt); color: var(--ink); box-shadow: 0 7px 0 var(--gold-d), 0 12px 24px rgba(0,0,0,.4); touch-action: manipulation; transition: transform .1s; }
+.node::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 2px dashed rgba(255,255,255,.6); }
+.node:active { transform: translateY(4px); }
+.node > svg { width: 50px; height: 50px; }
+.node .st { position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); display: flex; gap: 1px; }
+.node .st svg { width: 26px; height: 26px; color: #6E5A2A; filter: drop-shadow(0 2px 0 rgba(0,0,0,.25)); } .node .st svg.on { color: #FFE28A; }
+.node.open { background-color: var(--cream); box-shadow: 0 7px 0 var(--cream-d), 0 12px 24px rgba(0,0,0,.4); }
+.node.current { width: 122px; height: 122px; margin: -61px 0 0 -61px; box-shadow: 0 8px 0 var(--gold-d), 0 0 0 8px rgba(245,184,65,.35), 0 0 46px 14px rgba(245,184,65,.5); animation: pulse 1.8s ease-in-out infinite; }
+.node.current > svg { width: 60px; height: 60px; }
+.node.locked { background-color: var(--lav); color: #fff; box-shadow: 0 7px 0 var(--lav-d), 0 12px 24px rgba(0,0,0,.4); }
+.node.locked > svg { width: 42px; height: 42px; }
+.node.chest { background: none; box-shadow: none; } .node.chest::after { display: none; } .node.chest > svg { width: 96px; height: 96px; filter: drop-shadow(0 0 16px rgba(245,184,65,.5)); }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+.tile { position: absolute; top: 50%; width: 128px; height: 128px; margin-top: -64px; border-radius: 26px; overflow: hidden; border: 0; padding: 0; cursor: pointer; background: #2A2566;
+  box-shadow: 0 0 0 5px var(--cream), 0 9px 0 5px var(--cream-d), 0 14px 28px rgba(0,0,0,.45); transform: rotate(var(--r, -3deg)); }
+.tile img { width: 100%; height: 100%; object-fit: cover; }
+.tile.locked img { filter: saturate(.3) brightness(.55); }
+.tile .lbl { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 6px 6px; font: 700 .85rem/1.1 var(--display); color: var(--cream); background: linear-gradient(transparent, rgba(20,17,58,.92)); text-align: center; }
+.mini { position: absolute; top: 50%; width: 78px; margin-top: -102px; pointer-events: none; -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent 100%); mask-image: radial-gradient(closest-side, #000 70%, transparent 100%); animation: bob 2s ease-in-out infinite; }
+.soonrow .node { opacity: .8; }
+.foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; height: calc(150px + var(--safe-b)); padding-bottom: var(--safe-b); pointer-events: none; background: linear-gradient(transparent, rgba(20,17,58,.92) 45%); }
+.foot > * { pointer-events: auto; }
+.foot .wick { position: absolute; left: 6px; bottom: calc(4px + var(--safe-b)); width: 118px; }
+.foot .go { position: absolute; left: 50%; bottom: calc(18px + var(--safe-b)); transform: translateX(-50%); width: 104px; height: 104px; }
+.foot .go:active { transform: translateX(-50%) translateY(4px); }
+.foot .go svg { width: 54px; height: 54px; }
+.foot .snd { position: absolute; right: 16px; bottom: calc(26px + var(--safe-b)); }
+.foot .say { position: absolute; left: 110px; bottom: calc(118px + var(--safe-b)); max-width: min(230px, 42vw); font-size: 1rem; }
+@media (min-width: 700px) { .tile { width: 150px; height: 150px; margin-top: -75px; } .row { height: 176px; } }

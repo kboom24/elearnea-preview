@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes.",
+  "games": {
+    "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
+    "lily-pad": { "name": "Lily Pad Hop", "path": "play/lily-pad/", "tile": "assets/img/tile-lily.webp", "kind": "module", "ages": "4-7" },
+    "firefly-count": { "name": "Firefly Count", "path": "play/firefly-count/", "tile": "assets/img/tile-firefly.webp", "kind": "module", "ages": "4-7" }
+  },
+  "subjects": [
+    {
+      "id": "reading", "name": "Reading",
+      "realm": {
+        "id": "reading", "name": "Reading", "landmark": "Storybook", "status": "open", "color": "#9B8AD1", "icon": "book",
+        "img": "assets/img/isle-reading", "say": "Reading land! Tap to go in.",
+        "skills": [
+          { "id": "rd.letter-sounds", "name": "Letter sounds", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.A"],
+            "lessons": [
+              { "id": "rd-l1", "name": "First sounds", "icon": "moth", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.A"], "say": "First sounds with Mothabet",
+                "game": { "id": "mothabet", "config": { "band": "s", "stage": 0 } } }
+            ] },
+          { "id": "rd.sight-words-pp", "name": "Sight words: pre-primer", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.C"],
+            "lessons": [
+              { "id": "rd-l2", "name": "Lily pad words 1", "icon": "frog", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.C"], "say": "Hop to the word!",
+                "game": { "id": "lily-pad", "config": { "list": "dolch-preprimer-a", "rounds": 8 } } }
+            ] },
+          { "id": "rd.blending-cvc", "name": "Blending short words", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.2.D", "CCSS.ELA-LITERACY.RF.K.3.B"],
+            "lessons": [
+              { "id": "rd-l3", "name": "Blend it", "icon": "moth", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.2.D"], "say": "Blend the sounds with Mothabet",
+                "game": { "id": "mothabet", "config": { "band": "s", "stage": 5 } } }
+            ] },
+          { "id": "rd.sight-words-p", "name": "Sight words: primer", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.C"],
+            "lessons": [
+              { "id": "rd-l4", "name": "Lily pad words 2", "icon": "frog", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.C"], "say": "More hopping words!",
+                "game": { "id": "lily-pad", "config": { "list": "dolch-primer-a", "rounds": 8 } } }
+            ] },
+          { "id": "rd.digraphs", "name": "sh, ch, th", "grade": "1", "standards": ["CCSS.ELA-LITERACY.RF.1.3.A"],
+            "lessons": [
+              { "id": "rd-l5", "name": "Shh and chh", "icon": "moth", "grade": "1", "standards": ["CCSS.ELA-LITERACY.RF.1.3.A"], "say": "Shh! Catch the sh moths",
+                "game": { "id": "mothabet", "config": { "band": "s", "stage": 7 } } }
+            ] },
+          { "id": "rd.sight-words-1", "name": "Sight words: grade 1", "grade": "1", "standards": ["CCSS.ELA-LITERACY.RF.1.3.G"],
+            "lessons": [
+              { "id": "rd-l6", "name": "Lily pad words 3", "icon": "frog", "grade": "1", "standards": ["CCSS.ELA-LITERACY.RF.1.3.G"], "say": "Big kid words!",
+                "game": { "id": "lily-pad", "config": { "list": "dolch-grade1-a", "rounds": 8 } } }
+            ] },
+          { "id": "rd.spelling-cvc", "name": "Spelling short vowels", "grade": "1", "standards": ["CCSS.ELA-LITERACY.L.1.2.D", "CCSS.ELA-LITERACY.RF.1.3.B"],
+            "lessons": [
+              { "id": "rd-l7", "name": "Spell short words", "icon": "pencil", "grade": "1", "standards": ["CCSS.ELA-LITERACY.L.1.2.D"], "say": "Spell the word with Mothabet",
+                "game": { "id": "mothabet", "config": { "band": "f", "stage": 0 } } }
+            ] }
+        ],
+        "comingSoon": [ { "name": "Story time", "icon": "book" }, { "name": "Rhyme pond", "icon": "frog" }, { "name": "Silent e", "icon": "moth" } ]
+      }
+    },
+    {
+      "id": "math", "name": "Math",
+      "realm": {
+        "id": "math", "name": "Math", "landmark": "Clocktower", "status": "open", "color": "#7CC4A4", "icon": "numbers",
+        "img": "assets/img/isle-math", "say": "Math land! Tap to go in.",
+        "skills": [
+          { "id": "ma.count-5", "name": "Count to 5", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.4", "CCSS.MATH.CONTENT.K.CC.B.5"],
+            "lessons": [
+              { "id": "ma-l1", "name": "Count the fireflies", "icon": "firefly", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.5"], "say": "Count the fireflies!",
+                "game": { "id": "firefly-count", "config": { "mode": "count", "levels": [3, 4, 5], "rounds": 6 } } }
+            ] },
+          { "id": "ma.count-10", "name": "Count to 10", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.5", "CCSS.MATH.CONTENT.K.CC.A.3"],
+            "lessons": [
+              { "id": "ma-l2", "name": "More fireflies", "icon": "firefly", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.5"], "say": "Lots of fireflies!",
+                "game": { "id": "firefly-count", "config": { "mode": "count", "levels": [6, 8, 10], "rounds": 6 } } }
+            ] },
+          { "id": "ma.add-5", "name": "Add within 5", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.OA.A.2", "CCSS.MATH.CONTENT.K.OA.A.5"],
+            "lessons": [
+              { "id": "ma-l3", "name": "Two jars", "icon": "plus", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.OA.A.5"], "say": "Put them together!",
+                "game": { "id": "firefly-count", "config": { "mode": "add", "levels": [3, 4, 5], "rounds": 6 } } }
+            ] },
+          { "id": "ma.add-10", "name": "Add within 10", "grade": "1", "standards": ["CCSS.MATH.CONTENT.K.OA.A.2", "CCSS.MATH.CONTENT.1.OA.C.6"],
+            "lessons": [
+              { "id": "ma-l4", "name": "Bigger jars", "icon": "plus", "grade": "1", "standards": ["CCSS.MATH.CONTENT.1.OA.C.6"], "say": "Bigger jars to add!",
+                "game": { "id": "firefly-count", "config": { "mode": "add", "levels": [6, 8, 10], "rounds": 6 } } }
+            ] }
+        ],
+        "comingSoon": [ { "name": "Shapes", "icon": "puzzle" }, { "name": "Tell time", "icon": "clock" } ]
+      }
+    },
+    { "id": "science", "name": "Nature & Science", "realm": { "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "soon", "color": "#7CC4A4", "icon": "leaf", "img": "assets/img/isle-nature", "say": "Nature land is still growing. Coming soon!", "skills": [] } },
+    { "id": "art-music", "name": "Art & Music", "realm": { "id": "art-music", "name": "Art & Music", "landmark": "Windmill", "status": "soon", "color": "#F08A7E", "icon": "palette", "img": "assets/img/isle-art", "say": "Art and music land is coming soon!", "skills": [] } },
+    { "id": "world", "name": "World & Languages", "realm": { "id": "world", "name": "World", "landmark": "Globe", "status": "soon", "color": "#7CC4A4", "icon": "globe", "img": "assets/img/isle-world", "say": "World land is coming soon!", "skills": [] } },
+    { "id": "logic", "name": "Logic & Coding", "realm": { "id": "logic", "name": "Logic & Coding", "landmark": "Castle", "status": "soon", "color": "#9B8AD1", "icon": "puzzle", "img": "assets/img/isle-logic", "say": "Puzzle castle is coming soon!", "skills": [] } }
+  ],
+  "wordLists": {
+    "dolch-preprimer-a": { "name": "Dolch pre-primer (part 1)", "source": "Dolch (public domain)", "words": ["a", "and", "big", "can", "go", "I", "is", "it", "me", "my", "see", "the", "to", "up", "we", "you"] },
+    "dolch-primer-a": { "name": "Dolch primer (part 1)", "source": "Dolch (public domain)", "words": ["all", "am", "are", "at", "be", "but", "came", "do", "eat", "get", "good", "have", "he", "like", "no", "now", "on", "she", "so", "was", "went", "what", "who", "yes"] },
+    "dolch-grade1-a": { "name": "Dolch grade 1 (part 1)", "source": "Dolch (public domain)", "words": ["after", "again", "any", "ask", "by", "could", "every", "from", "give", "had", "has", "her", "him", "his", "how", "just", "know", "let", "live", "of", "old", "once", "over", "put", "some", "then", "think", "were", "when"] }
+  },
+  "confusables": {
+    "the": ["they", "then", "she"], "to": ["too", "go", "do"], "see": ["she", "bee", "we"], "can": ["came", "cat", "an"], "is": ["it", "in", "if"], "it": ["is", "at", "in"],
+    "me": ["my", "we", "he"], "my": ["me", "by", "may"], "we": ["me", "was", "he"], "go": ["to", "no", "so"], "and": ["an", "any", "had"], "you": ["your", "yes", "out"],
+    "up": ["us", "put", "cup"], "big": ["bag", "dig", "pig"], "I": ["a", "is", "in"], "a": ["I", "at", "an"],
+    "was": ["saw", "we", "has"], "he": ["she", "me", "her"], "she": ["he", "see", "the"], "on": ["no", "one", "an"], "no": ["on", "so", "now"], "now": ["no", "how", "new"],
+    "what": ["when", "that", "want"], "went": ["want", "when", "wet"], "who": ["how", "what", "why"], "came": ["come", "can", "name"], "have": ["has", "gave", "had"],
+    "when": ["then", "what", "where"], "then": ["the", "when", "them"], "were": ["where", "we", "here"], "how": ["who", "now", "has"], "his": ["has", "him", "is"],
+    "him": ["his", "her", "he"], "her": ["he", "here", "him"], "has": ["his", "had", "was"], "had": ["has", "and", "hid"], "of": ["off", "on", "for"], "from": ["form", "for", "frog"],
+    "could": ["would", "cold", "cloud"], "know": ["now", "no", "knew"], "once": ["one", "ones", "come"], "give": ["live", "gave", "girl"], "live": ["give", "love", "like"]
+  }
+}

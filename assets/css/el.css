@@ -1,0 +1,88 @@
+/* Elearnea shared styles: layered paper-cut storybook, felt textures, warm glow. Mobile/tablet-first. */
+@font-face { font-family: "Fredoka"; font-weight: 600; font-display: swap; src: url("../fonts/fredoka-600.woff2") format("woff2"); }
+@font-face { font-family: "Fredoka"; font-weight: 700; font-display: swap; src: url("../fonts/fredoka-700.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-weight: 800; font-display: swap; src: url("../fonts/nunito-800.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-weight: 900; font-display: swap; src: url("../fonts/nunito-900.woff2") format("woff2"); }
+:root {
+  --indigo: #1E1B4B; --indigo-2: #2A2566; --indigo-3: #14113A; --gold: #F5B841; --gold-d: #C98A1C; --teal: #7CC4A4; --teal-d: #4E9479;
+  --coral: #F08A7E; --coral-d: #C25F54; --lav: #9B8AD1; --lav-d: #6E5FAA; --cream: #F6EBD9; --cream-d: #D9C6A5; --ink: #2A2152;
+  --felt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  --display: "Fredoka", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; --ui: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --tap: 64px; --safe-t: env(safe-area-inset-top, 0px); --safe-b: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; min-height: 100%; }
+body { font-family: var(--ui); font-weight: 800; color: var(--cream); background: var(--indigo); -webkit-font-smoothing: antialiased; overscroll-behavior: none; }
+body.night { background:
+  radial-gradient(ellipse 80% 55% at 50% 38%, rgba(245,184,65,.10), transparent 70%),
+  radial-gradient(ellipse 60% 40% at 15% 90%, rgba(124,196,164,.10), transparent 70%),
+  radial-gradient(ellipse 60% 40% at 90% 80%, rgba(155,138,209,.14), transparent 70%),
+  var(--indigo); background-attachment: fixed; }
+.felt::before, body.night::before { content: ""; position: fixed; inset: 0; background-image: var(--felt); opacity: .10; mix-blend-mode: overlay; pointer-events: none; z-index: 0; }
+.stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.stars i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #FFE6A8; box-shadow: 0 0 8px 2px rgba(245,184,65,.6); animation: twinkle 3.2s ease-in-out infinite; }
+.stars i.s { clip-path: polygon(50% 0,61% 38%,100% 38%,68% 60%,80% 100%,50% 75%,20% 100%,32% 60%,0 38%,39% 38%); width: 12px; height: 12px; border-radius: 0; box-shadow: none; background: var(--gold); }
+@keyframes twinkle { 0%, 100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.1); } }
+.fireflies { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+.fireflies i { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #FFF2B8; box-shadow: 0 0 10px 4px rgba(245,184,65,.55); animation: drift 9s ease-in-out infinite alternate; }
+@keyframes drift { 0% { transform: translate(0,0); opacity: .2; } 30% { opacity: .9; } 100% { transform: translate(40px,-60px); opacity: .3; } }
+h1, h2, h3, .display { font-family: var(--display); font-weight: 700; letter-spacing: .2px; }
+a { color: var(--gold); }
+img { max-width: 100%; display: block; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- felt buttons ---------- */
+.btn { --c: var(--gold); --d: var(--gold-d); --t: var(--ink); position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: var(--tap); min-width: var(--tap); padding: 0 1.4em; border: 0; border-radius: 999px; cursor: pointer; text-decoration: none;
+  font: 700 1.25rem/1 var(--display); color: var(--t); background: var(--c); background-image: var(--felt);
+  box-shadow: 0 6px 0 var(--d), 0 10px 24px rgba(0,0,0,.35); transition: transform .08s ease, box-shadow .08s ease; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.btn::after { content: ""; position: absolute; inset: 5px; border-radius: inherit; border: 2px dashed rgba(255,255,255,.55); pointer-events: none; }
+.btn:active, .btn.pressed { transform: translateY(4px); box-shadow: 0 2px 0 var(--d), 0 4px 12px rgba(0,0,0,.3); }
+.btn:focus-visible { outline: 4px solid #fff; outline-offset: 4px; }
+.btn.glow { box-shadow: 0 6px 0 var(--d), 0 0 34px 6px rgba(245,184,65,.45), 0 10px 24px rgba(0,0,0,.35); }
+.btn.teal { --c: var(--teal); --d: var(--teal-d); } .btn.coral { --c: var(--coral); --d: var(--coral-d); }
+.btn.lav { --c: var(--lav); --d: var(--lav-d); --t: #fff; } .btn.cream { --c: var(--cream); --d: var(--cream-d); }
+.btn.indigo { --c: var(--indigo-2); --d: #110E33; --t: var(--cream); } .btn.indigo::after { border-color: rgba(246,235,217,.35); }
+.btn.ghost { --c: rgba(246,235,217,.08); --d: rgba(0,0,0,.25); --t: var(--cream); box-shadow: inset 0 0 0 3px rgba(246,235,217,.6); }
+.btn.ghost::after { display: none; }
+.btn.round { padding: 0; width: 76px; height: 76px; border-radius: 50%; }
+.btn.round.sm { width: 64px; height: 64px; }
+.btn svg { width: 1.5em; height: 1.5em; flex: none; }
+.btn.round svg { width: 38px; height: 38px; }
+.btn.big { font-size: 1.6rem; min-height: 84px; padding: 0 1.8em; }
+.btn[disabled] { filter: grayscale(.6) brightness(.8); cursor: default; }
+.paper { position: relative; background: var(--cream); background-image: var(--felt); color: var(--ink); border-radius: 26px; box-shadow: 0 8px 0 var(--cream-d), 0 18px 40px rgba(0,0,0,.4); }
+.paper::after { content: ""; position: absolute; inset: 8px; border-radius: 20px; border: 2px dashed rgba(42,33,82,.25); pointer-events: none; }
+
+/* ---------- HUD pills ---------- */
+.pill { display: inline-flex; align-items: center; gap: .4em; height: 52px; padding: 0 18px 0 12px; border-radius: 999px; background: rgba(20,17,58,.75); box-shadow: inset 0 0 0 3px rgba(246,235,217,.25); font: 700 1.35rem var(--display); color: var(--cream); }
+.pill svg { width: 30px; height: 30px; }
+
+/* ---------- speech bubble + toast ---------- */
+.bubble { position: relative; background: var(--cream); color: var(--ink); font: 700 1.15rem/1.25 var(--display); padding: 14px 18px; border-radius: 22px; box-shadow: 0 6px 0 var(--cream-d), 0 10px 20px rgba(0,0,0,.35); max-width: 280px; }
+.bubble::before { content: ""; position: absolute; left: 26px; bottom: -14px; border: 10px solid transparent; border-top: 14px solid var(--cream); border-bottom: 0; }
+.toast { position: fixed; left: 50%; bottom: calc(110px + var(--safe-b)); transform: translate(-50%, 20px); opacity: 0; transition: .25s; z-index: 50; pointer-events: none; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- topbar used by realm + play pages ---------- */
+.topbar { position: relative; z-index: 5; display: flex; align-items: center; gap: 12px; padding: calc(10px + var(--safe-t)) 14px 10px; }
+.ribbon { flex: 1; text-align: center; }
+.ribbon h1 { display: inline-flex; align-items: center; gap: .35em; margin: 0; padding: 8px 28px; font-size: clamp(1.6rem, 6vw, 2.4rem); color: var(--ink); background: var(--cream); background-image: var(--felt); border-radius: 18px; box-shadow: 0 6px 0 var(--cream-d), 0 12px 24px rgba(0,0,0,.35); clip-path: polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%); }
+.ribbon h1 svg { width: 1.1em; height: 1.1em; }
+
+/* ---------- Wick ---------- */
+.wick { position: relative; width: 120px; aspect-ratio: 1; pointer-events: auto; border: 0; padding: 0; background: none; cursor: pointer; }
+.wick img { width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); animation: bob 3.6s ease-in-out infinite; }
+.wick::before { content: ""; position: absolute; left: 14%; top: 50%; width: 40%; height: 40%; border-radius: 50%; background: radial-gradient(circle, rgba(245,184,65,.55), transparent 70%); animation: flicker 2.4s ease-in-out infinite; pointer-events: none; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes flicker { 0%, 100% { opacity: .7; } 45% { opacity: 1; } 60% { opacity: .8; } }
+.wick.cheer img { animation: hop .5s ease 2; }
+@keyframes hop { 0%, 100% { transform: translateY(0) rotate(0); } 40% { transform: translateY(-22px) rotate(-4deg); } }
+
+/* ---------- modal ---------- */
+.modal { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10,8,34,.7); backdrop-filter: blur(3px); }
+.modal.on { display: flex; }
+.modal .paper { width: min(520px, 100%); padding: 30px 26px 26px; text-align: center; }
+.modal h2 { margin: 0 0 8px; font-size: 1.9rem; color: var(--ink); }
+.modal p { font-size: 1.1rem; line-height: 1.45; margin: 8px 0 18px; color: #4a3f75; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

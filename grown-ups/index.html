@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E1B4B">
+<title>Elearnea · Grown-ups</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/img/icon-32.png" type="image/png">
+<link rel="stylesheet" href="../assets/css/el.css">
+<style>
+  .wrap { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 18px 40px; }
+  .gate { padding: 30px 24px 28px; text-align: center; margin-top: 10px; }
+  .gate h1 { margin: 0 0 6px; color: var(--ink); font-size: 2rem; }
+  .gate p { color: #4a3f75; font-size: 1.1rem; margin: 6px 0 18px; }
+  .q { font: 700 2.4rem var(--display); color: var(--ink); margin: 4px 0 16px; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 150px)); gap: 16px; justify-content: center; }
+  .opts .btn { font-size: 1.8rem; }
+  .err { color: var(--coral-d); min-height: 1.4em; margin-top: 14px; font-size: 1.05rem; }
+  .area { display: none; } .area.on { display: block; }
+  .card { padding: 24px 22px; margin-top: 18px; }
+  .card h2 { margin: 0 0 8px; color: var(--ink); font-size: 1.5rem; } .card p, .card li { color: #4a3f75; line-height: 1.45; }
+  .card table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 1rem; color: var(--ink); }
+  .card td, .card th { text-align: left; padding: 8px 6px; border-bottom: 2px dashed rgba(42,33,82,.15); } .card th { font-family: var(--display); }
+  .tag { display: inline-block; font-size: .78rem; padding: 2px 8px; border-radius: 999px; background: rgba(155,138,209,.25); margin: 2px 2px 0 0; }
+  .acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+  .preview { display: inline-block; background: var(--coral); color: var(--ink); padding: 4px 12px; border-radius: 999px; font-size: .9rem; }
+</style>
+</head>
+<body class="night">
+<div class="topbar"><a class="btn round indigo" href="../map/" aria-label="Back to the map"></a><div class="ribbon"><h1>Grown-ups</h1></div><span style="width:76px"></span></div>
+<div class="wrap">
+  <div class="paper gate" id="gate">
+    <h1>For grown-ups</h1>
+    <p>Please answer to continue.</p>
+    <div class="q" id="q"></div>
+    <div class="opts" id="opts"></div>
+    <div class="err" id="err" role="status"></div>
+  </div>
+  <div class="area" id="area">
+    <div class="paper card">
+      <span class="preview">Preview</span>
+      <h2 style="margin-top:10px">Parent dashboard: coming in phase 2</h2>
+      <p>This area will show progress, a standards map, a weekly plan and a homeschool record export. For now, here is what this device has saved.</p>
+    </div>
+    <div class="paper card"><h2>Progress on this device</h2><div id="prog"></div></div>
+    <div class="paper card">
+      <h2>Settings</h2>
+      <div class="acts">
+        <button class="btn teal" id="voiceB"></button>
+        <button class="btn lav" id="unlockB"></button>
+        <button class="btn coral" id="resetB">Reset progress</button>
+      </div>
+      <p style="margin-top:14px">Progress is stored only in this browser (no account, no name). Voice uses this device's own built-in speech voices.</p>
+    </div>
+  </div>
+</div>
+<script src="../assets/js/el.js"></script>
+<script>
+(async function () {
+  const tb = document.querySelector('.topbar a'); tb.innerHTML = El.icon('back');
+  El.ui.sky(30);
+  // Gate: a multiplication question (beyond most 4-9 year olds); a new question after each miss, a short cool-down after 3.
+  const r = El.rng(); let tries = 0;
+  function ask() { const a = r.int(6, 9), b = r.int(3, 9), c = a * b; document.getElementById('q').textContent = `${a} × ${b} = ?`;
+    const s = new Set([c]); while (s.size < 4) s.add(c + r.pick([-a, a, -b, b, 1, -1, 10, -10])); const o = document.getElementById('opts'); o.innerHTML = '';
+    r.shuffle([...s]).forEach(v => { const bt = document.createElement('button'); bt.className = 'btn cream'; bt.textContent = v; bt.onclick = () => pick(v === c); o.appendChild(bt); }); }
+  function pick(ok) { const e = document.getElementById('err'); if (ok) { sessionStorage.setItem('el-gate', '1'); open(); return; }
+    tries++; if (tries >= 3) { e.textContent = 'Please wait a moment and try again.'; document.querySelectorAll('#opts .btn').forEach(b => b.disabled = true); setTimeout(() => { tries = 0; e.textContent = ''; ask(); }, 8000); } else { e.textContent = 'Not quite. Try this one.'; ask(); } }
+  async function open() { document.getElementById('gate').style.display = 'none'; document.getElementById('area').classList.add('on');
+    const cat = await El.catalog(), d = El.store.load(); let h = '<table><tr><th>Lesson</th><th>Grade</th><th>Stars</th><th>Plays</th></tr>';
+    for (const rm of cat.realms) for (const ls of (cat.order[rm.id] || [])) { const rec = d.lessons[ls.id]; h += `<tr><td>${rm.name}: ${ls.name}<br>${ls.standards.map(s => `<span class="tag">${s.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ')}</span>`).join('')}</td><td>${ls.grade}</td><td>${rec ? rec.stars : 0}/3</td><td>${rec ? rec.plays : 0}</td></tr>`; }
+    h += '</table>'; const acc = (id) => { const a = El.Learn.accRecent(id); return a == null ? '-' : Math.round(a * 100) + '%'; };
+    const skills = Object.keys(d.skills); if (skills.length) h += '<p style="margin-top:14px"><b>Recent first-try accuracy</b> (target about 80%): ' + skills.map(s => `${s} ${acc(s)}`).join(' · ') + '</p>';
+    h += `<p>Day streak: ${El.Learn.streakNow()} · total stars: ${El.Learn.totalStars()}</p>`; document.getElementById('prog').innerHTML = h; paint(); }
+  function paint() { const d = El.store.load(); document.getElementById('voiceB').textContent = 'Voice: ' + (d.set.voice ? 'on' : 'off'); document.getElementById('unlockB').textContent = 'Demo: unlock all lessons (' + (d.demoUnlock ? 'on' : 'off') + ')'; }
+  document.getElementById('voiceB').onclick = () => { const d = El.store.load(); d.set.voice = !d.set.voice; El.store.save(); paint(); };
+  document.getElementById('unlockB').onclick = () => { const d = El.store.load(); d.demoUnlock = !d.demoUnlock; El.store.save(); paint(); };
+  document.getElementById('resetB').onclick = () => { if (confirm('Reset all progress saved on this device?')) { El.store.reset(); open(); } };
+  if (sessionStorage.getItem('el-gate') === '1') open(); else ask();
+})();
+</script>
+</body>
+</html>

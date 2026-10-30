@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E1B4B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Elearnea · World map</title>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../assets/img/icon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+<link rel="stylesheet" href="../assets/css/el.css">
+<style>
+  html, body { height: 100%; } body { overflow: hidden; touch-action: manipulation; }
+  .app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto 1fr auto; }
+  header { display: flex; min-width: 0; align-items: center; gap: 10px; padding: calc(10px + var(--safe-t)) 16px 0; }
+  header .word { min-width: 0; font: 700 clamp(1.7rem, 6.5vw, 2.8rem) var(--display); color: var(--cream); margin-right: auto; text-shadow: 0 3px 0 rgba(0,0,0,.3); }
+  .world { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 0 6px; padding: 4px 8px; min-height: 0; }
+  .isle { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; border: 0; background: none; padding: 0; cursor: pointer; color: var(--cream); touch-action: manipulation; }
+  .isle .pic { position: relative; width: 100%; flex: 1 1 0; min-height: 0; max-height: 230px; }
+  .isle .pic > img { position: absolute; inset: 0; }
+  .isle img { width: 100%; height: 100%; object-fit: contain; -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); animation: float 6s ease-in-out infinite; transition: transform .15s; }
+  .isle:nth-child(2n) img { animation-delay: -2.5s; } .isle:nth-child(3n) img { animation-delay: -4s; }
+  .isle:active img { transform: scale(.94); }
+  .isle .badge { position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%); width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: var(--cream); background-image: var(--felt); color: var(--c); box-shadow: 0 0 0 5px var(--c), 0 6px 0 5px rgba(0,0,0,.3), 0 0 26px rgba(245,184,65,.35); }
+  .isle .badge svg { width: 42px; height: 42px; }
+  .isle .name { margin-top: 4px; font: 700 1.1rem var(--display); text-shadow: 0 2px 0 rgba(0,0,0,.4); white-space: nowrap; }
+  .isle.soon img { filter: saturate(.45) brightness(.62); }
+  .isle.soon .badge { background: #3B3480; color: var(--cream); box-shadow: 0 0 0 5px var(--lav), 0 6px 0 5px rgba(0,0,0,.3); }
+  .isle.soon .name { opacity: .75; }
+  .isle .moon { position: absolute; top: 10%; right: 14%; width: 46px; height: 46px; color: #FFE6A8; filter: drop-shadow(0 0 8px rgba(245,184,65,.6)); }
+  .isle.open .pic::before { content: ""; position: absolute; inset: 14%; border-radius: 50%; background: radial-gradient(circle, rgba(245,184,65,.28), transparent 68%); animation: flicker 3s infinite; }
+  .isle.open .star { position: absolute; top: 6%; left: 10%; width: 34px; color: var(--gold); filter: drop-shadow(0 0 6px rgba(245,184,65,.8)); animation: twinkle 2.4s infinite; }
+  .bar { display: flex; justify-content: center; align-items: flex-end; gap: 18px; padding: 4px 16px calc(12px + var(--safe-b)); position: relative; }
+  .bar .wick { position: absolute; left: 6px; bottom: calc(2px + var(--safe-b)); width: 110px; }
+  .bar .say { position: absolute; left: 112px; bottom: calc(84px + var(--safe-b)); }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @media (min-aspect-ratio: 1/1) { .world { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); padding: 0 40px; } .isle .pic { max-height: 290px; } }
+  @media (min-width: 900px) and (min-height: 1000px) { .isle .pic { max-height: 330px; } .isle .name { font-size: 1.35rem; } .bar .wick { width: 150px; } }
+  @media (max-width: 380px) { .bar .wick { width: 92px; } }
+</style>
+</head>
+<body class="night">
+<div class="app">
+  <header>
+    <div class="word">Elearnea</div>
+    <span class="pill" data-say="Days in a row"><span id="flameI"></span><span id="streak">0</span></span>
+    <span class="pill" data-say="Your stars"><span id="starI" style="color:var(--gold)"></span><span id="stars">0</span></span>
+  </header>
+  <main class="world" id="world" aria-label="World map"></main>
+  <div class="bar">
+    <button class="wick" id="wick" aria-label="Wick the lantern fox" data-say="Hi! I'm Wick. Tap a land to play!"><img src="../assets/img/wick-sm.webp" alt=""></button>
+    <button class="btn round indigo" id="snd" aria-label="Sound"></button>
+    <button class="btn round teal" id="bag" aria-label="My stars" data-say="Your backpack"></button>
+    <a class="btn round lav" id="grown" href="../grown-ups/" aria-label="Grown-ups"></a>
+  </div>
+</div>
+<div class="modal" id="bagM"><div class="paper"><h2>My backpack</h2><p id="bagT"></p><button class="btn" id="bagX" aria-label="Close">OK</button></div></div>
+<script src="../assets/js/el.js"></script>
+<script>
+(async function () {
+  El.ui.sky(50); El.ui.speakable();
+  document.getElementById('flameI').innerHTML = El.icon('flame'); document.getElementById('starI').innerHTML = El.icon('star');
+  document.getElementById('bag').innerHTML = El.icon('backpack'); document.getElementById('grown').innerHTML = El.icon('lock');
+  El.ui.soundBtn(document.getElementById('snd'));
+  document.getElementById('streak').textContent = El.Learn.streakNow(); document.getElementById('stars').textContent = El.Learn.totalStars();
+  const cat = await El.catalog(); const w = document.getElementById('world');
+  for (const r of cat.realms) {
+    const open = r.status === 'open', b = document.createElement('button');
+    b.className = 'isle ' + (open ? 'open' : 'soon'); b.style.setProperty('--c', r.color); b.setAttribute('aria-label', r.name + (open ? '' : ' (coming soon)'));
+    b.innerHTML = `<span class="pic"><img src="../${r.img}-sm.webp" srcset="../${r.img}-sm.webp 360w, ../${r.img}.webp 720w" sizes="(min-width: 900px) 330px, 45vw" alt="">${open ? `<span class="star">${El.icon('star')}</span>` : `<span class="moon">${El.icon('moon')}</span>`}<span class="badge">${El.icon(open ? r.icon : 'lock')}</span></span><span class="name">${r.name}</span>`;
+    b.addEventListener('click', () => {
+      El.sfx.tap();
+      if (open) { El.Voice.say(r.say, { rate: 1 }); setTimeout(() => { location.href = '../realm/' + r.id + '/'; }, El.Voice.ok ? 650 : 120); }
+      else { El.Voice.say(r.say, { rate: 1 }); El.ui.toast('🌙 ' + r.name + ' is still being built. Coming soon!'); const wk = document.getElementById('wick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); }
+    });
+    w.appendChild(b);
+  }
+  const bagM = document.getElementById('bagM');
+  document.getElementById('bag').onclick = () => { const s = El.Learn.totalStars(); document.getElementById('bagT').textContent = s ? `You have ${s} star${s === 1 ? '' : 's'}! Stickers and treasures are coming soon.` : 'Play a game to earn your first star!'; bagM.classList.add('on'); };
+  document.getElementById('bagX').onclick = () => bagM.classList.remove('on');
+  document.getElementById('wick').addEventListener('click', (e) => { const wk = e.currentTarget; wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); if (!El.Voice.ok) El.ui.toast("Hi! I'm Wick. Tap a land to play!"); });
+})();
+</script>
+</body>
+</html>
