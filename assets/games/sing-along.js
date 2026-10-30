@@ -78,7 +78,7 @@
       return pool.slice(0, n); }
     function startPick(e) { const n = choices(), opts = rng.shuffle([e.word, ...distractors(e, n - 1)]); let miss = 0;
       const wordsOnly = mode === 'words' && !e.kind;
-      play.innerHTML = `<div class="sa-pick" data-n="${opts.length}">${opts.map(w => `<button class="sa-opt${wordsOnly ? ' word' : ''}" data-w="${w}" aria-label="${label(w)}">${wordsOnly ? '' : `<span class="pc">${pic(w)}</span>`}<b class="lbl">${label(w)}</b></button>`).join('')}</div>`;
+      play.innerHTML = `<div class="sa-pick" data-n="${opts.length}">${opts.map(w => `<button class="sa-opt${wordsOnly ? ' word' : ''}" data-w="${w}" aria-label="${label(w)}">${wordsOnly ? '' : `<span class="pc">${pic(w)}</span>`}${KIND.letter.includes(w) ? '' : `<b class="lbl">${label(w)}</b>`}</button>`).join('')}</div>`;
       const btns = [...play.querySelectorAll('.sa-opt')], right = btns.find(b => b.dataset.w === e.word); if (QA) right.dataset.ok = '1';
       btns.forEach((b, k) => { b.style.setProperty('--k', k); b.onclick = () => { if (e.done) return; El.sfx.tap();
         if (b === right) { e.done = true; e.first = miss === 0; yes(b); if (wordsOnly) b.insertAdjacentHTML('afterbegin', `<span class="pc">${pic(e.word)}</span>`); T(() => finish(e, true), 650); return; }
@@ -112,7 +112,7 @@
     function clearHints() { play.querySelectorAll('.hint').forEach(b => b.classList.remove('hint')); }
     function chip(w, star) { if (shelf.querySelector(`.sa-chip[data-w="${w}"]`)) { bounce(shelf.querySelector(`.sa-chip[data-w="${w}"]`), 'sing'); return; }
       const c = document.createElement('button'); c.className = 'sa-chip' + (star ? ' star' : ''); c.dataset.w = w; c.setAttribute('aria-label', label(w));
-      c.innerHTML = `<span class="pc">${pic(w)}</span><b class="lbl">${label(w)}</b>`; c.onclick = () => chipTap(c); shelf.appendChild(c); bounce(c, 'join');
+      c.innerHTML = `<span class="pc">${pic(w)}</span>${KIND.letter.includes(w) ? '' : `<b class="lbl">${label(w)}</b>`}`; c.onclick = () => chipTap(c); shelf.appendChild(c); bounce(c, 'join');
       // and it joins the parade (zoo: marches along the road; stage: dances in the band), bobbing on the beat
       const pr = $('#saParade'), wk = document.createElement('i'); wk.className = 'sa-walker'; wk.dataset.w = w; wk.style.setProperty('--k', pr.children.length); wk.innerHTML = pic(w); pr.appendChild(wk);
       shelf.scrollLeft = shelf.scrollWidth; }
