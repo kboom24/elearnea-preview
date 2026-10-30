@@ -7,7 +7,8 @@ const CORE = ['./', 'map/', 'realm/reading/', 'realm/math/', 'realm/logic/', 'pl
   'assets/img/wick-sm.webp', 'assets/img/tile-lily.webp', 'assets/img/tile-firefly.webp', 'assets/img/tile-clocktower.webp', 'assets/img/tile-mothabet.webp',
   'play/lantern-barn/', 'play/picture-garden/', 'play/glow-jars/', 'content/early.json', 'assets/js/pics.js', 'assets/js/sfx-animals.js', 'assets/games/little-lines.js', 'assets/games/little.js', 'assets/games/little.css',
   'assets/games/lantern-barn.js', 'assets/games/lantern-barn.css', 'assets/games/picture-garden.js', 'assets/games/picture-garden.css', 'assets/games/glow-jars.js', 'assets/games/glow-jars.css', 'assets/img/tile-barn.svg', 'assets/img/tile-garden.svg', 'assets/img/tile-jars.svg',
-  'assets/games/wicks-path-lines.js', 'assets/games/wicks-path.js', 'assets/games/wicks-path.css', 'assets/img/tile-wicks-path.svg',
+  'assets/games/wicks-path-lines.js', 'assets/games/wicks-path.js', 'assets/games/wicks-path.css', 'assets/img/tile-wicks-path.svg', 'assets/img/tile-soon.svg',
+  ...['ll-r0', 'll-r00', 'll-r1', 'll-r2', 'll-r3', 'll-r4', 'll-r5', 'll-r6', 'll-r7', 'll-m0', 'll-m1', 'll-m2', 'll-m3', 'll-m4'].map(id => `assets/img/tile-${id}.svg`),
   ...['cow', 'duck', 'cat', 'dog', 'sheep', 'pig', 'frog', 'bird', 'owl'].flatMap(a => ['mp3', 'opus'].map(x => `assets/sfx/animals/${a}.${x}`)),
   'play/moth-bridge/', 'assets/games/moth-bridge-lines.js', 'assets/games/moth-bridge-pics.js', 'assets/games/moth-bridge.js', 'assets/games/moth-bridge.css', 'assets/img/tile-bridge.svg'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())); });

@@ -152,3 +152,14 @@
 }
 @media (prefers-reduced-motion: reduce) { .cg-fly { transition: none; } .cg-clock .hand { transition: none; } }
 .cg-tray.none { min-height: 0; padding: 0 0 calc(10px + var(--safe-b)); }
+/* word labels (2026-10-30): the shape's name in big lowercase letters. Name mode: hidden until the card is tapped (.named) or answered
+   (shown under the hub gear, glowing while Bella says "Yes! A triangle!"). Sort mode: always on the drawer fronts. */
+.card .cw { position: absolute; left: 4px; right: 4px; bottom: 8px; text-align: center; font: 700 clamp(17px, 3.6vw, 28px)/1 var(--display); color: var(--ink); opacity: 0; transform: scale(.6); transition: .25s; pointer-events: none; white-space: nowrap; }
+.card.named .cw { opacity: 1; transform: none; }
+.card.named .shp { transform: translateY(-9%) scale(.86); }
+.hub { position: relative; }
+.hubw { position: absolute; left: 50%; top: 100%; transform: translateX(-50%) scale(.6); margin-top: 6px; padding: 3px 14px 5px; border-radius: 999px; background: var(--cream); color: var(--ink); font: 700 clamp(20px, 4vw, 32px)/1.1 var(--display); opacity: 0; transition: .3s cubic-bezier(.3,1.6,.5,1); white-space: nowrap; pointer-events: none; }
+.hubw.on { opacity: 1; transform: translateX(-50%) scale(1); }
+.hubw.say, .drawer.say .dw { box-shadow: 0 0 0 4px var(--gold), 0 0 26px rgba(245,184,65,.8); }
+.dr-front { position: relative; }
+.dw { position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); padding: 1px 8px 2px; border-radius: 999px; background: rgba(30,27,75,.55); color: var(--cream); font: 700 clamp(13px, 2.6vw, 20px)/1.1 var(--display); white-space: nowrap; pointer-events: none; }

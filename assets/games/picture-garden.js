@@ -19,7 +19,9 @@ El.defineGame({
       ({ tiny, words, colors, shapes, rhyme, letters }[mode] || words)(D); });
 
     // generic "tap the named one" round: ask(id) -> {cue, yes, that(otherId)}; second miss shows the answer
-    function tapRound(plan, pool, render, label, lines, pre) {
+    function tapRound(plan, pool, render, label, lines, pre, word) {
+      // the skill here IS finding the picture Bella names, so its label is hidden until it is tapped (or shown as the answer)
+      kit.labels('reveal', word || (x => x));
       kit.run(plan, (id, i, finish) => { if (pre) pre(id); const n = El.Little.nChoices(L, cfg.skill, 2, 3), list = rng.shuffle([id, ...El.Little.others(rng, pool, n - 1, [id])]); let miss = 0;
         const btns = kit.options(list, render, label), right = btns.find(b => b._it === id), ln = lines(id); kit.mark(right);
         kit.speak(ln.cue);
@@ -29,29 +31,31 @@ El.defineGame({
     }
     function tiny(D) {
       const order = rng.shuffle(D.tinyWords.slice()).slice(0, 6), W = {}; D.words.forEach(w => { W[w.id] = w; }); let k = 0, busy = false;
-      const b = kit.single(El.pic(order[0]), 'Picture'); kit.speak(G.tap); host.emit('progress', { done: 0, total: order.length });
+      const nm = (id) => kit.word(W[id].name); // under 2: the name sits under the picture and glows while Bella says it
+      const b = kit.single(El.pic(order[0]) + nm(order[0]), 'Picture'); b.classList.add('has-word'); kit.speak(G.tap); host.emit('progress', { done: 0, total: order.length });
       b.onclick = () => { if (busy) return; busy = true; const w = W[order[k]]; kit.yes(b);
         say(G.look(w), () => { k++; host.emit('progress', { done: k, total: order.length });
           if (k >= order.length) { T(() => host.end({ total: order.length, done: order.length, firstTry: order.length }), 500); return; }
-          T(() => { b.classList.remove('yes'); b.classList.add('swap'); T(() => { b.innerHTML = El.pic(order[k]); b.classList.remove('swap'); busy = false; }, 260); }, 500); }); };
+          T(() => { b.classList.remove('yes'); b.classList.add('swap'); T(() => { b.innerHTML = El.pic(order[k]) + nm(order[k]); b.classList.remove('swap'); busy = false; }, 260); }, 500); }, 0, false, [b]); };
     }
     function words(D) { const W = {}; D.words.forEach(w => { W[w.id] = w; }); const pool = D.words.map(w => w.id);
       tapRound(L.pick(cfg.skill, pool, cfg.rounds || 6, rng), pool, x => El.pic(x), x => W[x].name,
-        id => ({ cue: G.where(W[id]), yes: G.yesW(W[id]), that: G.thatW(W[id]), here: G.hereW(W[id]) })); }
+        id => ({ cue: G.where(W[id]), yes: G.yesW(W[id]), that: G.thatW(W[id]), here: G.hereW(W[id]) }), null, x => W[x].name); }
     function colors(D) { const C = {}; D.colors.forEach(c => { C[c.id] = c; }); const pool = D.colors.map(c => c.id);
       tapRound(L.pick(cfg.skill, pool, cfg.rounds || 6, rng), pool, x => El.pic('balloon', { color: C[x].hex, dark: C[x].dark }), x => C[x].name + ' balloon',
-        id => ({ cue: G.color(C[id]), yes: G.yesC(C[id]), that: G.thatC(C[id]), here: LN.common.here })); }
+        id => ({ cue: G.color(C[id]), yes: G.yesC(C[id]), that: G.thatC(C[id]), here: LN.common.here }), null, x => C[x].name); }
     function shapes(D) { const S = {}; D.shapes.forEach(s => { S[s.id] = s; }); const pool = D.shapes.map(s => s.id);
       // one color per question, so the shape is the only clue
       const pal = [['#F08A7E', '#C25F54'], ['#7CC4A4', '#4E9479'], ['#9B8AD1', '#6E5FAA'], ['#F5B841', '#C98A1C']]; let col = pal[0];
       tapRound(L.pick(cfg.skill, pool, cfg.rounds || 6, rng), pool, x => El.pic(x === 'star' ? 'starShape' : x, { color: col[0], dark: col[1] }), x => S[x].name,
-        id => ({ cue: G.shape(S[id]), yes: G.yesS(S[id]), that: G.thatS(S[id]), here: LN.common.here }), () => { col = rng.pick(pal); });
+        id => ({ cue: G.shape(S[id]), yes: G.yesS(S[id]), that: G.thatS(S[id]), here: LN.common.here }), () => { col = rng.pick(pal); }, x => S[x].name);
     }
     function rhyme(D) { const R = {}; D.rhymes.forEach(r => { R[r.a] = r; }); const pool = D.rhymes.map(r => r.a), plan = L.pick(cfg.skill, pool, cfg.rounds || 5, rng);
       kit.run(plan, (a, i, finish) => { const r = R[a]; let miss = 0;
-        kit.show.innerHTML = `<div class="ll-model">${El.pic(r.a)}</div>`;
+        kit.show.innerHTML = `<div class="ll-model has-word">${El.pic(r.a)}${kit.word(r.a)}</div>`;
+        kit.labels('show'); // the question names both pictures, so their names (and the matching endings: cat / hat) show from the start
         const btns = kit.options(rng.shuffle([r.b, r.c]), x => El.pic(x), x => x), right = btns.find(b => b._it === r.b); kit.mark(right);
-        kit.speak(G.rhyme(r));
+        kit.speak(G.rhyme(r), '', [...kit.show.querySelectorAll('.ll-word'), ...btns]);
         kit.show.firstChild.onclick = () => kit.replay();
         btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: G.yesR(r), delay: 350 }); return; }
           miss++; kit.soft(b); kit.hint(right); T(() => say(G.listenR(r)), 350); }; });
@@ -59,7 +63,7 @@ El.defineGame({
     }
     function letters(D) { const easy = D.letters.easy, sim = D.letters.similar;
       const lvl = L.levelIndex(cfg.skill, 3), pool = lvl >= 2 ? easy.concat(sim.flat()) : easy, plan = L.pick(cfg.skill, pool, cfg.rounds || 6, rng);
-      const tile = (ch) => `<span class="ll-letter">${ch}</span>`;
+      const tile = (ch) => `<span class="ll-letter">${ch}</span>`; kit.labels('off'); // visual letter-shape matching: no names
       kit.run(plan, (ch, i, finish) => { const n = El.Little.nChoices(L, cfg.skill, 2, 3); let miss = 0;
         const pair = sim.find(p => p.includes(ch)), lookalike = lvl >= 2 && pair ? pair.find(x => x !== ch) : null;
         const others = El.Little.others(rng, easy, n - 1 - (lookalike ? 1 : 0), [ch, lookalike]).concat(lookalike ? [lookalike] : []);

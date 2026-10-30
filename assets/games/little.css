@@ -46,3 +46,27 @@
 .ll-model { position: relative; }
 .ll-card > svg, .ll-model > svg { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); }
 .ll-card.huge > svg { inset: 18px; width: calc(100% - 36px); height: calc(100% - 36px); }
+/* word labels under the pictures (kit.labels / kit.word): big lowercase name, ink on cream, glows + bounces while Bella says it.
+   .word-hidden keeps the space (no layout jump) and shows the label on tap / answer reveal. */
+.ll-word { position: absolute; left: 8px; right: 8px; bottom: 9px; z-index: 2; display: block; text-align: center; pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: clip;
+  font: 700 clamp(20px, calc(var(--sz, 160px) * .17), 44px)/1.1 var(--display); color: #1E1B4B; letter-spacing: .02em; text-transform: lowercase;
+  transition: opacity .25s, transform .25s; }
+.ll-card.has-word { --lh: clamp(24px, calc(var(--sz, 160px) * .22), 54px); }
+.ll-card.has-word > svg, .ll-card.has-word > span:first-child:not(.ll-word) { position: absolute; top: 10px; left: 12%; right: auto; bottom: auto; width: 76%; height: calc(100% - 20px - var(--lh)); }
+.ll-card.has-word.huge { --lh: clamp(34px, calc(var(--sz, 300px) * .16), 66px); }
+.ll-card.has-word.huge > svg { top: 18px; left: 14%; width: 72%; height: calc(100% - 36px - var(--lh)); }
+.ll-card.huge .ll-word { font-size: clamp(30px, calc(var(--sz, 300px) * .13), 60px); bottom: 14px; }
+.ll-card.word-hidden .ll-word { opacity: 0; transform: scale(.6); }
+.ll-word.speak { animation: llword .9s cubic-bezier(.3,1.6,.5,1); color: #1E1B4B; text-shadow: 0 0 12px rgba(245,184,65,.95), 0 0 2px #F5B841; }
+.ll-word.speak::before { content: ""; position: absolute; inset: -2px 6%; z-index: -1; border-radius: 999px; background: rgba(245,184,65,.55); }
+@keyframes llword { 0% { transform: scale(1); } 35% { transform: scale(1.22) translateY(-4px); } 70% { transform: scale(.96); } 100% { transform: scale(1.06); } }
+/* model pictures (rhyme, clap) and dark cards (jars): cream label on the dark tile */
+.ll-model .ll-word { color: var(--cream); text-shadow: 0 3px 0 rgba(0,0,0,.35); font-size: clamp(24px, calc(var(--sz, 160px) * .17), 46px); }
+.ll-model.has-word { --lh: clamp(28px, calc(var(--sz, 160px) * .22), 56px); }
+.ll-model.has-word > svg { top: 10px; left: 12%; right: auto; bottom: auto; width: 76%; height: calc(100% - 20px - var(--lh)); }
+.ll-model .ll-word.speak { color: #1E1B4B; text-shadow: none; }
+.ll-jars .ll-card .ll-word { color: var(--cream); }
+.ll-jars .ll-card .ll-word.speak { color: #1E1B4B; }
+.lb-peek .ll-word { position: absolute; left: 0; right: 0; bottom: -6%; font-size: clamp(30px, 9vw, 60px); color: var(--cream); text-shadow: 0 3px 0 rgba(0,0,0,.45); }
+.lb-peek.has-word svg { height: 82%; }
+.ll-word.hidden { opacity: 0; }

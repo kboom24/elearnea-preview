@@ -39,3 +39,15 @@ html, body { height: 100%; } body { overflow: hidden; }
 @media (min-width: 700px) { .tile { width: 150px; height: 150px; margin-top: -75px; } .row { height: 176px; } }
 @media (min-width: 900px) and (min-height: 1000px) { .path { width: min(820px, 100%); } .row { height: 210px; } .node { width: 120px; height: 120px; margin: -60px 0 0 -60px; } .node.current { width: 144px; height: 144px; margin: -72px 0 0 -72px; } .tile { width: 180px; height: 180px; margin-top: -90px; } .tile .lbl { font-size: 1.05rem; } .foot .wick { width: 150px; } .foot .say { left: 150px; font-size: 1.15rem; } }
 .bandtag { display: inline-block; margin-left: 10px; padding: 4px 12px; border-radius: 999px; background: var(--teal); color: var(--ink); font: 800 .8rem/1 var(--ui); vertical-align: middle; }
+/* lesson cards (2026-10-30): each stop shows its own picture; the name sits on a solid band so it is readable over any art; a sticker names
+   what a lesson practises when lessons share a game picture; coming-soon stops show the night tile with their icon */
+.tile .lbl { padding: 5px 6px 7px; font: 700 .95rem/1.1 var(--display); background: rgba(20,17,58,.9); text-shadow: 0 1px 0 rgba(0,0,0,.4); }
+.tile .tag { position: absolute; top: 8px; right: 8px; max-width: calc(100% - 16px); padding: 3px 9px 4px; border-radius: 999px; background: var(--cream); background-image: var(--felt); color: var(--ink);
+  font: 700 .95rem/1.1 var(--display); white-space: nowrap; overflow: hidden; box-shadow: 0 3px 0 var(--cream-d), 0 4px 10px rgba(0,0,0,.3); }
+.tile.locked .tag { opacity: .7; }
+.tile.soon img { filter: saturate(.55) brightness(.75); }
+.tile.soon .ico { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); width: 46%; height: 46%; color: #FFE6A8; filter: drop-shadow(0 0 10px rgba(245,184,65,.55)); }
+.tile.soon .ico svg { width: 100%; height: 100%; }
+.tile.soon { opacity: .9; }
+@media (min-width: 900px) and (min-height: 1000px) { .tile .lbl, .tile .tag { font-size: 1.1rem; } }
+@media (max-height: 520px) { .foot { height: calc(120px + var(--safe-b)); } .foot .say { bottom: calc(100px + var(--safe-b)); } }

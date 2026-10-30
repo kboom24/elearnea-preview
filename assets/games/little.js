@@ -9,7 +9,12 @@
      kit.run(plan, ask)           ask(item, i, finish) ... finish(firstTry, {say, delay}) records mastery, plays the praise line and moves on
                                   only after it has finished (clip 'ended' + 300 ms, watchdog = clip length + 1.5 s); ends with host.end()
      kit.say(lines, onend)        onend fires once (ElVoice contract: end, error, interruption or clip watchdog) and only the newest kit line's onend runs (a replay restarts a cue)
-     kit.yes(btn) / kit.soft(btn) / kit.hint(btn), kit.T(fn, ms), kit.stop() */
+     kit.yes(btn) / kit.soft(btn) / kit.hint(btn), kit.T(fn, ms), kit.stop()
+   Word labels (Hexan 2026-10-30: kids link the picture with its name, its spelling and its sound): each picture card can carry its name in big
+   lowercase letters under the picture (.ll-word). kit.labels(show, wordOf): show 'show' = visible from the start, 'reveal' = hidden until the
+   card is tapped or its answer is shown (rounds where the skill IS picking by the spoken name/sound, so the label never gives the answer away),
+   'off' = no labels. Default: 'show' for items that are picture names (El.pics). A label lights up (glow + bounce) while Bella says its line:
+   the praise line after kit.yes(b), and the next line after kit.soft(b) / kit.hint(b) ("That's the dog!", "Here's the cat!"). */
 (function () {
   'use strict';
   const El = window.El;
@@ -24,31 +29,44 @@
       const $ = (id) => root.querySelector('#' + id), wick = $('llWick'), txt = $('llTxt'), show = $('llShow'), opts = $('llOpts');
       const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
       // say: onend runs once the line has really ended (watchdog: clip length + 1.5 s), and only if no newer kit line started meanwhile
-      let gen = 0, praising = false, busy = false;
+      let gen = 0, praising = false, busy = false, glowNext = null, glowAt = 0;
+      let wordMode = 'show', wordOf = (it) => (typeof it === 'string' ? (El.pics && El.pics[it] ? it : null) : (it && (it.word || it.name || (it.m && it.m.name))) || null);
+      const wordEl = (b) => b && b.querySelector && b.querySelector('.ll-word');
+      const reveal = (b) => { if (b && b.classList) b.classList.remove('word-hidden'); };
+      // glow the label(s) for as long as the line plays (removed in the line's onend: natural end, cut, or the clip watchdog)
+      const glowOn = (els) => { els = (els || []).filter(Boolean).map(e => (e.classList.contains('ll-word') ? e : wordEl(e))).filter(Boolean); els.forEach(w => { w.classList.remove('speak'); void w.offsetWidth; w.classList.add('speak'); }); return () => els.forEach(w => w.classList.remove('speak')); };
       const VT = window.ElVoice && window.ElVoice.sayThen;
       // while a praise line plays, every other kit line (a cue or count-along still in flight) is dropped, so nothing talks over it;
       // the praise line's own onend always runs (never dropped by the newest-line rule)
-      const say = (lines, onend, gap, isPraise) => { if (praising && !isPraise) return false; const my = ++gen, cb = onend ? () => { if (alive && (isPraise || my === gen)) onend(); } : null;
+      const say = (lines, onend, gap, isPraise, glow) => { if (praising && !isPraise) return false; const my = ++gen;
+        if (!glow && glowNext && Date.now() - glowAt < 2500) glow = [glowNext]; glowNext = null;
+        const off = glow ? glowOn(glow) : null, cb = (onend || off) ? () => { if (off) off(); if (onend && alive && (isPraise || my === gen)) onend(); } : null;
         if (!VT) return host.say(lines, { rate: 1, onend: cb || undefined });
-        return window.ElVoice.sayThen(lines, { rate: 1 }, cb, gap || 0, host.say).heard; };
+        return window.ElVoice.sayThen(lines, { rate: 1, onend: off || undefined }, onend ? cb : null, gap || 0, host.say).heard; };
+      let lastYes = null, curGlow = null;
       const bounce = (el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
       const kit = {
         root, show, opts, T, say, host,
-        speak(lines, label) { cur = lines; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); return say(lines); },
+        // word labels: labels('show'|'reveal'|'off', wordOf?) for the next options(); word(text) = label markup for a model picture
+        labels(m, fn) { wordMode = m || 'show'; if (fn) wordOf = fn; },
+        word(text, hidden) { return text ? `<span class="ll-word${hidden ? ' hidden' : ''}" aria-hidden="true">${text}</span>` : ''; },
+        glow(els) { return glowOn(els); }, reveal,
+        speak(lines, label, glow) { cur = lines; curGlow = glow || null; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); return say(lines, null, 0, false, curGlow); },
         // cue(fn): a custom prompt sequence (e.g. a sound effect, then a spoken question); Wick replays it
-        cue(fn, label) { cur = fn; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); fn(); },
-        replay() { if (!cur || praising || busy) return; bounce(wick, 'cheer'); if (typeof cur === 'function') cur(); else say(cur); }, // never over praise
+        cue(fn, label) { cur = fn; curGlow = null; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); fn(); },
+        replay() { if (!cur || praising || busy) return; bounce(wick, 'cheer'); if (typeof cur === 'function') cur(); else say(cur, null, 0, false, curGlow); }, // never over praise
         btn(html, cls, label) { const b = document.createElement('button'); b.className = 'll-card ' + (cls || ''); b.innerHTML = html; if (label) b.setAttribute('aria-label', label); return b; },
-        options(list, render, label) { opts.innerHTML = ''; opts.dataset.n = list.length; return list.map(it => { const b = kit.btn(render(it), '', label ? label(it) : ''); b._it = it; opts.appendChild(b); return b; }); },
+        options(list, render, label) { opts.innerHTML = ''; opts.dataset.n = list.length; return list.map(it => { const w = wordMode === 'off' ? null : wordOf(it);
+          const b = kit.btn(render(it) + kit.word(w), w ? 'has-word' + (wordMode === 'reveal' ? ' word-hidden' : '') : '', label ? label(it) : ''); b._it = it; opts.appendChild(b); return b; }); },
         single(html, label) { opts.innerHTML = ''; opts.dataset.n = 1; const b = kit.btn(html, 'huge', label); opts.appendChild(b); return b; },
-        yes(b) { host.sfx.right(); if (b) { b.classList.add('yes'); bounce(b, 'boing'); sparkle(b); } bounce(wick, 'cheer'); },
-        soft(b) { softTone(); if (b) bounce(b, 'wiggle'); },
-        hint(b) { if (b) b.classList.add('hint'); },
+        yes(b) { host.sfx.right(); if (b) { b.classList.add('yes'); reveal(b); bounce(b, 'boing'); sparkle(b); lastYes = b; } bounce(wick, 'cheer'); },
+        soft(b) { softTone(); if (b) { bounce(b, 'wiggle'); reveal(b); glowNext = b; glowAt = Date.now(); } },
+        hint(b) { if (b) { b.classList.add('hint'); reveal(b); glowNext = b; glowAt = Date.now(); } },
         mark(b) { if (b && QA) b.dataset.ok = '1'; }, // QA marker on the right answer, only with ?qa=1 (automated full-round tests); never set for kids
         lock() { opts.querySelectorAll('.ll-card').forEach(b => { b.onclick = null; b.classList.add('done'); }); },
         // praise(lines, delay, done): the feedback line after a right answer. Wick can't restart a cue over it, and done() runs once,
         // 300 ms after its clip ended (or from the watchdog); with voice off, after the visual celebration (min ms)
-        praise(lines, delay, done) { praising = true; gen++; T(() => { if (!say(lines, () => { praising = false; done(); }, 300, true)) { praising = false; done(); } }, delay == null ? 350 : delay); },
+        praise(lines, delay, done) { praising = true; gen++; const g = lastYes; lastYes = null; glowNext = null; T(() => { if (!say(lines, () => { praising = false; done(); }, 300, true, g ? [g, ...show.querySelectorAll('.ll-word')] : null)) { praising = false; done(); } }, delay == null ? 350 : delay); },
         get praising() { return praising || busy; },
         // plan: items; ask(item, index, finish): finish(firstTry, m) records mastery once and goes to the next item when the feedback is over:
         //   m.say (+ m.delay): praise line (kit.praise); m.after(done): a custom feedback sequence; m.min: shortest pause (ms) from the tap

@@ -70,7 +70,7 @@ El.defineGame({
       <g class="hand hr"><rect x="-3.5" y="-26" width="7" height="30" rx="3.5" fill="#2A2152"/></g><g class="hand mn"><rect x="-2.5" y="-38" width="5" height="42" rx="2.5" fill="#C25F54"/></g>
       <circle r="6" fill="#F5B841" stroke="#2A2152" stroke-width="2"/></svg>`;
     const bell = `<svg class="cg-bell" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6c-12 0-18 10-18 22v10l-6 8h48l-6-8V28C48 16 42 6 30 6z" fill="url(#cgBrass)" stroke="#8E5A12" stroke-width="2.5"/><circle cx="30" cy="50" r="5" fill="#8E5A12"/></svg>`;
-    const drawerFront = (kind) => `<span class="dr-box"><span class="dr-in"></span></span><span class="dr-front">${shapeSVG(kind, '#F6EBD9', { k: .78 })}<i class="dr-knob"></i></span>`;
+    const drawerFront = (kind) => `<span class="dr-box"><span class="dr-in"></span></span><span class="dr-front">${shapeSVG(kind, '#F6EBD9', { k: .78 })}<i class="dr-knob"></i><span class="cw dw" aria-hidden="true">${kind}</span></span>`;
 
     root.innerHTML = `<div class="cg cg-${mode}">
       <svg class="cg-defs" width="0" height="0" aria-hidden="true"><defs>
@@ -169,14 +169,15 @@ El.defineGame({
     function nameQ(t) { const lv = lvl(), nc = lv === 0 ? 2 : lv === 3 ? 4 : 3; const kinds = [t]; if (lv >= 2 && SHAPES.includes(LOOK[t])) kinds.push(LOOK[t]);
       rng.shuffle(SHAPES.filter(k => !kinds.includes(k))).forEach(k => { if (kinds.length < nc) kinds.push(k); });
       const play = document.createElement('div'); play.className = 'cg-play'; const grid = document.createElement('div'); grid.className = 'cg-cards n' + kinds.length; play.appendChild(grid);
-      const hub = document.createElement('div'); hub.className = 'gear hub'; hub.innerHTML = gearSVG() + '<div class="tok"></div>'; play.appendChild(hub); win.appendChild(play); tray.classList.add('none');
+      const hub = document.createElement('div'); hub.className = 'gear hub'; hub.innerHTML = gearSVG() + '<div class="tok"></div><span class="cw hubw" aria-hidden="true"></span>'; play.appendChild(hub); const hubW = hub.querySelector('.hubw'); win.appendChild(play); tray.classList.add('none');
       let misses = 0; const cards = rng.shuffle(kinds.slice()).map((k, i) => { const v = variant(k, lv), col = colorFor(rng.int(0, 4)); const b = document.createElement('button'); b.className = 'card'; b.style.setProperty('--d', (i * .07) + 's');
-        b.innerHTML = `<span class="plate"></span>${shapeSVG(k, col, v)}`; b.setAttribute('aria-label', k); b._k = k;
+        // word label (hidden: the skill is finding the shape by its spoken name); it appears on the tapped card and with the answer
+        b.innerHTML = `<span class="plate"></span>${shapeSVG(k, col, v)}<span class="cw" aria-hidden="true">${k}</span>`; b.setAttribute('aria-label', k); b._k = k;
         b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('got'); fly(b.querySelector('.shp'), hub.querySelector('.tok'), shapeSVG(k, col, onGear(v)), 520);
-            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, onGear(v)); solved(t, misses, hub); praiseThen(`Yes! A ${t}!`, 1600); }, 500); setBusy(true); }
-          else { misses++; wobble(b); b.classList.add('no');
+            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, onGear(v)); hubW.textContent = t; hubW.classList.add('on', 'say'); solved(t, misses, hub); praiseThen(`Yes! A ${t}!`, 1600); }, 500); setBusy(true); }
+          else { misses++; wobble(b); b.classList.add('no', 'named');
             if (misses === 1) speak([`That's a ${k}.`, `Find the ${t}!`]);
-            else if (misses === 2) { const c = cards.find(x => x._k === t); setBusy(true); speak("Let's count the sides.", () => countSides(c, t, () => { setBusy(false); c.classList.add('hint'); speak(`Find the ${t}!`); })); }
+            else if (misses === 2) { const c = cards.find(x => x._k === t); setBusy(true); speak("Let's count the sides.", () => countSides(c, t, () => { setBusy(false); c.classList.add('hint', 'named'); speak(`Find the ${t}!`); })); }
             else speak('Here it is!'); } };
         grid.appendChild(b); return b; });
       qaMark('want', t); setPrompt(`Find the ${t}!`, `Find the ${t}!`); }
@@ -189,7 +190,7 @@ El.defineGame({
       const ride = stage.querySelector('.gear'); ride.classList.add('arrive');
       let misses = 0; const drawers = [...kinds].sort((a, b) => SHAPES.indexOf(a) - SHAPES.indexOf(b)).map(k => { const b = document.createElement('button'); b.className = 'drawer'; b.innerHTML = drawerFront(k); b.setAttribute('aria-label', k + ' drawer'); b._k = k;
         b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('open'); setBusy(true); fly(ride.querySelector('.shp'), b.querySelector('.dr-box'), shapeSVG(t, col, v), 560, 'sm'); ride.querySelector('.tok').innerHTML = '';
-            T(() => { b.classList.remove('open'); b.classList.add('full'); solved(t, misses, b); praiseThen(`Yes! A ${t}!`, 1600); }, 600); }
+            T(() => { b.classList.remove('open'); b.classList.add('full', 'say'); solved(t, misses, b); praiseThen(`Yes! A ${t}!`, 1600); }, 600); }
           else { misses++; wobble(b); b.classList.add('no');
             if (misses === 1) { setBusy(true); speak("Let's count the sides.", () => countSides(ride, t, () => { setBusy(false); speak('Which drawer does it go in?'); })); }
             else { drawers.forEach(d => { if (d._k === t) d.classList.add('hint'); }); speak('Here it is!'); } } };
