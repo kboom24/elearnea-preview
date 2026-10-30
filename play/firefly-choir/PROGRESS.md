@@ -9,3 +9,4 @@
 - 02:36 PDT final QA chain started: run-full.sh (phone,ipad,desktop then ipadL,phoneL).
 - 02:43 PDT post-merge phone: 7/7 PASS (log /home/box/elearnea/qa/firefly-choir/final-phone.log). Branch pushed at 17ca840. The 3-viewport job was too slow for its 870 s timeout (timeout wrapped the slot wait), so I stopped it (own PIDs) and re-queued one qa-slot job per viewport: ipad, desktop, ipadL, phoneL (run-full.sh, logs final-<vp>.log).
 - 03:27 PDT final QA: phone 7/7, ipad 7/7, desktop 7/7, ipadL 7/7 PASS. phoneL FAILED (high/low squeezed, wick 62px) -> landscape-phone layout fixed, rerunning phoneL (+phone regression).
+- 03:39 PDT after the landscape fix: phoneL 7/7 PASS, phone 7/7 PASS (the CSS only applies at max-height 520 + landscape, so ipad/desktop/ipadL runs stand). Screenshots checked by eye. FINAL: 35/35 checks PASS across 5 viewports. Pushed game/firefly-choir; QA server stopped.
