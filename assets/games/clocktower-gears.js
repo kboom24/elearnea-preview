@@ -29,7 +29,7 @@ El.defineGame({
     // speech: every line below is in voice/manifest.json (tools/voice/build-manifest.js, Clocktower Gears section)
     // cb runs once the line has really ended (watchdog: the clip's length + 1.5 s, voice/voice-then.js), never on a fixed timer that could
     // cut a long line short; wd (old fixed watchdog) is ignored
-    const speak = (t, cb) => host.sayThen(t, { rate: .95 }, cb ? () => { if (alive) cb(); } : null, 0).heard;
+    const speak = (t, cb) => praising ? false : host.sayThen(t, { rate: .95 }, cb ? () => { if (alive) cb(); } : null, 0).heard;
     // praise after a right answer, then the next question: only after the praise has ended (+ 300 ms), and at least `min` ms after the tap
     let praising = false; const praiseThen = (line, min) => { praising = true; const t0 = Date.now();
       host.sayThen(line, { rate: .95 }, () => T(() => { praising = false; next(); }, Math.max(0, min - (Date.now() - t0))), 300); };

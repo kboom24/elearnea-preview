@@ -19,7 +19,7 @@ El.defineGame({
       <button class="wick ff-wick" id="ffWick" aria-label="Wick"><img src="${El.url('assets/img/wick-sm.webp')}" alt=""></button></div>`;
     const $ = (id) => root.querySelector('#' + id), field = $('ffField'), jars = $('ffJars'), ans = $('ffAns'), txt = $('ffTxt');
     let prompt = '', praising = false;
-    const speak = (t, o) => host.say(t, Object.assign({ rate: .95 }, o || {}));
+    const speak = (t, o) => praising ? false : host.say(t, Object.assign({ rate: .95 }, o || {})); // nothing talks over praise
     // speak, then go on once the line has ended (+ gap; watchdog = clip length + 1.5 s): feedback is never cut by the next line
     const speakThen = (t, then, gap, o) => host.sayThen(t, Object.assign({ rate: .95 }, o || {}), () => { if (alive) then(); }, gap);
     const setPrompt = (t, spoken) => { prompt = spoken || t; txt.textContent = t; speak(prompt); };
@@ -38,7 +38,7 @@ El.defineGame({
       ans.innerHTML = ''; ans.classList.remove('hidden');
       rng.shuffle([...opts]).forEach(v => { const b = document.createElement('button'); b.className = 'btn ' + ['', 'teal', 'coral'][ans.children.length]; b.textContent = v; b.setAttribute('aria-label', W[v] || String(v)); b._v = v; b.onclick = () => onPick(b, v); ans.appendChild(b); });
     }
-    function countAlong(jar, n, done) { const dots = jar.querySelectorAll('.in i'); let k = 0; const step = () => { if (k > 0 && dots[k - 1]) dots[k - 1].classList.remove('hl'); if (k >= n) { if (done) T(done, 300); return; } if (dots[k]) dots[k].classList.add('hl'); jar.querySelector('.num').textContent = k + 1; host.sfx.step(k); const t0 = Date.now(); k++;
+    function countAlong(jar, n, done) { const dots = jar.querySelectorAll('.in i'); let k = 0; const step = () => { if (praising || !jar.isConnected) return; /* answered mid-count: the count stops (and never runs into the next question), praise is not cut */ if (k > 0 && dots[k - 1]) dots[k - 1].classList.remove('hl'); if (k >= n) { if (done) T(done, 300); return; } if (dots[k]) dots[k].classList.add('hl'); jar.querySelector('.num').textContent = k + 1; host.sfx.step(k); const t0 = Date.now(); k++;
       speakThen(W[k], () => T(step, Math.max(0, 650 - (Date.now() - t0))), 60, { rate: 1.1 }); }; step(); } // each number is heard in full
     function question() {
       if (qi >= total) { host.end({ total, done: total, firstTry }); return; }
