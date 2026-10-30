@@ -15,7 +15,7 @@
     empty: 'Add some arrows first!', full: 'No more room!', fullLoop: 'No more room! Try the repeat block.', fillRep: 'Put an arrow in the repeat block!',
     tapArrow: 'First tap the arrow you want to fix.',
     // gentle stops (no crash, no lives)
-    flower: 'Oops! A flowerbed is in the way.', stone: 'Oops! A stone is in the way.', edge: "Oops! That's the edge of the garden.",
+    flower: 'A flowerbed is in the way!', stone: 'Oops! A stone is in the way.', edge: "Oops! That's the edge of the garden.",
     short: 'Oh! I did not reach the lantern.', far: 'Oops! I went too far.',
     // help that gets stronger: 1) the step that went wrong, 2) trace the right next arrow, 3) a program that works
     wrongStep: 'This arrow went the wrong way.', missing: 'Add one more arrow here.', extra: 'This arrow is one too many.',

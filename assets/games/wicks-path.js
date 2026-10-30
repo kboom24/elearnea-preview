@@ -79,7 +79,7 @@ El.defineGame({
     $('wpSay').onclick = $('wpWick').onclick = () => { if (prompt) speak(prompt); const w = $('wpWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
 
     // board size: keep cells square inside the scene at any viewport
-    const fit = () => { if (!P) return; const r = scene.getBoundingClientRect(), pad = 14, m = 40; // m: room for the hedge and frame around the garden
+    const fit = () => { if (!P) return; const r = scene.getBoundingClientRect(), pad = 14, m = r.width < 520 ? 26 : 40; // m: room for the hedge and frame around the garden
       const cw = Math.max(40, Math.min(P.C === 3 ? 200 : 160, (r.width - (pad + m) * 2) / P.C, (r.height - (pad + m) * 2) / P.R));
       garden.style.width = cw * P.C + pad * 2 + 'px'; garden.style.height = cw * P.R + pad * 2 + 'px'; board.style.setProperty('--cw', cw + 'px'); };
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => fit()) : null; if (ro) ro.observe(scene); else addEventListener('resize', fit);
@@ -146,7 +146,8 @@ El.defineGame({
     const arrows = (dirs) => dirs.map(d => ({ t: 'a', d }));
     function finish(p, sol, deco) { p.sol = sol; const path = new Set(walkCells(p, flatOf(sol).map(f => f.d)).cells); p.dist0 = flatOf(sol).length; if (deco) decorate(p, deco, path); p.dist = distTable(p); return p; }
 
-    function makePuzzle(item) { const lv = lvl();
+    // the garden is 5 wide x 4 tall on wide screens and 4 x 5 on tall (portrait phone) screens, so the cells stay big
+    function makePuzzle(item) { const lv = lvl(), tall = scene.clientHeight > scene.clientWidth * 1.05, GC = tall ? 4 : 5, GR = tall ? 5 : 4;
       if (mode === 'step') { // 3x3 garden, one arrow to the lantern
         const p = blank(3, 3), d = item; let sx = 1, sy = 1;
         if (lv >= 3) { const opts = []; for (let y = 0; y < 3; y++) for (let x = 0; x < 3; x++) if (inside(p, x + DV[d][0], y + DV[d][1]) && !(x === 1 && y === 1)) opts.push([x, y]); [sx, sy] = rng.pick(opts); }
@@ -155,9 +156,9 @@ El.defineGame({
         p.tray = lv === 0 ? rng.shuffle([d, rng.pick(DIRS.filter(x => x !== d))]) : DIRS.slice(); p.cap = 1; return p; }
       if (mode === 'seq' || mode === 'debug') {
         const n = mode === 'debug' ? [2, 3, 4, 5][lv] : +String(item).replace(/\D/g, '') || 3, kind = mode === 'debug' ? (lv >= 3 && rng.next() < .5 ? 'o' : lv >= 1 ? 't' : rng.pick(['s', 't'])) : String(item).replace(/\d/g, '');
-        for (let t = 0; t < 50; t++) { const p = blank(5, 4);
-          if (kind === 'o') { const g = detour(5, 4, Math.max(3, n)); if (!g) continue; Object.assign(p, g.p); finish(p, arrows(g.dirs), lv >= 3 ? 1 : 0); }
-          else { const g = monotone(5, 4, n, kind === 's' ? 'straight' : 'turn'); if (!g) continue; p.sx = g.sx; p.sy = g.sy; const w = walkCells(p, g.dirs);
+        for (let t = 0; t < 50; t++) { const p = blank(GC, GR);
+          if (kind === 'o') { const g = detour(GC, GR, Math.max(3, n)); if (!g) continue; Object.assign(p, g.p); finish(p, arrows(g.dirs), lv >= 3 ? 1 : 0); }
+          else { const g = monotone(GC, GR, n, kind === 's' ? 'straight' : 'turn'); if (!g) continue; p.sx = g.sx; p.sy = g.sy; const w = walkCells(p, g.dirs);
             if (kind === 'two') { const mid = rng.int(1, n - 2); let x = p.sx, y = p.sy; for (let k = 0; k <= mid; k++) { x += DV[g.dirs[k]][0]; y += DV[g.dirs[k]][1]; } p.lan = [{ x, y }, { x: w.x, y: w.y }]; }
             else p.lan = [{ x: w.x, y: w.y }];
             finish(p, arrows(g.dirs), lv >= 1 ? rng.int(1, 3) : rng.int(0, 1)); }
@@ -169,13 +170,13 @@ El.defineGame({
           return p; }
         return null; }
       // loop: the repeat block shortens the path; the strip's slot limit makes the loop worth it
-      for (let t = 0; t < 80; t++) { const p = blank(5, 4); let sol;
-        if (item === 'line' || item === 'line4') { const n = item === 'line4' ? 4 : 3, g = monotone(5, 4, n, 'straight'); if (!g) continue; p.sx = g.sx; p.sy = g.sy; sol = [{ t: 'r', n, body: [g.dirs[0]] }]; }
+      for (let t = 0; t < 80; t++) { const p = blank(GC, GR); let sol;
+        if (item === 'line' || item === 'line4') { const n = item === 'line4' ? 4 : 3, g = monotone(GC, GR, n, 'straight'); if (!g) continue; p.sx = g.sx; p.sy = g.sy; sol = [{ t: 'r', n, body: [g.dirs[0]] }]; }
         else if (item === 'turn') { const h = rng.pick(['L', 'R']), v = rng.pick(['U', 'D']), long = rng.next() < .6 ? h : v, other = long === h ? v : h, first = rng.next() < .5;
-          const dirs = first ? [other, long, long, long] : [long, long, long, other]; let sx = rng.int(0, 4), sy = rng.int(0, 3); p.sx = sx; p.sy = sy; let okk = true, x = sx, y = sy; for (const d of dirs) { x += DV[d][0]; y += DV[d][1]; if (!inside(p, x, y)) okk = false; } if (!okk) continue;
+          const dirs = first ? [other, long, long, long] : [long, long, long, other]; let sx = rng.int(0, GC - 1), sy = rng.int(0, GR - 1); p.sx = sx; p.sy = sy; let okk = true, x = sx, y = sy; for (const d of dirs) { x += DV[d][0]; y += DV[d][1]; if (!inside(p, x, y)) okk = false; } if (!okk) continue;
           sol = first ? [{ t: 'a', d: other }, { t: 'r', n: 3, body: [long] }] : [{ t: 'r', n: 3, body: [long] }, { t: 'a', d: other }]; }
         else { const n = item === 'stairs2' ? 2 : 3, h = rng.pick(['L', 'R']), v = rng.pick(['U', 'D']), body = rng.next() < .5 ? [v, h] : [h, v];
-          p.sx = h === 'R' ? rng.int(0, 4 - n) : rng.int(n, 4); p.sy = v === 'D' ? rng.int(0, 3 - n) : rng.int(n, 3); if (!inside(p, p.sx, p.sy)) continue; sol = [{ t: 'r', n, body }];
+          p.sx = h === 'R' ? rng.int(0, GC - 1 - n) : rng.int(n, GC - 1); p.sy = v === 'D' ? rng.int(0, GR - 1 - n) : rng.int(n, GR - 1); if (!inside(p, p.sx, p.sy)) continue; sol = [{ t: 'r', n, body }];
           if (item === 'stairs2') { const extra = rng.pick(DIRS); sol = rng.next() < .5 ? [{ t: 'a', d: extra }, ...sol] : [...sol, { t: 'a', d: extra }]; } }
         const f = flatOf(sol), w = walkCells(p, f.map(x => x.d)); if (!inside(p, w.x, w.y) || new Set(w.cells).size !== w.cells.length) continue; let okc = true; for (const c of w.cells) { const [x, y] = c.split(',').map(Number); if (!inside(p, x, y)) okc = false; } if (!okc) continue;
         p.lan = [{ x: w.x, y: w.y }]; finish(p, sol, lvl() >= 1 ? rng.int(1, 2) : 0); if (p.dist({ x: p.sx, y: p.sy, m: 0 }) !== f.length) continue;

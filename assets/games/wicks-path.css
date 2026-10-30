@@ -32,7 +32,7 @@
 @keyframes lanwait { 50% { transform: rotate(4deg); } }
 @keyframes glow { to { filter: brightness(1.25); transform: scale(1.08); } }
 .wp-board .wickp { z-index: 5; transition: left .42s cubic-bezier(.4,1.4,.6,1), top .42s cubic-bezier(.4,1.4,.6,1); }
-.wp-board .wickp img { width: 108%; height: 108%; object-fit: cover; margin-top: -14%; -webkit-mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); transition: transform .25s; }
+.wp-board .wickp img { width: 108%; height: 108%; object-fit: cover; margin-top: -14%; -webkit-mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); }
 .wp-board .wickp.flip img { transform: scaleX(-1); }
 .wp-board .wickp.bonk img { animation: bonk .7s ease; }
 .wp-board .wickp.flip.bonk img { animation: bonkf .7s ease; }

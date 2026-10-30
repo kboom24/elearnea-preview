@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:13:35.251Z",
+ "generated": "2026-10-30T09:30:50.123Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -62,11 +62,11 @@
    "sentence": 430
   },
   "needsHumanCheck": 290,
-  "withClip": 2178,
+  "withClip": 2222,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 44,
+  "pending": 0,
   "gaps": 0
  },
  "items": [
@@ -1127,12 +1127,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Puzzle Castle, tap to go in.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.puzzle-castle-tap-to-go-in.mp3"
@@ -1186,12 +1195,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "One arrow to the lantern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.one-arrow-to-the-lantern.mp3"
@@ -1211,12 +1229,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Make a path for WIC.",
+     "score": 0.8,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.make-a-path-for-wick.mp3"
@@ -1236,12 +1263,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Fix the path.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.fix-the-path.mp3"
@@ -1261,12 +1297,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Make it short with repeat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.make-it-short-with-repeat.mp3"
@@ -75775,12 +75820,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Go Up!",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.go-up.mp3"
@@ -75800,12 +75854,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Go down.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.go-down.mp3"
@@ -75825,12 +75888,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Go left.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.go-left.mp3"
@@ -75850,12 +75922,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Go right.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.go-right.mp3"
@@ -75875,12 +75956,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Repeat two times.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.repeat-two-times.mp3"
@@ -75900,12 +75990,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "3 times.",
+     "score": 0.8,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.repeat-three-times.mp3"
@@ -75925,12 +76024,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Repeat four times.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.repeat-four-times.mp3"
@@ -75950,12 +76058,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Help me light the lantern. Pick an arrow. Then press go. //",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.help-me-light-the-lantern-pick-an-ar-b7f47c.mp3"
@@ -75975,12 +76092,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which way to the lantern?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.which-way-to-the-lantern.mp3"
@@ -76000,12 +76126,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Make a path to the lantern. Then press go.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.make-a-path-to-the-lantern-then-press-go.mp3"
@@ -76025,12 +76160,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Make a path to the lantern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.make-a-path-to-the-lantern.mp3"
@@ -76050,12 +76194,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Light both lanterns.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.light-both-lanterns.mp3"
@@ -76075,12 +76228,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Oh no, one arrow is wrong. Find it and fix it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.oh-no-one-arrow-is-wrong-find-it-and-fix-it.mp3"
@@ -76100,12 +76262,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the wrong arrow and fix it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.find-the-wrong-arrow-and-fix-it.mp3"
@@ -76125,12 +76296,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Now, pick the right arrow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.now-pick-the-right-arrow.mp3"
@@ -76150,12 +76330,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "First, tap the arrow you want to fix.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.first-tap-the-arrow-you-want-to-fix.mp3"
@@ -76175,12 +76364,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Use the repeat block to make it short.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.use-the-repeat-block-to-make-it-short.mp3"
@@ -76200,12 +76398,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Use the repeat block.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.use-the-repeat-block.mp3"
@@ -76225,12 +76432,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Add some arrows first.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.add-some-arrows-first.mp3"
@@ -76250,12 +76466,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "There's no more room.",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.no-more-room.mp3"
@@ -76275,12 +76500,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "No more room. Try the repeat block. . . . . . . . . .",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.no-more-room-try-the-repeat-block.mp3"
@@ -76300,22 +76534,31 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Put an arrow in the repeat block.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.put-an-arrow-in-the-repeat-block.mp3"
    ]
   },
   {
-   "id": "wp.oops-a-flowerbed-is-in-the-way",
-   "key": "oops a flowerbed is in the way",
-   "text": "Oops! A flowerbed is in the way.",
-   "render": "Oops! A flowerbed is in the way.",
+   "id": "wp.a-flowerbed-is-in-the-way",
+   "key": "a flowerbed is in the way",
+   "text": "A flowerbed is in the way!",
+   "render": "A flowerbed is in the way!",
    "type": "feedback",
    "uses": [
     {
@@ -76325,15 +76568,24 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "A flower bed is in the way.",
+     "score": 0.77,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
-    "voice/clips/wp.oops-a-flowerbed-is-in-the-way.mp3"
+    "voice/clips/wp.a-flowerbed-is-in-the-way.mp3"
    ]
   },
   {
@@ -76350,12 +76602,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Boops, a stone is in the way.",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.oops-a-stone-is-in-the-way.mp3"
@@ -76375,12 +76636,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Whoops, that's the edge of the garden.",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.oops-thats-the-edge-of-the-garden.mp3"
@@ -76400,12 +76670,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "So, I did not reach the lantern.",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.oh-i-did-not-reach-the-lantern.mp3"
@@ -76425,12 +76704,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Loops, I went too far.",
+     "score": 0.8,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.oops-i-went-too-far.mp3"
@@ -76450,12 +76738,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This arrow went the wrong way.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.this-arrow-went-the-wrong-way.mp3"
@@ -76475,12 +76772,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Add one more arrow here.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.add-one-more-arrow-here.mp3"
@@ -76500,12 +76806,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This arrow is one too many.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.this-arrow-is-one-too-many.mp3"
@@ -76525,12 +76840,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "this way.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.this-way.mp3"
@@ -76550,12 +76874,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here is a path that works. Press go.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.here-is-a-path-that-works-press-go.mp3"
@@ -76575,12 +76908,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "You lit the lantern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.you-lit-the-lantern.mp3"
@@ -76600,12 +76942,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The lantern is glowing.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.the-lantern-is-glowing.mp3"
@@ -76625,12 +76976,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your program works.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.your-program-works.mp3"
@@ -76650,12 +77010,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Both lanterns are glowing.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.both-lanterns-are-glowing.mp3"
@@ -76675,12 +77044,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "You fixed it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.you-fixed-it.mp3"
@@ -76700,12 +77078,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "A short program, smart thinking.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.a-short-program-smart-thinking.mp3"
@@ -76725,12 +77112,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "All the lanterns are glowing.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/wp.all-the-lanterns-are-glowing.mp3"
