@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T08:43:04.446Z",
+ "generated": "2026-10-30T09:07:35.665Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -34,7 +34,7 @@
   "scriptClips": 1267,
   "usedByCode": 1303
  },
- "elearneaCsv": "/home/box/elearnea/voice/sfx/elearnea-lines.csv",
+ "elearneaCsv": "/home/box/elearnea/voice/elearnea-lines.csv",
  "sfx": [
   {
    "id": "sfx.animal.cow",
