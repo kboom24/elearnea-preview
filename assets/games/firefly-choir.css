@@ -88,7 +88,19 @@
 .fc-start.gone { opacity: 0; pointer-events: none; }
 .fc-start .btn.round.big { width: 150px; height: 150px; } .fc-start .btn svg { width: 70px; height: 70px; }
 
-/* short landscape phones: shrink the prompt row, keep targets >= 96px */
-@media (max-height: 520px) { .fc-prompt { min-height: 64px; } .fc-wick { width: 62px; } .fc-tray { min-height: 104px; padding-top: 4px; }
-  .fc-card { width: 110px; height: 110px; } .fc-drum { width: 150px; height: 150px; } .hl-fly { width: 100px; height: 100px; } }
+/* short landscape phones (e.g. 844x390): Wick and the prompt move to a left column so the play area keeps its full height; targets stay >= 96px */
+@media (max-height: 520px) and (orientation: landscape) {
+  .fc { grid-template-columns: minmax(150px, 26%) 1fr; grid-template-rows: 1fr auto; padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  .fc-prompt { grid-row: 1 / span 2; grid-column: 1; flex-direction: column; justify-content: center; min-height: 0; gap: 6px; }
+  .fc-prompt .bubble { font-size: 1.15rem; padding: 10px 12px; }
+  .fc-prompt .bubble::before { left: 50%; top: -12px; transform: translateX(-50%); border: 10px solid transparent; border-bottom: 14px solid var(--cream); border-top: 0; }
+  .fc-wick { width: 70px; margin: 0; }
+  .fc-scene { grid-column: 2; grid-row: 1; } .fc-tray { grid-column: 2; grid-row: 2; min-height: 0; padding-top: 2px; }
+  .fc-tray:empty { padding: 0; }
+  .fc-card { width: 104px; height: 104px; } .fc-card.nt { width: 100px; height: 100px; } .fc-drum { width: 140px; height: 140px; }
+  .hl-fly { width: 100px; height: 100px; } .hl-lantern { width: 76px; }
+  .tp-singer { width: 150px; }
+  .ec-dots { top: 10%; } .ec-wick { top: 48%; width: 84px; }
+  .pt-wrap { flex-direction: row; gap: 14px; } .pt-branch { width: min(60vw, 560px); padding: 14px 8px 26px; } .fc-songbtn { width: 96px; height: 96px; }
+}
 @media (prefers-reduced-motion: reduce) { .pt-branch .spot.next, .tp-singer.glow .ffly { animation: none; } }
