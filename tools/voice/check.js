@@ -48,7 +48,7 @@ const DYNAMIC = {
 };
 const files = [];
 const walk = (d, rel) => { for (const f of fs.readdirSync(d)) { const p = path.join(d, f), r = rel ? rel + '/' + f : f; const st = fs.statSync(p);
-  if (st.isDirectory()) { if (['voice', 'tools', 'node_modules', '.git', 'mothabet'].includes(f) && !rel) continue; if (r === 'play/mothabet') continue; walk(p, r); }
+  if (st.isDirectory()) { if (['voice', 'tools', 'qa', 'node_modules', '.git', 'mothabet'].includes(f) && !rel) continue; if (r === 'play/mothabet') continue; walk(p, r); }
   else if (/\.(js|html)$/.test(f) && r !== 'sw.js') files.push([p, r]); } };
 walk(APP, '');
 for (const f of ['game.js', 'voice.js', 'index.html']) files.push([path.join(SRC, f), 'mothabet/' + f]);

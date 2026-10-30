@@ -78,7 +78,8 @@ El.defineGame({
         const paint = (k, cls) => { dots.innerHTML = Array.from({ length: Math.max(k, 1) }, (_, j) => `<i class="${j < k ? cls || 'on' : ''}"></i>`).join(''); };
         const drum = kit.single(El.pic('drum'), 'Drum'); drum.classList.remove('huge'); drum.classList.add('lb-drum'); drum.dataset.n = c.n;
         const hit = () => { sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); };
-        const model = (then) => { demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { let k = 0; const beat = () => { if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }); };
+        // mt: only the newest model run continues (Wick's "hear it again" restarts it; voice onend now also fires when a line is interrupted)
+        let mt = 0; const model = (then) => { const my = ++mt; demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { if (my !== mt) return; let k = 0; const beat = () => { if (my !== mt) return; if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }); };
         const turn = () => { taps = 0; paint(0); drum.dataset.turn = '1'; say(LN.barn.turn(c)); };
         const claps = LN.barn.claps(c);
         const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; drum.dataset.turn = ''; kit.yes(drum); paint(c.n, 'on'); T(() => say(LN.barn.claps(c)), 300); finish(miss === 0, { wait: 2800 }); return; }
