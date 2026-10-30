@@ -20,9 +20,12 @@
     'CCSS.MATH.CONTENT.K.CC.B.5': 'Count to answer “how many?”',
     'CCSS.MATH.CONTENT.K.OA.A.2': 'Addition within 10',
     'CCSS.MATH.CONTENT.K.OA.A.5': 'Add within 5 fluently',
-    'CCSS.MATH.CONTENT.1.OA.C.6': 'Add within 20 (fluent within 10)'
+    'CCSS.MATH.CONTENT.1.OA.C.6': 'Add within 20 (fluent within 10)',
+    'CCSS.MATH.CONTENT.K.G.A.2': 'Name shapes (any size or turn)',
+    'CCSS.MATH.CONTENT.K.G.B.4': 'Compare shapes: sides and corners',
+    'CCSS.MATH.PRACTICE.MP7': 'Patterns: look for structure (practice standard)'
   };
-  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ');
+  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const DAY = 864e5;
   const dayNum = (t) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };

@@ -4,7 +4,8 @@
   "games": {
     "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
     "lily-pad": { "name": "Lily Pad Hop", "path": "play/lily-pad/", "tile": "assets/img/tile-lily.webp", "kind": "module", "ages": "4-7" },
-    "firefly-count": { "name": "Firefly Count", "path": "play/firefly-count/", "tile": "assets/img/tile-firefly.webp", "kind": "module", "ages": "4-7" }
+    "firefly-count": { "name": "Firefly Count", "path": "play/firefly-count/", "tile": "assets/img/tile-firefly.webp", "kind": "module", "ages": "4-7" },
+    "clocktower-gears": { "name": "Clocktower Gears", "path": "play/clocktower-gears/", "tile": "assets/img/tile-clocktower.webp", "kind": "module", "ages": "4-9" }
   },
   "subjects": [
     {
@@ -77,9 +78,25 @@
             "lessons": [
               { "id": "ma-l4", "name": "Bigger jars", "icon": "plus", "grade": "1", "standards": ["CCSS.MATH.CONTENT.1.OA.C.6"], "say": "Bigger jars to add!",
                 "game": { "id": "firefly-count", "config": { "mode": "add", "levels": [6, 8, 10], "rounds": 6 } } }
+            ] },
+          { "id": "ma.patterns", "name": "Patterns", "grade": "K", "standards": ["CCSS.MATH.PRACTICE.MP7"],
+            "standardsNote": "Repeating patterns (AB, AAB, ABB, ABC) have no Kindergarten CCSS content code. Tagged with the real CCSS Standard for Mathematical Practice MP7 (look for and make use of structure); K.OA-adjacent (early algebraic thinking).",
+            "lessons": [
+              { "id": "ma-l5", "name": "Gear patterns", "icon": "gear", "grade": "K", "standards": ["CCSS.MATH.PRACTICE.MP7"], "say": "Fix the gear patterns!",
+                "game": { "id": "clocktower-gears", "config": { "mode": "pattern", "rounds": 6 } } }
+            ] },
+          { "id": "ma.shapes-name", "name": "Name shapes", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.G.A.2"],
+            "lessons": [
+              { "id": "ma-l6", "name": "Find the shape", "icon": "shapes", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.G.A.2"], "say": "Find the shapes in the clocktower!",
+                "game": { "id": "clocktower-gears", "config": { "mode": "name", "rounds": 6, "shapes": ["circle", "square", "triangle", "rectangle"] } } }
+            ] },
+          { "id": "ma.shapes-sort", "name": "Sort shapes", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.G.B.4", "CCSS.MATH.CONTENT.K.G.A.2"],
+            "lessons": [
+              { "id": "ma-l7", "name": "Shape drawers", "icon": "shapes", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.G.B.4", "CCSS.MATH.CONTENT.K.G.A.2"], "say": "Sort the shapes into the drawers!",
+                "game": { "id": "clocktower-gears", "config": { "mode": "sort", "rounds": 8, "shapes": ["circle", "square", "triangle", "rectangle", "hexagon"] } } }
             ] }
         ],
-        "comingSoon": [ { "name": "Shapes", "icon": "puzzle" }, { "name": "Tell time", "icon": "clock" } ]
+        "comingSoon": [ { "name": "Tell time", "icon": "clock" } ]
       }
     },
     { "id": "science", "name": "Nature & Science", "realm": { "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "soon", "color": "#7CC4A4", "icon": "leaf", "img": "assets/img/isle-nature", "say": "Nature land is still growing. Coming soon!", "skills": [] } },

@@ -95,7 +95,8 @@
     wrong() { tone({ type: 'triangle', freq: 300, to: 210, dur: .22, vol: .12 }); },
     hop() { tone({ freq: 300, to: 720, dur: .18, vol: .12 }); },
     splash() { tone({ type: 'triangle', freq: 900, to: 300, dur: .25, vol: .06 }); },
-    win() { [12, 7, 4, 0, 4, 7, 12, 16].forEach((s, i) => tone({ freq: 392 * Math.pow(2, s / 12), dur: .5, vol: .1, delay: i * .1 })); }
+    win() { [12, 7, 4, 0, 4, 7, 12, 16].forEach((s, i) => tone({ freq: 392 * Math.pow(2, s / 12), dur: .5, vol: .1, delay: i * .1 })); },
+    tone // raw synth voice for game-specific sounds (respects the sound setting)
   };
 
   /* ------------------------------------------------------------ icons (inline SVG, original) */
@@ -126,6 +127,7 @@
     gear: '<path d="M26 16a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" fill="none" stroke="currentColor" stroke-width="7"/><path d="M26 4v8M26 40v8M4 26h8M40 26h8M10 10l6 6M36 36l6 6M42 10l-6 6M16 36l-6 6" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>',
     again: '<path d="M40 22a15 15 0 1 0-2 13" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M42 10v13H29" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>',
     map: '<path d="M6 12l13-5 14 5 13-5v33l-13 5-14-5-13 5z" fill="currentColor"/><path d="M19 7v33M33 12v33" stroke="#2A2152" stroke-width="3" opacity=".35"/>',
+    shapes: '<circle cx="16" cy="16" r="10" fill="#F08A7E"/><rect x="28" y="6" width="19" height="19" rx="2" fill="#7CC4A4"/><path d="M26 28 38 47H14z" fill="#F5B841" stroke="#F5B841" stroke-width="3" stroke-linejoin="round"/>',
     moon: '<path d="M33 7a19 19 0 1 0 12 26A16 16 0 0 1 33 7z" fill="currentColor"/>'
   };
   El.icon = (n, cls) => `<svg viewBox="0 0 52 52" aria-hidden="true"${cls ? ` class="${cls}"` : ''}>${I[n] || I.star}</svg>`;
