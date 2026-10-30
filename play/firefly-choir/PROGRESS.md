@@ -12,3 +12,4 @@
 - 03:39 PDT after the landscape fix: phoneL 7/7 PASS, phone 7/7 PASS (the CSS only applies at max-height 520 + landscape, so ipad/desktop/ipadL runs stand). Screenshots checked by eye. FINAL: 35/35 checks PASS across 5 viewports. Pushed game/firefly-choir; QA server stopped.
 - 04:05 PDT iPad perf 8/8 PASS (60 fps, p95 <=16.8 ms, boot <=87 ms). Landscape meadow fix: phoneL 7/7 PASS, screenshot checked. ASR job waiting on the shared voice lock (Night Garden/LQ/Suno ahead).
 - 04:23 PDT ASR 29/29 ok (score 1.0), 0 flagged; manifest rebuilt with the results; voice check 0 problems. phone regression 7/7 PASS. Pushed; server stopped.
+- 04:32 PDT origin/main still ab84135 (included). Voice check 0 problems; catalog valid with wicks-path + firefly-choir; sw.js has both. Post-merge QA queued per viewport (phone job 97209 + chain ipad/desktop/ipadL/phoneL) -> qa/firefly-choir/post-merge2/, final4-*.log.
