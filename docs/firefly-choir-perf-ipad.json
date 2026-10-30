@@ -1,0 +1,251 @@
+{
+  "game": "firefly-choir",
+  "measuredAt": "2026-10-30T11:01:55.529Z",
+  "slot": "qa-slot.sh --perf",
+  "cpus": 8,
+  "note": "headless Chrome + SwiftShader software GL: LOWER BOUND, not device-representative",
+  "runs": [
+    {
+      "viewport": "1024x1366",
+      "dpr": 2,
+      "lesson": "am-l1",
+      "loadStart": [
+        2.51,
+        2.63,
+        2.87
+      ],
+      "bootToGameMs": 87,
+      "phase": "choose",
+      "loadSample": [
+        2.31,
+        2.59,
+        2.86
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.8,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        2.31,
+        2.59,
+        2.86
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1024x1366",
+      "dpr": 2,
+      "lesson": "am-l2",
+      "loadStart": [
+        2.31,
+        2.59,
+        2.86
+      ],
+      "bootToGameMs": 73,
+      "phase": "choose",
+      "loadSample": [
+        2.31,
+        2.59,
+        2.86
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.7,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        2.2,
+        2.56,
+        2.85
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1024x1366",
+      "dpr": 2,
+      "lesson": "am-l3",
+      "loadStart": [
+        2.2,
+        2.56,
+        2.85
+      ],
+      "bootToGameMs": 66,
+      "phase": "listen",
+      "loadSample": [
+        2.2,
+        2.56,
+        2.85
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.8,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        2.19,
+        2.55,
+        2.84
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1024x1366",
+      "dpr": 2,
+      "lesson": "am-l4",
+      "loadStart": [
+        2.19,
+        2.55,
+        2.84
+      ],
+      "bootToGameMs": 62,
+      "phase": "build",
+      "loadSample": [
+        2.19,
+        2.55,
+        2.84
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.8,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        2.01,
+        2.51,
+        2.83
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1366x1024",
+      "dpr": 2,
+      "lesson": "am-l1",
+      "loadStart": [
+        2.01,
+        2.51,
+        2.83
+      ],
+      "bootToGameMs": 61,
+      "phase": "choose",
+      "loadSample": [
+        2.01,
+        2.51,
+        2.83
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.7,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        1.93,
+        2.48,
+        2.82
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1366x1024",
+      "dpr": 2,
+      "lesson": "am-l2",
+      "loadStart": [
+        1.93,
+        2.48,
+        2.82
+      ],
+      "bootToGameMs": 59,
+      "phase": "choose",
+      "loadSample": [
+        1.93,
+        2.48,
+        2.82
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.8,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        1.93,
+        2.48,
+        2.82
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1366x1024",
+      "dpr": 2,
+      "lesson": "am-l3",
+      "loadStart": [
+        1.86,
+        2.46,
+        2.81
+      ],
+      "bootToGameMs": 63,
+      "phase": "listen",
+      "loadSample": [
+        1.86,
+        2.46,
+        2.81
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.7,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        1.86,
+        2.46,
+        2.81
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    },
+    {
+      "viewport": "1366x1024",
+      "dpr": 2,
+      "lesson": "am-l4",
+      "loadStart": [
+        1.86,
+        2.46,
+        2.81
+      ],
+      "bootToGameMs": 74,
+      "phase": "build",
+      "loadSample": [
+        1.87,
+        2.45,
+        2.8
+      ],
+      "sampleMs": 3000,
+      "avgFps": 60,
+      "p95FrameMs": 16.8,
+      "worstFrameMs": 16.8,
+      "status": "ok",
+      "loadEnd": [
+        1.87,
+        2.45,
+        2.8
+      ],
+      "consoleErrors": 0,
+      "externalRequests": 0,
+      "pass": true
+    }
+  ],
+  "criteria": "gameplay avg >= 30 fps, p95 frame <= 50 ms, boot <= 5000 ms, 0 console errors, 0 external requests (as /home/box/games/tools/perf-ipad.template.js)",
+  "pass": true
+}

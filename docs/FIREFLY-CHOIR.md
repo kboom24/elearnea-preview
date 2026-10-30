@@ -22,3 +22,7 @@ least-squares tempo scale (allowed 0.45x-2.2x of the 520 ms beat, so a child may
 of the target ratio. Tap times are `performance.now()` in the pointerdown handler. Taps during Wick's demo or while judging are not counted.
 
 QA: `qa/tools/qa-firefly-choir.js` (see qa/tools/README.md); results and screenshots in /home/box/elearnea/qa/firefly-choir/.
+
+iPad timing (`qa/tools/perf-ipad-firefly-choir.js`, adapted from a copy of the shared perf-ipad template, run under `qa-slot.sh --perf`,
+2026-10-30 ~03:55 PDT): 8/8 PASS at 1024x1366 and 1366x1024, DPR 2, all four lessons during live gameplay: 60 fps average, p95 16.7-16.8 ms,
+worst 16.8 ms, boot 59-87 ms, 0 errors, 0 outside requests (headless SwiftShader: lower bound, not a device measurement). Raw: `docs/firefly-choir-perf-ipad.json`.
