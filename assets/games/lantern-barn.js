@@ -35,10 +35,10 @@ El.defineGame({
       host.emit('progress', { done: 0, total: order.length });
       let busy = false;
       b.onclick = () => { if (busy || k >= order.length) return; busy = true; const a = A[order[k]];
-        peek.innerHTML = El.pic(a.id); b.classList.add('open'); kit.yes(b);
+        peek.innerHTML = El.pic(a.id) + kit.word(a.name); peek.classList.add('has-word'); b.classList.add('open'); kit.yes(b);
         // the animal's sound, then Bella names it ("The pig says oink!"); the door closes only after her line has ended (+ 300 ms)
         T(() => { const d = sfx(a.id); T(() => say(LN.barn.says(a), () => { k++; host.emit('progress', { done: k, total: order.length });
-          T(() => { b.classList.remove('open', 'yes'); busy = false; if (k >= order.length) T(() => host.end({ total: order.length, done: order.length, firstTry: order.length }), 500); }, 400); }, 300), Math.max(850, d * 1000 + 250)); }, 250); };
+          T(() => { b.classList.remove('open', 'yes'); busy = false; if (k >= order.length) T(() => host.end({ total: order.length, done: order.length, firstTry: order.length }), 500); }, 400); }, 300, false, [peek.querySelector('.ll-word')]), Math.max(850, d * 1000 + 250)); }, 250); };
     }
 
     // who says that?
@@ -46,6 +46,7 @@ El.defineGame({
       const pool = D.animals.map(a => a.id), plan = L.pick(cfg.skill, pool, cfg.rounds || 5, rng);
       kit.run(plan, (id, i, finish) => { const a = A[id], n = El.Little.nChoices(L, cfg.skill, 2, 3);
         const list = rng.shuffle([id, ...El.Little.others(rng, pool, n - 1, [id])]); let miss = 0;
+        kit.labels('reveal', x => A[x].name); // identify-by-sound round: names appear on tap and with the answer, never before
         const btns = kit.options(list, x => El.pic(x), x => A[x].name); const right = btns.find(b => b._it === id); kit.mark(right);
         // the cue stops as soon as the right animal is picked (no animal sound or question over the praise)
         const cue = () => say(LN.barn.listen, () => { if (kit.praising) return; const d = sfx(id); T(() => say(LN.barn.who(a)), d * 1000 + 250); });
@@ -78,14 +79,15 @@ El.defineGame({
       // easier words (1-2 beats) first while the engine's difficulty is low
       const lvl = L.levelIndex(cfg.skill, 3), pool = D.claps.filter(c => c.n <= lvl + 1 || c.n <= 2).map(c => c.id), plan = L.pick(cfg.skill, pool, cfg.rounds || 5, rng);
       kit.run(plan, (id, i, finish) => { const c = C[id]; let taps = 0, idle = null, demo = false, miss = 0, done = false;
-        kit.show.innerHTML = `<div class="ll-model">${El.pic(c.id)}</div><div class="lb-dots" id="lbDots"></div>`;
+        kit.show.innerHTML = `<div class="ll-model has-word">${El.pic(c.id)}${kit.word(c.word)}</div><div class="lb-dots" id="lbDots"></div>`;
+        const mw = kit.show.querySelector('.ll-word'); // the word glows while Bella says it ("Let's clap... banana!")
         const dots = kit.show.querySelector('#lbDots');
         const paint = (k, cls) => { dots.innerHTML = Array.from({ length: Math.max(k, 1) }, (_, j) => `<i class="${j < k ? cls || 'on' : ''}"></i>`).join(''); };
         const drum = kit.single(El.pic('drum'), 'Drum'); drum.classList.remove('huge'); drum.classList.add('lb-drum'); drum.dataset.n = c.n;
         const hit = () => { sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); };
         // mt: only the newest model run continues (Wick's "hear it again" restarts it; voice onend now also fires when a line is interrupted)
-        let mt = 0; const model = (then) => { const my = ++mt; demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { if (my !== mt) return; let k = 0; const beat = () => { if (my !== mt) return; if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }); };
-        const turn = () => { taps = 0; paint(0); drum.dataset.turn = '1'; say(LN.barn.turn(c)); };
+        let mt = 0; const model = (then) => { const my = ++mt; demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { if (my !== mt) return; let k = 0; const beat = () => { if (my !== mt) return; if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }, 0, false, [mw]); };
+        const turn = () => { taps = 0; paint(0); drum.dataset.turn = '1'; say(LN.barn.turn(c), null, 0, false, [mw]); };
         const claps = LN.barn.claps(c);
         const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; drum.dataset.turn = ''; kit.yes(drum); paint(c.n, 'on'); finish(miss === 0, { say: LN.barn.claps(c), delay: 300 }); return; }
           miss++; kit.soft(drum); if (miss === 1) T(() => say(LN.barn.together, () => model(turn)), 300);

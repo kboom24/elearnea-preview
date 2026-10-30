@@ -28,6 +28,7 @@ El.defineGame({
     function answerRound(plan, build) {
       kit.run(plan, (item, i, finish) => { const q = build(item); let miss = 0;
         kit.show.innerHTML = q.model != null ? `<div class="ll-model gj-model">${J1(q.model)}</div>` : '';
+        kit.labels('reveal', n => LN.NW[n]); // the count IS the question: the number word shows on tap and with the answer
         const btns = kit.options(q.list, n => J1(n), n => 'Jar'), right = btns.find(b => b._it === q.right); kit.mark(right);
         kit.speak(q.cue);
         btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: q.yes, delay: 350 }); return; }
