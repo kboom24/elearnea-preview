@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "about": "Little Lanterns (ages 0-4) content for the early-learner games. Every spoken line is built from these fields by the game code AND by tools/voice/early-lines.js (same templates), so the voice manifest always covers it. Pictures are drawn in code (assets/js/pics.js); animal sounds are synthesized in the browser (assets/js/sfx-animals.js).",
+  "animals": [
+    { "id": "cow", "name": "cow", "sound": "moo" },
+    { "id": "duck", "name": "duck", "sound": "quack" },
+    { "id": "cat", "name": "cat", "sound": "meow" },
+    { "id": "dog", "name": "dog", "sound": "woof" },
+    { "id": "sheep", "name": "sheep", "sound": "baa" },
+    { "id": "pig", "name": "pig", "sound": "oink" },
+    { "id": "frog", "name": "frog", "sound": "ribbit" },
+    { "id": "bird", "name": "bird", "sound": "tweet" },
+    { "id": "owl", "name": "owl", "sound": "hoo" }
+  ],
+  "words": [
+    { "id": "cat", "name": "cat", "a": "a cat" }, { "id": "dog", "name": "dog", "a": "a dog" }, { "id": "duck", "name": "duck", "a": "a duck" },
+    { "id": "cow", "name": "cow", "a": "a cow" }, { "id": "fish", "name": "fish", "a": "a fish" }, { "id": "bird", "name": "bird", "a": "a bird" },
+    { "id": "ball", "name": "ball", "a": "a ball" }, { "id": "apple", "name": "apple", "a": "an apple" }, { "id": "banana", "name": "banana", "a": "a banana" },
+    { "id": "cup", "name": "cup", "a": "a cup" }, { "id": "shoe", "name": "shoe", "a": "a shoe" }, { "id": "hat", "name": "hat", "a": "a hat" },
+    { "id": "car", "name": "car", "a": "a car" }, { "id": "tree", "name": "tree", "a": "a tree" }, { "id": "sun", "name": "sun", "a": "the sun" },
+    { "id": "moon", "name": "moon", "a": "the moon" }, { "id": "star", "name": "star", "a": "a star" }, { "id": "flower", "name": "flower", "a": "a flower" },
+    { "id": "bee", "name": "bee", "a": "a bee" }, { "id": "rabbit", "name": "rabbit", "a": "a rabbit" }
+  ],
+  "tinyWords": ["ball", "cat", "duck", "apple", "car", "moon", "dog", "flower"],
+  "colors": [
+    { "id": "red", "name": "red", "hex": "#E0584F", "dark": "#A8372F" },
+    { "id": "blue", "name": "blue", "hex": "#5DA9D6", "dark": "#3A7BA6" },
+    { "id": "yellow", "name": "yellow", "hex": "#F5B841", "dark": "#C98A1C" },
+    { "id": "green", "name": "green", "hex": "#6DBE7E", "dark": "#3F8A52" },
+    { "id": "purple", "name": "purple", "hex": "#9B8AD1", "dark": "#6E5FAA" },
+    { "id": "orange", "name": "orange", "hex": "#F0975A", "dark": "#C2672E" }
+  ],
+  "shapes": [
+    { "id": "circle", "name": "circle" }, { "id": "square", "name": "square" }, { "id": "triangle", "name": "triangle" },
+    { "id": "star", "name": "star" }, { "id": "heart", "name": "heart" }
+  ],
+  "rhymes": [
+    { "a": "cat", "b": "hat", "c": "sun" },
+    { "a": "car", "b": "star", "c": "fish" },
+    { "a": "bee", "b": "tree", "c": "ball" },
+    { "a": "moon", "b": "spoon", "c": "duck" },
+    { "a": "frog", "b": "log", "c": "cup" }
+  ],
+  "claps": [
+    { "id": "cat", "word": "cat", "n": 1 }, { "id": "sun", "word": "sun", "n": 1 }, { "id": "ball", "word": "ball", "n": 1 },
+    { "id": "apple", "word": "apple", "n": 2 }, { "id": "rabbit", "word": "rabbit", "n": 2 }, { "id": "flower", "word": "flower", "n": 2 },
+    { "id": "banana", "word": "banana", "n": 3 }, { "id": "butterfly", "word": "butterfly", "n": 3 }, { "id": "elephant", "word": "elephant", "n": 3 }, { "id": "umbrella", "word": "umbrella", "n": 3 }
+  ],
+  "letters": { "easy": ["O", "T", "A", "S", "X", "C", "H", "M"], "similar": [["E", "F"], ["M", "W"], ["O", "Q"], ["P", "R"], ["C", "G"], ["I", "L"]] },
+  "numberWords": ["zero", "one", "two", "three", "four", "five"],
+  "schwaWords": ["banana", "umbrella"]
+}

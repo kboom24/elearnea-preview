@@ -27,6 +27,10 @@
   .tag { display: inline-block; font-size: .78rem; padding: 2px 8px; border-radius: 999px; background: rgba(155,138,209,.25); margin: 2px 2px 0 0; }
   .acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
   .preview { display: inline-block; background: var(--coral); color: var(--ink); padding: 4px 12px; border-radius: 999px; font-size: .9rem; }
+  .ages { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 4px; }
+  .ages button { flex: 1 1 160px; min-height: 64px; border: 0; border-radius: 16px; padding: 10px 14px; cursor: pointer; font: 700 1.05rem var(--display); color: var(--ink); background: rgba(155,138,209,.18); box-shadow: inset 0 0 0 2px rgba(42,33,82,.15); text-align: left; }
+  .ages button small { display: block; font: 800 .85rem var(--ui); color: #4a3f75; }
+  .ages button[aria-pressed="true"] { background: var(--gold); box-shadow: 0 4px 0 var(--gold-d); }
 </style>
 </head>
 <body class="night">
@@ -60,6 +64,10 @@
       <section class="c w3" id="planC"><h2>__map__<span class="sp">Weekly plan</span><small>Suggested from the path. Every day labeled.</small></h2><div class="plan" id="plan"></div></section>
       <section class="c w2" id="skillsC"><h2>__star__<span class="sp">Skills and mastery</span></h2><div class="scroll" id="skills"></div><p class="note">“Solid” = words or facts that have come back correct on spaced reviews (Leitner box 3+). The games aim for about 80% first-try success.</p></section>
       <section class="c" id="recentC"><h2>__book__<span class="sp">Recent activity</span></h2><div class="scroll" id="recent"></div><p class="note" id="recent-note"></p></section>
+      <section class="c w3" id="ageC"><h2>__star__<span class="sp">Who is playing on this device?</span></h2>
+        <div class="ages" role="group" aria-label="Age band"><button data-band="tiny" aria-pressed="false">Under 2<small>Little Lanterns, play together</small></button><button data-band="little" aria-pressed="false">Ages 2–4<small>Little Lanterns</small></button><button data-band="explorer" aria-pressed="false">Ages 4–9<small>Explorers (K–3)</small></button></div>
+        <p class="note">This picks which lessons the map and paths show. It is saved in this browser only (no birthday, no name). Your child can also switch between Little Lanterns and Explorers with the lantern buttons on the map.</p>
+        <p class="note"><b>Under 2:</b> these lessons are made for playing together. Sit with your child, tap together, and talk about what you see and hear. Each one is very short, with a grown-up tip on screen. <b>Ages 2–4:</b> listening, first words, colors, shapes, rhyme, clapping beats, letter shapes and early counting, all spoken and shown in pictures, with no reading needed.</p></section>
       <section class="c w3" id="settingsC"><h2>__gear__<span class="sp">Settings for this device</span></h2>
         <div class="acts"><button class="dbtn teal" id="voiceB"></button><button class="dbtn lav" id="unlockB"></button><button class="dbtn coral" id="resetB">Reset progress</button></div>
         <p class="note">Progress is stored only in this browser (no account, no name). Voice: pre-recorded clips that ship with the site (Kokoro-82M, Apache-2.0, voice “Bella”); this device's own speech voice is used for anything without a clip yet.</p></section>
@@ -87,6 +95,9 @@
     tries++; if (tries >= 3) { e.textContent = 'Please wait a moment and try again.'; document.querySelectorAll('#opts .btn').forEach(b => b.disabled = true); setTimeout(() => { tries = 0; e.textContent = ''; ask(); }, 8000); } else { e.textContent = 'Not quite. Try this one.'; ask(); } }
   async function open() { document.getElementById('gate').style.display = 'none'; await El.Dash.open(); paint(); }
   function paint() { const d = El.store.load(); document.getElementById('voiceB').textContent = 'Voice: ' + (d.set.voice ? 'on' : 'off'); document.getElementById('unlockB').textContent = 'Demo: unlock all lessons (' + (d.demoUnlock ? 'on' : 'off') + ')'; }
+  const paintAge = () => { const b = El.band(); document.querySelectorAll('.ages button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.band === b))); };
+  document.querySelectorAll('.ages button').forEach(x => x.onclick = () => { El.setBand(x.dataset.band); paintAge(); location.reload(); });
+  paintAge();
   document.getElementById('voiceB').onclick = () => { const d = El.store.load(); d.set.voice = !d.set.voice; El.store.save(); paint(); };
   document.getElementById('unlockB').onclick = () => { const d = El.store.load(); d.demoUnlock = !d.demoUnlock; El.store.save(); paint(); };
   document.getElementById('resetB').onclick = () => { if (confirm('Reset all progress saved on this device?')) { El.store.reset(); El.Dash.render(); } };

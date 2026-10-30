@@ -23,9 +23,23 @@
     'CCSS.MATH.CONTENT.1.OA.C.6': 'Add within 20 (fluent within 10)',
     'CCSS.MATH.CONTENT.K.G.A.2': 'Name shapes (any size or turn)',
     'CCSS.MATH.CONTENT.K.G.B.4': 'Compare shapes: sides and corners',
-    'CCSS.MATH.PRACTICE.MP7': 'Patterns: look for structure (practice standard)'
+    'CCSS.MATH.PRACTICE.MP7': 'Patterns: look for structure (practice standard)',
+    // Head Start ELOF goals (Little Lanterns lessons are aligned to these goals; this is not an assessment that a goal is met)
+    'ELOF.IT-LC 1': 'Attends to and responds to communication (infant/toddler)',
+    'ELOF.IT-LC 7': 'Understands more and more words (infant/toddler)',
+    'ELOF.IT-LC 9': 'Attends to and repeats rhymes and songs (infant/toddler)',
+    'ELOF.IT-C 2': 'Cause and effect (infant/toddler)',
+    'ELOF.IT-C 8': 'Sense of number and quantity (infant/toddler)',
+    'ELOF.IT-C 10': 'Matching and sorting (infant/toddler)',
+    'ELOF.P-LC 1': 'Attends to communication and language (preschool)',
+    'ELOF.P-LC 6': 'Understands and uses a wide variety of words (preschool)',
+    'ELOF.P-LIT 1': 'Hears smaller sound parts: rhyme, beats (preschool)',
+    'ELOF.P-LIT 3': 'Letters of the alphabet (preschool; shape matching only here)',
+    'ELOF.P-MATH 2': 'Recognizes how many in a small set (preschool)',
+    'ELOF.P-MATH 4': 'Compares numbers: more and fewer (preschool)',
+    'ELOF.P-MATH 9': 'Identifies and describes shapes (preschool)'
   };
-  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ');
+  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const DAY = 864e5;
   const dayNum = (t) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };
@@ -77,8 +91,10 @@
     const col = (rid) => (cat.realms.find(r => r.id === rid) || {}).color || '#9B8AD1';
     const L = (ls, what, m) => ({ ls, title: what || ls.name, m, color: col(ls.realm), tile: cat.games[ls.game.id].tile });
     const rd = next('reading'), ma = next('math');
-    return [L(rd, 'New: ' + rd.name, 15), L(ma, 'New: ' + ma.name, 15), L(review('reading'), 'Review: ' + review('reading').name, 10), L(review('math'), 'Review: ' + review('math').name, 10), L(rd, 'Practice: ' + rd.name, 15),
-      { title: 'Free play: any open game', m: 10, color: '#F5B841', icon: 'star' }, { title: 'Rest day: read a picture book together', m: 0, color: '#9B8AD1', icon: 'book' }];
+    // Little Lanterns: much shorter sessions (under 2: a few minutes, played together)
+    const k = El.band() === 'tiny' ? .2 : El.isLittle() ? 1 / 3 : 1, mm = (m) => Math.max(3, Math.round(m * k));
+    return [L(rd, 'New: ' + rd.name, mm(15)), L(ma, 'New: ' + ma.name, mm(15)), L(review('reading'), 'Review: ' + review('reading').name, mm(10)), L(review('math'), 'Review: ' + review('math').name, mm(10)), L(rd, 'Practice: ' + rd.name, mm(15)),
+      { title: 'Free play: any open game', m: mm(10), color: '#F5B841', icon: 'star' }, { title: 'Rest day: read a picture book together', m: 0, color: '#9B8AD1', icon: 'book' }];
   }
 
   /* ---------- render */

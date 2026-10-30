@@ -6,6 +6,7 @@
   const cat = await El.catalog(); const realm = cat.realms.find(r => r.id === realmId);
   document.title = 'Elearnea · ' + realm.name;
   document.getElementById('title').innerHTML = realm.name + ' ' + El.icon(realm.icon);
+  if (El.isLittle()) { document.body.classList.add('little'); const tb = document.getElementById('title'); tb.innerHTML += `<span class="bandtag">${El.band() === 'tiny' ? 'Play together' : 'Little Lanterns'}</span>`; }
   document.getElementById('back').innerHTML = El.icon('back');
   document.getElementById('go').innerHTML = El.icon('play');
   El.ui.soundBtn(document.getElementById('snd'));
@@ -15,7 +16,7 @@
   const state = El.pathState(cat, realmId);
   const path = document.getElementById('path');
   // rows top to bottom: treasure, coming-soon stops, then lessons from last to first (the path climbs from the bottom)
-  const rows = [{ kind: 'chest' }, ...(realm.comingSoon || []).slice().reverse().map(s => ({ kind: 'soon', s })), ...state.slice().reverse().map(x => ({ kind: 'lesson', x }))];
+  const rows = [{ kind: 'chest' }, ...((El.isLittle() ? realm.comingSoonLittle : realm.comingSoon) || []).slice().reverse().map(s => ({ kind: 'soon', s })), ...state.slice().reverse().map(x => ({ kind: 'lesson', x }))];
   const n = rows.length, pts = [], tiles = []; let curEl = null, cur = null;
   const open = (x) => { El.sfx.tap(); const g = cat.games[x.ls.game.id]; const go = () => { location.href = El.url(g.path) + '?lesson=' + encodeURIComponent(x.ls.id); }; if (El.Voice.say(x.ls.say || x.ls.name, { rate: 1 })) setTimeout(go, 700); else go(); };
   const locked = () => { El.sfx.wrong(); El.Voice.say('Finish the glowing one first!', { rate: 1 }); El.ui.toast('Finish the glowing stop first!'); };

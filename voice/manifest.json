@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T05:56:57.602Z",
+ "generated": "2026-10-30T06:15:17.671Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -34,31 +34,34 @@
   "scriptClips": 1267,
   "usedByCode": 1303
  },
- "elearneaCsv": "/home/box/elearnea/voice/elearnea-lines.csv",
+ "elearneaCsv": "/home/box/elearnea/wt/voice/elearnea-lines.csv",
  "counts": {
-  "total": 1967,
-  "spoken": 1950,
+  "total": 2193,
+  "spoken": 2176,
   "reserved": 17,
   "byGame": {
-   "elearnea": 44,
+   "elearnea": 60,
    "lily-pad-hop": 327,
    "firefly-count": 72,
    "clocktower-gears": 35,
-   "mothabet": 1489
+   "mothabet": 1489,
+   "lantern-barn": 81,
+   "picture-garden": 121,
+   "glow-jars": 8
   },
   "byType": {
-   "instruction": 510,
-   "label": 133,
-   "feedback": 120,
-   "praise": 141,
+   "instruction": 596,
+   "label": 135,
+   "feedback": 202,
+   "praise": 197,
    "number": 10,
    "word": 551,
    "phoneme": 47,
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 280,
-  "withClip": 1952,
+  "needsHumanCheck": 290,
+  "withClip": 2178,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
@@ -98,6 +101,258 @@
    },
    "files": [
     "voice/clips/el.reading-land-tap-to-go-in.mp3"
+   ]
+  },
+  {
+   "id": "el.peekaboo-who-is-in-the-barn",
+   "key": "peekaboo who is in the barn",
+   "text": "Peekaboo! Who is in the barn?",
+   "render": "Peekaboo! Who is in the barn?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Peekaboo barn\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.peekaboo-who-is-in-the-barn.mp3"
+   ]
+  },
+  {
+   "id": "el.tap-and-look",
+   "key": "tap and look",
+   "text": "Tap and look!",
+   "render": "Tap and look!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Look and name\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.tap-and-look.mp3"
+   ]
+  },
+  {
+   "id": "el.who-says-moo-lets-listen",
+   "key": "who says moo let's listen",
+   "text": "Who says moo? Let's listen!",
+   "render": "Who says moo? Let's listen!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Who says that?\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.who-says-moo-lets-listen.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-pictures",
+   "key": "find the pictures",
+   "text": "Find the pictures!",
+   "render": "Find the pictures!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"First words\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.find-the-pictures.mp3"
+   ]
+  },
+  {
+   "id": "el.loud-or-quiet-lets-listen",
+   "key": "loud or quiet let's listen",
+   "text": "Loud or quiet? Let's listen!",
+   "render": "Loud or quiet? Let's listen!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Loud or quiet\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.loud-or-quiet-lets-listen.mp3"
+   ]
+  },
+  {
+   "id": "el.pop-the-balloons-find-the-colors",
+   "key": "pop the balloons find the colors",
+   "text": "Pop the balloons! Find the colors!",
+   "render": "Pop the balloons! Find the colors!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Colors\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.pop-the-balloons-find-the-colors.mp3"
+   ]
+  },
+  {
+   "id": "el.rhyme-time",
+   "key": "rhyme time",
+   "text": "Rhyme time!",
+   "render": "Rhyme time!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Rhyme time\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.rhyme-time.mp3"
+   ]
+  },
+  {
+   "id": "el.lets-clap-the-beats",
+   "key": "let's clap the beats",
+   "text": "Let's clap the beats!",
+   "render": "Let's clap the beats!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Clap the beats\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.lets-clap-the-beats.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-matching-letter-shapes",
+   "key": "find the matching letter shapes",
+   "text": "Find the matching letter shapes!",
+   "render": "Find the matching letter shapes!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Letter shapes\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.find-the-matching-letter-shapes.mp3"
    ]
   },
   {
@@ -370,6 +625,151 @@
    },
    "files": [
     "voice/clips/el.math-land-tap-to-go-in.mp3"
+   ]
+  },
+  {
+   "id": "el.tap-the-jar-and-count",
+   "key": "tap the jar and count",
+   "text": "Tap the jar and count!",
+   "render": "Tap the jar and count!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Firefly jar\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.tap-the-jar-and-count.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-jars-that-match",
+   "key": "find the jars that match",
+   "text": "Find the jars that match!",
+   "render": "Find the jars that match!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Match the jars\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.find-the-jars-that-match.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-shapes",
+   "key": "find the shapes",
+   "text": "Find the shapes!",
+   "render": "Find the shapes!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Shapes\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.find-the-shapes.mp3"
+   ]
+  },
+  {
+   "id": "el.one-two-three-fireflies",
+   "key": "one two three fireflies",
+   "text": "One, two, three fireflies!",
+   "render": "One, two, three fireflies!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"One, two, three\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.one-two-three-fireflies.mp3"
+   ]
+  },
+  {
+   "id": "el.which-jar-has-more",
+   "key": "which jar has more",
+   "text": "Which jar has more?",
+   "render": "Which jar has more?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Which has more?\" (also tap Wick when it is the current stop)"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: which has more",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.which-jar-has-more.mp3"
    ]
   },
   {
@@ -12774,6 +13174,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "wrong answer (count-along starts)"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "first miss (count-along starts)"
     }
    ],
    "source": {
@@ -12847,6 +13252,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears sort round",
      "trigger": "2nd wrong drawer: the right drawer glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden / Lantern Barn / Glow Jars",
+     "trigger": "second miss: the answer glows"
     }
    ],
    "source": {
@@ -12959,6 +13369,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "a firefly flies out / counting along"
     }
    ],
    "source": {
@@ -12991,6 +13406,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "correct answer"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match / how many",
+     "trigger": "right jar tapped"
     }
    ],
    "source": {
@@ -13035,6 +13455,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "a firefly flies out / counting along"
     }
    ],
    "source": {
@@ -13067,6 +13492,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "correct answer"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match / how many",
+     "trigger": "right jar tapped"
     }
    ],
    "source": {
@@ -13106,6 +13536,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find/sort round",
      "trigger": "count-along: each side highlighted"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "a firefly flies out / counting along"
     }
    ],
    "source": {
@@ -13140,6 +13575,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "correct answer"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match / how many",
+     "trigger": "right jar tapped"
     }
    ],
    "source": {
@@ -13179,6 +13619,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find/sort round",
      "trigger": "count-along: each side highlighted"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "a firefly flies out / counting along"
     }
    ],
    "source": {
@@ -13213,6 +13658,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "correct answer"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match / how many",
+     "trigger": "right jar tapped"
     }
    ],
    "source": {
@@ -13257,6 +13707,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f4",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars",
+     "trigger": "a firefly flies out / counting along"
     }
    ],
    "source": {
@@ -13289,6 +13744,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "correct answer"
+    },
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match / how many",
+     "trigger": "right jar tapped"
     }
    ],
    "source": {
@@ -15607,6 +16067,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "new shape to find; after a wrong shape; after the count-along"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "new question"
     }
    ],
    "source": {
@@ -15641,6 +16106,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "1st wrong shape (names the shape tapped)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "another shape tapped"
     }
    ],
    "source": {
@@ -15675,6 +16145,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find/sort round",
      "trigger": "right shape / right drawer"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "right shape tapped"
     }
    ],
    "source": {
@@ -15777,6 +16252,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "new shape to find; after a wrong shape; after the count-along"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "new question"
     }
    ],
    "source": {
@@ -15811,6 +16291,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "1st wrong shape (names the shape tapped)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "another shape tapped"
     }
    ],
    "source": {
@@ -15845,6 +16330,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find/sort round",
      "trigger": "right shape / right drawer"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "right shape tapped"
     }
    ],
    "source": {
@@ -15947,6 +16437,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "new shape to find; after a wrong shape; after the count-along"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "new question"
     }
    ],
    "source": {
@@ -15981,6 +16476,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find round",
      "trigger": "1st wrong shape (names the shape tapped)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "another shape tapped"
     }
    ],
    "source": {
@@ -16015,6 +16515,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears find/sort round",
      "trigger": "right shape / right drawer"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "right shape tapped"
     }
    ],
    "source": {
@@ -56916,6 +57421,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f12",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (animals, loud/quiet)",
+     "trigger": "before each sound"
     }
    ],
    "parts": [
@@ -69067,6 +69577,6062 @@
    },
    "files": [
     "voice/mb/mh_m_stars84.mp3"
+   ]
+  },
+  {
+   "id": "ll.little-lanterns-games-for-little-ones",
+   "key": "little lanterns games for little ones",
+   "text": "Little Lanterns! Games for little ones.",
+   "render": "Little Lanterns! Games for little ones.",
+   "type": "label",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "World map",
+     "trigger": "tap the Little Lanterns (ages 0-4) switch"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.little-lanterns-games-for-little-ones.mp3"
+   ]
+  },
+  {
+   "id": "ll.explorers-games-for-big-kids",
+   "key": "explorers games for big kids",
+   "text": "Explorers! Games for big kids.",
+   "render": "Explorers! Games for big kids.",
+   "type": "label",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "World map",
+     "trigger": "tap the Explorers (ages 4-9) switch"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.explorers-games-for-big-kids.mp3"
+   ]
+  },
+  {
+   "id": "ll.knock-knock-tap-the-door",
+   "key": "knock knock tap the door",
+   "text": "Knock knock! Tap the door!",
+   "render": "Knock knock! Tap the door!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2, play together)",
+     "trigger": "round starts"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.knock-knock-tap-the-door.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-cow-says-moo",
+   "key": "the cow says moo",
+   "text": "The cow says moo!",
+   "render": "The cow says moo!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-cow-says-moo.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-moo",
+   "key": "who says moo",
+   "text": "Who says moo?",
+   "render": "Who says moo?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-moo.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-cow-says-moo",
+   "key": "yes the cow says moo",
+   "text": "Yes! The cow says moo!",
+   "render": "Yes! The cow says moo!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-cow-says-moo.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-cow",
+   "key": "that's the cow",
+   "text": "That's the cow!",
+   "render": "That's the cow!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-cow.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-cow",
+   "key": "here's the cow",
+   "text": "Here's the cow!",
+   "render": "Here's the cow!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-cow.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-duck-says-quack",
+   "key": "the duck says quack",
+   "text": "The duck says quack!",
+   "render": "The duck says quack!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-duck-says-quack.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-quack",
+   "key": "who says quack",
+   "text": "Who says quack?",
+   "render": "Who says quack?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-quack.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-duck-says-quack",
+   "key": "yes the duck says quack",
+   "text": "Yes! The duck says quack!",
+   "render": "Yes! The duck says quack!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-duck-says-quack.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-duck",
+   "key": "that's the duck",
+   "text": "That's the duck!",
+   "render": "That's the duck!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-duck",
+   "key": "here's the duck",
+   "text": "Here's the duck!",
+   "render": "Here's the duck!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-cat-says-meow",
+   "key": "the cat says meow",
+   "text": "The cat says meow!",
+   "render": "The cat says meow!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-cat-says-meow.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-meow",
+   "key": "who says meow",
+   "text": "Who says meow?",
+   "render": "Who says meow?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-meow.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-cat-says-meow",
+   "key": "yes the cat says meow",
+   "text": "Yes! The cat says meow!",
+   "render": "Yes! The cat says meow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-cat-says-meow.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-cat",
+   "key": "that's the cat",
+   "text": "That's the cat!",
+   "render": "That's the cat!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-cat",
+   "key": "here's the cat",
+   "text": "Here's the cat!",
+   "render": "Here's the cat!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-dog-says-woof",
+   "key": "the dog says woof",
+   "text": "The dog says woof!",
+   "render": "The dog says woof!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-dog-says-woof.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-woof",
+   "key": "who says woof",
+   "text": "Who says woof?",
+   "render": "Who says woof?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-woof.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-dog-says-woof",
+   "key": "yes the dog says woof",
+   "text": "Yes! The dog says woof!",
+   "render": "Yes! The dog says woof!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-dog-says-woof.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-dog",
+   "key": "that's the dog",
+   "text": "That's the dog!",
+   "render": "That's the dog!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-dog",
+   "key": "here's the dog",
+   "text": "Here's the dog!",
+   "render": "Here's the dog!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-sheep-says-baa",
+   "key": "the sheep says baa",
+   "text": "The sheep says baa!",
+   "render": "The sheep says baa!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-sheep-says-baa.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-baa",
+   "key": "who says baa",
+   "text": "Who says baa?",
+   "render": "Who says baa?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-baa.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-sheep-says-baa",
+   "key": "yes the sheep says baa",
+   "text": "Yes! The sheep says baa!",
+   "render": "Yes! The sheep says baa!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-sheep-says-baa.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-sheep",
+   "key": "that's the sheep",
+   "text": "That's the sheep!",
+   "render": "That's the sheep!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-sheep.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-sheep",
+   "key": "here's the sheep",
+   "text": "Here's the sheep!",
+   "render": "Here's the sheep!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-sheep.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-pig-says-oink",
+   "key": "the pig says oink",
+   "text": "The pig says oink!",
+   "render": "The pig says oink!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-pig-says-oink.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-oink",
+   "key": "who says oink",
+   "text": "Who says oink?",
+   "render": "Who says oink?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-oink.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-pig-says-oink",
+   "key": "yes the pig says oink",
+   "text": "Yes! The pig says oink!",
+   "render": "Yes! The pig says oink!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-pig-says-oink.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-pig",
+   "key": "that's the pig",
+   "text": "That's the pig!",
+   "render": "That's the pig!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-pig.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-pig",
+   "key": "here's the pig",
+   "text": "Here's the pig!",
+   "render": "Here's the pig!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-pig.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-frog-says-ribbit",
+   "key": "the frog says ribbit",
+   "text": "The frog says ribbit!",
+   "render": "The frog says ribbit!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-frog-says-ribbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-ribbit",
+   "key": "who says ribbit",
+   "text": "Who says ribbit?",
+   "render": "Who says ribbit?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-ribbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-frog-says-ribbit",
+   "key": "yes the frog says ribbit",
+   "text": "Yes! The frog says ribbit!",
+   "render": "Yes! The frog says ribbit!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-frog-says-ribbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-frog",
+   "key": "that's the frog",
+   "text": "That's the frog!",
+   "render": "That's the frog!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-frog.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-frog",
+   "key": "here's the frog",
+   "text": "Here's the frog!",
+   "render": "Here's the frog!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-frog.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-bird-says-tweet",
+   "key": "the bird says tweet",
+   "text": "The bird says tweet!",
+   "render": "The bird says tweet!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-bird-says-tweet.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-tweet",
+   "key": "who says tweet",
+   "text": "Who says tweet?",
+   "render": "Who says tweet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-tweet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-bird-says-tweet",
+   "key": "yes the bird says tweet",
+   "text": "Yes! The bird says tweet!",
+   "render": "Yes! The bird says tweet!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-bird-says-tweet.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-bird",
+   "key": "that's the bird",
+   "text": "That's the bird!",
+   "render": "That's the bird!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-bird.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-bird",
+   "key": "here's the bird",
+   "text": "Here's the bird!",
+   "render": "Here's the bird!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    },
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-bird.mp3"
+   ]
+  },
+  {
+   "id": "ll.the-owl-says-hoo",
+   "key": "the owl says hoo",
+   "text": "The owl says hoo!",
+   "render": "The owl says hoo!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn (under 2)",
+     "trigger": "barn door opens and the animal makes its sound"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.the-owl-says-hoo.mp3"
+   ]
+  },
+  {
+   "id": "ll.who-says-hoo",
+   "key": "who says hoo",
+   "text": "Who says hoo?",
+   "render": "Who says hoo?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.who-says-hoo.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-owl-says-hoo",
+   "key": "yes the owl says hoo",
+   "text": "Yes! The owl says hoo!",
+   "render": "Yes! The owl says hoo!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "right animal tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-owl-says-hoo.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-owl",
+   "key": "that's the owl",
+   "text": "That's the owl!",
+   "render": "That's the owl!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "another animal tapped (then the sound replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-owl.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-owl",
+   "key": "here's the owl",
+   "text": "Here's the owl!",
+   "render": "Here's the owl!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: who says that?",
+     "trigger": "second miss: the right animal glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-owl.mp3"
+   ]
+  },
+  {
+   "id": "ll.loud-or-quiet",
+   "key": "loud or quiet",
+   "text": "Loud, or quiet?",
+   "render": "Loud, or quiet?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "after the drum beats"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.loud-or-quiet.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-loud-like-the-elephant",
+   "key": "yes that was loud like the elephant",
+   "text": "Yes! That was loud, like the elephant!",
+   "render": "Yes! That was loud, like the elephant!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "elephant tapped after a loud drum"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-that-was-loud-like-the-elephant.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-was-quiet-like-the-mouse",
+   "key": "yes that was quiet like the mouse",
+   "text": "Yes! That was quiet, like the mouse!",
+   "render": "Yes! That was quiet, like the mouse!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "mouse tapped after a quiet drum"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-that-was-quiet-like-the-mouse.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-again",
+   "key": "listen again",
+   "text": "Listen again!",
+   "render": "Listen again!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "first miss (the drum replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-again.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-cat",
+   "key": "let's clap cat",
+   "text": "Let's clap... cat!",
+   "render": "Let's clap... cat!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-cat",
+   "key": "your turn clap cat",
+   "text": "Your turn! Clap... cat.",
+   "render": "Your turn! Clap... cat.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.cat-has-one-clap",
+   "key": "cat has one clap",
+   "text": "cat has one clap!",
+   "render": "cat has one clap!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.cat-has-one-clap.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-sun",
+   "key": "let's clap sun",
+   "text": "Let's clap... sun!",
+   "render": "Let's clap... sun!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-sun",
+   "key": "your turn clap sun",
+   "text": "Your turn! Clap... sun.",
+   "render": "Your turn! Clap... sun.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.sun-has-one-clap",
+   "key": "sun has one clap",
+   "text": "sun has one clap!",
+   "render": "sun has one clap!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.sun-has-one-clap.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-ball",
+   "key": "let's clap ball",
+   "text": "Let's clap... ball!",
+   "render": "Let's clap... ball!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-ball",
+   "key": "your turn clap ball",
+   "text": "Your turn! Clap... ball.",
+   "render": "Your turn! Clap... ball.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.ball-has-one-clap",
+   "key": "ball has one clap",
+   "text": "ball has one clap!",
+   "render": "ball has one clap!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.ball-has-one-clap.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-apple",
+   "key": "let's clap apple",
+   "text": "Let's clap... apple!",
+   "render": "Let's clap... apple!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-apple",
+   "key": "your turn clap apple",
+   "text": "Your turn! Clap... apple.",
+   "render": "Your turn! Clap... apple.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.apple-has-two-claps",
+   "key": "apple has two claps",
+   "text": "apple has two claps!",
+   "render": "apple has two claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.apple-has-two-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-rabbit",
+   "key": "let's clap rabbit",
+   "text": "Let's clap... rabbit!",
+   "render": "Let's clap... rabbit!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-rabbit",
+   "key": "your turn clap rabbit",
+   "text": "Your turn! Clap... rabbit.",
+   "render": "Your turn! Clap... rabbit.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.rabbit-has-two-claps",
+   "key": "rabbit has two claps",
+   "text": "rabbit has two claps!",
+   "render": "rabbit has two claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.rabbit-has-two-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-flower",
+   "key": "let's clap flower",
+   "text": "Let's clap... flower!",
+   "render": "Let's clap... flower!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-flower",
+   "key": "your turn clap flower",
+   "text": "Your turn! Clap... flower.",
+   "render": "Your turn! Clap... flower.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.flower-has-two-claps",
+   "key": "flower has two claps",
+   "text": "flower has two claps!",
+   "render": "flower has two claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.flower-has-two-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-banana",
+   "key": "let's clap banana",
+   "text": "Let's clap... banana!",
+   "render": "Let's clap... banana!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "lˈɛts klˈæp... bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.lets-clap-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-banana",
+   "key": "your turn clap banana",
+   "text": "Your turn! Clap... banana.",
+   "render": "Your turn! Clap... banana.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "jˌʊɹ tˈɜɹn! klˈæp... bənˈænɑ.",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.your-turn-clap-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.banana-has-three-claps",
+   "key": "banana has three claps",
+   "text": "banana has three claps!",
+   "render": "banana has three claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "bənˈænɑ hæz θɹˈi klˈæps!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.banana-has-three-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-butterfly",
+   "key": "let's clap butterfly",
+   "text": "Let's clap... butterfly!",
+   "render": "Let's clap... butterfly!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-butterfly.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-butterfly",
+   "key": "your turn clap butterfly",
+   "text": "Your turn! Clap... butterfly.",
+   "render": "Your turn! Clap... butterfly.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-butterfly.mp3"
+   ]
+  },
+  {
+   "id": "ll.butterfly-has-three-claps",
+   "key": "butterfly has three claps",
+   "text": "butterfly has three claps!",
+   "render": "butterfly has three claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.butterfly-has-three-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-elephant",
+   "key": "let's clap elephant",
+   "text": "Let's clap... elephant!",
+   "render": "Let's clap... elephant!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-elephant.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-elephant",
+   "key": "your turn clap elephant",
+   "text": "Your turn! Clap... elephant.",
+   "render": "Your turn! Clap... elephant.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.your-turn-clap-elephant.mp3"
+   ]
+  },
+  {
+   "id": "ll.elephant-has-three-claps",
+   "key": "elephant has three claps",
+   "text": "elephant has three claps!",
+   "render": "elephant has three claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.elephant-has-three-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-umbrella",
+   "key": "let's clap umbrella",
+   "text": "Let's clap... umbrella!",
+   "render": "Let's clap... umbrella!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "Wick claps the word on the drum (model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "umbrella"
+   ],
+   "renderIpa": "lˈɛts klˈæp... ˌʌmbɹˈɛlɑ!",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.lets-clap-umbrella.mp3"
+   ]
+  },
+  {
+   "id": "ll.your-turn-clap-umbrella",
+   "key": "your turn clap umbrella",
+   "text": "Your turn! Clap... umbrella.",
+   "render": "Your turn! Clap... umbrella.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "child's turn to clap"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "umbrella"
+   ],
+   "renderIpa": "jˌʊɹ tˈɜɹn! klˈæp... ˌʌmbɹˈɛlɑ.",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.your-turn-clap-umbrella.mp3"
+   ]
+  },
+  {
+   "id": "ll.umbrella-has-three-claps",
+   "key": "umbrella has three claps",
+   "text": "umbrella has three claps!",
+   "render": "umbrella has three claps!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "right number of claps (or after the 2nd model)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "umbrella"
+   ],
+   "renderIpa": "ˌʌmbɹˈɛlɑ hæz θɹˈi klˈæps!",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.umbrella-has-three-claps.mp3"
+   ]
+  },
+  {
+   "id": "ll.lets-clap-it-together",
+   "key": "let's clap it together",
+   "text": "Let's clap it together.",
+   "render": "Let's clap it together.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: clap the beats",
+     "trigger": "wrong number of claps (Wick models it again)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.lets-clap-it-together.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-picture",
+   "key": "tap the picture",
+   "text": "Tap the picture!",
+   "render": "Tap the picture!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2, play together)",
+     "trigger": "round starts"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-picture.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-cat",
+   "key": "look a cat",
+   "text": "Look! a cat!",
+   "render": "Look! a cat!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-cat",
+   "key": "where is the cat",
+   "text": "Where is the cat?",
+   "render": "Where is the cat?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-cat",
+   "key": "yes the cat",
+   "text": "Yes! The cat!",
+   "render": "Yes! The cat!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-cat.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-dog",
+   "key": "look a dog",
+   "text": "Look! a dog!",
+   "render": "Look! a dog!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-dog",
+   "key": "where is the dog",
+   "text": "Where is the dog?",
+   "render": "Where is the dog?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-dog",
+   "key": "yes the dog",
+   "text": "Yes! The dog!",
+   "render": "Yes! The dog!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-dog.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-duck",
+   "key": "look a duck",
+   "text": "Look! a duck!",
+   "render": "Look! a duck!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-duck",
+   "key": "where is the duck",
+   "text": "Where is the duck?",
+   "render": "Where is the duck?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-duck",
+   "key": "yes the duck",
+   "text": "Yes! The duck!",
+   "render": "Yes! The duck!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-cow",
+   "key": "where is the cow",
+   "text": "Where is the cow?",
+   "render": "Where is the cow?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-cow.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-cow",
+   "key": "yes the cow",
+   "text": "Yes! The cow!",
+   "render": "Yes! The cow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-cow.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-fish",
+   "key": "where is the fish",
+   "text": "Where is the fish?",
+   "render": "Where is the fish?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-fish",
+   "key": "yes the fish",
+   "text": "Yes! The fish!",
+   "render": "Yes! The fish!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-fish",
+   "key": "that's the fish",
+   "text": "That's the fish.",
+   "render": "That's the fish.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-fish",
+   "key": "here's the fish",
+   "text": "Here's the fish!",
+   "render": "Here's the fish!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-bird",
+   "key": "where is the bird",
+   "text": "Where is the bird?",
+   "render": "Where is the bird?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-bird.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-bird",
+   "key": "yes the bird",
+   "text": "Yes! The bird!",
+   "render": "Yes! The bird!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-bird.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-ball",
+   "key": "look a ball",
+   "text": "Look! a ball!",
+   "render": "Look! a ball!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-ball",
+   "key": "where is the ball",
+   "text": "Where is the ball?",
+   "render": "Where is the ball?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-ball",
+   "key": "yes the ball",
+   "text": "Yes! The ball!",
+   "render": "Yes! The ball!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-ball",
+   "key": "that's the ball",
+   "text": "That's the ball.",
+   "render": "That's the ball.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-ball",
+   "key": "here's the ball",
+   "text": "Here's the ball!",
+   "render": "Here's the ball!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-an-apple",
+   "key": "look an apple",
+   "text": "Look! an apple!",
+   "render": "Look! an apple!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-an-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-apple",
+   "key": "where is the apple",
+   "text": "Where is the apple?",
+   "render": "Where is the apple?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-apple",
+   "key": "yes the apple",
+   "text": "Yes! The apple!",
+   "render": "Yes! The apple!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-apple",
+   "key": "that's the apple",
+   "text": "That's the apple.",
+   "render": "That's the apple.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-apple",
+   "key": "here's the apple",
+   "text": "Here's the apple!",
+   "render": "Here's the apple!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-banana",
+   "key": "where is the banana",
+   "text": "Where is the banana?",
+   "render": "Where is the banana?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "wˌɛɹ ɪz ðə bənˈænɑ?",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.where-is-the-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-banana",
+   "key": "yes the banana",
+   "text": "Yes! The banana!",
+   "render": "Yes! The banana!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "jˈɛs! ðə bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.yes-the-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-banana",
+   "key": "that's the banana",
+   "text": "That's the banana.",
+   "render": "That's the banana.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "ðˈæts ðə bənˈænɑ.",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.thats-the-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-banana",
+   "key": "here's the banana",
+   "text": "Here's the banana!",
+   "render": "Here's the banana!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ]
+   },
+   "schwaFix": [
+    "banana"
+   ],
+   "renderIpa": "hˈɪɹz ðə bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/ll.heres-the-banana.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-cup",
+   "key": "where is the cup",
+   "text": "Where is the cup?",
+   "render": "Where is the cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-cup",
+   "key": "yes the cup",
+   "text": "Yes! The cup!",
+   "render": "Yes! The cup!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-cup",
+   "key": "that's the cup",
+   "text": "That's the cup.",
+   "render": "That's the cup.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-cup",
+   "key": "here's the cup",
+   "text": "Here's the cup!",
+   "render": "Here's the cup!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-shoe",
+   "key": "where is the shoe",
+   "text": "Where is the shoe?",
+   "render": "Where is the shoe?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-shoe.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-shoe",
+   "key": "yes the shoe",
+   "text": "Yes! The shoe!",
+   "render": "Yes! The shoe!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-shoe.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-shoe",
+   "key": "that's the shoe",
+   "text": "That's the shoe.",
+   "render": "That's the shoe.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-shoe.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-shoe",
+   "key": "here's the shoe",
+   "text": "Here's the shoe!",
+   "render": "Here's the shoe!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-shoe.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-hat",
+   "key": "where is the hat",
+   "text": "Where is the hat?",
+   "render": "Where is the hat?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-hat.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-hat",
+   "key": "yes the hat",
+   "text": "Yes! The hat!",
+   "render": "Yes! The hat!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-hat.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-hat",
+   "key": "that's the hat",
+   "text": "That's the hat.",
+   "render": "That's the hat.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-hat.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-hat",
+   "key": "here's the hat",
+   "text": "Here's the hat!",
+   "render": "Here's the hat!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-hat.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-car",
+   "key": "look a car",
+   "text": "Look! a car!",
+   "render": "Look! a car!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-car",
+   "key": "where is the car",
+   "text": "Where is the car?",
+   "render": "Where is the car?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-car",
+   "key": "yes the car",
+   "text": "Yes! The car!",
+   "render": "Yes! The car!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-car",
+   "key": "that's the car",
+   "text": "That's the car.",
+   "render": "That's the car.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-car",
+   "key": "here's the car",
+   "text": "Here's the car!",
+   "render": "Here's the car!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-tree",
+   "key": "where is the tree",
+   "text": "Where is the tree?",
+   "render": "Where is the tree?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-tree.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-tree",
+   "key": "yes the tree",
+   "text": "Yes! The tree!",
+   "render": "Yes! The tree!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-tree.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-tree",
+   "key": "that's the tree",
+   "text": "That's the tree.",
+   "render": "That's the tree.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-tree.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-tree",
+   "key": "here's the tree",
+   "text": "Here's the tree!",
+   "render": "Here's the tree!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-tree.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-sun",
+   "key": "where is the sun",
+   "text": "Where is the sun?",
+   "render": "Where is the sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-sun",
+   "key": "yes the sun",
+   "text": "Yes! The sun!",
+   "render": "Yes! The sun!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-sun",
+   "key": "that's the sun",
+   "text": "That's the sun.",
+   "render": "That's the sun.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-sun",
+   "key": "here's the sun",
+   "text": "Here's the sun!",
+   "render": "Here's the sun!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-the-moon",
+   "key": "look the moon",
+   "text": "Look! the moon!",
+   "render": "Look! the moon!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-the-moon.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-moon",
+   "key": "where is the moon",
+   "text": "Where is the moon?",
+   "render": "Where is the moon?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-moon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-moon",
+   "key": "yes the moon",
+   "text": "Yes! The moon!",
+   "render": "Yes! The moon!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-moon.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-moon",
+   "key": "that's the moon",
+   "text": "That's the moon.",
+   "render": "That's the moon.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-moon.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-moon",
+   "key": "here's the moon",
+   "text": "Here's the moon!",
+   "render": "Here's the moon!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-moon.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-star",
+   "key": "where is the star",
+   "text": "Where is the star?",
+   "render": "Where is the star?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-star",
+   "key": "yes the star",
+   "text": "Yes! The star!",
+   "render": "Yes! The star!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-star",
+   "key": "that's the star",
+   "text": "That's the star.",
+   "render": "That's the star.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-star",
+   "key": "here's the star",
+   "text": "Here's the star!",
+   "render": "Here's the star!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-a-flower",
+   "key": "look a flower",
+   "text": "Look! a flower!",
+   "render": "Look! a flower!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden (under 2)",
+     "trigger": "picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-a-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-flower",
+   "key": "where is the flower",
+   "text": "Where is the flower?",
+   "render": "Where is the flower?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-flower",
+   "key": "yes the flower",
+   "text": "Yes! The flower!",
+   "render": "Yes! The flower!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-flower",
+   "key": "that's the flower",
+   "text": "That's the flower.",
+   "render": "That's the flower.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-flower",
+   "key": "here's the flower",
+   "text": "Here's the flower!",
+   "render": "Here's the flower!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-flower.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-bee",
+   "key": "where is the bee",
+   "text": "Where is the bee?",
+   "render": "Where is the bee?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-bee",
+   "key": "yes the bee",
+   "text": "Yes! The bee!",
+   "render": "Yes! The bee!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-bee",
+   "key": "that's the bee",
+   "text": "That's the bee.",
+   "render": "That's the bee.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-bee",
+   "key": "here's the bee",
+   "text": "Here's the bee!",
+   "render": "Here's the bee!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.where-is-the-rabbit",
+   "key": "where is the rabbit",
+   "text": "Where is the rabbit?",
+   "render": "Where is the rabbit?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "new question; tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.where-is-the-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-the-rabbit",
+   "key": "yes the rabbit",
+   "text": "Yes! The rabbit!",
+   "render": "Yes! The rabbit!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "right picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-the-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-the-rabbit",
+   "key": "that's the rabbit",
+   "text": "That's the rabbit.",
+   "render": "That's the rabbit.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "another picture tapped (then the question repeats)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-the-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.heres-the-rabbit",
+   "key": "here's the rabbit",
+   "text": "Here's the rabbit!",
+   "render": "Here's the rabbit!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: first words",
+     "trigger": "second miss: the right picture glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.heres-the-rabbit.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-red-balloon",
+   "key": "tap the red balloon",
+   "text": "Tap the red balloon!",
+   "render": "Tap the red balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-red-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-red",
+   "key": "yes red",
+   "text": "Yes! red!",
+   "render": "Yes! red!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-red.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-red",
+   "key": "that one is red",
+   "text": "That one is red.",
+   "render": "That one is red.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-red.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-blue-balloon",
+   "key": "tap the blue balloon",
+   "text": "Tap the blue balloon!",
+   "render": "Tap the blue balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-blue-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-blue",
+   "key": "yes blue",
+   "text": "Yes! blue!",
+   "render": "Yes! blue!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-blue.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-blue",
+   "key": "that one is blue",
+   "text": "That one is blue.",
+   "render": "That one is blue.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-blue.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-yellow-balloon",
+   "key": "tap the yellow balloon",
+   "text": "Tap the yellow balloon!",
+   "render": "Tap the yellow balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-yellow-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-yellow",
+   "key": "yes yellow",
+   "text": "Yes! yellow!",
+   "render": "Yes! yellow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-yellow.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-yellow",
+   "key": "that one is yellow",
+   "text": "That one is yellow.",
+   "render": "That one is yellow.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-yellow.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-green-balloon",
+   "key": "tap the green balloon",
+   "text": "Tap the green balloon!",
+   "render": "Tap the green balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-green-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-green",
+   "key": "yes green",
+   "text": "Yes! green!",
+   "render": "Yes! green!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-green.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-green",
+   "key": "that one is green",
+   "text": "That one is green.",
+   "render": "That one is green.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-green.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-purple-balloon",
+   "key": "tap the purple balloon",
+   "text": "Tap the purple balloon!",
+   "render": "Tap the purple balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-purple-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-purple",
+   "key": "yes purple",
+   "text": "Yes! purple!",
+   "render": "Yes! purple!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-purple.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-purple",
+   "key": "that one is purple",
+   "text": "That one is purple.",
+   "render": "That one is purple.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-purple.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-orange-balloon",
+   "key": "tap the orange balloon",
+   "text": "Tap the orange balloon!",
+   "render": "Tap the orange balloon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-orange-balloon.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-orange",
+   "key": "yes orange",
+   "text": "Yes! orange!",
+   "render": "Yes! orange!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "right balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-orange.mp3"
+   ]
+  },
+  {
+   "id": "ll.that-one-is-orange",
+   "key": "that one is orange",
+   "text": "That one is orange.",
+   "render": "That one is orange.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: colors",
+     "trigger": "another balloon tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.that-one-is-orange.mp3"
+   ]
+  },
+  {
+   "id": "ll.find-the-star",
+   "key": "find the star",
+   "text": "Find the star!",
+   "render": "Find the star!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.find-the-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-star",
+   "key": "yes a star",
+   "text": "Yes! A star!",
+   "render": "Yes! A star!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "right shape tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-a-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-a-star",
+   "key": "that's a star",
+   "text": "That's a star.",
+   "render": "That's a star.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "another shape tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-a-star.mp3"
+   ]
+  },
+  {
+   "id": "ll.find-the-heart",
+   "key": "find the heart",
+   "text": "Find the heart!",
+   "render": "Find the heart!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.find-the-heart.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-a-heart",
+   "key": "yes a heart",
+   "text": "Yes! A heart!",
+   "render": "Yes! A heart!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "right shape tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-a-heart.mp3"
+   ]
+  },
+  {
+   "id": "ll.thats-a-heart",
+   "key": "that's a heart",
+   "text": "That's a heart.",
+   "render": "That's a heart.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: shapes",
+     "trigger": "another shape tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.thats-a-heart.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-cat-hat-or-sun",
+   "key": "which one rhymes with cat hat or sun",
+   "text": "Which one rhymes with cat? hat, or sun?",
+   "render": "Which one rhymes with cat? hat, or sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-cat-hat-or-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-cat-hat-they-rhyme",
+   "key": "yes cat hat they rhyme",
+   "text": "Yes! cat, hat. They rhyme!",
+   "render": "Yes! cat, hat. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-cat-hat-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-cat-hat-they-rhyme",
+   "key": "listen cat hat they rhyme",
+   "text": "Listen: cat, hat. They rhyme!",
+   "render": "Listen: cat, hat. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-cat-hat-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-car-star-or-fish",
+   "key": "which one rhymes with car star or fish",
+   "text": "Which one rhymes with car? star, or fish?",
+   "render": "Which one rhymes with car? star, or fish?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-car-star-or-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-car-star-they-rhyme",
+   "key": "yes car star they rhyme",
+   "text": "Yes! car, star. They rhyme!",
+   "render": "Yes! car, star. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-car-star-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-car-star-they-rhyme",
+   "key": "listen car star they rhyme",
+   "text": "Listen: car, star. They rhyme!",
+   "render": "Listen: car, star. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-car-star-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-bee-tree-or-ball",
+   "key": "which one rhymes with bee tree or ball",
+   "text": "Which one rhymes with bee? tree, or ball?",
+   "render": "Which one rhymes with bee? tree, or ball?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-bee-tree-or-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-bee-tree-they-rhyme",
+   "key": "yes bee tree they rhyme",
+   "text": "Yes! bee, tree. They rhyme!",
+   "render": "Yes! bee, tree. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-bee-tree-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-bee-tree-they-rhyme",
+   "key": "listen bee tree they rhyme",
+   "text": "Listen: bee, tree. They rhyme!",
+   "render": "Listen: bee, tree. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-bee-tree-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-moon-spoon-or-duck",
+   "key": "which one rhymes with moon spoon or duck",
+   "text": "Which one rhymes with moon? spoon, or duck?",
+   "render": "Which one rhymes with moon? spoon, or duck?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-moon-spoon-they-rhyme",
+   "key": "yes moon spoon they rhyme",
+   "text": "Yes! moon, spoon. They rhyme!",
+   "render": "Yes! moon, spoon. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-moon-spoon-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-moon-spoon-they-rhyme",
+   "key": "listen moon spoon they rhyme",
+   "text": "Listen: moon, spoon. They rhyme!",
+   "render": "Listen: moon, spoon. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-moon-spoon-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-frog-log-or-cup",
+   "key": "which one rhymes with frog log or cup",
+   "text": "Which one rhymes with frog? log, or cup?",
+   "render": "Which one rhymes with frog? log, or cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-frog-log-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-frog-log-they-rhyme",
+   "key": "yes frog log they rhyme",
+   "text": "Yes! frog, log. They rhyme!",
+   "render": "Yes! frog, log. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-frog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-frog-log-they-rhyme",
+   "key": "listen frog log they rhyme",
+   "text": "Listen: frog, log. They rhyme!",
+   "render": "Listen: frog, log. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-frog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.find-the-same-shape",
+   "key": "find the same shape",
+   "text": "Find the same shape!",
+   "render": "Find the same shape!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: letter shapes",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.find-the-same-shape.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-they-match",
+   "key": "yes they match",
+   "text": "Yes! They match!",
+   "render": "Yes! They match!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: letter shapes",
+     "trigger": "matching letter shape tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-they-match.mp3"
+   ]
+  },
+  {
+   "id": "ll.look-again",
+   "key": "look again",
+   "text": "Look again!",
+   "render": "Look again!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: letter shapes",
+     "trigger": "first miss"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.look-again.mp3"
+   ]
+  },
+  {
+   "id": "ll.tap-the-jar",
+   "key": "tap the jar",
+   "text": "Tap the jar!",
+   "render": "Tap the jar!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars (under 2, play together)",
+     "trigger": "round starts"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.tap-the-jar.mp3"
+   ]
+  },
+  {
+   "id": "ll.bye-bye-fireflies",
+   "key": "bye bye fireflies",
+   "text": "Bye bye, fireflies!",
+   "render": "Bye bye, fireflies!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars (under 2)",
+     "trigger": "after the third firefly flies out"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.bye-bye-fireflies.mp3"
+   ]
+  },
+  {
+   "id": "ll.find-the-jar-that-matches",
+   "key": "find the jar that matches",
+   "text": "Find the jar that matches!",
+   "render": "Find the jar that matches!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: match",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.find-the-jar-that-matches.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-jar-has-one-firefly",
+   "key": "which jar has one firefly",
+   "text": "Which jar has one firefly?",
+   "render": "Which jar has one firefly?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: how many (1-3 at a glance)",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-jar-has-one-firefly.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-jar-has-two-fireflies",
+   "key": "which jar has two fireflies",
+   "text": "Which jar has two fireflies?",
+   "render": "Which jar has two fireflies?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: how many (1-3 at a glance)",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-jar-has-two-fireflies.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-jar-has-three-fireflies",
+   "key": "which jar has three fireflies",
+   "text": "Which jar has three fireflies?",
+   "render": "Which jar has three fireflies?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: how many (1-3 at a glance)",
+     "trigger": "new question"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-jar-has-three-fireflies.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-that-jar-has-more",
+   "key": "yes that jar has more",
+   "text": "Yes! That jar has more!",
+   "render": "Yes! That jar has more!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: which has more",
+     "trigger": "jar with more tapped"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-that-jar-has-more.mp3"
+   ]
+  },
+  {
+   "id": "ll.this-jar-has-more",
+   "key": "this jar has more",
+   "text": "This jar has more!",
+   "render": "This jar has more!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "glow-jars",
+     "screen": "Glow Jars: which has more",
+     "trigger": "second miss: the bigger jar glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.this-jar-has-more.mp3"
    ]
   }
  ]

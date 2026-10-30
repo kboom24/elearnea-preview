@@ -17,7 +17,7 @@
 
   /* ------------------------------------------------------------ storage (localStorage, memory fallback) */
   const KEY = 'elearnea:v1'; let mem = null;
-  function blank() { return { v: 1, srs: {}, skills: {}, lessons: {}, days: {}, log: [], streak: { last: 0, cur: 0, best: 0 }, set: { voice: true, sound: true, rate: 1 }, demoUnlock: false }; }
+  function blank() { return { v: 1, srs: {}, skills: {}, lessons: {}, days: {}, log: [], streak: { last: 0, cur: 0, best: 0 }, set: { voice: true, sound: true, rate: 1, band: 'explorer', little: 'little' }, demoUnlock: false }; }
   El.store = {
     data: null,
     load() { if (this.data) return this.data; let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { d = mem; } this.data = Object.assign(blank(), d || {}); this.data.set = Object.assign(blank().set, this.data.set || {}); return this.data; },
@@ -87,6 +87,7 @@
     osc.type = o.type || 'sine'; osc.frequency.setValueAtTime(o.freq, t); if (o.to) osc.frequency.exponentialRampToValueAtTime(o.to, t + o.dur);
     g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(o.vol || .15, t + .015); g.gain.exponentialRampToValueAtTime(.0008, t + o.dur);
     osc.connect(g); g.connect(c.destination); osc.start(t); osc.stop(t + o.dur + .05); }
+  El.audio = () => (El.store.load().set.sound ? ac() : null); // shared AudioContext for game sound modules (null when sound is off)
   const PENTA = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21];
   El.sfx = {
     tap() { tone({ freq: 740, to: 880, dur: .08, vol: .08 }); },
@@ -132,11 +133,22 @@
   };
   El.icon = (n, cls) => `<svg viewBox="0 0 52 52" aria-hidden="true"${cls ? ` class="${cls}"` : ''}>${I[n] || I.star}</svg>`;
 
+  /* ------------------------------------------------------------ age bands (parent-set in the grown-ups area; picture switch on the map).
+     Stored on this device only (no birthday, no name). 'explorer' = ages 4-9 (K-3); 'little' = Little Lanterns, ages 2-4;
+     'tiny' = Little Lanterns, under 2, play-together lessons (a grown-up plays with the child). */
+  El.BANDS = { explorer: { name: 'Explorers', ages: '4–9' }, little: { name: 'Little Lanterns', ages: '2–4' }, tiny: { name: 'Little Lanterns', ages: 'under 2, play together' } };
+  El.band = () => { const s = El.store.load().set; return s.band === 'little' ? (s.little === 'tiny' ? 'tiny' : 'little') : 'explorer'; };
+  El.isLittle = () => El.band() !== 'explorer';
+  El.setBand = (b) => { const s = El.store.load().set; if (b === 'explorer') s.band = 'explorer'; else { s.band = 'little'; if (b === 'tiny' || b === 'little') s.little = b; } El.store.save(); CAT = null; };
+  // a lesson's bands: lesson.bands, else its skill's bands, else ['explorer']
+  const inBand = (ls, b) => (ls.bands || ['explorer']).includes(b);
+
   /* ------------------------------------------------------------ catalog */
   let CAT = null;
   El.catalog = async function () { if (CAT) return CAT; const r = await fetch(El.url('content/catalog.json'), { cache: 'no-cache' }); const c = await r.json();
-    c.realms = c.subjects.map(s => Object.assign({ subject: s.id }, s.realm)); c.lessons = {}; c.order = {};
-    for (const rm of c.realms) { c.order[rm.id] = []; for (const sk of rm.skills || []) for (const ls of sk.lessons) { Object.assign(ls, { skill: sk.id, skillName: sk.name, realm: rm.id }); c.lessons[ls.id] = ls; c.order[rm.id].push(ls); } }
+    c.realms = c.subjects.map(s => Object.assign({ subject: s.id }, s.realm)); c.lessons = {}; c.order = {}; c.orderAll = {}; c.band = El.band();
+    // c.order[realm] = the path for the current age band; c.orderAll[realm] = every lesson (grown-ups records)
+    for (const rm of c.realms) { c.order[rm.id] = []; c.orderAll[rm.id] = []; for (const sk of rm.skills || []) for (const ls of sk.lessons) { Object.assign(ls, { skill: sk.id, skillName: sk.name, realm: rm.id, bands: ls.bands || sk.bands || ['explorer'] }); c.lessons[ls.id] = ls; c.orderAll[rm.id].push(ls); if (inBand(ls, c.band)) c.order[rm.id].push(ls); } }
     return (CAT = c); };
   // Path state: done (has stars), current (first not done & unlocked), open, locked. A lesson unlocks when the previous one has a star.
   El.pathState = function (cat, realmId) { const list = cat.order[realmId] || [], d = El.store.load(); let prevDone = true, cur = null;
@@ -167,7 +179,7 @@
       const cat = await El.catalog(); const q = new URLSearchParams(location.search);
       let ls = cat.lessons[q.get('lesson')]; if (!ls || ls.game.id !== gameId) ls = Object.values(cat.lessons).find(l => l.game.id === gameId);
       const mod = El.games[gameId]; const back = El.url('realm/' + ls.realm + '/');
-      const config = Object.assign({ lesson: ls.id, skill: ls.skill, grade: ls.grade, standards: ls.standards, catalog: cat }, ls.game.config);
+      const config = Object.assign({ lesson: ls.id, skill: ls.skill, grade: ls.grade, standards: ls.standards, bands: ls.bands, little: !ls.bands.includes('explorer'), catalog: cat }, ls.game.config);
       let inst = null, stats = { done: 0, total: 0, first: 0 }, t0 = Date.now();
       const host = {
         root: stage, say: (t, o) => V.say(t, o), sfx: El.sfx, learn: L, rng: El.rng(), voiceOk: () => V.ok,

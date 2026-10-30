@@ -158,6 +158,9 @@ function speakable(t) { return t
 for (const m of MB.MOTHS) { add(m.name, { type: 'label', game: M, prefix: 'mb.moth', render: speakable(m.name), parts: P(mbFile('moth', m.name)), screen: 'Mothabet moth book', trigger: 'tap a collected moth' });
   add(m.how, { type: 'instruction', game: M, prefix: 'mb.moth-how', render: speakable(m.how), parts: P(mbFile('moth', m.how)), screen: 'Mothabet moth book', trigger: 'tap a moth not collected yet (how to earn it)' }); }
 
+/* ================= Little Lanterns (ages 0-4): Lantern Barn, Picture Garden, Glow Jars + map age switch ================= */
+require('./early-lines.js')({ add, APP });
+
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));
 const reviewTxt = Object.keys(MB_STATUS).length ? '' : ['REVIEW.md'].map(f => path.join(MB_DIR, f)).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8')).join('\n');
@@ -184,6 +187,7 @@ const out = [...items.values()].map(it => { const p = it._prev; delete it._prev;
   const reasons = [];
   if (it.ipa || /\[\[/.test(it.render) || it.type === 'phoneme') reasons.push('phoneme: needs an ear check (pure sound, no extra vowel)');
   if (it.type === 'letter') reasons.push('letter name: check it is said as the letter, not a word');
+  if (it.renderIpa) reasons.push(`weak-schwa fix (${(it.schwaFix || []).join(', ')} rendered with a final ɑ): listen that it ends in a clear "ah"`);
   for (const f of [...new Set(it.parts || [])]) { const st = MB_STATUS[f]; if (st && (st.status === 'flagged' || st.status === 'unverified')) reasons.push(`${f}: ${st.status === 'flagged' ? (/^(w|l)_/.test(f) ? 'ASR-flagged short word/letter, still plays: human listen needed' : 'ASR-flagged, held back (device speech)') : st.status}: ${st.reason}`); else if (!st) { const r = reviewFlag(f); if (r) reasons.push(`${f}: ${r}`); } }
   // speech-recognition results only count for the voice that is shipping now
   if (p && p.check && p.check.asr && p.check.asr.voice === VOICE.voice && JSON.stringify(p.files || []) === JSON.stringify(it.files)) { it.check.asr = p.check.asr; if (!p.check.asr.ok) reasons.push(`speech-recognition check heard "${p.check.asr.heard}"`); }

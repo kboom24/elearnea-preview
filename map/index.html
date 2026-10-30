@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../assets/css/el.css">
 <style>
   html, body { height: 100%; } body { overflow: hidden; touch-action: manipulation; }
-  .app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto 1fr auto; }
+  .app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto auto 1fr auto; }
   header { display: flex; min-width: 0; align-items: center; gap: 10px; padding: calc(10px + var(--safe-t)) 16px 0; }
   header .word { min-width: 0; font: 700 clamp(1.7rem, 6.5vw, 2.8rem) var(--display); color: var(--cream); margin-right: auto; text-shadow: 0 3px 0 rgba(0,0,0,.3); }
   .world { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 0 6px; padding: 4px 8px; min-height: 0; }
@@ -39,6 +39,14 @@
   @media (min-aspect-ratio: 1/1) { .world { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); padding: 0 40px; } .isle .pic { max-height: 290px; } }
   @media (min-width: 900px) and (min-height: 1000px) { .isle .pic { max-height: 330px; } .isle .name { font-size: 1.35rem; } .bar .wick { width: 150px; } }
   @media (max-width: 380px) { .bar .wick { width: 92px; } }
+  .band { position: relative; z-index: 3; display: flex; justify-content: center; gap: 12px; padding: 2px 12px 4px; }
+  .band button { display: flex; align-items: center; gap: 8px; min-height: 76px; min-width: 150px; padding: 6px 16px 6px 8px; border: 0; border-radius: 999px; cursor: pointer; touch-action: manipulation;
+    font: 700 1.05rem/1.1 var(--display); color: var(--cream); background: rgba(20,17,58,.6); box-shadow: inset 0 0 0 3px rgba(246,235,217,.22); text-align: left; transition: transform .1s; }
+  .band button small { display: block; font: 800 .85rem var(--ui); opacity: .8; }
+  .band button svg { width: 62px; height: 62px; flex: 0 0 62px; }
+  .band button[aria-pressed="true"] { background: var(--cream); background-image: var(--felt); color: var(--ink); box-shadow: 0 5px 0 var(--cream-d), 0 0 26px rgba(245,184,65,.45); }
+  .band button:active { transform: translateY(3px); }
+  @media (max-width: 380px) { .band button { min-width: 0; padding-right: 10px; font-size: .95rem; } .band button svg { width: 52px; height: 52px; flex-basis: 52px; } }
 </style>
 </head>
 <body class="night">
@@ -48,6 +56,10 @@
     <span class="pill" data-say="Days in a row"><span id="flameI"></span><span id="streak">0</span></span>
     <span class="pill" data-say="Your stars"><span id="starI" style="color:var(--gold)"></span><span id="stars">0</span></span>
   </header>
+  <div class="band" id="band" role="group" aria-label="Who is playing?">
+    <button id="bandL" data-band="little" aria-pressed="false"></button>
+    <button id="bandE" data-band="explorer" aria-pressed="false"></button>
+  </div>
   <main class="world" id="world" aria-label="World map"></main>
   <div class="bar">
     <button class="wick" id="wick" aria-label="Wick the lantern fox" data-say="Hi! I'm Wick. Tap a land to play!"><img src="../assets/img/wick-sm.webp" alt=""></button>
@@ -66,6 +78,17 @@
   document.getElementById('bag').innerHTML = El.icon('backpack'); document.getElementById('grown').innerHTML = El.icon('lock');
   El.ui.soundBtn(document.getElementById('snd'));
   document.getElementById('streak').textContent = El.Learn.streakNow(); document.getElementById('stars').textContent = El.Learn.totalStars();
+  // age band switch (picture-based: a small lantern for Little Lanterns 0-4, a big lantern for Explorers 4-9). Parents can also set it,
+  // and the under-2 play-together option, in the grown-ups area. Stored on this device only.
+  const lantern = (s) => `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="38" r="${12 + s * 10}" fill="#F5B841" opacity=".28"/><g transform="translate(32 38) scale(${.55 + s * .45}) translate(-32 -38)"><path d="M25 12h14M26 12a6 6 0 0 1 12 0" fill="none" stroke="#3B2F1E" stroke-width="3.5" stroke-linecap="round"/><rect x="18" y="17" width="28" height="6" rx="3" fill="#3B2F1E"/><rect x="20" y="23" width="24" height="28" rx="7" fill="#FFE28A" stroke="#3B2F1E" stroke-width="3.5"/><path d="M32 30c3 5 5 7 5 11a5 5 0 0 1-10 0c0-4 2-6 5-11z" fill="#F08A7E"/><rect x="18" y="51" width="28" height="6" rx="3" fill="#3B2F1E"/></g></svg>`;
+  const bL = document.getElementById('bandL'), bE = document.getElementById('bandE');
+  bL.innerHTML = lantern(0) + '<span>Little Lanterns<small>ages 0–4</small></span>'; bE.innerHTML = lantern(1) + '<span>Explorers<small>ages 4–9</small></span>';
+  bL.setAttribute('aria-label', 'Little Lanterns, ages 0 to 4'); bE.setAttribute('aria-label', 'Explorers, ages 4 to 9');
+  const paintBand = () => { const little = El.isLittle(); bL.setAttribute('aria-pressed', String(little)); bE.setAttribute('aria-pressed', String(!little)); document.body.classList.toggle('little', little); };
+  paintBand();
+  [bL, bE].forEach(b => b.addEventListener('click', () => { const want = b.dataset.band, was = El.isLittle(); El.sfx.tap();
+    if (want === 'little') { El.setBand(El.store.load().set.little || 'little'); El.Voice.say('Little Lanterns! Games for little ones.', { rate: 1 }); } else { El.setBand('explorer'); El.Voice.say('Explorers! Games for big kids.', { rate: 1 }); }
+    paintBand(); if (was !== El.isLittle()) document.getElementById('stars').textContent = El.Learn.totalStars(); }));
   const cat = await El.catalog(); const w = document.getElementById('world');
   for (const r of cat.realms) {
     const open = r.status === 'open', b = document.createElement('button');

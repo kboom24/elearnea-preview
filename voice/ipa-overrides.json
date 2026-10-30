@@ -1,0 +1,82 @@
+{
+ "ll.lets-clap-banana": {
+  "ipa": "lˈɛts klˈæp... bənˈænɑ!",
+  "text": "Let's clap... banana!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.your-turn-clap-banana": {
+  "ipa": "jˌʊɹ tˈɜɹn! klˈæp... bənˈænɑ.",
+  "text": "Your turn! Clap... banana.",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.banana-has-three-claps": {
+  "ipa": "bənˈænɑ hæz θɹˈi klˈæps!",
+  "text": "banana has three claps!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.lets-clap-umbrella": {
+  "ipa": "lˈɛts klˈæp... ˌʌmbɹˈɛlɑ!",
+  "text": "Let's clap... umbrella!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.your-turn-clap-umbrella": {
+  "ipa": "jˌʊɹ tˈɜɹn! klˈæp... ˌʌmbɹˈɛlɑ.",
+  "text": "Your turn! Clap... umbrella.",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.umbrella-has-three-claps": {
+  "ipa": "ˌʌmbɹˈɛlɑ hæz θɹˈi klˈæps!",
+  "text": "umbrella has three claps!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.where-is-the-banana": {
+  "ipa": "wˌɛɹ ɪz ðə bənˈænɑ?",
+  "text": "Where is the banana?",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.yes-the-banana": {
+  "ipa": "jˈɛs! ðə bənˈænɑ!",
+  "text": "Yes! The banana!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.thats-the-banana": {
+  "ipa": "ðˈæts ðə bənˈænɑ.",
+  "text": "That's the banana.",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ },
+ "ll.heres-the-banana": {
+  "ipa": "hˈɪɹz ðə bənˈænɑ!",
+  "text": "Here's the banana!",
+  "words": [
+   "banana",
+   "umbrella"
+  ]
+ }
+}

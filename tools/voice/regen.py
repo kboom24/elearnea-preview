@@ -19,6 +19,8 @@ import argparse, csv, json, os, shutil, subprocess, sys, tempfile, time
 APP = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 MANIFEST = os.path.join(APP, 'voice', 'manifest.json')
 OUTDIR = os.path.join(APP, 'voice', 'clips')
+IPA_F = os.path.join(APP, 'voice', 'ipa-overrides.json')  # line id -> ipa used for the weak-schwa fix (read back by tools/voice/early-lines.js)
+IPA_OV = json.load(open(IPA_F)) if os.path.exists(IPA_F) else {}
 VOICE_TOOLS = '/home/box/elearnea/voice/tools'
 
 
@@ -60,15 +62,26 @@ def main():
         if ids and it['id'] not in ids: continue
         f = it['files'][0]; have = all(os.path.exists(os.path.join(APP, f[:-4] + '.' + e)) for e in ('mp3', 'opus'))
         if have and not a.all and not ids: continue
-        rows.append((os.path.basename(f), it['render']))
+        rows.append((os.path.basename(f), it['render'], ','.join(it.get('schwaFix') or [])))
     print(f'{len(rows)} lines to render with {a.provider}', flush=True)
     prov = PROVIDERS[a.provider](a.cmd, a.threads); os.makedirs(OUTDIR, exist_ok=True); t0 = time.time()
     for i in range(0, len(rows), a.chunk):
         if time.time() - t0 > a.max_minutes * 60:
             print('time limit reached; re-run to continue', flush=True); break
+        chunk = rows[i:i + a.chunk]
         with tempfile.NamedTemporaryFile('w', suffix='.csv', delete=False, newline='') as t:
-            w = csv.writer(t); w.writerow(['filename', 'text']); w.writerows(rows[i:i + a.chunk])
-        prov.render(t.name, OUTDIR, [r[0] for r in rows[i:i + a.chunk]]); os.unlink(t.name)
+            w = csv.writer(t); w.writerow(['filename', 'text']); w.writerows([r[:2] for r in chunk])
+        src = t.name
+        # weak final schwa (e.g. banana, umbrella): fill say.py's ipa column (word-final ə -> ɑ) so the word ends in a clear "ah"
+        fixw = sorted({x for r in chunk for x in r[2].split(',') if x})
+        if fixw:
+            src = t.name[:-4] + '-ipa.csv'
+            subprocess.run([os.path.join(VOICE_TOOLS, 'venv', 'bin', 'python'), os.path.join(VOICE_TOOLS, 'ipa-fix.py'), t.name, src, '--words', ','.join(fixw)], check=True)
+            for r in csv.DictReader(open(src, newline='', encoding='utf-8')):
+                if (r.get('ipa') or '').strip(): IPA_OV[r['filename'][:-4]] = {'ipa': r['ipa'].strip(), 'text': r['text'], 'words': fixw}
+            json.dump(IPA_OV, open(IPA_F, 'w'), ensure_ascii=False, indent=1)
+        prov.render(src, OUTDIR, [r[0] for r in chunk]); os.unlink(t.name)
+        if src != t.name: os.unlink(src)
         print(f'  {min(i + a.chunk, len(rows))}/{len(rows)} ({time.time() - t0:.0f}s)', flush=True)
     subprocess.run(['node', os.path.join(APP, 'tools', 'voice', 'build-manifest.js')], check=True)
 

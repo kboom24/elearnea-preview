@@ -1,11 +1,14 @@
 {
   "version": 1,
-  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes.",
+  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only.",
   "games": {
     "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
     "lily-pad": { "name": "Lily Pad Hop", "path": "play/lily-pad/", "tile": "assets/img/tile-lily.webp", "kind": "module", "ages": "4-7" },
     "firefly-count": { "name": "Firefly Count", "path": "play/firefly-count/", "tile": "assets/img/tile-firefly.webp", "kind": "module", "ages": "4-7" },
-    "clocktower-gears": { "name": "Clocktower Gears", "path": "play/clocktower-gears/", "tile": "assets/img/tile-clocktower.webp", "kind": "module", "ages": "4-9" }
+    "clocktower-gears": { "name": "Clocktower Gears", "path": "play/clocktower-gears/", "tile": "assets/img/tile-clocktower.webp", "kind": "module", "ages": "4-9" },
+    "lantern-barn": { "name": "Lantern Barn", "path": "play/lantern-barn/", "tile": "assets/img/tile-barn.svg", "kind": "module", "ages": "0-4" },
+    "picture-garden": { "name": "Picture Garden", "path": "play/picture-garden/", "tile": "assets/img/tile-garden.svg", "kind": "module", "ages": "0-4" },
+    "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" }
   },
   "subjects": [
     {
@@ -13,7 +16,44 @@
       "realm": {
         "id": "reading", "name": "Reading", "landmark": "Storybook", "status": "open", "color": "#9B8AD1", "icon": "book",
         "img": "assets/img/isle-reading", "say": "Reading land! Tap to go in.",
+        "comingSoonLittle": [ { "name": "Story time", "icon": "book" }, { "name": "Sing along", "icon": "ear" } ],
         "skills": [
+          {"id": "ll.peekaboo", "name": "Peekaboo sounds (play together)", "grade": "Toddler", "bands": ["tiny"], "standards": ["ELOF.IT-C 2", "ELOF.IT-LC 1"],
+            "lessons": [
+              {"id": "ll-r0", "name": "Peekaboo barn", "icon": "ear", "grade": "Toddler", "standards": ["ELOF.IT-C 2", "ELOF.IT-LC 1"], "say": "Peekaboo! Who is in the barn?", "game": {"id": "lantern-barn", "config": {"mode": "tiny"}}}
+            ] },
+          {"id": "ll.look-name", "name": "Look and name (play together)", "grade": "Toddler", "bands": ["tiny"], "standards": ["ELOF.IT-LC 7"],
+            "lessons": [
+              {"id": "ll-r00", "name": "Look and name", "icon": "book", "grade": "Toddler", "standards": ["ELOF.IT-LC 7"], "say": "Tap and look!", "game": {"id": "picture-garden", "config": {"mode": "tiny"}}}
+            ] },
+          {"id": "ll.animal-sounds", "name": "Listening: animal sounds", "grade": "Toddler", "bands": ["little"], "standards": ["ELOF.IT-LC 1", "ELOF.P-LC 1"],
+            "lessons": [
+              {"id": "ll-r1", "name": "Who says that?", "icon": "ear", "grade": "Toddler", "standards": ["ELOF.IT-LC 1", "ELOF.P-LC 1"], "say": "Who says moo? Let's listen!", "game": {"id": "lantern-barn", "config": {"mode": "animals", "rounds": 5}}}
+            ] },
+          {"id": "ll.first-words", "name": "First words", "grade": "Toddler", "bands": ["little"], "standards": ["ELOF.IT-LC 7", "ELOF.P-LC 6"],
+            "lessons": [
+              {"id": "ll-r2", "name": "First words", "icon": "book", "grade": "Toddler", "standards": ["ELOF.IT-LC 7", "ELOF.P-LC 6"], "say": "Find the pictures!", "game": {"id": "picture-garden", "config": {"mode": "words", "rounds": 6}}}
+            ] },
+          {"id": "ll.loud-quiet", "name": "Listening: loud and quiet", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-LC 1"],
+            "lessons": [
+              {"id": "ll-r3", "name": "Loud or quiet", "icon": "ear", "grade": "PreK", "standards": ["ELOF.P-LC 1"], "say": "Loud or quiet? Let's listen!", "game": {"id": "lantern-barn", "config": {"mode": "loudquiet", "rounds": 6}}}
+            ] },
+          {"id": "ll.colors", "name": "Colors", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.IT-C 10", "ELOF.P-LC 6"],
+            "lessons": [
+              {"id": "ll-r4", "name": "Colors", "icon": "palette", "grade": "PreK", "standards": ["ELOF.IT-C 10", "ELOF.P-LC 6"], "say": "Pop the balloons! Find the colors!", "game": {"id": "picture-garden", "config": {"mode": "colors", "rounds": 6}}}
+            ] },
+          {"id": "ll.rhyme", "name": "Rhyme time", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.IT-LC 9", "ELOF.P-LIT 1"],
+            "lessons": [
+              {"id": "ll-r5", "name": "Rhyme time", "icon": "frog", "grade": "PreK", "standards": ["ELOF.IT-LC 9", "ELOF.P-LIT 1"], "say": "Rhyme time!", "game": {"id": "picture-garden", "config": {"mode": "rhyme", "rounds": 5}}}
+            ] },
+          {"id": "ll.syllables", "name": "Clap the beats (syllables)", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-LIT 1"],
+            "lessons": [
+              {"id": "ll-r6", "name": "Clap the beats", "icon": "ear", "grade": "PreK", "standards": ["ELOF.P-LIT 1"], "say": "Let's clap the beats!", "game": {"id": "lantern-barn", "config": {"mode": "clap", "rounds": 5}}}
+            ] },
+          {"id": "ll.letter-shapes", "name": "Letter shapes (matching)", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-LIT 3"],
+            "lessons": [
+              {"id": "ll-r7", "name": "Letter shapes", "icon": "pencil", "grade": "PreK", "standards": ["ELOF.P-LIT 3"], "say": "Find the matching letter shapes!", "game": {"id": "picture-garden", "config": {"mode": "letters", "rounds": 6}}, "standardsNote": "Visual matching of letter shapes only: an early step toward P-LIT 3. Letter names and sounds come later (Explorers path)."}
+            ] },
           { "id": "rd.letter-sounds", "name": "Letter sounds", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.A"],
             "lessons": [
               { "id": "rd-l1", "name": "First sounds", "icon": "moth", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.A"], "say": "First sounds with Mothabet",
@@ -58,7 +98,28 @@
       "realm": {
         "id": "math", "name": "Math", "landmark": "Clocktower", "status": "open", "color": "#7CC4A4", "icon": "numbers",
         "img": "assets/img/isle-math", "say": "Math land! Tap to go in.",
+        "comingSoonLittle": [ { "name": "Big and small", "icon": "puzzle" } ],
         "skills": [
+          {"id": "ll.count-out", "name": "Firefly jar (play together)", "grade": "Toddler", "bands": ["tiny"], "standards": ["ELOF.IT-C 2", "ELOF.IT-C 8"],
+            "lessons": [
+              {"id": "ll-m0", "name": "Firefly jar", "icon": "firefly", "grade": "Toddler", "standards": ["ELOF.IT-C 2", "ELOF.IT-C 8"], "say": "Tap the jar and count!", "game": {"id": "glow-jars", "config": {"mode": "tiny"}}}
+            ] },
+          {"id": "ll.match-sets", "name": "Matching sets", "grade": "Toddler", "bands": ["little"], "standards": ["ELOF.IT-C 10", "ELOF.IT-C 8"],
+            "lessons": [
+              {"id": "ll-m1", "name": "Match the jars", "icon": "firefly", "grade": "Toddler", "standards": ["ELOF.IT-C 10", "ELOF.IT-C 8"], "say": "Find the jars that match!", "game": {"id": "glow-jars", "config": {"mode": "match", "rounds": 6}}}
+            ] },
+          {"id": "ll.shapes", "name": "Shapes", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-MATH 9"],
+            "lessons": [
+              {"id": "ll-m2", "name": "Shapes", "icon": "puzzle", "grade": "PreK", "standards": ["ELOF.P-MATH 9"], "say": "Find the shapes!", "game": {"id": "picture-garden", "config": {"mode": "shapes", "rounds": 6}}}
+            ] },
+          {"id": "ll.subitize", "name": "One, two, three at a glance", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.IT-C 8", "ELOF.P-MATH 2"],
+            "lessons": [
+              {"id": "ll-m3", "name": "One, two, three", "icon": "firefly", "grade": "PreK", "standards": ["ELOF.IT-C 8", "ELOF.P-MATH 2"], "say": "One, two, three fireflies!", "game": {"id": "glow-jars", "config": {"mode": "subitize", "rounds": 6}}}
+            ] },
+          {"id": "ll.more", "name": "Which has more?", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-MATH 4"],
+            "lessons": [
+              {"id": "ll-m4", "name": "Which has more?", "icon": "plus", "grade": "PreK", "standards": ["ELOF.P-MATH 4"], "say": "Which jar has more?", "game": {"id": "glow-jars", "config": {"mode": "more", "rounds": 6}}}
+            ] },
           { "id": "ma.count-5", "name": "Count to 5", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.4", "CCSS.MATH.CONTENT.K.CC.B.5"],
             "lessons": [
               { "id": "ma-l1", "name": "Count the fireflies", "icon": "firefly", "grade": "K", "standards": ["CCSS.MATH.CONTENT.K.CC.B.5"], "say": "Count the fireflies!",
