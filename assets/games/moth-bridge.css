@@ -1,0 +1,68 @@
+/* Moth Bridge: night river, a wooden bridge, sound-moths with their letters, a lantern slider and picture cards.
+   All targets >= 64 px (moths >= 76, cards >= 104). Nothing in the exit-tab zone (top-centre 60x48 below the safe-area top):
+   the hear button sits left, the word picture sits below the top bar. */
+.mbr { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; padding: 0 10px calc(8px + var(--safe-b)); gap: clamp(4px, 1.4vh, 14px); }
+.mbr-sky { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(1.5px 1.5px at 12% 18%, #fff8, transparent), radial-gradient(2px 2px at 78% 10%, #fff9, transparent), radial-gradient(1.5px 1.5px at 40% 30%, #fff6, transparent), radial-gradient(2px 2px at 90% 36%, #fff7, transparent); }
+.mbr-river { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; background: linear-gradient(#2E7D86, #1F5866 50%, #183F55); border-radius: 50% 50% 0 0 / 14% 14% 0 0; box-shadow: inset 0 10px 0 rgba(124,196,164,.3); }
+.mbr-river::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background-image: var(--felt); opacity: .14; mix-blend-mode: overlay; }
+.mbr > :not(.mbr-sky):not(.mbr-river):not(.mbr-wick) { position: relative; z-index: 2; }
+.mbr-top { width: 100%; max-width: 760px; display: flex; align-items: center; gap: 12px; min-height: 84px; padding-top: 4px; }
+.mbr-hear { width: 76px; height: 76px; flex: none; } .mbr-hear svg { width: 42px; height: 42px; }
+.mbr-show { flex: 1; display: flex; justify-content: center; visibility: hidden; }
+.mbr-show.on { visibility: visible; }
+.mbr-pic { width: clamp(120px, 20vh, 190px); aspect-ratio: 1; border-radius: 28px; background: var(--cream); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d), 0 12px 24px rgba(0,0,0,.35); padding: 8px; animation: popin .45s cubic-bezier(.3,1.6,.5,1); margin-right: 88px; }
+.mbr-pic .pic { width: 100%; height: 100%; }
+@keyframes popin { from { transform: scale(.3); opacity: 0; } }
+.mbr-mid { flex: 0 1 auto; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+.mbr-span { width: min(100%, 680px); display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.mbr-bridge { position: relative; height: clamp(150px, 24vh, 220px); }
+.mbr-arch { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 72%; filter: drop-shadow(0 8px 0 rgba(0,0,0,.25)); }
+.mbr-planks { position: absolute; inset: 0 4% 18%; display: flex; justify-content: space-evenly; align-items: flex-end; transition: gap .5s, padding .5s; }
+.plank { position: relative; width: clamp(84px, 24vw, 132px); height: 100%; display: flex; align-items: flex-end; justify-content: center; transition: margin .5s cubic-bezier(.3,1.3,.5,1); }
+.plank::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: -4px; height: 16px; border-radius: 8px; background: #D99A5B; box-shadow: inset 0 -5px 0 #B5733A, 0 4px 0 rgba(0,0,0,.25); }
+.mbr-planks.together { justify-content: center; } .mbr-planks.together .plank { margin: 0 -10px; }
+.moth { position: relative; z-index: 2; width: clamp(84px, 23vw, 124px); aspect-ratio: 1.15; border: 0; padding: 0; background: none; cursor: pointer; touch-action: none; margin-bottom: 6px; }
+.moth.wide { width: clamp(100px, 28vw, 148px); }
+.moth svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 5px 0 rgba(0,0,0,.3)); transition: filter .3s; }
+.moth b { position: absolute; left: 0; right: 0; top: 56.4%; transform: translateY(-54%); text-align: center; font: 700 var(--mf, clamp(1.9rem, 7.6vw, 2.7rem))/1 var(--display); color: var(--ink); pointer-events: none; letter-spacing: .5px; }
+.plank > .moth { opacity: 0; } .plank > .moth.land, .plank > .moth.placed { opacity: 1; }
+.plank > .moth.land:not(.placed) { animation: flyin .6s cubic-bezier(.3,1.2,.5,1); }
+@keyframes flyin { from { transform: translate(-40vw, -30vh) rotate(-30deg) scale(.6); opacity: 0; } 60% { opacity: 1; } }
+.moth.next { animation: nudge 1.1s ease-in-out infinite; } .moth.next svg { filter: drop-shadow(0 0 14px rgba(245,184,65,.95)) drop-shadow(0 5px 0 rgba(0,0,0,.3)); }
+@keyframes nudge { 50% { transform: translateY(-8px) scale(1.06); } }
+.moth.lit svg { filter: drop-shadow(0 0 10px rgba(255,244,200,.9)) drop-shadow(0 5px 0 rgba(0,0,0,.3)); }
+.moth.sing { animation: sing .45s ease; }
+@keyframes sing { 40% { transform: translateY(-14px) scale(1.12); } }
+.moth.wig { animation: wig .45s ease; }
+@keyframes wig { 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }
+.moth.hint { animation: nudge 1s ease-in-out infinite; } .moth.hint svg { filter: drop-shadow(0 0 18px rgba(245,184,65,1)) drop-shadow(0 5px 0 rgba(0,0,0,.3)); }
+.moth.fade { opacity: .35; }
+.mbr-planks.cross .moth { animation: cross 1.4s ease-in .2s forwards; }
+@keyframes cross { 30% { transform: translate(10px, -26px) rotate(6deg); } 100% { transform: translate(60vw, -40vh) rotate(16deg) scale(.6); opacity: 0; } }
+.mbr-slide { position: relative; height: 78px; margin: 0 4%; opacity: .35; transition: opacity .3s; }
+.mbr-slide.on, .mbr-slide.done, .mbr-busy .mbr-slide { opacity: 1; }
+.seg .mbr-slide:not(.done) { opacity: .25; }
+.mbr-track { position: absolute; left: 0; right: 0; top: 50%; height: 18px; transform: translateY(-50%); border-radius: 9px; background: rgba(20,17,58,.7); box-shadow: inset 0 0 0 3px rgba(246,235,217,.25); }
+.mbr-track i { position: absolute; right: 6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.mbr-lantern { position: absolute; left: 0; top: 0; width: 72px; height: 78px; border: 0; padding: 0; background: none; cursor: grab; touch-action: none; transition: left .35s ease; }
+.mbr-lantern svg { width: 100%; height: 100%; filter: drop-shadow(0 0 0 transparent) drop-shadow(0 5px 0 rgba(0,0,0,.3)); }
+.mbr-slide.on .mbr-lantern svg { filter: drop-shadow(0 0 16px rgba(245,184,65,.95)) drop-shadow(0 5px 0 rgba(0,0,0,.3)); animation: nudge 1.2s ease-in-out infinite; }
+.mbr-slide.on .mbr-lantern:active { cursor: grabbing; }
+.mbr-cards { width: 100%; max-width: 760px; min-height: clamp(116px, 20vh, 176px); display: flex; justify-content: center; align-items: center; gap: clamp(10px, 3vw, 26px); padding-right: 96px; padding-left: 0; }
+.mbr-cards.tray { flex-wrap: wrap; gap: 8px; }
+.mbr-card { flex: none; width: clamp(104px, 26vw, 168px); aspect-ratio: 1; border: 0; padding: 8px; border-radius: 26px; background: var(--cream); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d), 0 10px 20px rgba(0,0,0,.35); cursor: pointer; animation: popin .4s cubic-bezier(.3,1.6,.5,1) backwards; }
+.mbr-card:nth-child(2) { animation-delay: .1s; } .mbr-card:nth-child(3) { animation-delay: .2s; }
+.mbr-card .in, .mbr-card .pic { display: block; width: 100%; height: 100%; }
+.mbr-card.no { opacity: .45; transform: scale(.92); } .mbr-card.fade { opacity: .3; }
+.mbr-card.wig { animation: wig .45s ease; }
+.mbr-card.hint { animation: nudge 1s ease-in-out infinite; box-shadow: 0 0 0 6px var(--gold), 0 0 26px rgba(245,184,65,.9), 0 6px 0 var(--cream-d); }
+.mbr-card.yes { box-shadow: 0 0 0 6px var(--teal, #7CC4A4), 0 0 26px rgba(124,196,164,.9), 0 6px 0 var(--cream-d); transform: scale(1.06); transition: transform .3s; }
+.mbr-wick { position: absolute; z-index: 3; right: 4px; bottom: calc(4px + var(--safe-b)); width: 92px; }
+/* short screens (phones in landscape, small laptops) */
+@media (max-height: 700px) { .mbr-bridge { height: 140px; } .mbr-top { min-height: 72px; } .mbr-hear { width: 68px; height: 68px; } .mbr-pic { width: 112px; } .mbr-cards { min-height: 110px; } .mbr-card { width: 104px; } }
+@media (min-width: 900px) { .mbr-cards { padding-left: 96px; } }
+/* phones: three 104 px cards need the full width, so the row sits above Wick instead of beside him */
+@media (max-width: 599px) { .mbr-cards { padding-right: 0; margin-bottom: 64px; } .mbr-wick { width: 76px; } }
+/* big touch screens (iPad portrait and up): everything grows so the bridge fills the stage */
+@media (min-width: 700px) and (min-height: 900px) { .mbr-span { width: min(100%, 820px); } .mbr-bridge { height: 300px; } .moth { width: 168px; --mf: 3.6rem; } .moth.wide { width: 196px; } .plank { width: 190px; }
+  .mbr-pic { width: 240px; } .mbr-card { width: 210px; border-radius: 32px; } .mbr-cards { min-height: 220px; } .mbr-hear { width: 92px; height: 92px; } .mbr-slide { height: 96px; } .mbr-lantern { width: 88px; height: 96px; } .mbr-wick { width: 120px; } }

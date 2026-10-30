@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:43:43.231Z",
+ "generated": "2026-10-30T10:44:22.406Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -326,11 +326,11 @@
   }
  ],
  "counts": {
-  "total": 2237,
-  "spoken": 2220,
+  "total": 2257,
+  "spoken": 2240,
   "reserved": 17,
   "byGame": {
-   "elearnea": 65,
+   "elearnea": 66,
    "lily-pad-hop": 327,
    "firefly-count": 72,
    "clocktower-gears": 35,
@@ -338,25 +338,26 @@
    "lantern-barn": 81,
    "picture-garden": 121,
    "glow-jars": 8,
-   "wicks-path": 39
+   "wicks-path": 39,
+   "moth-bridge": 19
   },
   "byType": {
-   "instruction": 619,
+   "instruction": 627,
    "label": 135,
    "feedback": 216,
-   "praise": 204,
+   "praise": 207,
    "number": 10,
    "word": 551,
-   "phoneme": 47,
+   "phoneme": 56,
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 290,
+  "needsHumanCheck": 299,
   "withClip": 2222,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 0,
+  "pending": 20,
   "gaps": 0
  },
  "items": [
@@ -712,6 +713,51 @@
    },
    "files": [
     "voice/clips/el.hop-to-the-word.mp3"
+   ]
+  },
+  {
+   "id": "el.help-the-moths-cross-the-bridge",
+   "key": "help the moths cross the bridge",
+   "text": "Help the moths cross the bridge!",
+   "render": "Help the moths cross the bridge!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Moth bridge: c + at\" (also tap Wick when it is the current stop)"
+    },
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Moth bridge: c-a-t\" (also tap Wick when it is the current stop)"
+    },
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Moth bridge: a e i o u\" (also tap Wick when it is the current stop)"
+    },
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Moth bridge: tap the sounds\" (also tap Wick when it is the current stop)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "first round starts"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.help-the-moths-cross-the-bridge.mp3"
    ]
   },
   {
@@ -13718,6 +13764,11 @@
      "game": "picture-garden",
      "screen": "Picture Garden / Lantern Barn / Glow Jars",
      "trigger": "second miss: the answer glows"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "second miss: the answer glows"
     }
    ],
    "source": {
@@ -17389,6 +17440,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a a moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "æ",
@@ -17466,6 +17522,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a b moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "bə",
@@ -17543,6 +17604,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a c moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "kə",
@@ -17620,6 +17686,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a d moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "də",
@@ -17697,6 +17768,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a e moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ɛ",
@@ -17774,6 +17850,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a f moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "fːːː",
@@ -17851,6 +17932,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a g moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ɡə",
@@ -17928,6 +18014,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a h moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "hə",
@@ -18005,6 +18096,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a i moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ɪ",
@@ -18082,6 +18178,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a j moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "dʒə",
@@ -18159,6 +18260,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a l moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "lːːː",
@@ -18236,6 +18342,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a m moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "mːːː",
@@ -18313,6 +18424,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a n moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "nːːː",
@@ -18390,6 +18506,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a o moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ɑ",
@@ -18467,6 +18588,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a p moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "pə",
@@ -18618,6 +18744,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a r moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ɹː",
@@ -18695,6 +18826,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a s moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "sːːː",
@@ -18772,6 +18908,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a t moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "tə",
@@ -18849,6 +18990,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a u moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "ʌ",
@@ -19003,6 +19149,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Phonics/Sprouts)",
      "trigger": "a letter moth is tapped; or the hint button"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "a w moth is tapped, lands or is slid over"
     }
    ],
    "ipa": "wə",
@@ -21277,6 +21428,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -21829,6 +21985,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -21943,6 +22104,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -22062,6 +22228,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -22176,6 +22347,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -22851,6 +23027,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -22975,6 +23156,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -23513,6 +23699,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -23755,6 +23946,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -24086,6 +24282,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -24205,6 +24406,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -24319,6 +24525,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -25401,6 +25612,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -25510,6 +25726,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -25745,6 +25966,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -25978,6 +26204,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -26220,6 +26451,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -26339,6 +26575,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -26557,6 +26798,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -27027,6 +27273,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -28888,6 +29139,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -28962,6 +29218,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -29041,6 +29302,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -29228,6 +29494,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -29307,6 +29578,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -29390,6 +29666,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -30082,6 +30363,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -30195,6 +30481,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s6",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
     }
    ],
    "parts": [
@@ -33400,6 +33691,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -in rime moth is tapped or slid over"
     }
    ],
    "parts": [
@@ -53970,6 +54266,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f10",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -us rime moth is tapped or slid over"
     }
    ],
    "parts": [
@@ -71565,6 +71866,11 @@
      "game": "lantern-barn",
      "screen": "Lantern Barn: loud or quiet",
      "trigger": "first miss (the drum replays)"
+    },
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge",
+     "trigger": "wrong picture or wrong sound (first miss)"
     }
    ],
    "source": {
@@ -77456,6 +77762,499 @@
    },
    "files": [
     "voice/clips/wp.all-the-lanterns-are-glowing.mp3"
+   ]
+  },
+  {
+   "id": "mbr.att",
+   "key": "att",
+   "text": "att",
+   "render": "att",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -at rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.att.mp3"
+   ]
+  },
+  {
+   "id": "mbr.app",
+   "key": "app",
+   "text": "app",
+   "render": "app",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -ap rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.app.mp3"
+   ]
+  },
+  {
+   "id": "mbr.ann",
+   "key": "ann",
+   "text": "ann",
+   "render": "ann",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -an rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.ann.mp3"
+   ]
+  },
+  {
+   "id": "mbr.ugg",
+   "key": "ugg",
+   "text": "ugg",
+   "render": "ugg",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -ug rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.ugg.mp3"
+   ]
+  },
+  {
+   "id": "mbr.opp",
+   "key": "opp",
+   "text": "opp",
+   "render": "opp",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -op rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.opp.mp3"
+   ]
+  },
+  {
+   "id": "mbr.ogg",
+   "key": "ogg",
+   "text": "ogg",
+   "render": "ogg",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -og rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.ogg.mp3"
+   ]
+  },
+  {
+   "id": "mbr.igg",
+   "key": "igg",
+   "text": "igg",
+   "render": "igg",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -ig rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.igg.mp3"
+   ]
+  },
+  {
+   "id": "mbr.unn",
+   "key": "unn",
+   "text": "unn",
+   "render": "unn",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -un rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.unn.mp3"
+   ]
+  },
+  {
+   "id": "mbr.upp",
+   "key": "upp",
+   "text": "upp",
+   "render": "upp",
+   "type": "phoneme",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (onset-rime)",
+     "trigger": "the -up rime moth is tapped or slid over"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "phoneme: needs an ear check (pure sound, no extra vowel)"
+    ]
+   },
+   "files": [
+    "voice/clips/mbr.upp.mp3"
+   ]
+  },
+  {
+   "id": "mbr.tap-each-moth-to-hear-its-sound",
+   "key": "tap each moth to hear its sound",
+   "text": "Tap each moth to hear its sound.",
+   "render": "Tap each moth to hear its sound.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (blend)",
+     "trigger": "moths have landed on the bridge"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.tap-each-moth-to-hear-its-sound.mp3"
+   ]
+  },
+  {
+   "id": "mbr.now-slide-them-together",
+   "key": "now slide them together",
+   "text": "Now slide them together!",
+   "render": "Now slide them together!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (blend)",
+     "trigger": "every moth has been heard"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.now-slide-them-together.mp3"
+   ]
+  },
+  {
+   "id": "mbr.which-picture-is-it",
+   "key": "which picture is it",
+   "text": "Which picture is it?",
+   "render": "Which picture is it?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (blend)",
+     "trigger": "the moths were slid together"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.which-picture-is-it.mp3"
+   ]
+  },
+  {
+   "id": "mbr.tap-the-sounds-in-order",
+   "key": "tap the sounds in order",
+   "text": "Tap the sounds in order.",
+   "render": "Tap the sounds in order.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (segment)",
+     "trigger": "a word to take apart is shown"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.tap-the-sounds-in-order.mp3"
+   ]
+  },
+  {
+   "id": "mbr.what-sound-comes-first",
+   "key": "what sound comes first",
+   "text": "What sound comes first?",
+   "render": "What sound comes first?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (segment)",
+     "trigger": "ask for the first sound"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.what-sound-comes-first.mp3"
+   ]
+  },
+  {
+   "id": "mbr.what-sound-comes-next",
+   "key": "what sound comes next",
+   "text": "What sound comes next?",
+   "render": "What sound comes next?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (segment)",
+     "trigger": "ask for the middle sound"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.what-sound-comes-next.mp3"
+   ]
+  },
+  {
+   "id": "mbr.what-is-the-last-sound",
+   "key": "what is the last sound",
+   "text": "What is the last sound?",
+   "render": "What is the last sound?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (segment)",
+     "trigger": "ask for the last sound"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.what-is-the-last-sound.mp3"
+   ]
+  },
+  {
+   "id": "mbr.you-blended-it",
+   "key": "you blended it",
+   "text": "You blended it!",
+   "render": "You blended it!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (blend)",
+     "trigger": "right picture"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.you-blended-it.mp3"
+   ]
+  },
+  {
+   "id": "mbr.over-the-bridge",
+   "key": "over the bridge",
+   "text": "Over the bridge!",
+   "render": "Over the bridge!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (blend)",
+     "trigger": "right picture"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.over-the-bridge.mp3"
+   ]
+  },
+  {
+   "id": "mbr.you-found-every-sound",
+   "key": "you found every sound",
+   "text": "You found every sound!",
+   "render": "You found every sound!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "moth-bridge",
+     "screen": "Moth Bridge (segment)",
+     "trigger": "every sound placed"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/mbr.you-found-every-sound.mp3"
    ]
   }
  ]

@@ -164,6 +164,8 @@ require('./early-lines.js')({ add, APP });
 
 /* ================= Wick's Lantern Path (Logic & Coding: sequences, debugging, loops) ================= */
 require('./wicks-lines.js')({ add, APP });
+/* ================= Moth Bridge (reading, ages 5-7): reuses Mothabet sound + word clips, adds prompts and rimes ================= */
+require('./bridge-lines.js')({ add, APP });
 
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));

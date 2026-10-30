@@ -11,8 +11,9 @@ const BASE = process.argv[2].replace(/\/?$/, '/'), OUT = process.argv[3]; const 
 const LL = { 'll-r0': 'lantern-barn', 'll-r00': 'picture-garden', 'll-r1': 'lantern-barn', 'll-r2': 'picture-garden', 'll-r3': 'lantern-barn', 'll-r4': 'picture-garden', 'll-r5': 'picture-garden',
   'll-r6': 'lantern-barn', 'll-r7': 'picture-garden', 'll-m0': 'glow-jars', 'll-m1': 'glow-jars', 'll-m2': 'picture-garden', 'll-m3': 'glow-jars', 'll-m4': 'glow-jars' };
 const TINY = ['ll-r0', 'll-r00', 'll-m0']; // under-2 play-together lessons (band 'tiny')
-const ALL = ['rd-l2', 'ma-l1', 'ma-l3', 'ma-l5', 'ma-l6', 'ma-l7', ...Object.keys(LL)]; const PICK = { early: ALL.filter(l => l in LL), k3: ALL.filter(l => !(l in LL)) }; const LESSONS = !process.argv[5] || process.argv[5] === 'all' ? ALL : PICK[process.argv[5]] || process.argv[5].split(',');
-const GAME = { 'rd-l2': 'lily-pad', 'ma-l1': 'firefly-count', 'ma-l3': 'firefly-count', 'ma-l5': 'clocktower-gears', 'ma-l6': 'clocktower-gears', 'ma-l7': 'clocktower-gears', ...LL };
+const MBR = { 'rd-b1': 'moth-bridge', 'rd-b2': 'moth-bridge', 'rd-b3': 'moth-bridge', 'rd-b4': 'moth-bridge' }; // Moth Bridge (reading, ages 5-7): blend onset-rime, CVC short a, mixed vowels, segmenting
+const ALL = ['rd-l2', ...Object.keys(MBR), 'ma-l1', 'ma-l3', 'ma-l5', 'ma-l6', 'ma-l7', ...Object.keys(LL)]; const PICK = { early: ALL.filter(l => l in LL), k3: ALL.filter(l => !(l in LL)) }; const LESSONS = !process.argv[5] || process.argv[5] === 'all' ? ALL : PICK[process.argv[5]] || process.argv[5].split(',');
+const GAME = { 'rd-l2': 'lily-pad', ...MBR, 'ma-l1': 'firefly-count', 'ma-l3': 'firefly-count', 'ma-l5': 'clocktower-gears', 'ma-l6': 'clocktower-gears', 'ma-l7': 'clocktower-gears', ...LL };
 const MIN = (ls) => ls in LL ? 96 : 64; const origin = new URL(BASE).origin; const results = []; fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms)); const PRAISE = PROBE.praiseSet(path.join(__dirname, '../../voice/manifest.json'));
 function audit(MIN) { // in page: overflow + interactive targets (game stage + top bar)
@@ -28,6 +29,9 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
     const dx = Math.abs(parseFloat(cs.getPropertyValue('--dx')) || 0), dy = Math.abs(parseFloat(cs.getPropertyValue('--dy')) || 0);
     const cx = f.offsetLeft + f.offsetWidth / 2, cy = f.offsetTop + f.offsetHeight / 2, hx = sc * (42 + dx), hy = sc * (42 + dy);
     if (cx - hx < -.5 || cy - hy < -.5 || cx + hx > field.clientWidth + .5 || cy + hy > field.clientHeight + .5 || fr.left < -.5 || fr.right > W + .5) ffOut.push(`fly@${Math.round(cx)},${Math.round(cy)} reach ${Math.round(hx)}x${Math.round(hy)} field ${field.clientWidth}x${field.clientHeight}`); } }
+  // exit-tab zone (top-centre 60x48 CSS px below the safe-area top): no button may sit there; Moth Bridge picture cards must have art
+  const zone = { l: W / 2 - 30, r: W / 2 + 30, t: 0, b: 48 }; for (const e of t) { const r = e.getBoundingClientRect(); if (r.left < zone.r && r.right > zone.l && r.top < zone.b && r.bottom > zone.t && e.closest('#stage')) outside.push('EXIT-ZONE ' + nm(e)); }
+  for (const c of document.querySelectorAll('#stage .mbr-card')) if (!c.querySelector('svg.pic') || c.querySelector('svg.pic').childElementCount < 2) outside.push('NO-PICTURE ' + c.dataset.w);
   return { W, sw: de.scrollWidth, bsw: document.body.scrollWidth, n: t.length, small, outside, ffOut, flies: field ? field.querySelectorAll('.fly.drift').length : 0 };
 }
 (async () => {
@@ -52,6 +56,12 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
         const marked = await page.$$eval('[data-ok]', a => a.length); if (marked) { ok = false; } note = `kidMode cards=${await page.$$eval('#llOpts .ll-card', a => a.length)} dataOk=${marked}`; } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0]; }
       const r = { vp: vpn, page: ls + ' kid-mode (no ?qa=1)', ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note }; results.push(r);
       console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); }
+    for (const ls of LESSONS.filter(l => l === 'rd-b1' || l === 'rd-b4')) { errs = []; ext = []; fails = []; let note = '', ok = true;
+      try { await page.goto(BASE, { waitUntil: 'networkidle' }); await page.evaluate(() => localStorage.clear());
+        await page.goto(BASE + `play/moth-bridge/?lesson=${ls}`, { waitUntil: 'networkidle' }); await page.waitForSelector('#stage .moth', { timeout: 15000 }); await sleep(1500);
+        const marks = await page.$eval('#stage', s => Object.keys(s.dataset).join(',')); if (marks) ok = false; note = `kidMode moths=${await page.$$eval('#stage .moth', a => a.length)} stageData="${marks}"`; } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0]; }
+      const r = { vp: vpn, page: ls + ' kid-mode (no ?qa=1)', ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note }; results.push(r);
+      console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); }
     for (const ls of LESSONS) {
       errs = []; ext = []; fails = []; aborted = 0; abortedAt = []; lessonT0 = Date.now(); let note = '', ok = true; const aud = { small: new Set(), outside: new Set(), overflow: [], n: 0, samples: 0 };
       const sample = async () => { const a = await page.evaluate(audit, MIN(ls)); aud.samples++; aud.n = Math.max(aud.n, a.n); a.small.forEach(x => aud.small.add(x)); a.outside.forEach(x => aud.outside.add(x)); aud.flies = (aud.flies || 0) + (a.flies || 0); (a.ffOut || []).forEach(x => aud.outside.add('FIREFLY-BOUNDS ' + x)); if (a.outside.length && !aud.outShot) { aud.outShot = `${ls}-outside-${vpn}.png`; await shot(`${ls}-outside`); } if (a.sw > a.W || a.bsw > a.W) aud.overflow.push(`${a.sw}/${a.bsw}>${a.W}`); };
@@ -59,7 +69,9 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
       try {
         await page.goto(BASE, { waitUntil: 'networkidle' }); // same origin (the landing page, so no favicon 404): fresh storage, then the age band a parent would pick for this lesson
         await page.evaluate((band) => { localStorage.clear(); if (band) localStorage.setItem('elearnea:v1', JSON.stringify({ set: { voice: true, sound: true, rate: 1, band: 'little', little: band } })); }, ls in LL ? (TINY.includes(ls) ? 'tiny' : 'little') : null);
-        await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}` + (GAME[ls] === 'clocktower-gears' || ls in LL ? '&qa=1' : ''), { waitUntil: 'networkidle' }); await sleep(900);
+        // Moth Bridge rd-b3/rd-b4 start at a learned-in difficulty (.6): 3 picture cards with one-sound look-alikes, an extra moth in the segmenting tray
+        if (ls === 'rd-b3' || ls === 'rd-b4') await page.evaluate((sk) => { localStorage.setItem('elearnea:v1', JSON.stringify({ set: { voice: true, sound: true, rate: 1, band: 'explorer', little: 'little' }, skills: { [sk]: { d: .6, recent: [], rounds: 0 } } })); }, ls === 'rd-b3' ? 'rd.blend-vowels' : 'rd.segment-sounds');
+        await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}` + (GAME[ls] === 'clocktower-gears' || GAME[ls] === 'moth-bridge' || ls in LL ? '&qa=1' : ''), { waitUntil: 'networkidle' }); await sleep(900);
         while (!(await resultsOn()) && Date.now() - t0 < 200000) {
           if (ls in LL) { // Little Lanterns kit: one huge card (tiny), a drum to clap on, or picture cards with data-ok on the right one
             const st = await waitFor(() => page.evaluate(() => { if (document.querySelector('#res.on')) return 'end'; const d = document.querySelector('#llOpts .lb-drum');
@@ -74,6 +86,23 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
               await tapEl(ok); rounds++; if (rounds === 1) { await sleep(400); await shot(`${ls}-yes`); }
               await waitFor(async () => await resultsOn() || await ok.evaluate(e => !e.isConnected), 30000, 'next card set'); }
             if (rounds > 40) throw new Error('too many rounds'); continue;
+          }
+          if (GAME[ls] === 'moth-bridge') { // ?qa=1: #stage data-want = tap:<i> | slide | pick:<word> | seg:<letter>, data-miss = a wrong choice, data-busy
+            const st = await waitFor(async () => await resultsOn() ? { end: 1 } : page.$eval('#stage', s => s.dataset.want && s.dataset.busy !== '1' ? { want: s.dataset.want, miss: s.dataset.miss, word: s.dataset.word } : null), 30000, 'moth bridge idle'); if (st.end) break;
+            const [kind, arg] = st.want.split(':'); if (!aud.words) { aud.words = []; aud.steps = {}; } if (aud.words[aud.words.length - 1] !== st.word) aud.words.push(st.word); rounds = aud.words.length;
+            if (kind === 'pick' || kind === 'seg') await waitFor(() => page.evaluate(() => ![...document.querySelectorAll('#mbCards > button')].some(c => c.getAnimations().some(x => x.animationName === 'popin' && x.playState === 'running'))), 3000, 'cards settled'); // measure targets after their pop-in
+            aud.steps[kind] = (aud.steps[kind] || 0) + 1; aud.maxOpts = Math.max(aud.maxOpts || 0, await page.$$eval('#mbCards > button', a => a.length)); await sleep(150); if (aud.steps[kind] === 1 || kind === 'pick') await sample(); if (aud.steps[kind] === 1) await shot(`${ls}-${kind}`);
+            const before = st.want + '|' + st.word;
+            if (kind === 'tap') await tapEl(await page.$(`#mbPlanks .plank:nth-child(${+arg + 1}) .moth`));
+            else if (kind === 'slide') { const lan = await page.$('#mbLantern'), tr = await (await page.$('#mbSlide')).boundingBox(), b = await lan.boundingBox();
+              if (rounds % 2) { const y = b.y + b.height / 2; await page.mouse.move(b.x + b.width / 2, y); await page.mouse.down(); for (let k = 1; k <= 16; k++) { await page.mouse.move(b.x + b.width / 2 + (tr.width - b.width) * k / 16 + 4, y); await sleep(60); } await page.mouse.up(); aud.drags = (aud.drags || 0) + 1; }
+              else { await tapEl(lan); aud.autoSlides = (aud.autoSlides || 0) + 1; } }
+            else if (kind === 'pick' || kind === 'seg') { const sel = (v) => kind === 'pick' ? `#mbCards .mbr-card[data-w="${v}"]` : `#mbCards .moth[data-l="${v}"]:not(.placed)`;
+              if (rounds === 2 && !aud.missed && st.miss) { await tapEl(await page.$(sel(st.miss))); aud.missed = 1; await sleep(700); await sample(); await shot(`${ls}-miss`);
+                await waitFor(() => page.$eval('#stage', s => s.dataset.busy !== '1'), 30000, 'idle after miss'); continue; }
+              await tapEl(await page.$(sel(arg))); }
+            await waitFor(async () => await resultsOn() || await page.$eval('#stage', (s, b) => (s.dataset.want || '') + '|' + (s.dataset.word || '') !== b || s.dataset.busy === '1', before), 12000, 'step accepted');
+            if (aud.words.length > 12) throw new Error('too many rounds'); continue;
           }
           if (GAME[ls] === 'lily-pad') {
             await waitFor(async () => (await page.$$('#lpField .pad')).length > 0 || await resultsOn(), 8000, 'pads'); if (await resultsOn()) break;
@@ -116,7 +145,7 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
             const fr = document.getElementById('ffField').getBoundingClientRect(); return { flies, bad: bad.slice(0, 5), nBad: bad.length, fieldInViewport: fr.left >= -.5 && fr.right <= innerWidth + .5 && fr.top >= -.5 && fr.bottom <= innerHeight + .5 }; });
           await shot(`${ls}-bounds-stress`); aud.stress = st; if (st.nBad || !st.fieldInViewport) aud.outside.add('FIREFLY-STRESS ' + JSON.stringify(st)); }
         if (aud.overflow.length || aud.small.size || aud.outside.size) ok = false; const pv = await PROBE.check(page, PRAISE); if (!pv.ok) ok = false; aud.praise = pv.note;
-        note = (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies}` + (aud.stress ? ` stress=${aud.stress.flies}flies/${aud.stress.nBad}out fieldInViewport=${aud.stress.fieldInViewport}` : '') + ' ' : '') + (aborted ? `abortedClipLoads=${aborted} [${abortedAt.join(' ')}] ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
+        note = (GAME[ls] === 'moth-bridge' ? `cards/tray=${aud.maxOpts || 0} words=${(aud.words || []).join(',')} steps=${JSON.stringify(aud.steps || {})} drags=${aud.drags || 0} autoSlides=${aud.autoSlides || 0} ` : '') + (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies}` + (aud.stress ? ` stress=${aud.stress.flies}flies/${aud.stress.nBad}out fieldInViewport=${aud.stress.fieldInViewport}` : '') + ' ' : '') + (aborted ? `abortedClipLoads=${aborted} [${abortedAt.join(' ')}] ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
         note += ' | voice: ' + aud.praise;
       } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0] + ` rounds=${rounds}`; await shot(`${ls}-error`).catch(() => {}); }
       await sleep(300); const r = { vp: vpn, page: ls + ' ' + GAME[ls], ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note, small: [...aud.small], outside: [...aud.outside] };

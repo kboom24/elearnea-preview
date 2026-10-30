@@ -91,6 +91,8 @@ function checkExpr(e, where) {
   if (LITTLE.has(where.split(':')[0]) && /^(?:(?:LN|G|J|C)\.[\w.]+(?:\([^()]*\))?|q\.(?:cue|yes|here)|ln\.(?:cue|yes|here)|lines\(b\._it\)\.that|lines|cur)$/.test(e)) return;
   // Wick's Lantern Path: every line comes from assets/games/wicks-path-lines.js (WL.*), whose full output is verified below
   if (where.split(':')[0] === 'assets/games/wicks-path.js' && /^(?:WL\.\w+(?:\[[\w.]+\])?|\{[^{}]*\}\[why\]|rng\.pick\(WL\.praise\)|lines|line|reason|prompt|spoken|t|say\[0\]|'')$/.test(e)) return;
+  // Moth Bridge: every line comes from assets/games/moth-bridge-lines.js (B.*, sound(part) = B.partSound), whose full output is verified below
+  if (where.split(':')[0] === 'assets/games/moth-bridge.js' && /^(?:B\.[\w]+(?:\([^()]*\))?|rng\.pick\(B\.yes\)|sound\([\w.\[\]]+\)|prompt\(\)|\.\.\.parts\.map\(sound\)|ps|t)$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
 const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt|sayThen|speakThen|praiseThen)\s*\(|\.(?:say|sayThen)\s*\()/g; // *Then: say, then continue when the line ended (voice/voice-then.js)
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
@@ -113,6 +115,15 @@ for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
 { const WL = require(path.join(APP, 'assets/games/wicks-path-lines.js')); let n = 0;
   for (const l of WL.all()) { n++; if (!keys.has(norm(l.text))) problems.push(`wicks-path-lines: "${l.text}" is not in the manifest`); }
   console.log(`voice check: ${n} Wick's Lantern Path lines verified against the manifest`); }
+// Moth Bridge: every line the game can say is a manifest line; every word it shows is a Mothabet word clip that PASSED the speech
+// check (no held or ASR-flagged clip, REVIEW-076); rime sounds are either a passing Mothabet clip ("in", "us") or a new mbr.* line
+{ const B = require(path.join(APP, 'assets/games/moth-bridge-lines.js')), byKey = new Map(man.items.map(x => [x.key, x])); let n = 0;
+  for (const l of B.all()) { n++; if (!keys.has(norm(l.text))) problems.push(`moth-bridge: "${l.text}" is not in the manifest`); }
+  for (const w of new Set([].concat(...Object.values(B.WORDS)))) { const it = byKey.get(norm(B.word(w)));
+    if (!it || !it.parts || !it.parts.length) problems.push(`moth-bridge: word "${w}" has no Mothabet word clip`);
+    else if (it.check.human || it.source.kind === 'device-speech') problems.push(`moth-bridge: word "${w}" clip is held or flagged (${(it.check.reasons || []).join('; ')})`); }
+  for (const r of Object.keys(B.RIME)) { const it = byKey.get(norm(B.RIME[r])); if (it && it.parts && (it.source.kind === 'device-speech' || it.check.reasons.some(x => /flagged/.test(x)))) problems.push(`moth-bridge: rime "${r}" reuses a held/flagged clip`); }
+  console.log(`voice check: ${n} Moth Bridge lines verified against the manifest`); }
 // files + index: every shipped line has all its files (.mp3 + .opus) and is in index.json; lines still pending are reported, not failed
 let missing = 0, pending = 0; for (const it of man.items) { if (it.reserved) continue;
   if (idx.map[it.key] !== it.id) { problems.push(`index.json does not map "${it.key}" to ${it.id}`); continue; }
