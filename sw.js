@@ -1,5 +1,5 @@
 /* Elearnea offline support: network-first with cache fallback (always fresh online, works offline after one visit). Same-origin only. */
-const V = 'elearnea-preview-v3';
+const V = 'elearnea-preview-v4';
 const CORE = ['./', 'map/', 'realm/reading/', 'realm/math/', 'play/lily-pad/', 'play/firefly-count/', 'play/mothabet/', 'grown-ups/', 'waitlist/', 'waitlist/config.js', 'content/catalog.json', 'voice/index.json', 'voice/voice.js', 'assets/js/dash.js', 'assets/css/dash.css',
   'assets/css/el.css', 'assets/css/realm.css', 'assets/css/play.css', 'assets/js/el.js', 'assets/js/realm.js', 'assets/js/play.js',
   'assets/games/lily-pad.js', 'assets/games/lily-pad.css', 'assets/games/firefly-count.js', 'assets/games/firefly-count.css', 'assets/games/mothabet.js', 'assets/games/mothabet.css',
