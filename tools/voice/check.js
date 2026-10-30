@@ -47,6 +47,9 @@ const DYNAMIC = {
   'mothabet/voice.js|text': 'MB.Voice wrapper: forwards to ElVoice',
   'mothabet/game.js|line': 'word cheer `<word>!` (w.it.w + \'!\') played through ElVoice.sayThen so the next word waits for it',
   'assets/games/firefly-count.js|W[k]': 'number words one..ten while counting along (firefly-count numbers)',
+  'assets/games/lantern-barn.js|ask': 'loud/quiet question: B.lqAsk[...] or B.lqWas(m) (LN.all lists every one; Little Lanterns lines are verified against the manifest)',
+  'assets/games/lantern-barn.js|B.lqListen[i % B.lqListen.length]': 'loud/quiet "Listen!" variants (LN.barn.lqListen, in LN.all)',
+  'assets/games/lantern-barn.js|B.again': 'LN.barn.again "Listen again!" (in LN.all)',
   'assets/games/clocktower-gears.js|line': 'praiseThen(line): the pattern/name/sort praise lines passed at each praiseThen call (checked there)'
 };
 const files = [];

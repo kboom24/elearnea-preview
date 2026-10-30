@@ -70,6 +70,10 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
             else if (st === 'drum') { const d = await page.$('#llOpts .lb-drum'), n = +(await d.getAttribute('data-n')); for (let k = 0; k < n; k++) { await tapEl(d); await sleep(380); } rounds++;
               await waitFor(async () => await resultsOn() || await d.evaluate(e => !e.isConnected || e.dataset.turn !== '1'), 15000, 'drum judged'); }
             else { const ok = await page.$('#llOpts .ll-card[data-ok="1"]:not(.done)');
+              // variety: what this round shows (loud/quiet pair + round type + quiet level; card labels; where the right card is)
+              aud.rounds = aud.rounds || []; aud.rounds.push(await page.evaluate(() => { const o = document.getElementById('llOpts'), cards = [...o.querySelectorAll('.ll-card')];
+                return { pair: o.dataset.pair || null, kind: o.dataset.kind || null, level: o.dataset.level || null, sig: cards.map(c => c.getAttribute('aria-label') || c.innerHTML.length).join('|'), at: cards.findIndex(c => c.dataset.ok === '1'),
+                  show: (document.getElementById('llShow') || {}).innerHTML ? document.getElementById('llShow').innerHTML.length : 0, pics: cards.map(c => !!c.querySelector('svg.pic') && !c.innerHTML.includes('d="M60.0 12.0L')) }; }));
               if (rounds === 1) { const wr = await page.$('#llOpts .ll-card:not([data-ok])'); if (wr) { await tapEl(wr); aud.missed = 1; await sleep(700); await sample(); await shot(`${ls}-miss`); await sleep(1500); } }
               await tapEl(ok); rounds++; if (rounds === 1) { await sleep(400); await shot(`${ls}-yes`); }
               await waitFor(async () => await resultsOn() || await ok.evaluate(e => !e.isConnected), 30000, 'next card set'); }
@@ -116,8 +120,14 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
             const fr = document.getElementById('ffField').getBoundingClientRect(); return { flies, bad: bad.slice(0, 5), nBad: bad.length, fieldInViewport: fr.left >= -.5 && fr.right <= innerWidth + .5 && fr.top >= -.5 && fr.bottom <= innerHeight + .5 }; });
           await shot(`${ls}-bounds-stress`); aud.stress = st; if (st.nBad || !st.fieldInViewport) aud.outside.add('FIREFLY-STRESS ' + JSON.stringify(st)); }
         if (aud.overflow.length || aud.small.size || aud.outside.size) ok = false; const pv = await PROBE.check(page, PRAISE); if (!pv.ok) ok = false; aud.praise = pv.note;
+        if (aud.rounds && aud.rounds.length >= 2) { const R = aud.rounds, same = R.slice(1).filter((r, k) => r.sig === R[k].sig && r.show === R[k].show).length; // the very same screen twice in a row
+          let v = ` variety: rounds=${R.length} sameAsPrev=${same}`; if (same) aud.outside.add('REPEATED-ROUND x' + same);
+          if (ls === 'll-r3') { const six = R.slice(0, 6), pairs = new Set(six.map(r => r.pair)), back2back = R.slice(1).filter((r, k) => r.pair === R[k].pair).length, kinds = [...new Set(R.map(r => r.kind))], lv = R.map(r => r.level), at = new Set(R.map(r => r.at));
+            v += ` pairs=${six.map(r => r.pair).join(',')} distinct6=${pairs.size} backToBack=${back2back} kinds=${kinds.join('/')} levels=${lv.join(',')} rightAt=${[...at].join('/')} allPics=${R.every(r => r.pics.every(Boolean))}`;
+            if (pairs.size < 5 || back2back || kinds.length < 2 || !R.every(r => r.pics.every(Boolean))) aud.outside.add('LOUDQUIET-VARIETY ' + v); }
+          aud.variety = v; }
         note = (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies}` + (aud.stress ? ` stress=${aud.stress.flies}flies/${aud.stress.nBad}out fieldInViewport=${aud.stress.fieldInViewport}` : '') + ' ' : '') + (aborted ? `abortedClipLoads=${aborted} [${abortedAt.join(' ')}] ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
-        note += ' | voice: ' + aud.praise;
+        note += (aud.variety || '') + ' | voice: ' + aud.praise;
       } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0] + ` rounds=${rounds}`; await shot(`${ls}-error`).catch(() => {}); }
       await sleep(300); const r = { vp: vpn, page: ls + ' ' + GAME[ls], ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note, small: [...aud.small], outside: [...aud.outside] };
       results.push(r); console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); errs.forEach(e => console.log('   err:', e)); fails.forEach(e => console.log('   fail:', e));
