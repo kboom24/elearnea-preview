@@ -58,10 +58,14 @@ El.defineGame({
       if (mode === 'count') {
         const n = +item, jar = makeJar('', 0); jars.appendChild(jar);
         setPrompt('Tap the fireflies into the jar!', 'Tap each firefly to put it in the jar!');
-        const fw = field.clientWidth, fh = field.clientHeight, spots = [];
-        for (let i = 0; i < n; i++) { let x, y, g = 0; do { x = 10 + rng.next() * 80; y = 14 + rng.next() * 72; g++; } while (g < 40 && spots.some(s => Math.hypot((s[0] - x) * fw / 100, (s[1] - y) * fh / 100) < 92)); spots.push([x, y]); }
+        // every firefly stays fully inside the field, drift included: keep its centre (half its size + its drift reach) from each edge.
+        // .fly is 84 px (FLY/2 = 42 from the centre); on big screens firefly-count.css scales it (and its drift) by 1.25
+        const fw = field.clientWidth, fh = field.clientHeight, spots = [], FLY = 84, sc = matchMedia('(min-width: 700px) and (min-height: 700px)').matches ? 1.25 : 1;
+        const span = (len, reach) => { const m = Math.min(len / 2, sc * (FLY / 2 + reach)); return [m, len - 2 * m]; }; // [min px, range px]
+        for (let i = 0; i < n; i++) { const dx = rng.int(-18, 18), dy = rng.int(-14, 14), [x0, xr] = span(fw, Math.abs(dx)), [y0, yr] = span(fh, Math.abs(dy)); let x, y, g = 0;
+          do { x = (x0 + rng.next() * xr) / fw * 100; y = (y0 + rng.next() * yr) / fh * 100; g++; } while (g < 40 && spots.some(s => Math.hypot((s[0] - x) * fw / 100, (s[1] - y) * fh / 100) < 92)); spots.push([x, y, dx, dy]); }
         let got = 0;
-        spots.forEach(([x, y], i) => { const f = document.createElement('button'); f.className = 'fly drift'; f.style.left = x + '%'; f.style.top = y + '%'; f.style.setProperty('--dur', (3.5 + rng.next() * 3).toFixed(1) + 's'); f.style.setProperty('--dx', rng.int(-18, 18) + 'px'); f.style.setProperty('--dy', rng.int(-14, 14) + 'px'); f.style.animationDelay = (-rng.next() * 4).toFixed(1) + 's';
+        spots.forEach(([x, y, dx, dy], i) => { const f = document.createElement('button'); f.className = 'fly drift'; f.style.left = x + '%'; f.style.top = y + '%'; f.style.setProperty('--dur', (3.5 + rng.next() * 3).toFixed(1) + 's'); f.style.setProperty('--dx', dx + 'px'); f.style.setProperty('--dy', dy + 'px'); f.style.animationDelay = (-rng.next() * 4).toFixed(1) + 's';
           f.innerHTML = '<span class="w1"></span><span class="w2"></span><span class="body"></span>'; f.setAttribute('aria-label', 'Firefly');
           f.onclick = () => { if (f._got) return; f._got = 1; got++; const jr = jar.getBoundingClientRect(), fr = field.getBoundingClientRect();
             f.classList.remove('drift'); f.classList.add('gone'); f.style.left = (jr.left + jr.width / 2 - fr.left) + 'px'; f.style.top = (jr.top + jr.height * .6 - fr.top) + 'px';
