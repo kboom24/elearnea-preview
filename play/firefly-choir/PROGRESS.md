@@ -7,3 +7,4 @@
 - Running: /home/box/elearnea/qa/firefly-choir/run-full.sh (am-l3 phone, then phone/ipad/desktop, then ipadL/phoneL). Server PID in qa/firefly-choir/server.pid.
 - 02:30 PDT pre-merge full QA phone/ipad/desktop: 19/19 PASS (kept in /home/box/elearnea/qa/firefly-choir/pre-merge/). Then merged origin/main f7ce709 (conflicts: sw.js, qa README, voice manifest/index -> rebuilt), SW v12, speech moved to host.sayThen (praise plays to the end, run token).
 - 02:36 PDT final QA chain started: run-full.sh (phone,ipad,desktop then ipadL,phoneL).
+- 02:43 PDT post-merge phone: 7/7 PASS (log /home/box/elearnea/qa/firefly-choir/final-phone.log). Branch pushed at 17ca840. The 3-viewport job was too slow for its 870 s timeout (timeout wrapped the slot wait), so I stopped it (own PIDs) and re-queued one qa-slot job per viewport: ipad, desktop, ipadL, phoneL (run-full.sh, logs final-<vp>.log).
