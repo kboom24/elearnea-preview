@@ -27,8 +27,12 @@ El.defineGame({
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     const lvl = () => L.levelIndex(cfg.skill, 4);
     // speech: every line below is in voice/manifest.json (tools/voice/build-manifest.js, Clocktower Gears section)
-    const speak = (t, cb, wd) => { let done = false; const fin = () => { if (done) return; done = true; if (cb && alive) cb(); };
-      const ok = host.say(t, { rate: .95, onend: fin }); if (cb) T(fin, ok ? (wd || 2600) : 400); return ok; };
+    // cb runs once the line has really ended (ElVoice's onend: end, error, interruption or its clip watchdog; voice/voice-then.js), never on a fixed timer that could
+    // cut a long line short; wd (old fixed watchdog) is ignored
+    const speak = (t, cb) => praising ? false : host.sayThen(t, { rate: .95 }, cb ? () => { if (alive) cb(); } : null, 0).heard;
+    // praise after a right answer, then the next question: only after the praise has ended (+ 300 ms), and at least `min` ms after the tap
+    let praising = false; const praiseThen = (line, min) => { praising = true; const t0 = Date.now();
+      host.sayThen(line, { rate: .95 }, () => T(() => { praising = false; next(); }, Math.max(0, min - (Date.now() - t0))), 300); };
     const setPrompt = (shown, spoken) => { prompt = spoken; txt.textContent = shown; speak(spoken); };
 
     /* ---------------- art: paper-cut shapes, brass gears, clock (inline SVG, original) ---------------- */
@@ -80,7 +84,7 @@ El.defineGame({
         <div class="cg-window" id="cgWin"></div></div></div>
       <div class="cg-tray" id="cgTray"></div><div class="cg-fx" id="cgFx"></div></div>`;
     const $ = (id) => root.querySelector('#' + id), txt = $('cgTxt'), win = $('cgWin'), tray = $('cgTray'), fx = $('cgFx'), cgRoot = root.querySelector('.cg');
-    const replay = () => { host.sfx.tap(); speak(prompt); };
+    const replay = () => { if (praising || busy) return; host.sfx.tap(); speak(prompt); }; // never over the praise or a count-along / pattern song (each step goes on from the line's onend, which also fires when interrupted)
     $('cgSay').onclick = replay; $('cgWick').onclick = () => { cheer(); replay(); };
     const cheer = () => { const w = $('cgWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
 
@@ -151,7 +155,7 @@ El.defineGame({
       while (opts.length < nc && xi < extra.length) { const id = 'x' + xi; tok[id] = { kind: extra[xi], color: mono ? colorFor(base) : colorFor(base + 2 + xi) }; opts.push(id); xi++; }
       let misses = 0; const chips = rng.shuffle(opts.slice()).map(u => { const b = document.createElement('button'); b.className = 'chip'; b.innerHTML = shapeSVG(tok[u].kind, tok[u].color); b.setAttribute('aria-label', tok[u].kind); b._u = u;
         b.onclick = () => { if (busy) return; if (u === want) { const slot = gears[miss]; b.classList.add('used'); fly(b.querySelector('.shp'), slot.querySelector('.tok'), shapeSVG(tok[u].kind, tok[u].color, onGear()), 480);
-            T(() => { slot.classList.remove('empty'); slot.querySelector('.tok').innerHTML = shapeSVG(tok[u].kind, tok[u].color, onGear()); solved(type, misses, slot); speak(rng.pick(PRAISE)); }, 470); setBusy(true); T(next, 2600); }
+            T(() => { slot.classList.remove('empty'); slot.querySelector('.tok').innerHTML = shapeSVG(tok[u].kind, tok[u].color, onGear()); solved(type, misses, slot); praiseThen(rng.pick(PRAISE), 1600); }, 470); setBusy(true); }
           else { misses++; wobble(b); b.classList.add('no'); if (misses === 1) { setBusy(true); speak('Listen to the pattern.', () => sing(0)); } else hint(); } };
         tray.appendChild(b); return b; });
       qaMark('want', tok[want].kind);
@@ -169,7 +173,7 @@ El.defineGame({
       let misses = 0; const cards = rng.shuffle(kinds.slice()).map((k, i) => { const v = variant(k, lv), col = colorFor(rng.int(0, 4)); const b = document.createElement('button'); b.className = 'card'; b.style.setProperty('--d', (i * .07) + 's');
         b.innerHTML = `<span class="plate"></span>${shapeSVG(k, col, v)}`; b.setAttribute('aria-label', k); b._k = k;
         b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('got'); fly(b.querySelector('.shp'), hub.querySelector('.tok'), shapeSVG(k, col, onGear(v)), 520);
-            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, onGear(v)); solved(t, misses, hub); speak(`Yes! A ${t}!`); }, 500); setBusy(true); T(next, 2600); }
+            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, onGear(v)); solved(t, misses, hub); praiseThen(`Yes! A ${t}!`, 1600); }, 500); setBusy(true); }
           else { misses++; wobble(b); b.classList.add('no');
             if (misses === 1) speak([`That's a ${k}.`, `Find the ${t}!`]);
             else if (misses === 2) { const c = cards.find(x => x._k === t); setBusy(true); speak("Let's count the sides.", () => countSides(c, t, () => { setBusy(false); c.classList.add('hint'); speak(`Find the ${t}!`); })); }
@@ -185,7 +189,7 @@ El.defineGame({
       const ride = stage.querySelector('.gear'); ride.classList.add('arrive');
       let misses = 0; const drawers = [...kinds].sort((a, b) => SHAPES.indexOf(a) - SHAPES.indexOf(b)).map(k => { const b = document.createElement('button'); b.className = 'drawer'; b.innerHTML = drawerFront(k); b.setAttribute('aria-label', k + ' drawer'); b._k = k;
         b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('open'); setBusy(true); fly(ride.querySelector('.shp'), b.querySelector('.dr-box'), shapeSVG(t, col, v), 560, 'sm'); ride.querySelector('.tok').innerHTML = '';
-            T(() => { b.classList.remove('open'); b.classList.add('full'); solved(t, misses, b); speak(`Yes! A ${t}!`); }, 600); T(next, 2700); }
+            T(() => { b.classList.remove('open'); b.classList.add('full'); solved(t, misses, b); praiseThen(`Yes! A ${t}!`, 1600); }, 600); }
           else { misses++; wobble(b); b.classList.add('no');
             if (misses === 1) { setBusy(true); speak("Let's count the sides.", () => countSides(ride, t, () => { setBusy(false); speak('Which drawer does it go in?'); })); }
             else { drawers.forEach(d => { if (d._k === t) d.classList.add('hint'); }); speak('Here it is!'); } } };

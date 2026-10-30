@@ -4,12 +4,12 @@
 // Per step: 0 console errors, 0 outside requests, 0 failed responses, 0 voice misses / pending lines, targets >= 64 CSS px inside the viewport,
 // no horizontal overflow. Usage: node qa/tools/qa-wicks-path.js <base url> <out dir> [phone,ipad,desktop] [plan json]
 //   plan default: {"phone":["lg-l1","lg-l2"],"ipad":["lg-l3"],"desktop":["lg-l4"]}; the first lesson per viewport also runs the help path.
-const path = require('path'), fs = require('fs'); const { launch, VP } = require('./lib.js');
+const path = require('path'), fs = require('fs'); const { launch, VP } = require('./lib.js'); const PROBE = require('./praise-probe'); // praise lines must play to their end before the next garden
 const BASE = (process.argv[2] || 'http://127.0.0.1:8780/elearnea-preview/').replace(/\/?$/, '/'), OUT = process.argv[3] || '/tmp/qa-wicks-path';
 const VPS = (process.argv[4] || 'phone,ipad,desktop').split(','), PLAN = process.argv[5] ? JSON.parse(process.argv[5]) : { phone: ['lg-l1', 'lg-l2'], ipad: ['lg-l3'], desktop: ['lg-l4'] };
 const NAMES = { 'lg-l1': 'First step', 'lg-l2': 'Lantern path', 'lg-l3': 'Fix the path', 'lg-l4': 'Repeat it' }, OPP = { U: 'D', D: 'U', L: 'R', R: 'L' };
 const QA_KEYS = ['sol', 'bug', 'busy', 'prog', 'lv'];
-fs.mkdirSync(OUT, { recursive: true }); const origin = new URL(BASE).origin; const sleep = (ms) => new Promise(r => setTimeout(r, ms)); const results = [];
+fs.mkdirSync(OUT, { recursive: true }); const origin = new URL(BASE).origin; const sleep = (ms) => new Promise(r => setTimeout(r, ms)); const results = []; const PRAISE = PROBE.praiseSet(path.join(__dirname, '..', '..', 'voice', 'manifest.json'));
 function audit() { const W = document.documentElement.clientWidth, H = innerHeight, de = document.documentElement;
   const vis = (e) => { const r = e.getBoundingClientRect(); if (!r.width || !r.height) return false; for (let p = e; p; p = p.parentElement) { const s = getComputedStyle(p); if (s.display === 'none' || s.visibility === 'hidden' || +s.opacity === 0 || s.pointerEvents === 'none') return false; } return true; };
   const nm = (e) => (e.id ? '#' + e.id : e.tagName.toLowerCase() + '.' + [...e.classList].join('.')) + (e.getAttribute('aria-label') ? `[${e.getAttribute('aria-label')}]` : '');
@@ -21,7 +21,7 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
   return { overflow: Math.max(de.scrollWidth, document.body.scrollWidth) - W, small, outside, gardenOut, n: t.length }; }
 (async () => { const browser = await launch();
   for (const vpn of VPS) { const V = VP[vpn];
-    const ctx = await browser.newContext(Object.assign({}, V, { viewport: { width: V.width, height: V.height }, serviceWorkers: 'block' })); const page = await ctx.newPage();
+    const ctx = await browser.newContext(Object.assign({}, V, { viewport: { width: V.width, height: V.height }, serviceWorkers: 'block' })); await ctx.addInitScript(PROBE.init); const page = await ctx.newPage();
     let errs = [], ext = [], fails = [], clips = { ok: 0, bad: 0 };
     page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); }); page.on('pageerror', e => errs.push('pageerror: ' + e.message));
     page.on('request', r => { const u = r.url(); if (!u.startsWith(origin) && !u.startsWith('data:') && !u.startsWith('blob:')) ext.push(u); });
@@ -91,7 +91,8 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
         await waitFor(() => page.isVisible('#res.on'), 30000, 'results'); await sleep(1500); await sample(); await shot(`${ls}-results`);
         const card = await page.$eval('#res .paper p', e => e.textContent), rec = await page.evaluate((ls) => (JSON.parse(localStorage.getItem('elearnea:v1')).lessons || {})[ls], ls);
         if (!rec || !rec.stars) throw new Error('no stars saved'); const sk = await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('elearnea:v1')).srs).filter(k => /^lg\./.test(k)).length);
-        return `puzzles=${puzzles} "${card}" saved=${JSON.stringify(rec)} srsItems=${sk} ${helpOk} ${watchOk} ${missOk} ${shortOk}`; }); }
+        const pv = await PROBE.check(page, PRAISE); if (!pv.ok) throw new Error('voice: ' + pv.note);
+        return `voice: ${pv.note} | puzzles=${puzzles} "${card}" saved=${JSON.stringify(rec)} srsItems=${sk} ${helpOk} ${watchOk} ${missOk} ${shortOk}`; }); }
     // 4) grown-ups: CSTA standards labels (sample learner) and this device's Logic & Coding records
     if (vpn === VPS[VPS.length - 1]) await step('grown-ups-standards', async (sample) => { await page.goto(BASE + 'grown-ups/', { waitUntil: 'networkidle' }); await sleep(600);
       const q = await page.$eval('#q', q => q.textContent); const [x, y] = q.match(/\d+/g).map(Number); await tap(page.locator(`#opts .btn:text-is("${x * y}")`).first().elementHandle ? await page.locator(`#opts .btn:text-is("${x * y}")`).first().elementHandle() : null); await sleep(1200);

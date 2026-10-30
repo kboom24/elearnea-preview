@@ -45,7 +45,10 @@ const DYNAMIC = {
   'mothabet/game.js|w.it.w + \'!\'': 'Mothabet word cheers (`<word>!`)',
   'mothabet/game.js|mo.name': 'Mothabet moth book names (MB.MOTHS)',
   'mothabet/game.js|mo.how': 'Mothabet moth book how-to-earn lines (MB.MOTHS)',
-  'mothabet/voice.js|text': 'MB.Voice wrapper: forwards to ElVoice'
+  'mothabet/voice.js|text': 'MB.Voice wrapper: forwards to ElVoice',
+  'mothabet/game.js|line': 'word cheer `<word>!` (w.it.w + \'!\') played through ElVoice.sayThen so the next word waits for it',
+  'assets/games/firefly-count.js|W[k]': 'number words one..ten while counting along (firefly-count numbers)',
+  'assets/games/clocktower-gears.js|line': 'praiseThen(line): the pattern/name/sort praise lines passed at each praiseThen call (checked there)'
 };
 const files = [];
 const walk = (d, rel) => { for (const f of fs.readdirSync(d)) { const p = path.join(d, f), r = rel ? rel + '/' + f : f; const st = fs.statSync(p);
@@ -89,11 +92,11 @@ function checkExpr(e, where) {
   // Wick's Lantern Path: every line comes from assets/games/wicks-path-lines.js (WL.*), whose full output is verified below
   if (where.split(':')[0] === 'assets/games/wicks-path.js' && /^(?:WL\.\w+(?:\[[\w.]+\])?|\{[^{}]*\}\[why\]|rng\.pick\(WL\.praise\)|lines|line|reason|prompt|spoken|t|say\[0\]|'')$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
-const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt)\s*\(|\.say\s*\()/g;
+const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt|sayThen|speakThen|praiseThen)\s*\(|\.(?:say|sayThen)\s*\()/g; // *Then: say, then continue when the line ended (voice/voice-then.js)
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
   let m; CALL.lastIndex = 0;
   while ((m = CALL.exec(src))) { const pre = src.slice(Math.max(0, m.index - 12), m.index);
-    if (/function\s+$|\b(?:const|let)\s+$/.test(pre) || /^\s*(say|speak|_speak|spoken|setPrompt)\s*\([^)]*\)\s*\{/.test(src.slice(m.index - (m[0].startsWith('.') ? 0 : 0), m.index + 80)) && /\)\s*\{/.test(src.slice(m.index, m.index + 60)) && !/=>/.test(src.slice(m.index, m.index + 40))) continue; // definitions
+    if (/function\s+$|\b(?:const|let)\s+$/.test(pre) || /^\s*(say|speak|_speak|spoken|setPrompt|sayThen)\s*\([^)]*\)\s*\{/.test(src.slice(m.index - (m[0].startsWith('.') ? 0 : 0), m.index + 80)) && /\)\s*\{/.test(src.slice(m.index, m.index + 60)) && !/=>/.test(src.slice(m.index, m.index + 40))) continue; // definitions
     const lineStart = src.lastIndexOf('\n', m.index) + 1; if (/^\s*(\/\/|\*|\/\*)/.test(src.slice(lineStart, m.index))) continue; // comments
     const a = args(src, m.index + m[0].length - 1); const line = src.slice(0, m.index).split('\n').length; sites++;
     const name = m[0].replace(/[\s(.]/g, ''); const arg = name === 'setPrompt' ? a[1] : a[0]; if (arg === undefined) continue;

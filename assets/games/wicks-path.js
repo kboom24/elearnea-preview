@@ -27,9 +27,9 @@ El.defineGame({
     const setBusy = (b) => { busy = b; qaMark('busy', b ? '1' : '0'); goBtn && goBtn.classList.toggle('off', b); };
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     const lvl = () => L.levelIndex(cfg.skill, 4);
-    // speech: cb runs once when the line ends (voice onend; watchdog if the clip never reports), only for the current run token
-    const speak = (t, cb, wd) => { let done = false; const tok = runTok; const fin = () => { if (done) return; done = true; if (cb && alive && tok === runTok) cb(); };
-      const ok = host.say(t, { rate: .95, onend: fin }); if (cb) T(fin, ok ? (wd || 6000) : 450); return ok; };
+    // speech (main's voice/voice-then.js pattern): cb runs exactly once, `gap` ms after the line has really ended (ElVoice onend: natural end, error,
+    // interruption or its own clip watchdog), and only for the current run token; no fixed timers that could cut a line short
+    const speak = (t, cb, gap) => { const tok = runTok; return host.sayThen(t, { rate: .95 }, cb ? () => { if (alive && tok === runTok) cb(); } : null, gap == null ? 0 : gap).heard; };
     const setPrompt = (shown, spoken) => { prompt = spoken; txt.textContent = shown; speak(spoken); };
 
     /* ---------------- sound (WebAudio, synthesized) ---------------- */
@@ -76,7 +76,7 @@ El.defineGame({
       <div class="wp-fx" id="wpFx"></div></div>`;
     const $ = (id) => root.querySelector('#' + id);
     const txt = $('wpTxt'), board = $('wpBoard'), progEl = $('wpProg'), tray = $('wpTray'), goBtn = $('wpGo'), scene = $('wpScene'), garden = $('wpGarden'), fx = $('wpFx'), wpRoot = root.querySelector('.wp');
-    $('wpSay').onclick = $('wpWick').onclick = () => { if (prompt) speak(prompt); const w = $('wpWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
+    $('wpSay').onclick = $('wpWick').onclick = () => { if (busy) return; if (prompt) speak(prompt); /* never over a walk, a help line or the praise */ const w = $('wpWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
 
     // board size: keep cells square inside the scene at any viewport
     const fit = () => { if (!P) return; const r = scene.getBoundingClientRect(), pad = 14, m = r.width < 520 ? 26 : 40; // m: room for the hedge and frame around the garden
@@ -250,7 +250,7 @@ El.defineGame({
         place(wickEl, n.x, n.y); s = n; host.sfx.step(k % 8);
         if (n.lit >= 0 && !lanEls[n.lit].classList.contains('lit')) { T(() => { lanEls[n.lit].classList.add('lit'); sfx.light(); burst(lanEls[n.lit], 10); }, 380); }
         let moved = false; const nextStep = () => { if (moved) return; moved = true; T(() => go(k + 1), 120); };
-        T(nextStep, 2200); T(() => speak(WL.dir[f.d], nextStep, 2000), 0); };
+        const t0 = Date.now(); speak(WL.dir[f.d], () => T(nextStep, Math.max(0, 650 - (Date.now() - t0)))); }; /* Wick says each step, then takes the next one */
       const done = (k) => { progEl.querySelectorAll('.rblock.running').forEach(b => { b.classList.remove('running'); delete b.dataset.k; });
         if (res.ok) return solvedRun(flat);
         // gentle stop where it went off: Wick leans toward the problem and stays there; the step that stopped glows
@@ -258,27 +258,27 @@ El.defineGame({
         if (why === 'flower' || why === 'stone' || why === 'edge') { wickEl.style.setProperty('--bx', DV[flat[k].d][0] * 18 + '%'); wickEl.style.setProperty('--by', DV[flat[k].d][1] * 18 + '%'); wickEl.classList.add('bonk'); sfx.bump(); }
         else host.sfx.wrong();
         const reason = { flower: WL.flower, stone: WL.stone, edge: WL.edge, short: WL.short, far: WL.far }[why];
-        if (watch) { speak([reason, WL.p3], () => setBusy(false), 7000); return; }
+        if (watch) { speak([reason, WL.p3], () => setBusy(false)); return; }
         misses++; help(flat, reason); };
       T(() => go(0), 420); }
 
     function help(flat, reason) { const a = analyze(P, flat) || { i: flat.length, kind: 'missing', s: { x: P.sx, y: P.sy, m: 0 } }; const lines = [reason];
       if (misses >= 3) { // 3) lay out a program that works and ask for Go
         prog = clone(P.sol); drawProg(); edited(); progEl.querySelectorAll('.ptile,.rhead').forEach(e => e.classList.add('hint')); goBtn.classList.add('hint'); lines.push(WL.model);
-        speak(lines, () => { resetBoard(); setBusy(false); }, 9000); return; }
+        speak(lines, () => { resetBoard(); setBusy(false); }); return; }
       const el = a.kind === 'missing' ? progEl.querySelector('.slot.next') : tileEl(flat[a.i].at);
       if (el) el.classList.add(a.kind === 'extra' ? 'extra' : 'hint');
       lines.push(a.kind === 'missing' ? WL.missing : a.kind === 'extra' ? WL.extra : WL.wrongStep);
       if (misses >= 2 && a.right) { // 2) trace the right next arrow on the board and in the tray
         showGhost(a.s, a.right); root.querySelectorAll(`.atile[data-d="${a.right}"]`).forEach(e => e.classList.add('hint')); lines.push(WL.thisWay, WL.dir[a.right]);
         if (mode === 'debug' && a.kind === 'wrong') sel = -1; }
-      speak(lines, () => setBusy(false), 9000); }
+      speak(lines, () => setBusy(false)); }
 
     function solvedRun(flat) { const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item: cur, correct: true, firstTry: ft });
       wickEl.classList.add('happy'); host.sfx.right(); burst(wickEl, 14); clearMarks(); qi++; host.emit('progress', { done: qi, total });
       const short = mode === 'loop' && size(prog) <= P.min, line = mode === 'debug' ? WL.fixed : P.lan.length > 1 ? WL.both : short ? WL.shortProg : rng.pick(WL.praise);
       if (short) { progEl.classList.add('short'); burst(progEl, 12); }
-      speak(line, () => T(next, 450), 6000); }
+      const t0 = Date.now(); speak(line, () => T(next, Math.max(0, 1400 - (Date.now() - t0))), 300); } /* praise plays to its end (+300 ms) before the next garden */
 
     /* ---------------- round flow ---------------- */
     const POOL = { step: (lv) => DIRS.slice(), seq: (lv) => ['s2', 't2', 's3', 't3', 'o4', 't4', 'two4', 'o5', 't5'].slice(0, [2, 4, 6, 9][lv]),
@@ -294,7 +294,7 @@ El.defineGame({
       setPrompt(say[1], say[0]); }
     function finale() { setBusy(true); qaMark('sol', null); host.emit('progress', { done: total, total }); wpRoot.classList.add('finale');
       lanEls.forEach(e => e.classList.add('lit')); wickEl && wickEl.classList.add('happy'); sfx.light(); burst(garden, 24);
-      txt.textContent = WL.finale; speak(WL.finale, () => T(() => host.end({ total, done: total, firstTry }), 300), 6000); }
+      txt.textContent = WL.finale; speak(WL.finale, () => host.end({ total, done: total, firstTry }), 300); }
     if (QA) root._wpTest = { makePuzzle, simulate, analyze, flatOf, size, progStr, POOL, level: lvl }; // QA only: generator self-test
     T(next, 350);
     return { stop() { alive = false; runTok++; timers.forEach(clearTimeout); if (ro) ro.disconnect(); host.say(''); } };
