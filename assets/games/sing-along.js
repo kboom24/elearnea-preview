@@ -31,7 +31,7 @@
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     if (little) document.body.classList.add('little'); // Little Lanterns: 96 px top bar + results buttons (play.css)
     root.innerHTML = `<div class="sa sa-${scene}${little ? ' little' : ''}" data-mode="${mode}">
-      <div class="sa-bg" aria-hidden="true"><i class="sa-hill a"></i><i class="sa-hill b"></i>${scene === 'stage' ? '<i class="sa-curtain l"></i><i class="sa-curtain r"></i><i class="sa-lights"></i>' : '<i class="sa-road"></i>'}</div>
+      <div class="sa-bg" aria-hidden="true"><i class="sa-hill a"></i><i class="sa-hill b"></i>${scene === 'stage' ? '<i class="sa-curtain l"></i><i class="sa-curtain r"></i><i class="sa-lights"></i>' : '<i class="sa-road"></i>'}<div class="sa-parade" id="saParade"></div></div>
       <div class="sa-lyr" id="saLyr" aria-live="off"><div class="sa-line cur" id="saCur"></div><div class="sa-line nxt" id="saNxt"></div></div>
       <div class="sa-wick" id="saWick" aria-hidden="true"><img src="${El.url('assets/img/wick-sm.webp')}" alt=""></div>
       <div class="sa-play" id="saPlay"></div>
@@ -63,7 +63,7 @@
         if (on && !el.classList.contains('on')) { el.classList.add('on'); sungWord(w[0]); if (sync) sync.log.push({ w: w[0], s: w[1], ct: audio.currentTime, t }); }
         el.classList.toggle('now', on && t < Math.max(w[2], w[1] + .25)); } }
     // a word is sung: matching shelf chips glow (word labels light up when spoken)
-    function sungWord(raw) { const w = nw(raw); if (!w) return; shelf.querySelectorAll(`.sa-chip[data-w="${w}"]`).forEach(c => bounce(c, 'sing')); }
+    function sungWord(raw) { const w = nw(raw); if (!w) return; root.querySelectorAll(`.sa-chip[data-w="${w}"], .sa-walker[data-w="${w}"]`).forEach(c => bounce(c, 'sing')); }
 
     // ---------------------------------------------------------------- beat (Wick and the scene bob on the beat)
     let bi = 0; function beat(t) { const B = S.beats; if (bi > 0 && B[bi - 1] > t + .05) bi = 0; let hit = false; while (bi < B.length && B[bi] <= t) { bi++; hit = true; }
@@ -101,7 +101,7 @@
         sing(k) { const s = slots[k]; if (s) { s.classList.add('sung'); bounce(s, 'pop'); } if (!e.built && next <= k) { const r = mark(); if (r) r.classList.add('hint'); } },
         fill() { while (next < n) { const b = tbtn.find(x => !x.disabled && x.dataset.c === word[next]); place(b, true); } } }; }
     // roll call at the end of a song: shelf chips light up as their names are sung
-    function roll(e, k) { const c = shelf.querySelector(`.sa-chip[data-w="${e.words[k]}"]`); if (c) bounce(c, 'sing'); }
+    function roll(e, k) { root.querySelectorAll(`.sa-chip[data-w="${e.words[k]}"], .sa-walker[data-w="${e.words[k]}"]`).forEach(c => bounce(c, 'sing')); }
     function finish(e, byTap) { if (e.over) return; e.over = true; clearHints();
       if (e.type === 'spell') { if (!e.built) { e.ui.fill(); e.first = false; } else if (e.first == null) e.first = false; }
       const ok = e.type === 'spell' ? e.built && e.first : !!e.done && e.first;
@@ -113,6 +113,8 @@
     function chip(w, star) { if (shelf.querySelector(`.sa-chip[data-w="${w}"]`)) { bounce(shelf.querySelector(`.sa-chip[data-w="${w}"]`), 'sing'); return; }
       const c = document.createElement('button'); c.className = 'sa-chip' + (star ? ' star' : ''); c.dataset.w = w; c.setAttribute('aria-label', label(w));
       c.innerHTML = `<span class="pc">${pic(w)}</span><b class="lbl">${label(w)}</b>`; c.onclick = () => chipTap(c); shelf.appendChild(c); bounce(c, 'join');
+      // and it joins the parade (zoo: marches along the road; stage: dances in the band), bobbing on the beat
+      const pr = $('#saParade'), wk = document.createElement('i'); wk.className = 'sa-walker'; wk.dataset.w = w; wk.style.setProperty('--k', pr.children.length); wk.innerHTML = pic(w); pr.appendChild(wk);
       shelf.scrollLeft = shelf.scrollWidth; }
     // shelf chip: during the song it just bounces (no voice over the music); stopped: Bella reads it, its label lights while she speaks
     let speaking = null;

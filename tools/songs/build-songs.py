@@ -4,6 +4,7 @@ Inputs (box only, not shipped): /home/box/elearnea/music/suno/work/<song>.words.
 Hand fixes below correct words the recogniser misheard, split lines, hide uncertain lines, and place the game's moments (events).
 Re-run: /home/box/elearnea/music/venv/bin/python tools/songs/build-songs.py"""
 import json, re, os
+snapped = 0
 W = '/home/box/elearnea/music/suno/work'
 APP = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
@@ -77,17 +78,37 @@ for sid, S in SONGS.items():
             txt = txt.lstrip('-')
             if not txt: continue
             if toks and toks[-1][0] == txt and toks[-1][1] == round(w['s'], 2): continue
-            toks.append([txt, round(w['s'], 2), round(w['e'], 2)])
+            toks.append([txt, round(w['s'], 2), round(w['e'], 2), round(w['s'], 2)])  # [text, start, end, start before snapping]
     toks.sort(key=lambda x: x[1])
+    # sung syllables land on the music's grid: snap each word start to the nearest 16th note of the detected beat grid when it is
+    # within 60 ms (the recogniser's word times wobble by ~0.1 s; two models agreed to a median of 80-100 ms)
+    bt = B['beats']; grid = [a + (b - a) * q / 4 for a, b in zip(bt, bt[1:]) for q in range(4)] + bt[-1:]
+    import bisect; snapped = 0
+    def snap(t):
+        global snapped
+        i = bisect.bisect_left(grid, t); c = [g for g in grid[max(0, i - 1):i + 1]]
+        g = min(c, key=lambda g: abs(g - t)) if c else t
+        return (round(g, 3), True) if abs(g - t) <= .06 else (t, False)
+    for k in toks:
+        t2, ok = snap(k[1]); k[1] = t2; snapped += ok; k[2] = max(k[2], round(t2 + .08, 3))
+    snapmap = {}
+    for e in S['events']:
+        if e['type'] == 'spell':
+            out_l = []
+            for x in e['letters']:
+                y = snap(x)[0]; out_l.append(y if not out_l or y > out_l[-1] + .05 else x)  # never two letters on one grid point
+            e['letters'] = out_l
+        elif e.get('t'): e['t'] = snap(e['t'])[0]
+    print(sid, 'snapped', snapped, 'of', len(toks), 'word starts to the 16th-note grid')
     hidden = lambda t: any(a - 1e-6 <= t < b - 1e-6 for a, b in S['hide'])
     br = S['breaks']; lines = []
     for k in toks:
-        if hidden(k[1]): continue
-        idx = max([i for i, b in enumerate(br) if b <= k[1] + 1e-6] or [-1])
+        if hidden(k[3]): continue
+        idx = max([i for i, b in enumerate(br) if b <= k[3] + 1e-6] or [-1])
         if not lines or lines[-1]['_i'] != idx: lines.append({'_i': idx, 'w': []})
         lines[-1]['w'].append(k)
     for l in lines:
-        del l['_i']; l['t'] = l['w'][0][1]; l['e'] = l['w'][-1][2]
+        del l['_i']; l['w'] = [w[:3] for w in l['w']]; l['t'] = l['w'][0][1]; l['e'] = l['w'][-1][2]
         # capitalise the first word of a line
         l['w'][0][0] = l['w'][0][0][:1].upper() + l['w'][0][0][1:]
     # music-note lines for hidden stretches
