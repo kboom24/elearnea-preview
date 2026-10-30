@@ -58,6 +58,7 @@ const NW = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eigh
 const G = 'elearnea';
 for (const s of cat.subjects) { const r = s.realm;
   add(r.say, { type: 'instruction', game: G, prefix: 'el', screen: 'World map', trigger: `tap the ${r.name} island` });
+  if (r.saySoon) add(r.saySoon, { type: 'instruction', game: G, prefix: 'el', screen: 'World map', trigger: `tap the ${r.name} island when it has no lessons for this age band` });
   for (const sk of r.skills || []) for (const ls of sk.lessons) add(ls.say || ls.name, { type: 'instruction', game: G, prefix: 'el', screen: `${r.name} realm path`, trigger: `tap lesson stop "${ls.name}" (also tap Wick when it is the current stop)` }); }
 add("Hi! I'm Wick. Tap a land to play!", { type: 'instruction', game: G, prefix: 'el', screen: 'World map', trigger: 'tap Wick' });
 add('Days in a row', { type: 'label', game: G, prefix: 'el', screen: 'World map / realm HUD', trigger: 'tap the streak pill' });
@@ -174,6 +175,9 @@ for (const m of MB.MOTHS) { add(m.name, { type: 'label', game: M, prefix: 'mb.mo
 
 /* ================= Little Lanterns (ages 0-4): Lantern Barn, Picture Garden, Glow Jars + map age switch ================= */
 require('./early-lines.js')({ add, APP });
+
+/* ================= Wick's Lantern Path (Logic & Coding: sequences, debugging, loops) ================= */
+require('./wicks-lines.js')({ add, APP });
 
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));
