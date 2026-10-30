@@ -37,3 +37,5 @@
 .ff-wick { position: absolute; left: 4px; bottom: 132px; width: 96px; z-index: 4; }
 @media (min-width: 700px) { .ff-wick { width: 130px; left: 20px; } }
 @media (max-width: 420px) { .ff-wick { display: none; } }
+@media (min-width: 700px) and (min-height: 700px) { .jar { width: clamp(190px, 26vw, 270px); } .jar.small { width: clamp(150px, 19vw, 200px); } .jar .in i { width: 24px; height: 24px; } .fly { transform: scale(1.25); } .fly.drift { animation-name: ffdrift2; } .ff-prompt .bubble { font-size: 1.8rem; } }
+@keyframes ffdrift2 { 0% { transform: scale(1.25) translate(0, 0); } 50% { transform: scale(1.25) translate(var(--dx, 14px), var(--dy, -10px)); } 100% { transform: scale(1.25) translate(calc(var(--dx, 14px) * -.6), calc(var(--dy, -10px) * .8)); } }
