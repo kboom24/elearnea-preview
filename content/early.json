@@ -34,13 +34,7 @@
     { "id": "circle", "name": "circle" }, { "id": "square", "name": "square" }, { "id": "triangle", "name": "triangle" },
     { "id": "star", "name": "star" }, { "id": "heart", "name": "heart" }
   ],
-  "rhymes": [
-    { "a": "cat", "b": "hat", "c": "sun" },
-    { "a": "car", "b": "star", "c": "fish" },
-    { "a": "bee", "b": "tree", "c": "ball" },
-    { "a": "moon", "b": "spoon", "c": "duck" },
-    { "a": "frog", "b": "log", "c": "cup" }
-  ],
+  "rhymes": [{"a":"cat","b":"hat","c":["sun","cup","fish"]},{"a":"car","b":"star","c":["fish","ball","duck"]},{"a":"bee","b":"tree","c":["ball","cup","sun"]},{"a":"moon","b":"spoon","c":["duck","car","hat"]},{"a":"frog","b":"log","c":["cup","bee","moon"]},{"a":"dog","b":"log","c":["sun","apple","car"]}],
   "loudquiet": [
     {"id": "lion", "loud": {"id": "lion", "name": "lion", "like": "like a lion", "sound": "roar", "sfx": "lion"}, "quiet": {"id": "kitten", "name": "kitten", "like": "like a kitten", "sound": "meow", "sfx": "kitten"}},
     {"id": "drum", "loud": {"id": "drum", "name": "big drum", "like": "like a big drum", "sound": "boom", "sfx": "bigdrum"}, "quiet": {"id": "bell", "name": "little bell", "like": "like a little bell", "sound": "ding", "sfx": "bell"}},

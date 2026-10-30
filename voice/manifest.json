@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T10:03:48.450Z",
+ "generated": "2026-10-30T10:34:21.569Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -64,7 +64,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -96,7 +96,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -128,7 +128,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -160,7 +160,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -192,7 +192,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -224,7 +224,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -256,7 +256,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -288,7 +288,7 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
     ]
    }
   },
@@ -320,14 +320,462 @@
    "check": {
     "human": true,
     "reasons": [
-     "recorded animal sound: no human has listened yet"
+     "recorded sound (animals): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.lion",
+   "files": [
+    "assets/sfx/loudquiet/lion.mp3",
+    "assets/sfx/loudquiet/lion.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 69570,
+    "title": "Lion loud.mp3",
+    "author": "Bidone",
+    "url": "https://freesound.org/people/Bidone/sounds/69570/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a lion roaring",
+    "cutFromSec": 23.52
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -3.71,
+    "audiosetTop": "Roar",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.kitten",
+   "files": [
+    "assets/sfx/loudquiet/kitten.mp3",
+    "assets/sfx/loudquiet/kitten.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 440697,
+    "title": "Kitten miaowing.wav",
+    "author": "barkenov",
+    "url": "https://freesound.org/people/barkenov/sounds/440697/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a kitten mewing",
+    "cutFromSec": 6.41
+   },
+   "measured": {
+    "durationSec": 0.7,
+    "lufs": -16.46,
+    "truePeakDbfs": -5.33,
+    "audiosetTop": "Meow",
+    "audiosetTargetProb": 0.61
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bigdrum",
+   "files": [
+    "assets/sfx/loudquiet/bigdrum.mp3",
+    "assets/sfx/loudquiet/bigdrum.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 509528,
+    "title": "Alfaia Hit",
+    "author": "Sassaby",
+    "url": "https://freesound.org/people/Sassaby/sounds/509528/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "one big hit on an alfaia (a large Brazilian bass drum)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.53,
+    "lufs": -16.43,
+    "truePeakDbfs": -1.88,
+    "audiosetTop": "Music",
+    "audiosetTargetProb": 0.37
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bell",
+   "files": [
+    "assets/sfx/loudquiet/bell.mp3",
+    "assets/sfx/loudquiet/bell.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 553214,
+    "title": "Small Bell",
+    "author": "NachtmahrTV",
+    "url": "https://freesound.org/people/NachtmahrTV/sounds/553214/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a small hand bell ringing once",
+    "cutFromSec": 0.45
+   },
+   "measured": {
+    "durationSec": 0.84,
+    "lufs": -16.49,
+    "truePeakDbfs": -1.17,
+    "audiosetTop": "Ding",
+    "audiosetTargetProb": 0.38
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.siren",
+   "files": [
+    "assets/sfx/loudquiet/siren.mp3",
+    "assets/sfx/loudquiet/siren.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 315758,
+    "title": "Fire Truck Siren",
+    "author": "contramundum",
+    "url": "https://freesound.org/people/contramundum/sounds/315758/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a fire truck siren wailing",
+    "cutFromSec": 0.21
+   },
+   "measured": {
+    "durationSec": 1.88,
+    "lufs": -16.44,
+    "truePeakDbfs": -10.38,
+    "audiosetTop": "Police car (siren)",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.bikebell",
+   "files": [
+    "assets/sfx/loudquiet/bikebell.mp3",
+    "assets/sfx/loudquiet/bikebell.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 688055,
+    "title": "Traditional Bicycle Bell.wav",
+    "author": "trpete",
+    "url": "https://freesound.org/people/trpete/sounds/688055/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a traditional bicycle bell ringing",
+    "cutFromSec": 1.79
+   },
+   "measured": {
+    "durationSec": 0.98,
+    "lufs": -18.04,
+    "truePeakDbfs": -4.83,
+    "audiosetTop": "Bicycle bell",
+    "audiosetTargetProb": 0.76
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.thunder",
+   "files": [
+    "assets/sfx/loudquiet/thunder.mp3",
+    "assets/sfx/loudquiet/thunder.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 652690,
+    "title": "Thunder strike",
+    "author": "AyaDrevis",
+    "url": "https://freesound.org/people/AyaDrevis/sounds/652690/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a thunder strike rumbling",
+    "cutFromSec": 0.58
+   },
+   "measured": {
+    "durationSec": 1.46,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.7,
+    "audiosetTop": "Explosion",
+    "audiosetTargetProb": 0
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.rain",
+   "files": [
+    "assets/sfx/loudquiet/rain.mp3",
+    "assets/sfx/loudquiet/rain.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 398740,
+    "title": "rain - drops on porch.wav",
+    "author": "Anthousai",
+    "url": "https://freesound.org/people/Anthousai/sounds/398740/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "raindrops pattering on a porch",
+    "cutFromSec": 3.63
+   },
+   "measured": {
+    "durationSec": 1.21,
+    "lufs": -16.48,
+    "truePeakDbfs": 0.59,
+    "audiosetTop": "Sound effect",
+    "audiosetTargetProb": 0.02
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.chick",
+   "files": [
+    "assets/sfx/loudquiet/chick.mp3",
+    "assets/sfx/loudquiet/chick.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 826677,
+    "title": "Fowl - Chicken; Baby Chick, Peep",
+    "author": "TheKingOfGeeks360",
+    "url": "https://freesound.org/people/TheKingOfGeeks360/sounds/826677/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a baby chick peeping",
+    "cutFromSec": 5.95
+   },
+   "measured": {
+    "durationSec": 1.39,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.91,
+    "audiosetTop": "Bird",
+    "audiosetTargetProb": 0.51
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.trumpet",
+   "files": [
+    "assets/sfx/loudquiet/trumpet.mp3",
+    "assets/sfx/loudquiet/trumpet.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 374162,
+    "title": "Trumpet - sustain - F#4 (Sum_SHTrumpet_sus_G3_v3_rr1.wav)",
+    "author": "sgossner",
+    "url": "https://freesound.org/people/sgossner/sounds/374162/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a trumpet holding one long note (F#4)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -5.93,
+    "audiosetTop": "Trumpet",
+    "audiosetTargetProb": 0.27
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.flute",
+   "files": [
+    "assets/sfx/loudquiet/flute.mp3",
+    "assets/sfx/loudquiet/flute.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 441682,
+    "title": "flute_fa.wav",
+    "author": "alpayozbay",
+    "url": "https://freesound.org/people/alpayozbay/sounds/441682/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a flute playing a short phrase",
+    "cutFromSec": 0.91
+   },
+   "measured": {
+    "durationSec": 1.83,
+    "lufs": -16.44,
+    "truePeakDbfs": -8.19,
+    "audiosetTop": "Music",
+    "audiosetTargetProb": 0.11
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.whimper",
+   "files": [
+    "assets/sfx/loudquiet/whimper.mp3",
+    "assets/sfx/loudquiet/whimper.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 742053,
+    "title": "Dog whine",
+    "author": "T_saurus",
+    "url": "https://freesound.org/people/T_saurus/sounds/742053/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a dog whining softly",
+    "cutFromSec": 7.5
+   },
+   "measured": {
+    "durationSec": 1.09,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.69,
+    "audiosetTop": "Animal",
+    "audiosetTargetProb": 0.24
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.elephant",
+   "files": [
+    "assets/sfx/loudquiet/elephant.mp3",
+    "assets/sfx/loudquiet/elephant.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 819668,
+    "title": "Elephant sound",
+    "author": "ikbenraar",
+    "url": "https://freesound.org/people/ikbenraar/sounds/819668/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "an elephant calling",
+    "cutFromSec": 1.65
+   },
+   "measured": {
+    "durationSec": 1.18,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.99,
+    "audiosetTop": "Roar",
+    "audiosetTargetProb": 0.27
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.lq.mouse",
+   "files": [
+    "assets/sfx/loudquiet/mouse.mp3",
+    "assets/sfx/loudquiet/mouse.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 435708,
+    "title": "Mouse squeak.m4a",
+    "author": "Alexepoch_YT",
+    "url": "https://freesound.org/people/Alexepoch_YT/sounds/435708/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a mouse squeaking",
+    "cutFromSec": 6.81
+   },
+   "measured": {
+    "durationSec": 1.57,
+    "lufs": -16.45,
+    "truePeakDbfs": -0.54,
+    "audiosetTop": "Squeak",
+    "audiosetTargetProb": 0.87
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded sound (loudquiet): no human has listened yet"
     ]
    }
   }
  ],
  "counts": {
-  "total": 2259,
-  "spoken": 2242,
+  "total": 2274,
+  "spoken": 2257,
   "reserved": 17,
   "byGame": {
    "elearnea": 60,
@@ -336,14 +784,14 @@
    "clocktower-gears": 35,
    "mothabet": 1489,
    "lantern-barn": 147,
-   "picture-garden": 121,
+   "picture-garden": 136,
    "glow-jars": 8
   },
   "byType": {
-   "instruction": 616,
+   "instruction": 629,
    "label": 135,
-   "feedback": 202,
-   "praise": 243,
+   "feedback": 203,
+   "praise": 244,
    "number": 10,
    "word": 551,
    "phoneme": 47,
@@ -355,7 +803,7 @@
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 68,
+  "pending": 83,
   "gaps": 0
  },
  "items": [
@@ -71448,6 +71896,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-lion.mp3"
    ]
@@ -71473,6 +71922,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
    "files": [
     "voice/clips/ll.was-the-lion-loud-or-quiet.mp3"
    ]
@@ -71498,6 +71948,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
    "files": [
     "voice/clips/ll.yes-a-loud-roar.mp3"
    ]
@@ -71523,6 +71974,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/lion.mp3 (Freesound #69570 by Bidone, CC0-1.0, https://freesound.org/people/Bidone/sounds/69570/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-roar.mp3"
    ]
@@ -71548,6 +72000,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-kitten.mp3"
    ]
@@ -71573,6 +72026,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
    "files": [
     "voice/clips/ll.was-the-kitten-loud-or-quiet.mp3"
    ]
@@ -71598,6 +72052,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
    "files": [
     "voice/clips/ll.yes-a-loud-meow.mp3"
    ]
@@ -71623,6 +72078,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/kitten.mp3 (Freesound #440697 by barkenov, CC0-1.0, https://freesound.org/people/barkenov/sounds/440697/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-meow.mp3"
    ]
@@ -71648,6 +72104,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-big-drum.mp3"
    ]
@@ -71673,6 +72130,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
    "files": [
     "voice/clips/ll.was-the-big-drum-loud-or-quiet.mp3"
    ]
@@ -71698,6 +72156,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
    "files": [
     "voice/clips/ll.yes-a-loud-boom.mp3"
    ]
@@ -71723,6 +72182,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bigdrum.mp3 (Freesound #509528 by Sassaby, CC0-1.0, https://freesound.org/people/Sassaby/sounds/509528/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-boom.mp3"
    ]
@@ -71748,6 +72208,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-little-bell.mp3"
    ]
@@ -71773,6 +72234,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
    "files": [
     "voice/clips/ll.was-the-little-bell-loud-or-quiet.mp3"
    ]
@@ -71798,6 +72260,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
    "files": [
     "voice/clips/ll.yes-a-loud-ding.mp3"
    ]
@@ -71823,6 +72286,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bell.mp3 (Freesound #553214 by NachtmahrTV, CC0-1.0, https://freesound.org/people/NachtmahrTV/sounds/553214/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-ding.mp3"
    ]
@@ -71848,6 +72312,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-fire-truck.mp3"
    ]
@@ -71873,6 +72338,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
    "files": [
     "voice/clips/ll.was-the-fire-truck-loud-or-quiet.mp3"
    ]
@@ -71898,6 +72364,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
    "files": [
     "voice/clips/ll.yes-a-loud-siren.mp3"
    ]
@@ -71923,6 +72390,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/siren.mp3 (Freesound #315758 by contramundum, CC0-1.0, https://freesound.org/people/contramundum/sounds/315758/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-siren.mp3"
    ]
@@ -71948,6 +72416,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-bicycle-bell.mp3"
    ]
@@ -71973,6 +72442,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
    "files": [
     "voice/clips/ll.was-the-bicycle-bell-loud-or-quiet.mp3"
    ]
@@ -71998,6 +72468,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
    "files": [
     "voice/clips/ll.yes-a-loud-ring-ring.mp3"
    ]
@@ -72023,6 +72494,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/bikebell.mp3 (Freesound #688055 by trpete, CC0-1.0, https://freesound.org/people/trpete/sounds/688055/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-ring-ring.mp3"
    ]
@@ -72048,6 +72520,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-thunder.mp3"
    ]
@@ -72073,6 +72546,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
    "files": [
     "voice/clips/ll.was-the-thunder-loud-or-quiet.mp3"
    ]
@@ -72098,6 +72572,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
    "files": [
     "voice/clips/ll.yes-a-loud-rumble.mp3"
    ]
@@ -72123,6 +72598,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/thunder.mp3 (Freesound #652690 by AyaDrevis, CC0-1.0, https://freesound.org/people/AyaDrevis/sounds/652690/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-rumble.mp3"
    ]
@@ -72148,6 +72624,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-raindrops.mp3"
    ]
@@ -72173,6 +72650,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
    "files": [
     "voice/clips/ll.was-the-rain-loud-or-quiet.mp3"
    ]
@@ -72198,6 +72676,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
    "files": [
     "voice/clips/ll.yes-a-loud-pitter-patter.mp3"
    ]
@@ -72223,6 +72702,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/rain.mp3 (Freesound #398740 by Anthousai, CC0-1.0, https://freesound.org/people/Anthousai/sounds/398740/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-pitter-patter.mp3"
    ]
@@ -72248,6 +72728,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-cow.mp3"
    ]
@@ -72273,6 +72754,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.was-the-cow-loud-or-quiet.mp3"
    ]
@@ -72298,6 +72780,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.yes-a-loud-moo.mp3"
    ]
@@ -72323,6 +72806,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-moo.mp3"
    ]
@@ -72348,6 +72832,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-baby-chick.mp3"
    ]
@@ -72373,6 +72858,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
    "files": [
     "voice/clips/ll.was-the-chick-loud-or-quiet.mp3"
    ]
@@ -72398,6 +72884,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
    "files": [
     "voice/clips/ll.yes-a-loud-peep.mp3"
    ]
@@ -72423,6 +72910,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/chick.mp3 (Freesound #826677 by TheKingOfGeeks360, CC0-1.0, https://freesound.org/people/TheKingOfGeeks360/sounds/826677/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-peep.mp3"
    ]
@@ -72448,6 +72936,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-trumpet.mp3"
    ]
@@ -72473,6 +72962,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
    "files": [
     "voice/clips/ll.was-the-trumpet-loud-or-quiet.mp3"
    ]
@@ -72498,6 +72988,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
    "files": [
     "voice/clips/ll.yes-a-loud-toot.mp3"
    ]
@@ -72523,6 +73014,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/trumpet.mp3 (Freesound #374162 by sgossner, CC0-1.0, https://freesound.org/people/sgossner/sounds/374162/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-toot.mp3"
    ]
@@ -72548,6 +73040,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-flute.mp3"
    ]
@@ -72573,6 +73066,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
    "files": [
     "voice/clips/ll.was-the-flute-loud-or-quiet.mp3"
    ]
@@ -72598,6 +73092,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
    "files": [
     "voice/clips/ll.yes-a-loud-flute-song.mp3"
    ]
@@ -72623,6 +73118,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/flute.mp3 (Freesound #441682 by alpayozbay, CC0-1.0, https://freesound.org/people/alpayozbay/sounds/441682/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-flute-song.mp3"
    ]
@@ -72648,6 +73144,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-a-barking-dog.mp3"
    ]
@@ -72673,6 +73170,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.was-the-dog-loud-or-quiet.mp3"
    ]
@@ -72698,6 +73196,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.yes-a-loud-woof.mp3"
    ]
@@ -72723,6 +73222,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-woof.mp3"
    ]
@@ -72748,6 +73248,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-sleepy-puppy.mp3"
    ]
@@ -72773,6 +73274,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
    "files": [
     "voice/clips/ll.was-the-puppy-loud-or-quiet.mp3"
    ]
@@ -72798,6 +73300,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
    "files": [
     "voice/clips/ll.yes-a-loud-whimper.mp3"
    ]
@@ -72823,6 +73326,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/whimper.mp3 (Freesound #742053 by T_saurus, CC0-1.0, https://freesound.org/people/T_saurus/sounds/742053/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-whimper.mp3"
    ]
@@ -72848,6 +73352,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-an-elephant.mp3"
    ]
@@ -72873,6 +73378,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
    "files": [
     "voice/clips/ll.was-the-elephant-loud-or-quiet.mp3"
    ]
@@ -72898,6 +73404,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
    "files": [
     "voice/clips/ll.yes-a-loud-elephant-call.mp3"
    ]
@@ -72923,6 +73430,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/elephant.mp3 (Freesound #819668 by ikbenraar, CC0-1.0, https://freesound.org/people/ikbenraar/sounds/819668/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-elephant-call.mp3"
    ]
@@ -72948,6 +73456,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-a-mouse.mp3"
    ]
@@ -72973,6 +73482,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
    "files": [
     "voice/clips/ll.was-the-mouse-loud-or-quiet.mp3"
    ]
@@ -72998,6 +73508,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
    "files": [
     "voice/clips/ll.yes-a-loud-squeak.mp3"
    ]
@@ -73023,6 +73534,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/loudquiet/mouse.mp3 (Freesound #435708 by Alexepoch_YT, CC0-1.0, https://freesound.org/people/Alexepoch_YT/sounds/435708/)",
    "files": [
     "voice/clips/ll.yes-a-quiet-squeak.mp3"
    ]
@@ -76887,7 +77399,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -76903,6 +77415,56 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-cat-hat-or-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-cat-hat-or-cup",
+   "key": "which one rhymes with cat hat or cup",
+   "text": "Which one rhymes with cat? hat, or cup?",
+   "render": "Which one rhymes with cat? hat, or cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-cat-hat-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-cat-hat-or-fish",
+   "key": "which one rhymes with cat hat or fish",
+   "text": "Which one rhymes with cat? hat, or fish?",
+   "render": "Which one rhymes with cat? hat, or fish?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-cat-hat-or-fish.mp3"
    ]
   },
   {
@@ -76971,7 +77533,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -76987,6 +77549,56 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-car-star-or-fish.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-car-star-or-ball",
+   "key": "which one rhymes with car star or ball",
+   "text": "Which one rhymes with car? star, or ball?",
+   "render": "Which one rhymes with car? star, or ball?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-car-star-or-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-car-star-or-duck",
+   "key": "which one rhymes with car star or duck",
+   "text": "Which one rhymes with car? star, or duck?",
+   "render": "Which one rhymes with car? star, or duck?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-car-star-or-duck.mp3"
    ]
   },
   {
@@ -77055,7 +77667,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -77071,6 +77683,56 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-bee-tree-or-ball.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-bee-tree-or-cup",
+   "key": "which one rhymes with bee tree or cup",
+   "text": "Which one rhymes with bee? tree, or cup?",
+   "render": "Which one rhymes with bee? tree, or cup?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-bee-tree-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-bee-tree-or-sun",
+   "key": "which one rhymes with bee tree or sun",
+   "text": "Which one rhymes with bee? tree, or sun?",
+   "render": "Which one rhymes with bee? tree, or sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-bee-tree-or-sun.mp3"
    ]
   },
   {
@@ -77139,7 +77801,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -77155,6 +77817,56 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-duck.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-moon-spoon-or-car",
+   "key": "which one rhymes with moon spoon or car",
+   "text": "Which one rhymes with moon? spoon, or car?",
+   "render": "Which one rhymes with moon? spoon, or car?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-moon-spoon-or-hat",
+   "key": "which one rhymes with moon spoon or hat",
+   "text": "Which one rhymes with moon? spoon, or hat?",
+   "render": "Which one rhymes with moon? spoon, or hat?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-hat.mp3"
    ]
   },
   {
@@ -77223,7 +77935,7 @@
     {
      "game": "picture-garden",
      "screen": "Picture Garden: rhyme time",
-     "trigger": "new question (names both pictures)"
+     "trigger": "new question (names both pictures; the other picture varies)"
     }
    ],
    "source": {
@@ -77239,6 +77951,56 @@
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-frog-log-or-cup.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-frog-log-or-bee",
+   "key": "which one rhymes with frog log or bee",
+   "text": "Which one rhymes with frog? log, or bee?",
+   "render": "Which one rhymes with frog? log, or bee?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-frog-log-or-bee.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-frog-log-or-moon",
+   "key": "which one rhymes with frog log or moon",
+   "text": "Which one rhymes with frog? log, or moon?",
+   "render": "Which one rhymes with frog? log, or moon?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-frog-log-or-moon.mp3"
    ]
   },
   {
@@ -77295,6 +78057,131 @@
    },
    "files": [
     "voice/clips/ll.listen-frog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-sun",
+   "key": "which one rhymes with dog log or sun",
+   "text": "Which one rhymes with dog? log, or sun?",
+   "render": "Which one rhymes with dog? log, or sun?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-sun.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-apple",
+   "key": "which one rhymes with dog log or apple",
+   "text": "Which one rhymes with dog? log, or apple?",
+   "render": "Which one rhymes with dog? log, or apple?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-apple.mp3"
+   ]
+  },
+  {
+   "id": "ll.which-one-rhymes-with-dog-log-or-car",
+   "key": "which one rhymes with dog log or car",
+   "text": "Which one rhymes with dog? log, or car?",
+   "render": "Which one rhymes with dog? log, or car?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "new question (names both pictures; the other picture varies)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.which-one-rhymes-with-dog-log-or-car.mp3"
+   ]
+  },
+  {
+   "id": "ll.yes-dog-log-they-rhyme",
+   "key": "yes dog log they rhyme",
+   "text": "Yes! dog, log. They rhyme!",
+   "render": "Yes! dog, log. They rhyme!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "rhyming picture tapped"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.yes-dog-log-they-rhyme.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-dog-log-they-rhyme",
+   "key": "listen dog log they rhyme",
+   "text": "Listen: dog, log. They rhyme!",
+   "render": "Listen: dog, log. They rhyme!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "picture-garden",
+     "screen": "Picture Garden: rhyme time",
+     "trigger": "other picture tapped (the rhyme glows)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-dog-log-they-rhyme.mp3"
    ]
   },
   {
