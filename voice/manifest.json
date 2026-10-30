@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T06:15:17.671Z",
+ "generated": "2026-10-30T08:58:44.962Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -34,26 +34,27 @@
   "scriptClips": 1267,
   "usedByCode": 1303
  },
- "elearneaCsv": "/home/box/elearnea/wt/voice/elearnea-lines.csv",
+ "elearneaCsv": "/home/box/elearnea/qa/firefly-choir/elearnea-lines.csv",
  "counts": {
-  "total": 2193,
-  "spoken": 2176,
+  "total": 2220,
+  "spoken": 2203,
   "reserved": 17,
   "byGame": {
-   "elearnea": 60,
+   "elearnea": 64,
    "lily-pad-hop": 327,
    "firefly-count": 72,
    "clocktower-gears": 35,
+   "firefly-choir": 24,
    "mothabet": 1489,
-   "lantern-barn": 81,
+   "lantern-barn": 80,
    "picture-garden": 121,
    "glow-jars": 8
   },
   "byType": {
-   "instruction": 596,
+   "instruction": 614,
    "label": 135,
-   "feedback": 202,
-   "praise": 197,
+   "feedback": 203,
+   "praise": 205,
    "number": 10,
    "word": 551,
    "phoneme": 47,
@@ -61,11 +62,11 @@
    "sentence": 430
   },
   "needsHumanCheck": 290,
-  "withClip": 2178,
+  "withClip": 2177,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 0,
+  "pending": 28,
   "gaps": 0
  },
  "items": [
@@ -1045,10 +1046,10 @@
    ]
   },
   {
-   "id": "el.art-and-music-land-is-coming-soon",
-   "key": "art and music land is coming soon",
-   "text": "Art and music land is coming soon!",
-   "render": "Art and music land is coming soon!",
+   "id": "el.art-and-music-land-tap-to-go-in",
+   "key": "art and music land tap to go in",
+   "text": "Art and music land! Tap to go in.",
+   "render": "Art and music land! Tap to go in.",
    "type": "instruction",
    "uses": [
     {
@@ -1058,24 +1059,115 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Art and music land is coming soon.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
-    "voice/clips/el.art-and-music-land-is-coming-soon.mp3"
+    "voice/clips/el.art-and-music-land-tap-to-go-in.mp3"
+   ]
+  },
+  {
+   "id": "el.high-or-low-lets-listen",
+   "key": "high or low let's listen",
+   "text": "High or low? Let's listen!",
+   "render": "High or low? Let's listen!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Art & Music realm path",
+     "trigger": "tap lesson stop \"High or low?\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.high-or-low-lets-listen.mp3"
+   ]
+  },
+  {
+   "id": "el.fast-or-slow-loud-or-soft",
+   "key": "fast or slow loud or soft",
+   "text": "Fast or slow? Loud or soft?",
+   "render": "Fast or slow? Loud or soft?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Art & Music realm path",
+     "trigger": "tap lesson stop \"Fast, slow, loud, soft\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.fast-or-slow-loud-or-soft.mp3"
+   ]
+  },
+  {
+   "id": "el.echo-the-firefly-rhythm",
+   "key": "echo the firefly rhythm",
+   "text": "Echo the firefly rhythm!",
+   "render": "Echo the firefly rhythm!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Art & Music realm path",
+     "trigger": "tap lesson stop \"Echo the rhythm\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.echo-the-firefly-rhythm.mp3"
+   ]
+  },
+  {
+   "id": "el.make-a-firefly-song-pattern",
+   "key": "make a firefly song pattern",
+   "text": "Make a firefly song pattern!",
+   "render": "Make a firefly song pattern!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Art & Music realm path",
+     "trigger": "tap lesson stop \"Song patterns\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.make-a-firefly-song-pattern.mp3"
    ]
   },
   {
@@ -13254,6 +13346,11 @@
      "trigger": "2nd wrong drawer: the right drawer glows"
     },
     {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low and fast/slow rounds",
+     "trigger": "2nd miss: the right answer glows and sings"
+    },
+    {
      "game": "picture-garden",
      "screen": "Picture Garden / Lantern Barn / Glow Jars",
      "trigger": "second miss: the answer glows"
@@ -15727,6 +15824,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears pattern round",
      "trigger": "each next pattern; after Wick sings the pattern"
+    },
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "each pattern; after the hint"
     }
    ],
    "source": {
@@ -15761,6 +15863,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears pattern round",
      "trigger": "1st wrong gear (Wick then sings the shapes along the gears)"
+    },
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "1st wrong firefly: the song so far plays again"
     }
    ],
    "source": {
@@ -15795,6 +15902,11 @@
      "game": "clocktower-gears",
      "screen": "Clocktower Gears pattern round",
      "trigger": "2nd wrong gear: the right shape glows"
+    },
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "2nd wrong firefly: the right one glows"
     }
    ],
    "source": {
@@ -16915,6 +17027,614 @@
    },
    "files": [
     "voice/clips/cg.six-sides-a-hexagon.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-firefly-sings-high",
+   "key": "this firefly sings high",
+   "text": "This firefly sings high.",
+   "render": "This firefly sings high.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low round",
+     "trigger": "demo: the high firefly sings"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-firefly-sings-high.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-firefly-sings-low",
+   "key": "this firefly sings low",
+   "text": "This firefly sings low.",
+   "render": "This firefly sings low.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low round",
+     "trigger": "demo: the low firefly sings"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-firefly-sings-low.mp3"
+   ]
+  },
+  {
+   "id": "fc.listen-high-or-low",
+   "key": "listen high or low",
+   "text": "Listen! High or low?",
+   "render": "Listen! High or low?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low round",
+     "trigger": "each new note"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.listen-high-or-low.mp3"
+   ]
+  },
+  {
+   "id": "fc.fast-or-slow",
+   "key": "fast or slow",
+   "text": "Fast or slow?",
+   "render": "Fast or slow?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir fast/slow round",
+     "trigger": "each new tune; bubble text"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.fast-or-slow.mp3"
+   ]
+  },
+  {
+   "id": "fc.loud-or-soft",
+   "key": "loud or soft",
+   "text": "Loud or soft?",
+   "render": "Loud or soft?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir loud/soft round",
+     "trigger": "each new tune; bubble text"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.loud-or-soft.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-is-fast",
+   "key": "this is fast",
+   "text": "This is fast.",
+   "render": "This is fast.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir fast/slow round",
+     "trigger": "demo: the rabbit card glows"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-is-fast.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-is-slow",
+   "key": "this is slow",
+   "text": "This is slow.",
+   "render": "This is slow.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir fast/slow round",
+     "trigger": "demo: the snail card glows"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-is-slow.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-is-loud",
+   "key": "this is loud",
+   "text": "This is loud.",
+   "render": "This is loud.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir loud/soft round",
+     "trigger": "demo: the big firefly card glows"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-is-loud.mp3"
+   ]
+  },
+  {
+   "id": "fc.this-is-soft",
+   "key": "this is soft",
+   "text": "This is soft.",
+   "render": "This is soft.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir loud/soft round",
+     "trigger": "demo: the sleepy firefly card glows"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.this-is-soft.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-high",
+   "key": "yes high",
+   "text": "Yes! High!",
+   "render": "Yes! High!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-high.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-low",
+   "key": "yes low",
+   "text": "Yes! Low!",
+   "render": "Yes! Low!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir high/low round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-low.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-fast",
+   "key": "yes fast",
+   "text": "Yes! Fast!",
+   "render": "Yes! Fast!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir fast/slow round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-fast.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-slow",
+   "key": "yes slow",
+   "text": "Yes! Slow!",
+   "render": "Yes! Slow!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir fast/slow round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-slow.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-loud",
+   "key": "yes loud",
+   "text": "Yes! Loud!",
+   "render": "Yes! Loud!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir loud/soft round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-loud.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-soft",
+   "key": "yes soft",
+   "text": "Yes! Soft!",
+   "render": "Yes! Soft!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir loud/soft round",
+     "trigger": "right answer"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-soft.mp3"
+   ]
+  },
+  {
+   "id": "ll.listen-again",
+   "key": "listen again",
+   "text": "Listen again.",
+   "render": "Listen again.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir any listening round",
+     "trigger": "1st miss: the sound plays again"
+    },
+    {
+     "game": "lantern-barn",
+     "screen": "Lantern Barn: loud or quiet",
+     "trigger": "first miss (the drum replays)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/ll.listen-again.mp3"
+   ]
+  },
+  {
+   "id": "fc.watch-me-first",
+   "key": "watch me first",
+   "text": "Watch me first.",
+   "render": "Watch me first.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir echo / pattern round",
+     "trigger": "demo on the first item"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.watch-me-first.mp3"
+   ]
+  },
+  {
+   "id": "fc.listen-then-tap-it-back",
+   "key": "listen then tap it back",
+   "text": "Listen, then tap it back!",
+   "render": "Listen, then tap it back!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir echo round",
+     "trigger": "each new rhythm"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.listen-then-tap-it-back.mp3"
+   ]
+  },
+  {
+   "id": "fc.your-turn",
+   "key": "your turn",
+   "text": "Your turn!",
+   "render": "Your turn!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir echo round",
+     "trigger": "after Wick plays the rhythm"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.your-turn.mp3"
+   ]
+  },
+  {
+   "id": "fc.yes-you-echoed-it",
+   "key": "yes you echoed it",
+   "text": "Yes! You echoed it!",
+   "render": "Yes! You echoed it!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir echo round",
+     "trigger": "rhythm tapped back in time"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.yes-you-echoed-it.mp3"
+   ]
+  },
+  {
+   "id": "fc.tap-with-the-lights",
+   "key": "tap with the lights",
+   "text": "Tap with the lights.",
+   "render": "Tap with the lights.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir echo round",
+     "trigger": "2nd miss: guided play-along"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.tap-with-the-lights.mp3"
+   ]
+  },
+  {
+   "id": "fc.finish-the-song-pattern",
+   "key": "finish the song pattern",
+   "text": "Finish the song pattern!",
+   "render": "Finish the song pattern!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "first pattern of the round"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.finish-the-song-pattern.mp3"
+   ]
+  },
+  {
+   "id": "fc.now-play-your-song",
+   "key": "now play your song",
+   "text": "Now play your song!",
+   "render": "Now play your song!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "pattern complete: press Play"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.now-play-your-song.mp3"
+   ]
+  },
+  {
+   "id": "fc.your-song-repeats",
+   "key": "your song repeats",
+   "text": "Your song repeats!",
+   "render": "Your song repeats!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "firefly-choir",
+     "screen": "Firefly Choir pattern round",
+     "trigger": "whole song played"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/fc.your-song-repeats.mp3"
    ]
   },
   {
@@ -71055,34 +71775,6 @@
    },
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-the-mouse.mp3"
-   ]
-  },
-  {
-   "id": "ll.listen-again",
-   "key": "listen again",
-   "text": "Listen again!",
-   "render": "Listen again!",
-   "type": "feedback",
-   "uses": [
-    {
-     "game": "lantern-barn",
-     "screen": "Lantern Barn: loud or quiet",
-     "trigger": "first miss (the drum replays)"
-    }
-   ],
-   "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
-   },
-   "check": {
-    "human": false,
-    "reasons": []
-   },
-   "files": [
-    "voice/clips/ll.listen-again.mp3"
    ]
   },
   {
