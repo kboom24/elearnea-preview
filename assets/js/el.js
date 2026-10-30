@@ -129,7 +129,11 @@
     again: '<path d="M40 22a15 15 0 1 0-2 13" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M42 10v13H29" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>',
     map: '<path d="M6 12l13-5 14 5 13-5v33l-13 5-14-5-13 5z" fill="currentColor"/><path d="M19 7v33M33 12v33" stroke="#2A2152" stroke-width="3" opacity=".35"/>',
     shapes: '<circle cx="16" cy="16" r="10" fill="#F08A7E"/><rect x="28" y="6" width="19" height="19" rx="2" fill="#7CC4A4"/><path d="M26 28 38 47H14z" fill="#F5B841" stroke="#F5B841" stroke-width="3" stroke-linejoin="round"/>',
-    moon: '<path d="M33 7a19 19 0 1 0 12 26A16 16 0 0 1 33 7z" fill="currentColor"/>'
+    moon: '<path d="M33 7a19 19 0 1 0 12 26A16 16 0 0 1 33 7z" fill="currentColor"/>',
+    arrow: '<path d="M26 6 44 25H33v21H19V25H8z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>',
+    steps: '<path d="M8 44h12V32h12V20h12V8" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="8" r="6" fill="#F5B841"/>',
+    bug: '<ellipse cx="26" cy="30" rx="16" ry="17" fill="#F08A7E"/><path d="M26 13v34" stroke="#2A2152" stroke-width="3"/><circle cx="26" cy="12" r="8" fill="#2A2152"/><circle cx="19" cy="26" r="3.5" fill="#2A2152"/><circle cx="33" cy="26" r="3.5" fill="#2A2152"/><circle cx="20" cy="37" r="3" fill="#2A2152"/><circle cx="32" cy="37" r="3" fill="#2A2152"/>',
+    loop: '<path d="M14 30a14 14 0 1 1 6 10" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M6 24l8 9 9-8" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'
   };
   El.icon = (n, cls) => `<svg viewBox="0 0 52 52" aria-hidden="true"${cls ? ` class="${cls}"` : ''}>${I[n] || I.star}</svg>`;
 

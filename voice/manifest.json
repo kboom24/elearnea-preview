@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T06:15:17.671Z",
+ "generated": "2026-10-30T09:13:35.251Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -34,26 +34,27 @@
   "scriptClips": 1267,
   "usedByCode": 1303
  },
- "elearneaCsv": "/home/box/elearnea/wt/voice/elearnea-lines.csv",
+ "elearneaCsv": "/home/box/elearnea/voice/wicks-path/elearnea-lines.csv",
  "counts": {
-  "total": 2193,
-  "spoken": 2176,
+  "total": 2237,
+  "spoken": 2220,
   "reserved": 17,
   "byGame": {
-   "elearnea": 60,
+   "elearnea": 65,
    "lily-pad-hop": 327,
    "firefly-count": 72,
    "clocktower-gears": 35,
    "mothabet": 1489,
    "lantern-barn": 81,
    "picture-garden": 121,
-   "glow-jars": 8
+   "glow-jars": 8,
+   "wicks-path": 39
   },
   "byType": {
-   "instruction": 596,
+   "instruction": 619,
    "label": 135,
-   "feedback": 202,
-   "praise": 197,
+   "feedback": 216,
+   "praise": 204,
    "number": 10,
    "word": 551,
    "phoneme": 47,
@@ -65,7 +66,7 @@
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 0,
+  "pending": 44,
   "gaps": 0
  },
  "items": [
@@ -1113,6 +1114,31 @@
    ]
   },
   {
+   "id": "el.puzzle-castle-tap-to-go-in",
+   "key": "puzzle castle tap to go in",
+   "text": "Puzzle castle! Tap to go in.",
+   "render": "Puzzle castle! Tap to go in.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "World map",
+     "trigger": "tap the Logic & Coding island"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.puzzle-castle-tap-to-go-in.mp3"
+   ]
+  },
+  {
    "id": "el.puzzle-castle-is-coming-soon",
    "key": "puzzle castle is coming soon",
    "text": "Puzzle castle is coming soon!",
@@ -1122,7 +1148,7 @@
     {
      "game": "elearnea",
      "screen": "World map",
-     "trigger": "tap the Logic & Coding island"
+     "trigger": "tap the Logic & Coding island when it has no lessons for this age band"
     }
    ],
    "source": {
@@ -1144,6 +1170,106 @@
    },
    "files": [
     "voice/clips/el.puzzle-castle-is-coming-soon.mp3"
+   ]
+  },
+  {
+   "id": "el.one-arrow-to-the-lantern",
+   "key": "one arrow to the lantern",
+   "text": "One arrow to the lantern!",
+   "render": "One arrow to the lantern!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Logic & Coding realm path",
+     "trigger": "tap lesson stop \"First step\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.one-arrow-to-the-lantern.mp3"
+   ]
+  },
+  {
+   "id": "el.make-a-path-for-wick",
+   "key": "make a path for wick",
+   "text": "Make a path for Wick!",
+   "render": "Make a path for Wick!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Logic & Coding realm path",
+     "trigger": "tap lesson stop \"Lantern path\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.make-a-path-for-wick.mp3"
+   ]
+  },
+  {
+   "id": "el.fix-the-path",
+   "key": "fix the path",
+   "text": "Fix the path!",
+   "render": "Fix the path!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Logic & Coding realm path",
+     "trigger": "tap lesson stop \"Fix the path\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.fix-the-path.mp3"
+   ]
+  },
+  {
+   "id": "el.make-it-short-with-repeat",
+   "key": "make it short with repeat",
+   "text": "Make it short with repeat!",
+   "render": "Make it short with repeat!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Logic & Coding realm path",
+     "trigger": "tap lesson stop \"Repeat it\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/el.make-it-short-with-repeat.mp3"
    ]
   },
   {
@@ -75633,6 +75759,981 @@
    },
    "files": [
     "voice/clips/ll.this-jar-has-more.mp3"
+   ]
+  },
+  {
+   "id": "wp.go-up",
+   "key": "go up",
+   "text": "Go up!",
+   "render": "Go up!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "arrow tile added to the program; each step as Wick walks the program; help: the right next arrow"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.go-up.mp3"
+   ]
+  },
+  {
+   "id": "wp.go-down",
+   "key": "go down",
+   "text": "Go down!",
+   "render": "Go down!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "arrow tile added to the program; each step as Wick walks the program; help: the right next arrow"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.go-down.mp3"
+   ]
+  },
+  {
+   "id": "wp.go-left",
+   "key": "go left",
+   "text": "Go left!",
+   "render": "Go left!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "arrow tile added to the program; each step as Wick walks the program; help: the right next arrow"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.go-left.mp3"
+   ]
+  },
+  {
+   "id": "wp.go-right",
+   "key": "go right",
+   "text": "Go right!",
+   "render": "Go right!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "arrow tile added to the program; each step as Wick walks the program; help: the right next arrow"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.go-right.mp3"
+   ]
+  },
+  {
+   "id": "wp.repeat-two-times",
+   "key": "repeat two times",
+   "text": "Repeat two times!",
+   "render": "Repeat two times!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path loops",
+     "trigger": "repeat 2 block added / starts running"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.repeat-two-times.mp3"
+   ]
+  },
+  {
+   "id": "wp.repeat-three-times",
+   "key": "repeat three times",
+   "text": "Repeat three times!",
+   "render": "Repeat three times!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path loops",
+     "trigger": "repeat 3 block added / starts running"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.repeat-three-times.mp3"
+   ]
+  },
+  {
+   "id": "wp.repeat-four-times",
+   "key": "repeat four times",
+   "text": "Repeat four times!",
+   "render": "Repeat four times!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path loops",
+     "trigger": "repeat 4 block added / starts running"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.repeat-four-times.mp3"
+   ]
+  },
+  {
+   "id": "wp.help-me-light-the-lantern-pick-an-ar-b7f47c",
+   "key": "help me light the lantern pick an arrow then press go",
+   "text": "Help me light the lantern! Pick an arrow. Then press Go!",
+   "render": "Help me light the lantern! Pick an arrow. Then press Go!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path one step",
+     "trigger": "first puzzle"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.help-me-light-the-lantern-pick-an-ar-b7f47c.mp3"
+   ]
+  },
+  {
+   "id": "wp.which-way-to-the-lantern",
+   "key": "which way to the lantern",
+   "text": "Which way to the lantern?",
+   "render": "Which way to the lantern?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path one step",
+     "trigger": "next puzzles; tap Wick / hear again"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.which-way-to-the-lantern.mp3"
+   ]
+  },
+  {
+   "id": "wp.make-a-path-to-the-lantern-then-press-go",
+   "key": "make a path to the lantern then press go",
+   "text": "Make a path to the lantern. Then press Go!",
+   "render": "Make a path to the lantern. Then press Go!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path sequences",
+     "trigger": "first puzzle"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.make-a-path-to-the-lantern-then-press-go.mp3"
+   ]
+  },
+  {
+   "id": "wp.make-a-path-to-the-lantern",
+   "key": "make a path to the lantern",
+   "text": "Make a path to the lantern!",
+   "render": "Make a path to the lantern!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path sequences",
+     "trigger": "next puzzles"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.make-a-path-to-the-lantern.mp3"
+   ]
+  },
+  {
+   "id": "wp.light-both-lanterns",
+   "key": "light both lanterns",
+   "text": "Light both lanterns!",
+   "render": "Light both lanterns!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path sequences",
+     "trigger": "puzzle with two lanterns"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.light-both-lanterns.mp3"
+   ]
+  },
+  {
+   "id": "wp.oh-no-one-arrow-is-wrong-find-it-and-fix-it",
+   "key": "oh no one arrow is wrong find it and fix it",
+   "text": "Oh no! One arrow is wrong. Find it and fix it!",
+   "render": "Oh no! One arrow is wrong. Find it and fix it!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path debugging",
+     "trigger": "first puzzle"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oh-no-one-arrow-is-wrong-find-it-and-fix-it.mp3"
+   ]
+  },
+  {
+   "id": "wp.find-the-wrong-arrow-and-fix-it",
+   "key": "find the wrong arrow and fix it",
+   "text": "Find the wrong arrow and fix it!",
+   "render": "Find the wrong arrow and fix it!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path debugging",
+     "trigger": "next puzzles"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.find-the-wrong-arrow-and-fix-it.mp3"
+   ]
+  },
+  {
+   "id": "wp.now-pick-the-right-arrow",
+   "key": "now pick the right arrow",
+   "text": "Now pick the right arrow.",
+   "render": "Now pick the right arrow.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path debugging",
+     "trigger": "an arrow in the program is picked"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.now-pick-the-right-arrow.mp3"
+   ]
+  },
+  {
+   "id": "wp.first-tap-the-arrow-you-want-to-fix",
+   "key": "first tap the arrow you want to fix",
+   "text": "First tap the arrow you want to fix.",
+   "render": "First tap the arrow you want to fix.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path debugging",
+     "trigger": "palette arrow tapped before picking a program arrow"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.first-tap-the-arrow-you-want-to-fix.mp3"
+   ]
+  },
+  {
+   "id": "wp.use-the-repeat-block-to-make-it-short",
+   "key": "use the repeat block to make it short",
+   "text": "Use the repeat block to make it short!",
+   "render": "Use the repeat block to make it short!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path loops",
+     "trigger": "first puzzle"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.use-the-repeat-block-to-make-it-short.mp3"
+   ]
+  },
+  {
+   "id": "wp.use-the-repeat-block",
+   "key": "use the repeat block",
+   "text": "Use the repeat block!",
+   "render": "Use the repeat block!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path loops",
+     "trigger": "next puzzles"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.use-the-repeat-block.mp3"
+   ]
+  },
+  {
+   "id": "wp.add-some-arrows-first",
+   "key": "add some arrows first",
+   "text": "Add some arrows first!",
+   "render": "Add some arrows first!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "Go with no arrows"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.add-some-arrows-first.mp3"
+   ]
+  },
+  {
+   "id": "wp.no-more-room",
+   "key": "no more room",
+   "text": "No more room!",
+   "render": "No more room!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "program strip is full"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.no-more-room.mp3"
+   ]
+  },
+  {
+   "id": "wp.no-more-room-try-the-repeat-block",
+   "key": "no more room try the repeat block",
+   "text": "No more room! Try the repeat block.",
+   "render": "No more room! Try the repeat block.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "program strip is full"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.no-more-room-try-the-repeat-block.mp3"
+   ]
+  },
+  {
+   "id": "wp.put-an-arrow-in-the-repeat-block",
+   "key": "put an arrow in the repeat block",
+   "text": "Put an arrow in the repeat block!",
+   "render": "Put an arrow in the repeat block!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "Go with an empty repeat block"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.put-an-arrow-in-the-repeat-block.mp3"
+   ]
+  },
+  {
+   "id": "wp.oops-a-flowerbed-is-in-the-way",
+   "key": "oops a flowerbed is in the way",
+   "text": "Oops! A flowerbed is in the way.",
+   "render": "Oops! A flowerbed is in the way.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path run",
+     "trigger": "Wick stops gently where the program went off"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oops-a-flowerbed-is-in-the-way.mp3"
+   ]
+  },
+  {
+   "id": "wp.oops-a-stone-is-in-the-way",
+   "key": "oops a stone is in the way",
+   "text": "Oops! A stone is in the way.",
+   "render": "Oops! A stone is in the way.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path run",
+     "trigger": "Wick stops gently where the program went off"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oops-a-stone-is-in-the-way.mp3"
+   ]
+  },
+  {
+   "id": "wp.oops-thats-the-edge-of-the-garden",
+   "key": "oops that's the edge of the garden",
+   "text": "Oops! That's the edge of the garden.",
+   "render": "Oops! That's the edge of the garden.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path run",
+     "trigger": "Wick stops gently where the program went off"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oops-thats-the-edge-of-the-garden.mp3"
+   ]
+  },
+  {
+   "id": "wp.oh-i-did-not-reach-the-lantern",
+   "key": "oh i did not reach the lantern",
+   "text": "Oh! I did not reach the lantern.",
+   "render": "Oh! I did not reach the lantern.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path run",
+     "trigger": "Wick stops gently where the program went off"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oh-i-did-not-reach-the-lantern.mp3"
+   ]
+  },
+  {
+   "id": "wp.oops-i-went-too-far",
+   "key": "oops i went too far",
+   "text": "Oops! I went too far.",
+   "render": "Oops! I went too far.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path run",
+     "trigger": "Wick stops gently where the program went off"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.oops-i-went-too-far.mp3"
+   ]
+  },
+  {
+   "id": "wp.this-arrow-went-the-wrong-way",
+   "key": "this arrow went the wrong way",
+   "text": "This arrow went the wrong way.",
+   "render": "This arrow went the wrong way.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path help",
+     "trigger": "after a run that did not work (help grows each try)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.this-arrow-went-the-wrong-way.mp3"
+   ]
+  },
+  {
+   "id": "wp.add-one-more-arrow-here",
+   "key": "add one more arrow here",
+   "text": "Add one more arrow here.",
+   "render": "Add one more arrow here.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path help",
+     "trigger": "after a run that did not work (help grows each try)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.add-one-more-arrow-here.mp3"
+   ]
+  },
+  {
+   "id": "wp.this-arrow-is-one-too-many",
+   "key": "this arrow is one too many",
+   "text": "This arrow is one too many.",
+   "render": "This arrow is one too many.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path help",
+     "trigger": "after a run that did not work (help grows each try)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.this-arrow-is-one-too-many.mp3"
+   ]
+  },
+  {
+   "id": "wp.this-way",
+   "key": "this way",
+   "text": "This way!",
+   "render": "This way!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path help",
+     "trigger": "after a run that did not work (help grows each try)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.this-way.mp3"
+   ]
+  },
+  {
+   "id": "wp.here-is-a-path-that-works-press-go",
+   "key": "here is a path that works press go",
+   "text": "Here is a path that works. Press Go!",
+   "render": "Here is a path that works. Press Go!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path help",
+     "trigger": "after a run that did not work (help grows each try)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.here-is-a-path-that-works-press-go.mp3"
+   ]
+  },
+  {
+   "id": "wp.you-lit-the-lantern",
+   "key": "you lit the lantern",
+   "text": "You lit the lantern!",
+   "render": "You lit the lantern!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "lantern lit"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.you-lit-the-lantern.mp3"
+   ]
+  },
+  {
+   "id": "wp.the-lantern-is-glowing",
+   "key": "the lantern is glowing",
+   "text": "The lantern is glowing!",
+   "render": "The lantern is glowing!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "lantern lit"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.the-lantern-is-glowing.mp3"
+   ]
+  },
+  {
+   "id": "wp.your-program-works",
+   "key": "your program works",
+   "text": "Your program works!",
+   "render": "Your program works!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "lantern lit"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.your-program-works.mp3"
+   ]
+  },
+  {
+   "id": "wp.both-lanterns-are-glowing",
+   "key": "both lanterns are glowing",
+   "text": "Both lanterns are glowing!",
+   "render": "Both lanterns are glowing!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "puzzle solved"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.both-lanterns-are-glowing.mp3"
+   ]
+  },
+  {
+   "id": "wp.you-fixed-it",
+   "key": "you fixed it",
+   "text": "You fixed it!",
+   "render": "You fixed it!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "puzzle solved"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.you-fixed-it.mp3"
+   ]
+  },
+  {
+   "id": "wp.a-short-program-smart-thinking",
+   "key": "a short program smart thinking",
+   "text": "A short program! Smart thinking!",
+   "render": "A short program! Smart thinking!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "puzzle solved"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.a-short-program-smart-thinking.mp3"
+   ]
+  },
+  {
+   "id": "wp.all-the-lanterns-are-glowing",
+   "key": "all the lanterns are glowing",
+   "text": "All the lanterns are glowing!",
+   "render": "All the lanterns are glowing!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "wicks-path",
+     "screen": "Wick's Lantern Path",
+     "trigger": "round ends"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
+   },
+   "check": {
+    "human": false,
+    "reasons": []
+   },
+   "files": [
+    "voice/clips/wp.all-the-lanterns-are-glowing.mp3"
    ]
   }
  ]
