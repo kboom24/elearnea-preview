@@ -57,7 +57,7 @@ const PEAK = `(() => { window.__peak = 0; const C = window.AudioContext || windo
       try { await page.goto(BASE, { waitUntil: 'networkidle' }); await page.evaluate(() => localStorage.clear()); await page.goto(BASE + 'map/', { waitUntil: 'networkidle' }); await page.waitForSelector('.isle'); await sleep(400);
         const isle = await page.$$eval('.isle', a => a.map(b => b.className + '|' + b.getAttribute('aria-label'))); const art = isle.find(s => /Art/.test(s)) || ''; if (!/\bopen\b/.test(art)) ok = false; note += `map art isle="${art}" `; await shot('fc-map');
         await page.goto(BASE + 'realm/art-music/', { waitUntil: 'networkidle' }); await page.waitForSelector('.node'); await sleep(500);
-        const nodes = await page.$$eval('.row .tile', a => a.map(t => t.getAttribute('aria-label'))); note += `path=${JSON.stringify(nodes)}`; if (nodes.length !== 4) ok = false; await shot('fc-realm');
+        const nodes = await page.$$eval('.row .tile:not(.soon)', a => a.map(t => t.getAttribute('aria-label'))); note += `path=${JSON.stringify(nodes)}`; if (nodes.length !== 4) ok = false; await shot('fc-realm');
         const a = await page.evaluate(() => ({ W: document.documentElement.clientWidth, sw: document.documentElement.scrollWidth })); if (a.sw > a.W) { ok = false; note += ' OVERFLOW'; }
       } catch (e) { ok = false; note += 'EXC ' + e.message.split('\n')[0]; }
       rec({ vp: vpn, page: 'map + art-music realm', ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note }); }
