@@ -39,6 +39,14 @@
   @media (min-aspect-ratio: 1/1) { .world { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); padding: 0 40px; } .isle .pic { max-height: 290px; } }
   @media (min-width: 900px) and (min-height: 1000px) { .isle .pic { max-height: 330px; } .isle .name { font-size: 1.35rem; } .bar .wick { width: 150px; } }
   @media (max-width: 380px) { .bar .wick { width: 92px; } }
+  /* 2026-10-30 (Hexan: map pictures were hard to see): the realm badge sits at the island's lower right instead of covering its middle,
+     coming-soon islands are less dimmed (the lock badge and moon still say "soon"), and phones get a smaller badge so the island art shows */
+  .isle .badge { left: auto; right: 4%; bottom: 2%; transform: none; }
+  .isle.soon img { filter: saturate(.6) brightness(.82); }
+  @media (max-width: 480px) { .isle .badge { width: 54px; height: 54px; box-shadow: 0 0 0 4px var(--c), 0 5px 0 4px rgba(0,0,0,.3), 0 0 20px rgba(245,184,65,.35); } .isle .badge svg { width: 32px; height: 32px; }
+    .isle.soon .badge { box-shadow: 0 0 0 4px var(--lav), 0 5px 0 4px rgba(0,0,0,.3); } .isle .name { margin-top: 2px; font-size: 1rem; } .isle .moon { width: 34px; height: 34px; top: 4%; right: 6%; } .isle.open .star { width: 28px; } }
+  /* phones, Little Lanterns: the bottom bar packs tighter (buttons stay 96 px), so the islands get more room */
+  @media (max-width: 480px) { body.little .bar { padding-top: 0; padding-bottom: calc(6px + var(--safe-b)); gap: 6px 10px; } }
   .band { position: relative; z-index: 3; display: flex; justify-content: center; gap: 12px; padding: 2px 12px 4px; }
   .band button { display: flex; align-items: center; gap: 8px; min-height: 76px; min-width: 150px; padding: 6px 16px 6px 8px; border: 0; border-radius: 999px; cursor: pointer; touch-action: manipulation;
     font: 700 1.05rem/1.1 var(--display); color: var(--cream); background: rgba(20,17,58,.6); box-shadow: inset 0 0 0 3px rgba(246,235,217,.22); text-align: left; transition: transform .1s; }
