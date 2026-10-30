@@ -3,10 +3,13 @@
 // that works; in debugging: the free "watch" run of the untouched program first), and the grown-ups standards labels (CSTA).
 // Per step: 0 console errors, 0 outside requests, 0 failed responses, 0 voice misses / pending lines, targets >= 64 CSS px inside the viewport,
 // no horizontal overflow. Usage: node qa/tools/qa-wicks-path.js <base url> <out dir> [phone,ipad,desktop] [plan json]
-//   plan default: {"phone":["lg-l1","lg-l2"],"ipad":["lg-l3"],"desktop":["lg-l4"]}; the first lesson per viewport also runs the help path.
+//   plan default: {"phone":["lg-l1","lg-l2"],"ipad":["lg-l3"],"desktop":["lg-l4"]}; the first lesson per viewport also runs the help path
+//   (QA_HELP_ALL=1: every lesson). Viewports: phone, ipad, desktop, ipad-land (1366x1024).
 const path = require('path'), fs = require('fs'); const { launch, VP } = require('./lib.js'); const PROBE = require('./praise-probe'); // praise lines must play to their end before the next garden
 const BASE = (process.argv[2] || 'http://127.0.0.1:8780/elearnea-preview/').replace(/\/?$/, '/'), OUT = process.argv[3] || '/tmp/qa-wicks-path';
 const VPS = (process.argv[4] || 'phone,ipad,desktop').split(','), PLAN = process.argv[5] ? JSON.parse(process.argv[5]) : { phone: ['lg-l1', 'lg-l2'], ipad: ['lg-l3'], desktop: ['lg-l4'] };
+// env: QA_HELP_ALL=1 runs the help path in every lesson round (not only the first per viewport); QA_SHOT_TAG=<prefix> prefixes screenshot names
+const HELP_ALL = process.env.QA_HELP_ALL === '1', TAG = process.env.QA_SHOT_TAG || '', VPX = Object.assign({ 'ipad-land': { width: 1366, height: 1024, isMobile: true, hasTouch: true, deviceScaleFactor: 2 } }, VP);
 const NAMES = { 'lg-l1': 'First step', 'lg-l2': 'Lantern path', 'lg-l3': 'Fix the path', 'lg-l4': 'Repeat it' }, OPP = { U: 'D', D: 'U', L: 'R', R: 'L' };
 const QA_KEYS = ['sol', 'bug', 'busy', 'prog', 'lv'];
 fs.mkdirSync(OUT, { recursive: true }); const origin = new URL(BASE).origin; const sleep = (ms) => new Promise(r => setTimeout(r, ms)); const results = []; const PRAISE = PROBE.praiseSet(path.join(__dirname, '..', '..', 'voice', 'manifest.json'));
@@ -20,7 +23,7 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
   if (g && sc) { const a = g.getBoundingClientRect(), b = sc.getBoundingClientRect(); if (a.left < b.left - .5 || a.right > b.right + .5 || a.top < b.top - .5 || a.bottom > b.bottom + .5) gardenOut = 'garden outside scene'; }
   return { overflow: Math.max(de.scrollWidth, document.body.scrollWidth) - W, small, outside, gardenOut, n: t.length }; }
 (async () => { const browser = await launch();
-  for (const vpn of VPS) { const V = VP[vpn];
+  for (const vpn of VPS) { const V = VPX[vpn];
     const ctx = await browser.newContext(Object.assign({}, V, { viewport: { width: V.width, height: V.height }, serviceWorkers: 'block' })); await ctx.addInitScript(PROBE.init); const page = await ctx.newPage();
     let errs = [], ext = [], fails = [], clips = { ok: 0, bad: 0 };
     page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); }); page.on('pageerror', e => errs.push('pageerror: ' + e.message));
@@ -29,7 +32,7 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
     page.on('response', r => { if (r.status() >= 400) fails.push(r.status() + ' ' + r.url()); if (/\/voice\/clips\//.test(r.url())) { if (r.status() < 300 || r.status() === 304) clips.ok++; else clips.bad++; } });
     const tap = async (sel) => { const h = typeof sel === 'string' ? await page.$(sel) : sel; if (!h) throw new Error('no element ' + sel); const b = await h.boundingBox(); if (!b) throw new Error('no box ' + sel);
       const x = b.x + b.width / 2, y = b.y + b.height / 2; if (V.hasTouch) await page.touchscreen.tap(x, y); else await page.mouse.click(x, y); await sleep(140); };
-    const shot = (n) => page.screenshot({ path: path.join(OUT, `${n}-${vpn}.png`) });
+    const shot = (n) => page.screenshot({ path: path.join(OUT, `${TAG}${n}-${vpn}.png`) });
     const waitFor = async (fn, ms, what) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { try { const v = await fn(); if (v) return v; } catch (e) {} await sleep(120); } throw new Error('timeout: ' + what); };
     const step = async (name, fn) => { errs = []; ext = []; fails = []; clips = { ok: 0, bad: 0 }; const aud = { small: new Set(), outside: new Set(), overflow: 0, garden: '' }; let note = '', ok = true;
       const sample = async () => { const a = await page.evaluate(audit); a.small.forEach(x => aud.small.add(x)); a.outside.forEach(x => aud.outside.add(x)); aud.overflow = Math.max(aud.overflow, a.overflow); if (a.gardenOut) aud.garden = a.gardenOut; };
@@ -63,7 +66,7 @@ function audit() { const W = document.documentElement.clientWidth, H = innerHeig
     // 3) full rounds
     for (const [li, ls] of (PLAN[vpn] || []).entries()) {
       await step('round-' + ls, async (sample) => { await page.goto(BASE + `play/wicks-path/?lesson=${ls}&qa=1`, { waitUntil: 'networkidle' }); await page.evaluate(() => { window.__voiceMisses && (window.__voiceMisses.length = 0); });
-        let puzzles = 0, helpOk = '', missOk = '', watchOk = '', shortOk = ''; const helpRun = li === 0;
+        let puzzles = 0, helpOk = '', missOk = '', watchOk = '', shortOk = ''; const helpRun = li === 0 || HELP_ALL;
         for (let guard = 0; guard < 14; guard++) { await idle(); if (await page.isVisible('#res.on')) break; const d = await ds(), sol = d.sol, n0 = await dots(); await sample(); if (puzzles === 0) await shot(`${ls}-start`);
           if (ls === 'lg-l3') { const bug = +d.bug, toks = sol.split(','), right = toks[bug];
             if (helpRun && puzzles === 0) { // watch run (free), then a wrong fix three times: hint -> traced arrow -> model

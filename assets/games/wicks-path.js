@@ -78,9 +78,9 @@ El.defineGame({
     const txt = $('wpTxt'), board = $('wpBoard'), progEl = $('wpProg'), tray = $('wpTray'), goBtn = $('wpGo'), scene = $('wpScene'), garden = $('wpGarden'), fx = $('wpFx'), wpRoot = root.querySelector('.wp');
     $('wpSay').onclick = $('wpWick').onclick = () => { if (busy) return; if (prompt) speak(prompt); /* never over a walk, a help line or the praise */ const w = $('wpWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
 
-    // board size: keep cells square inside the scene at any viewport
+    // board size: keep cells square inside the scene at any viewport (caps let a portrait iPad garden fill its scene; phones and desktop stay bound by the scene)
     const fit = () => { if (!P) return; const r = scene.getBoundingClientRect(), pad = 14, m = r.width < 520 ? 26 : 40; // m: room for the hedge and frame around the garden
-      const cw = Math.max(40, Math.min(P.C === 3 ? 200 : 160, (r.width - (pad + m) * 2) / P.C, (r.height - (pad + m) * 2) / P.R));
+      const cw = Math.max(40, Math.min(P.C === 3 ? 240 : 200, (r.width - (pad + m) * 2) / P.C, (r.height - (pad + m) * 2) / P.R));
       garden.style.width = cw * P.C + pad * 2 + 'px'; garden.style.height = cw * P.R + pad * 2 + 'px'; board.style.setProperty('--cw', cw + 'px'); };
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => fit()) : null; if (ro) ro.observe(scene); else addEventListener('resize', fit);
 
