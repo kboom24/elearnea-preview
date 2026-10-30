@@ -20,7 +20,7 @@ const tapAt = async (page, h) => { try { const b = await h.boundingBox(); if (b)
     try {
       await page.goto(BASE, { waitUntil: 'networkidle' });
       await page.evaluate((ll) => { localStorage.clear(); if (ll) localStorage.setItem('elearnea:v1', JSON.stringify({ set: { voice: true, sound: true, rate: 1, band: 'little', little: 'little' } })); }, ls.startsWith('ll-'));
-      await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}`, { waitUntil: 'networkidle' }); await sleep(900);
+      await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}` + (ls.startsWith("ll-") ? "&qa=1" : ""), { waitUntil: 'networkidle' }); await sleep(900);
       const resultsOn = () => page.$('#res.on').then(Boolean);
       while (!(await resultsOn()) && Date.now() - t0 < 180000) {
         let right, others, extra;
