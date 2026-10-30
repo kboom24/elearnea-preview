@@ -22,10 +22,11 @@ El.defineGame({
       const fin = () => { if (fired) return; fired = true; if (alive && my === run && cb) cb(); };
       const ok = host.say(t, { rate: .95, onend: fin }); if (cb) T(fin, ok ? 4000 + 1600 * n : 450); return ok; };
     const plan = L.pick(cfg.skill, pool.slice(), total, rng);
-    const mothSVG = (hue) => `<svg viewBox="0 0 140 110" aria-hidden="true"><path d="M62 30c-6-14-14-22-20-26M78 30c6-14 14-22 20-26" fill="none" stroke="#2A2152" stroke-width="3.5" stroke-linecap="round"/><circle cx="42" cy="4" r="4.5" fill="#F5B841"/><circle cx="98" cy="4" r="4.5" fill="#F5B841"/>
+    const mothSVG = (hue, wide) => `<svg viewBox="0 0 140 110" aria-hidden="true"><path d="M62 30c-6-14-14-22-20-26M78 30c6-14 14-22 20-26" fill="none" stroke="#2A2152" stroke-width="3.5" stroke-linecap="round"/><circle cx="42" cy="4" r="4.5" fill="#F5B841"/><circle cx="98" cy="4" r="4.5" fill="#F5B841"/>
       <path d="M66 46C48 14 10 12 6 34c-3 18 22 30 60 22z" fill="${hue[0]}"/><path d="M74 46c18-32 56-34 60-12 3 18-22 30-60 22z" fill="${hue[0]}"/>
       <path d="M66 58c-28 2-46 18-38 34 8 14 30 4 40-24zM74 58c28 2 46 18 38 34-8 14-30 4-40-24z" fill="${hue[1]}"/>
-      <circle cx="30" cy="34" r="8" fill="#F6EBD9" opacity=".55"/><circle cx="110" cy="34" r="8" fill="#F6EBD9" opacity=".55"/><ellipse cx="70" cy="56" rx="9" ry="30" fill="#5B4E7A"/><circle cx="66" cy="36" r="3" fill="#fff"/><circle cx="74" cy="36" r="3" fill="#fff"/></svg>`;
+      <circle cx="30" cy="34" r="8" fill="#F6EBD9" opacity=".55"/><circle cx="110" cy="34" r="8" fill="#F6EBD9" opacity=".55"/><ellipse cx="70" cy="56" rx="9" ry="34" fill="#5B4E7A"/><circle cx="66" cy="27" r="3" fill="#fff"/><circle cx="74" cy="27" r="3" fill="#fff"/>
+      <ellipse cx="70" cy="62" rx="${wide ? 46 : 30}" ry="27" fill="#FFF8E6" stroke="#2A2152" stroke-width="3"/></svg>`;
     const HUES = [['#F5B841', '#F08A7E'], ['#7CC4A4', '#5DA9D6'], ['#9B8AD1', '#F4A9A0'], ['#F08A7E', '#F5B841']];
     const lanternSVG = `<svg viewBox="0 0 60 80" aria-hidden="true"><path d="M22 10h16M30 4v6" stroke="#2A2152" stroke-width="4" stroke-linecap="round"/><rect x="14" y="12" width="32" height="10" rx="4" fill="#8E5427"/>
       <path d="M16 22h28l4 40H12z" fill="#F5B841"/><path d="M22 28h16l2 28H20z" fill="#FFF4C8"/><ellipse cx="30" cy="46" rx="5" ry="8" fill="#F08A7E"/><rect x="10" y="62" width="40" height="10" rx="4" fill="#8E5427"/></svg>`;
@@ -43,7 +44,7 @@ El.defineGame({
     const cheer = () => { const w = $('mbWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
     const sound = (p) => B.partSound(p);
     const moth = (p, i) => { const b = document.createElement('button'); b.className = 'moth' + (p.length > 1 ? ' wide' : ''); b.dataset.l = p; b.setAttribute('aria-label', 'sound ' + p);
-      b.innerHTML = mothSVG(HUES[i % HUES.length]) + `<b>${p}</b>`; return b; };
+      b.innerHTML = mothSVG(HUES[i % HUES.length], p.length > 1) + `<b>${p}</b>`; return b; };
     const wiggle = (el) => { el.classList.remove('wig'); void el.offsetWidth; el.classList.add('wig'); };
     function buildBridge(n) { planks.innerHTML = ''; planks.dataset.n = n; slots = []; for (let i = 0; i < n; i++) { const s = document.createElement('div'); s.className = 'plank'; planks.appendChild(s); slots.push(s); } }
     function resetSlide() { lantern.style.transition = 'none'; lantern.style.left = '0px'; void lantern.offsetWidth; lantern.style.transition = ''; slideEl.classList.remove('on', 'done'); planks.classList.remove('together'); sung = parts.map(() => false); }
@@ -63,7 +64,7 @@ El.defineGame({
     lantern.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && phase === 'slide' && !busy) { e.preventDefault(); autoSlide(() => afterSlide()); } });
     function slid() { if (phase !== 'slide') return; phase = 'slid'; setBusy(true); slideEl.classList.add('done'); planks.classList.add('together'); host.sfx.step(6); T(afterSlide, 900); }
     // model slide (a tap on the lantern, or a hint): glide under each moth, say each sound to the end, then push them together
-    function autoSlide(then) { const my = ++run; setBusy(true); phase = 'model'; slideEl.classList.remove('done'); planks.classList.remove('together'); sung = parts.map(() => false);
+    function autoSlide(then) { const my = ++run; setBusy(true); phase = 'model'; moths.forEach(m => m.classList.remove('sing')); slideEl.classList.remove('done'); planks.classList.remove('together'); sung = parts.map(() => false);
       lantern.style.transition = 'none'; lantern.style.left = '0px'; void lantern.offsetWidth; lantern.style.transition = 'left .38s ease-in-out'; const g = xs(); let i = 0;
       const step = () => { if (!alive || my !== run) return; if (i >= moths.length) { lantern.style.left = g.max + 'px'; T(() => { if (my !== run) return; slideEl.classList.add('done'); planks.classList.add('together'); T(() => { if (my === run) then(); }, 600); }, 380); return; }
         const m = moths[i], k = i; lantern.style.left = Math.max(0, g.cs[k]) + 'px'; T(() => { if (my !== run) return; sung[k] = true; m.classList.add('sing'); say(sound(m.dataset.l), () => { i++; T(step, 120); }); }, 380); };

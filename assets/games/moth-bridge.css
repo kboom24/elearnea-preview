@@ -1,7 +1,7 @@
 /* Moth Bridge: night river, a wooden bridge, sound-moths with their letters, a lantern slider and picture cards.
    All targets >= 64 px (moths >= 76, cards >= 104). Nothing in the exit-tab zone (top-centre 60x48 below the safe-area top):
    the hear button sits left, the word picture sits below the top bar. */
-.mbr { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 0 10px calc(8px + var(--safe-b)); gap: clamp(4px, 1.4vh, 14px); }
+.mbr { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; padding: 0 10px calc(8px + var(--safe-b)); gap: clamp(4px, 1.4vh, 14px); }
 .mbr-sky { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(1.5px 1.5px at 12% 18%, #fff8, transparent), radial-gradient(2px 2px at 78% 10%, #fff9, transparent), radial-gradient(1.5px 1.5px at 40% 30%, #fff6, transparent), radial-gradient(2px 2px at 90% 36%, #fff7, transparent); }
 .mbr-river { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; background: linear-gradient(#2E7D86, #1F5866 50%, #183F55); border-radius: 50% 50% 0 0 / 14% 14% 0 0; box-shadow: inset 0 10px 0 rgba(124,196,164,.3); }
 .mbr-river::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background-image: var(--felt); opacity: .14; mix-blend-mode: overlay; }
@@ -13,7 +13,7 @@
 .mbr-pic { width: clamp(120px, 20vh, 190px); aspect-ratio: 1; border-radius: 28px; background: var(--cream); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d), 0 12px 24px rgba(0,0,0,.35); padding: 8px; animation: popin .45s cubic-bezier(.3,1.6,.5,1); margin-right: 88px; }
 .mbr-pic .pic { width: 100%; height: 100%; }
 @keyframes popin { from { transform: scale(.3); opacity: 0; } }
-.mbr-mid { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+.mbr-mid { flex: 0 1 auto; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
 .mbr-span { width: min(100%, 680px); display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
 .mbr-bridge { position: relative; height: clamp(150px, 24vh, 220px); }
 .mbr-arch { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 72%; filter: drop-shadow(0 8px 0 rgba(0,0,0,.25)); }
@@ -24,7 +24,7 @@
 .moth { position: relative; z-index: 2; width: clamp(84px, 23vw, 124px); aspect-ratio: 1.15; border: 0; padding: 0; background: none; cursor: pointer; touch-action: none; margin-bottom: 6px; }
 .moth.wide { width: clamp(100px, 28vw, 148px); }
 .moth svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 5px 0 rgba(0,0,0,.3)); transition: filter .3s; }
-.moth b { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-46%); text-align: center; font: 700 clamp(2.2rem, 9vw, 3.2rem)/1 var(--display); color: var(--ink); text-shadow: 0 0 6px #fff, 0 0 12px #fff; pointer-events: none; letter-spacing: 1px; }
+.moth b { position: absolute; left: 0; right: 0; top: 56.4%; transform: translateY(-54%); text-align: center; font: 700 var(--mf, clamp(1.9rem, 7.6vw, 2.7rem))/1 var(--display); color: var(--ink); pointer-events: none; letter-spacing: .5px; }
 .plank > .moth { opacity: 0; } .plank > .moth.land, .plank > .moth.placed { opacity: 1; }
 .plank > .moth.land:not(.placed) { animation: flyin .6s cubic-bezier(.3,1.2,.5,1); }
 @keyframes flyin { from { transform: translate(-40vw, -30vh) rotate(-30deg) scale(.6); opacity: 0; } 60% { opacity: 1; } }
@@ -61,3 +61,6 @@
 /* short screens (phones in landscape, small laptops) */
 @media (max-height: 700px) { .mbr-bridge { height: 140px; } .mbr-top { min-height: 72px; } .mbr-hear { width: 68px; height: 68px; } .mbr-pic { width: 112px; } .mbr-cards { min-height: 110px; } .mbr-card { width: 104px; } }
 @media (min-width: 900px) { .mbr-cards { padding-left: 96px; } }
+/* big touch screens (iPad portrait and up): everything grows so the bridge fills the stage */
+@media (min-width: 700px) and (min-height: 900px) { .mbr-span { width: min(100%, 820px); } .mbr-bridge { height: 300px; } .moth { width: 168px; --mf: 3.6rem; } .moth.wide { width: 196px; } .plank { width: 190px; }
+  .mbr-pic { width: 240px; } .mbr-card { width: 210px; border-radius: 32px; } .mbr-cards { min-height: 220px; } .mbr-hear { width: 92px; height: 92px; } .mbr-slide { height: 96px; } .mbr-lantern { width: 88px; height: 96px; } .mbr-wick { width: 120px; } }

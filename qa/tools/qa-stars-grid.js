@@ -6,7 +6,7 @@ const BASE = process.argv[2].replace(/\/?$/, '/'), OUT = process.argv[3]; const 
 const VP = { phone: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, ipad: { width: 1024, height: 1366, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, desktop: { width: 1280, height: 800, isMobile: false, hasTouch: false, deviceScaleFactor: 1 } };
 const origin = new URL(BASE).origin; const results = []; fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-const PAGES = [['lily-pad', 'play/lily-pad/?lesson=rd-l2'], ['firefly-count', 'play/firefly-count/?lesson=ma-l1'], ['mothabet', 'play/mothabet/?lesson=rd-l1&qa=1'], ['realm-reading', 'realm/reading/'], ['realm-math', 'realm/math/'], ['map', 'map/']];
+const PAGES = [['lily-pad', 'play/lily-pad/?lesson=rd-l2'], ['moth-bridge', 'play/moth-bridge/?lesson=rd-b2'], ['firefly-count', 'play/firefly-count/?lesson=ma-l1'], ['mothabet', 'play/mothabet/?lesson=rd-l1&qa=1'], ['realm-reading', 'realm/reading/'], ['realm-math', 'realm/math/'], ['map', 'map/']];
 (async () => {
   const browser = await launch();
   for (const vpn of VPS) {

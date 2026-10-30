@@ -7,7 +7,7 @@ const BASE = process.argv[2].replace(/\/?$/, '/'), OUT = process.argv[3]; const 
 const VP = { phone: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, ipad: { width: 1024, height: 1366, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, desktop: { width: 1280, height: 800, isMobile: false, hasTouch: false, deviceScaleFactor: 1 } };
 const origin = new URL(BASE).origin; const results = []; fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-const REGRESSION = [['lily-pad', 'play/lily-pad/?lesson=rd-l2'], ['firefly-count', 'play/firefly-count/?lesson=ma-l1'], ['mothabet', 'play/mothabet/?lesson=rd-l1&qa=1'], ['clocktower-gears', 'play/clocktower-gears/?lesson=ma-l5'], ['realm-reading', 'realm/reading/'], ['realm-math', 'realm/math/'], ['map', 'map/']];
+const REGRESSION = [['lily-pad', 'play/lily-pad/?lesson=rd-l2'], ['moth-bridge', 'play/moth-bridge/?lesson=rd-b4'], ['firefly-count', 'play/firefly-count/?lesson=ma-l1'], ['mothabet', 'play/mothabet/?lesson=rd-l1&qa=1'], ['clocktower-gears', 'play/clocktower-gears/?lesson=ma-l5'], ['realm-reading', 'realm/reading/'], ['realm-math', 'realm/math/'], ['map', 'map/']];
 function measure() { // runs in the page
   const W = document.documentElement.clientWidth, de = document.documentElement, b = document.body;
   const vis = (e) => { const cs = getComputedStyle(e), r = e.getBoundingClientRect(); if (!r.width || !r.height || cs.visibility === 'hidden' || cs.display === 'none') return false; for (let p = e; p; p = p.parentElement) { const s = getComputedStyle(p); if (s.display === 'none' || +s.opacity === 0) return false; } return true; };
