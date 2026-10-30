@@ -28,7 +28,7 @@ El.defineGame({
       return ok; };
     const setPrompt = (shown, spoken, cb) => { prompt = spoken; txt.textContent = shown; return speak(spoken, cb, 400); };
 
-    root.innerHTML = `<div class="ng ng-${mode}">
+    root.innerHTML = `<div class="ng ng-m-${mode}">
       <div class="ng-bg" aria-hidden="true"><i class="moon"></i><svg class="hills" viewBox="0 0 400 120" preserveAspectRatio="none"><path d="M0 70q60-40 130-14t140-10 130 6v68H0z" fill="#2C5A55"/><path d="M0 92q80-30 170-6t230-8v42H0z" fill="#356F60"/><path d="M0 108q100-18 200-2t200-4v18H0z" fill="#2A4D47"/></svg>
         <svg class="ferns l" viewBox="0 0 100 200"><path d="M40 200C40 140 30 90 6 40M40 160c-14-8-26-6-34 0M38 130c-12-10-24-10-32-4M34 100C24 90 14 88 6 92M46 170c12-10 26-12 36-6M44 140c10-12 22-14 32-10M40 110c8-12 18-16 28-14" fill="none" stroke="#3F7A63" stroke-width="7" stroke-linecap="round"/><circle cx="74" cy="60" r="12" fill="#F08A7E"/><circle cx="74" cy="60" r="5" fill="#F5B841"/></svg>
         <svg class="ferns r" viewBox="0 0 100 200"><path d="M60 200c0-60 10-110 34-160M60 160c14-8 26-6 34 0M62 130c12-10 24-10 32-4M66 100c10-10 20-12 28-8M54 170c-12-10-26-12-36-6M56 140c-10-12-22-14-32-10" fill="none" stroke="#4E9479" stroke-width="7" stroke-linecap="round"/><circle cx="24" cy="70" r="10" fill="#9B8AD1"/><circle cx="24" cy="70" r="4" fill="#F6EBD9"/></svg></div>
