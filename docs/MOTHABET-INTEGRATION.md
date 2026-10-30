@@ -26,6 +26,7 @@ The round stays 90 s. When the timer ends:
 - **The word on screen at the buzzer** counts as attempted, and is recorded as a miss, only if the child had already placed or missed a moth. If the child hadn't touched it yet, it counts as not reached.
 - **Words never reached** are not sent to El.Learn (neither a hit nor a miss) and are not part of the total.
 - `host.end` gets `total = done = attempted`, so the card reads "X of *attempted* right on the first try" and `starsFor` scores attempted words only.
+- **3 stars need at least 5 attempted words.** With 1 to 4 attempted words the score is capped at 2 stars. For example, 4 of 4 right on the first try gives 2 stars, and 5 of 5 gives 3. The adapter (`MIN3 = 5` in `assets/games/mothabet.js`) computes the stars once and passes them as `res.stars`, so the results card, `lessonDone` (the activity log and the lesson's best stars) and the realm path stars all show the same number. QA (`qa/tools/qa-stars-grid.js`) checks all of them.
 - **0 attempted words:** `host.end` skips `lessonDone`. That means no stars, no lesson record, no dashboard log entry and no streak touch. The results card still shows: 0 stars, "Good try!" (an existing voice line), "Tap Again to play", and the Again / Path buttons, without the win chime.
 
 The frame's local save (`hexan:elearnea-mothabet`) still keeps settings (voice, music) and harmless round counters. It does not schedule anything in lesson mode. `El.store.reset()` already clears it.

@@ -1,5 +1,5 @@
 html, body { height: 100%; } body { overflow: hidden; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
-.app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto 1fr; }
+.app { position: relative; z-index: 2; height: 100%; display: grid; grid-template-rows: auto 1fr; grid-template-columns: minmax(0, 1fr); } /* minmax(0,…): the column must not grow to the top bar's min-content (10+ progress dots overflowed 390px phones) */
 .topbar { padding-bottom: 4px; }
 .dots { flex: 1; display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: nowrap; min-width: 0; padding: 10px 14px; border-radius: 999px; background: rgba(20,17,58,.6); box-shadow: inset 0 0 0 3px rgba(246,235,217,.18); max-width: 420px; margin: 0 auto; }
 .dots i { flex: 0 1 16px; width: 16px; height: 16px; min-width: 8px; border-radius: 50%; background: rgba(155,138,209,.4); transition: .3s; }

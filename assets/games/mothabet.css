@@ -1,5 +1,3 @@
 #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: #0b0920; }
 .dots { visibility: hidden; }
 .mb-name { position: absolute; left: 50%; transform: translateX(-50%); font: 700 1.5rem var(--display); color: var(--gold); pointer-events: none; }
-/* the grid's implicit column grew to the top bar's min-content width (422px at 390px viewport), pushing the frame and its pause off-screen */
-body[data-game="mothabet"] .app { grid-template-columns: minmax(0, 1fr); }

@@ -4,6 +4,7 @@
    which El.Learn records (Leitner box + difficulty). Round end -> host.end, which shows Elearnea's results card (Again / Path).
    Lesson config: {band, stageId, stage}. stageId (e.g. 's1') wins; stage (index) is the fallback. ?qa=1 on the play page is
    forwarded so the frame's QA hook exists only in QA runs. Protocol: see play/mothabet/game/bridge.js and docs/MOTHABET-INTEGRATION.md. */
+const MIN3 = 5; // fewest attempted words for 3 stars
 El.defineGame({
   id: 'mothabet',
   start(cfg, host) {
@@ -23,7 +24,11 @@ El.defineGame({
       else if (m.type === 'word' && !ended) host.emit('mastery', { item: String(m.item), correct: !!m.correct, firstTry: !!m.firstTry });
       else if (m.type === 'progress' && !ended) host.emit('progress', { done: m.done | 0, total: m.total | 0 || total });
       // total = words ATTEMPTED (never-reached words are neither recorded nor counted); 0 attempted -> host.end shows an empty card, no record
-      else if (m.type === 'results' && m.mode === 'lesson' && !ended) { ended = true; const n = Math.max(0, m.total | 0); host.end({ total: n, done: n, firstTry: Math.min(n, m.firstTry | 0), planned: m.planned | 0 }); } };
+      else if (m.type === 'results' && m.mode === 'lesson' && !ended) { ended = true; const n = Math.max(0, m.total | 0), ft = Math.min(n, m.firstTry | 0);
+        // Mothabet star rule: El.Learn.starsFor over attempted words, but 3 stars need at least MIN3 attempted words (fewer -> max 2).
+        // Passed as res.stars, so the results card and lessonDone (path stars, dashboard) use the same number. 0 attempted -> no record.
+        const stars = n ? Math.min(host.learn.starsFor(Math.round(100 * ft / n), n, n), n >= MIN3 ? 3 : 2) : 0;
+        host.end({ total: n, done: n, firstTry: ft, planned: m.planned | 0, stars: n ? stars : undefined }); } };
     const onSound = (e) => send({ type: 'sound', on: !!(e.detail && e.detail.on) });
     addEventListener('message', onMsg); addEventListener('el:sound', onSound);
     return { stop() { ended = true; removeEventListener('message', onMsg); removeEventListener('el:sound', onSound); } };
