@@ -16,7 +16,7 @@
     { id: 'mushroom', a: 'A mushroom', kind: 'fungus', lv: 2 }, { id: 'seed', a: 'A seed', kind: 'seed', lv: 2 }, { id: 'grass', a: 'Grass', kind: 'plant', lv: 2, is: 'is' }
   ].map(x => Object.assign({ living: true }, x));
   NGL.NOTLIVING = [
-    { id: 'rock', a: 'A rock', lv: 0 }, { id: 'ball', a: 'A toy ball', lv: 0 }, { id: 'cup', a: 'A cup', lv: 0 }, { id: 'shoe', a: 'A shoe', lv: 0 },
+    { id: 'rock', a: 'A rock', lv: 0 }, { id: 'ball', a: 'A toy ball', name: 'A bouncy ball!', lv: 0 }, { id: 'cup', a: 'A cup', lv: 0 }, { id: 'shoe', a: 'A shoe', lv: 0 },
     { id: 'spoon', a: 'A spoon', lv: 1 }, { id: 'hat', a: 'A hat', lv: 1 }, { id: 'car', a: 'A toy car', lv: 2, name: 'A toy car.', why: 'It can move, but it does not grow or eat.' },
     { id: 'sun', a: 'The sun', lv: 2, why: 'It shines, but it does not grow or eat.' }, { id: 'moon', a: 'The moon', lv: 2, why: 'It glows, but it does not grow or eat.' },
     { id: 'robot', a: 'A toy robot', lv: 3, why: 'It can walk, but it does not grow or eat.' }

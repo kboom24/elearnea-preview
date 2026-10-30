@@ -35,7 +35,8 @@ function audit(MIN) {
     page.on('requestfailed', r => { const e = r.failure() && r.failure().errorText; if (/ERR_ABORTED/.test(e || '') && /\/voice\/(clips|mb)\//.test(r.url())) { aborted++; return; } fails.push(r.url() + ' ' + e); });
     page.on('response', r => { if (r.status() >= 400) fails.push(r.status() + ' ' + r.url()); });
     const tapEl = async (h) => { const b = await h.boundingBox(); if (!b) throw new Error('no box'); const x = b.x + b.width / 2, y = b.y + b.height / 2; if (VP[vpn].hasTouch) await page.touchscreen.tap(x, y); else await page.mouse.click(x, y); };
-    const shot = async (n) => page.screenshot({ path: path.join(OUT, `${n}-${vpn}.png`) });
+    // screenshots stall the page's frames; the iPad frame meter marks those windows so they are reported apart from gameplay frames
+    const shot = async (n) => { await page.evaluate(() => { window.__ngPause = 1; }).catch(() => {}); try { await page.screenshot({ path: path.join(OUT, `${n}-${vpn}.png`) }); } finally { await page.evaluate(() => { window.__ngPause = 2; }).catch(() => {}); } };
     const waitFor = async (fn, ms, what) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { try { const v = await fn(); if (v) return v; } catch (e) {} await sleep(100); } throw new Error('timeout: ' + what); };
     const resultsOn = () => page.isVisible('#res.on');
     const rec = (r) => { r.ok = r.ok && !errs.length && !ext.length && !fails.length; r.consoleErrors = errs.slice(); r.external = ext.slice(); r.failed = fails.slice(); results.push(r); console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${r.note || ''}`); errs.forEach(e => console.log('   err:', e)); fails.forEach(e => console.log('   fail:', e)); };
@@ -60,7 +61,7 @@ function audit(MIN) {
         // praise watcher: a new data-want may only appear after the last praise line finished (ElVoice not speaking)
         await page.evaluate(() => { window.__ngCut = 0; const st = document.getElementById('stage'); new MutationObserver(() => { if (st.dataset.want && window.ElVoice && ElVoice.speaking && window.__ngPraise) window.__ngCut++; }).observe(st, { attributes: true, attributeFilter: ['data-want'] });
           window.__ngPraise = false; addEventListener('el:mastery', () => { window.__ngPraise = true; const iv = setInterval(() => { if (!ElVoice.speaking) { window.__ngPraise = false; clearInterval(iv); } }, 50); }); });
-        if (vpn === 'ipad') await page.evaluate(() => { const f = window.__ngFrames = []; let last = performance.now(); const tick = (t) => { f.push(t - last); last = t; if (f.length < 100000) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
+        if (vpn === 'ipad') await page.evaluate(() => { const f = window.__ngFrames = [], g = window.__ngShotFrames = []; let last = performance.now(); const tick = (t) => { const p = window.__ngPause; (p ? g : f).push(t - last); if (p === 2) window.__ngPause = 0; last = t; if (f.length < 100000) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
         while (!(await resultsOn()) && Date.now() - t0 < 240000) {
           await waitFor(async () => await resultsOn() || await page.$eval('#stage', s => !!s.dataset.want && s.dataset.busy !== '1'), 30000, 'idle'); if (await resultsOn()) break;
           const want = await page.$eval('#stage', s => s.dataset.want), askN = await page.$eval('#stage', s => s.dataset.ask); await sleep(200); await sample('q' + q); if (!q) await shot(`${ls}-play`);
@@ -77,7 +78,7 @@ function audit(MIN) {
           if (q > 60) throw new Error('too many questions');
         }
         await page.waitForSelector('#res.on #toPath', { timeout: 15000 }); await sleep(900); await sample('results'); await shot(`${ls}-results`);
-        if (vpn === 'ipad') perf = await page.evaluate(() => { const f = (window.__ngFrames || []).slice(5).filter(x => x < 1000); f.sort((a, b) => a - b); const avg = f.reduce((a, b) => a + b, 0) / f.length; return { frames: f.length, fps: +(1000 / avg).toFixed(1), p95: +f[Math.floor(f.length * .95)].toFixed(1), max: +f[f.length - 1].toFixed(1) }; });
+        if (vpn === 'ipad') perf = await page.evaluate(() => { const f = (window.__ngFrames || []).slice(5); f.sort((a, b) => a - b); const avg = f.reduce((a, b) => a + b, 0) / f.length; const g = (window.__ngShotFrames || []).slice().sort((a, b) => a - b); return { frames: f.length, fps: +(1000 / avg).toFixed(1), p95: +f[Math.floor(f.length * .95)].toFixed(1), max: +f[f.length - 1].toFixed(1), hitches50: f.filter(x => x > 50).length, hitches100: f.filter(x => x > 100).length, shotFrames: g.length, shotMax: g.length ? +g[g.length - 1].toFixed(1) : 0 }; });
         aud.cut = await page.evaluate(() => window.__ngCut || 0);
         const misses = await page.evaluate(() => (window.__voiceMisses || []).slice());
         const card = (await page.locator('#res .paper').innerText()).replace(/\s+/g, ' ').trim(), stars = await page.locator('#res .stars3 svg.on').count();

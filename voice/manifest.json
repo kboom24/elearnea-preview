@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:44:13.060Z",
+ "generated": "2026-10-30T12:24:15.913Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -352,11 +352,11 @@
    "sentence": 430
   },
   "needsHumanCheck": 290,
-  "withClip": 2360,
+  "withClip": 2359,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 0,
+  "pending": 1,
   "gaps": 0
  },
  "items": [
@@ -77344,10 +77344,10 @@
    ]
   },
   {
-   "id": "ng.a-toy-ball",
-   "key": "a toy ball",
-   "text": "A toy ball!",
-   "render": "A toy ball!",
+   "id": "ng.a-bouncy-ball",
+   "key": "a bouncy ball",
+   "text": "A bouncy ball!",
+   "render": "A bouncy ball!",
    "type": "word",
    "uses": [
     {
@@ -77357,18 +77357,15 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "pending": "not rendered with say.py yet"
    },
    "check": {
     "human": false,
     "reasons": []
    },
    "files": [
-    "voice/clips/ng.a-toy-ball.mp3"
+    "voice/clips/ng.a-bouncy-ball.mp3"
    ]
   },
   {
