@@ -1,0 +1,833 @@
+{
+ "about": "Loud/quiet sound effects for Little Lanterns (Lantern Barn \"Loud or quiet?\"): 8 loud/quiet pairs. All are real recordings from Freesound, each released under CC0 1.0 (public domain dedication): no attribution required, commercial use allowed; credited anyway in LICENSES.md. None are synthesized (the old WebAudio drum stays only as a fallback if a file fails to load, and for the clapping game). Downloaded from the Freesound HQ preview (128 kbps mp3 of the CC0 original) on 2026-10-30, cut to one sound (< 2 s), high-pass 90 Hz / low-pass 11 kHz, silence-trimmed, normalized to -16 LUFS with a soft limiter, encoded like the voice clips (mp3 mono 24 kHz 64 kbps; opus 32 kbps). The game plays the quiet side (or the same sound, quietly) at a lower gain in WebAudio; the files themselves are all the same loudness. The cow and dog (loud side of farm and dogs) reuse assets/sfx/animals. Tooling: /home/box/elearnea/voice/sfx/loudquiet/tools/. Check: AudioSet classifier MIT/ast-finetuned-audioset-10-10-0.4593 (BSD-3) on the final files; no human has listened yet.",
+ "license": "CC0-1.0",
+ "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+ "downloaded": "2026-10-30",
+ "items": [
+  {
+   "id": "lion",
+   "files": [
+    "assets/sfx/loudquiet/lion.mp3",
+    "assets/sfx/loudquiet/lion.opus"
+   ],
+   "pair": "lion",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 69570,
+    "title": "Lion loud.mp3",
+    "author": "Bidone",
+    "url": "https://freesound.org/people/Bidone/sounds/69570/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a lion roaring",
+    "cutFromSec": 23.52
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -3.71,
+    "snrDb": 39.6,
+    "centroidHz": 228,
+    "rolloff85Hz": 234,
+    "flatness": 0.0,
+    "f0Hz": 182,
+    "audioset": {
+     "targets": [
+      "Roaring cats (lions, tigers)",
+      "Roar"
+     ],
+     "targetProb": 0.63,
+     "targetRank": 1,
+     "speechProb": 0.01,
+     "top": [
+      "Roar",
+      "Animal",
+      "Roaring cats (lions, tigers)",
+      "Wild animals"
+     ]
+    },
+    "opus": {
+     "lufs": -16.02,
+     "truePeakDbfs": -3.26,
+     "audiosetTarget": 0.71,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 12716,
+    "opus": 6166
+   }
+  },
+  {
+   "id": "kitten",
+   "files": [
+    "assets/sfx/loudquiet/kitten.mp3",
+    "assets/sfx/loudquiet/kitten.opus"
+   ],
+   "pair": "lion",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 440697,
+    "title": "Kitten miaowing.wav",
+    "author": "barkenov",
+    "url": "https://freesound.org/people/barkenov/sounds/440697/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a kitten mewing",
+    "cutFromSec": 6.41
+   },
+   "measured": {
+    "durationSec": 0.7,
+    "lufs": -16.46,
+    "truePeakDbfs": -5.33,
+    "snrDb": 45.3,
+    "centroidHz": 4108,
+    "rolloff85Hz": 6690,
+    "flatness": 0.035,
+    "f0Hz": 842,
+    "audioset": {
+     "targets": [
+      "Cat",
+      "Meow",
+      "Caterwaul"
+     ],
+     "targetProb": 0.61,
+     "targetRank": 1,
+     "speechProb": 0.01,
+     "top": [
+      "Meow",
+      "Cat",
+      "Domestic animals, pets",
+      "Animal"
+     ]
+    },
+    "opus": {
+     "lufs": -16.3,
+     "truePeakDbfs": -5.33,
+     "audiosetTarget": 0.39,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 6380,
+    "opus": 3082
+   }
+  },
+  {
+   "id": "bigdrum",
+   "files": [
+    "assets/sfx/loudquiet/bigdrum.mp3",
+    "assets/sfx/loudquiet/bigdrum.opus"
+   ],
+   "pair": "drum",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 509528,
+    "title": "Alfaia Hit",
+    "author": "Sassaby",
+    "url": "https://freesound.org/people/Sassaby/sounds/509528/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "one big hit on an alfaia (a large Brazilian bass drum)",
+    "cutFromSec": 0.0
+   },
+   "measured": {
+    "durationSec": 1.53,
+    "lufs": -16.43,
+    "truePeakDbfs": -1.88,
+    "snrDb": 27.0,
+    "centroidHz": 79,
+    "rolloff85Hz": 67,
+    "flatness": 0.0,
+    "f0Hz": 1500,
+    "audioset": {
+     "targets": [
+      "Bass drum",
+      "Drum",
+      "Drum kit"
+     ],
+     "targetProb": 0.37,
+     "targetRank": 3,
+     "speechProb": 0.01,
+     "top": [
+      "Music",
+      "Timpani",
+      "Drum",
+      "Percussion"
+     ]
+    },
+    "opus": {
+     "lufs": -16.1,
+     "truePeakDbfs": -0.99,
+     "audiosetTarget": 0.32,
+     "audiosetRank": 3
+    }
+   },
+   "bytes": {
+    "mp3": 12908,
+    "opus": 6117
+   }
+  },
+  {
+   "id": "bell",
+   "files": [
+    "assets/sfx/loudquiet/bell.mp3",
+    "assets/sfx/loudquiet/bell.opus"
+   ],
+   "pair": "drum",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 553214,
+    "title": "Small Bell",
+    "author": "NachtmahrTV",
+    "url": "https://freesound.org/people/NachtmahrTV/sounds/553214/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a small hand bell ringing once",
+    "cutFromSec": 0.45
+   },
+   "measured": {
+    "durationSec": 0.84,
+    "lufs": -16.49,
+    "truePeakDbfs": -1.17,
+    "snrDb": 48.9,
+    "centroidHz": 3388,
+    "rolloff85Hz": 3268,
+    "flatness": 0.001,
+    "f0Hz": 658,
+    "audioset": {
+     "targets": [
+      "Bell",
+      "Jingle bell",
+      "Chime",
+      "Tubular bells",
+      "Ding",
+      "Church bell"
+     ],
+     "targetProb": 0.38,
+     "targetRank": 1,
+     "speechProb": 0.0,
+     "top": [
+      "Ding",
+      "Ping",
+      "Sound effect",
+      "Chink, clink"
+     ]
+    },
+    "opus": {
+     "lufs": -17.27,
+     "truePeakDbfs": -0.92,
+     "audiosetTarget": 0.25,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 7340,
+    "opus": 4116
+   }
+  },
+  {
+   "id": "siren",
+   "files": [
+    "assets/sfx/loudquiet/siren.mp3",
+    "assets/sfx/loudquiet/siren.opus"
+   ],
+   "pair": "truck",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 315758,
+    "title": "Fire Truck Siren",
+    "author": "contramundum",
+    "url": "https://freesound.org/people/contramundum/sounds/315758/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a fire truck siren wailing",
+    "cutFromSec": 0.21
+   },
+   "measured": {
+    "durationSec": 1.88,
+    "lufs": -16.44,
+    "truePeakDbfs": -10.38,
+    "snrDb": 12.8,
+    "centroidHz": 1550,
+    "rolloff85Hz": 1711,
+    "flatness": 0.004,
+    "f0Hz": 865,
+    "audioset": {
+     "targets": [
+      "Fire engine, fire truck (siren)",
+      "Siren",
+      "Emergency vehicle",
+      "Civil defense siren",
+      "Ambulance (siren)"
+     ],
+     "targetProb": 0.63,
+     "targetRank": 2,
+     "speechProb": 0.01,
+     "top": [
+      "Police car (siren)",
+      "Siren",
+      "Emergency vehicle",
+      "Fire engine, fire truck (siren)"
+     ]
+    },
+    "opus": {
+     "lufs": -16.04,
+     "truePeakDbfs": -9.96,
+     "audiosetTarget": 0.61,
+     "audiosetRank": 2
+    }
+   },
+   "bytes": {
+    "mp3": 15788,
+    "opus": 8214
+   }
+  },
+  {
+   "id": "bikebell",
+   "files": [
+    "assets/sfx/loudquiet/bikebell.mp3",
+    "assets/sfx/loudquiet/bikebell.opus"
+   ],
+   "pair": "truck",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 688055,
+    "title": "Traditional Bicycle Bell.wav",
+    "author": "trpete",
+    "url": "https://freesound.org/people/trpete/sounds/688055/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a traditional bicycle bell ringing",
+    "cutFromSec": 1.79
+   },
+   "measured": {
+    "durationSec": 0.98,
+    "lufs": -18.04,
+    "truePeakDbfs": -4.83,
+    "snrDb": 49.9,
+    "centroidHz": 7511,
+    "rolloff85Hz": 7588,
+    "flatness": 0.004,
+    "f0Hz": 1263,
+    "audioset": {
+     "targets": [
+      "Bicycle bell",
+      "Bell",
+      "Ding"
+     ],
+     "targetProb": 0.76,
+     "targetRank": 1,
+     "speechProb": 0.01,
+     "top": [
+      "Bicycle bell",
+      "Bell",
+      "Ding",
+      "Sound effect"
+     ]
+    },
+    "opus": {
+     "lufs": -16.73,
+     "truePeakDbfs": -3.12,
+     "audiosetTarget": 0.79,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 8492,
+    "opus": 5539
+   }
+  },
+  {
+   "id": "thunder",
+   "files": [
+    "assets/sfx/loudquiet/thunder.mp3",
+    "assets/sfx/loudquiet/thunder.opus"
+   ],
+   "pair": "storm",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 652690,
+    "title": "Thunder strike",
+    "author": "AyaDrevis",
+    "url": "https://freesound.org/people/AyaDrevis/sounds/652690/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a thunder strike rumbling",
+    "cutFromSec": 0.58
+   },
+   "measured": {
+    "durationSec": 1.46,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.7,
+    "snrDb": 24.6,
+    "centroidHz": 152,
+    "rolloff85Hz": 215,
+    "flatness": 0.0,
+    "f0Hz": 1500,
+    "audioset": {
+     "targets": [
+      "Thunder",
+      "Thunderstorm"
+     ],
+     "targetProb": 0.0,
+     "targetRank": 9,
+     "speechProb": 0.0,
+     "top": [
+      "Explosion",
+      "Burst, pop",
+      "Whoosh, swoosh, swish",
+      "Eruption"
+     ]
+    },
+    "opus": {
+     "lufs": -16.09,
+     "truePeakDbfs": -2.15,
+     "audiosetTarget": 0.0,
+     "audiosetRank": 10
+    }
+   },
+   "bytes": {
+    "mp3": 12332,
+    "opus": 6234
+   }
+  },
+  {
+   "id": "rain",
+   "files": [
+    "assets/sfx/loudquiet/rain.mp3",
+    "assets/sfx/loudquiet/rain.opus"
+   ],
+   "pair": "storm",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 398740,
+    "title": "rain - drops on porch.wav",
+    "author": "Anthousai",
+    "url": "https://freesound.org/people/Anthousai/sounds/398740/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "raindrops pattering on a porch",
+    "cutFromSec": 3.63
+   },
+   "measured": {
+    "durationSec": 1.21,
+    "lufs": -16.48,
+    "truePeakDbfs": 0.59,
+    "snrDb": 15.4,
+    "centroidHz": 884,
+    "rolloff85Hz": 1316,
+    "flatness": 0.128,
+    "f0Hz": 1315,
+    "audioset": {
+     "targets": [
+      "Rain",
+      "Raindrop",
+      "Rain on surface"
+     ],
+     "targetProb": 0.02,
+     "targetRank": 8,
+     "speechProb": 0.01,
+     "top": [
+      "Sound effect",
+      "Explosion",
+      "Gunshot, gunfire",
+      "Burst, pop"
+     ]
+    },
+    "opus": {
+     "lufs": -16.76,
+     "truePeakDbfs": -0.16,
+     "audiosetTarget": 0.0,
+     "audiosetRank": 37
+    }
+   },
+   "bytes": {
+    "mp3": 10412,
+    "opus": 4903
+   }
+  },
+  {
+   "id": "chick",
+   "files": [
+    "assets/sfx/loudquiet/chick.mp3",
+    "assets/sfx/loudquiet/chick.opus"
+   ],
+   "pair": "farm",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 826677,
+    "title": "Fowl - Chicken; Baby Chick, Peep",
+    "author": "TheKingOfGeeks360",
+    "url": "https://freesound.org/people/TheKingOfGeeks360/sounds/826677/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a baby chick peeping",
+    "cutFromSec": 5.95
+   },
+   "measured": {
+    "durationSec": 1.39,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.91,
+    "snrDb": 47.1,
+    "centroidHz": 4097,
+    "rolloff85Hz": 4706,
+    "flatness": 0.004,
+    "f0Hz": 1105,
+    "audioset": {
+     "targets": [
+      "Chirp, tweet",
+      "Fowl",
+      "Chicken, rooster",
+      "Bird",
+      "Bird vocalization, bird call, bird song"
+     ],
+     "targetProb": 0.51,
+     "targetRank": 1,
+     "speechProb": 0.02,
+     "top": [
+      "Bird",
+      "Chirp, tweet",
+      "Bird vocalization, bird call, bird song",
+      "Chicken, rooster"
+     ]
+    },
+    "opus": {
+     "lufs": -16.49,
+     "truePeakDbfs": -2.52,
+     "audiosetTarget": 0.58,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 11756,
+    "opus": 5899
+   }
+  },
+  {
+   "id": "trumpet",
+   "files": [
+    "assets/sfx/loudquiet/trumpet.mp3",
+    "assets/sfx/loudquiet/trumpet.opus"
+   ],
+   "pair": "band",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 374162,
+    "title": "Trumpet - sustain - F#4 (Sum_SHTrumpet_sus_G3_v3_rr1.wav)",
+    "author": "sgossner",
+    "url": "https://freesound.org/people/sgossner/sounds/374162/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a trumpet holding one long note (F#4)",
+    "cutFromSec": 0.0
+   },
+   "measured": {
+    "durationSec": 1.51,
+    "lufs": -16.45,
+    "truePeakDbfs": -5.93,
+    "snrDb": 11.0,
+    "centroidHz": 1205,
+    "rolloff85Hz": 1573,
+    "flatness": 0.0,
+    "f0Hz": 393,
+    "audioset": {
+     "targets": [
+      "Trumpet",
+      "Brass instrument"
+     ],
+     "targetProb": 0.27,
+     "targetRank": 1,
+     "speechProb": 0.01,
+     "top": [
+      "Trumpet",
+      "Music",
+      "Brass instrument",
+      "Air horn, truck horn"
+     ]
+    },
+    "opus": {
+     "lufs": -16.06,
+     "truePeakDbfs": -5.34,
+     "audiosetTarget": 0.29,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 12716,
+    "opus": 8472
+   }
+  },
+  {
+   "id": "flute",
+   "files": [
+    "assets/sfx/loudquiet/flute.mp3",
+    "assets/sfx/loudquiet/flute.opus"
+   ],
+   "pair": "band",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 441682,
+    "title": "flute_fa.wav",
+    "author": "alpayozbay",
+    "url": "https://freesound.org/people/alpayozbay/sounds/441682/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a flute playing a short phrase",
+    "cutFromSec": 0.91
+   },
+   "measured": {
+    "durationSec": 1.83,
+    "lufs": -16.44,
+    "truePeakDbfs": -8.19,
+    "snrDb": 12.3,
+    "centroidHz": 755,
+    "rolloff85Hz": 682,
+    "flatness": 0.0,
+    "f0Hz": 686,
+    "audioset": {
+     "targets": [
+      "Flute",
+      "Wind instrument, woodwind instrument"
+     ],
+     "targetProb": 0.11,
+     "targetRank": 5,
+     "speechProb": 0.02,
+     "top": [
+      "Music",
+      "Musical instrument",
+      "Squeak",
+      "Violin, fiddle"
+     ]
+    },
+    "opus": {
+     "lufs": -16.01,
+     "truePeakDbfs": -7.88,
+     "audiosetTarget": 0.12,
+     "audiosetRank": 4
+    }
+   },
+   "bytes": {
+    "mp3": 15404,
+    "opus": 9992
+   }
+  },
+  {
+   "id": "whimper",
+   "files": [
+    "assets/sfx/loudquiet/whimper.mp3",
+    "assets/sfx/loudquiet/whimper.opus"
+   ],
+   "pair": "dogs",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 742053,
+    "title": "Dog whine",
+    "author": "T_saurus",
+    "url": "https://freesound.org/people/T_saurus/sounds/742053/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a dog whining softly",
+    "cutFromSec": 7.5
+   },
+   "measured": {
+    "durationSec": 1.09,
+    "lufs": -16.46,
+    "truePeakDbfs": -2.69,
+    "snrDb": 45.6,
+    "centroidHz": 895,
+    "rolloff85Hz": 1469,
+    "flatness": 0.003,
+    "f0Hz": 800,
+    "audioset": {
+     "targets": [
+      "Whimper (dog)",
+      "Whimper",
+      "Dog"
+     ],
+     "targetProb": 0.24,
+     "targetRank": 3,
+     "speechProb": 0.02,
+     "top": [
+      "Animal",
+      "Domestic animals, pets",
+      "Dog",
+      "Whimper (dog)"
+     ]
+    },
+    "opus": {
+     "lufs": -16.04,
+     "truePeakDbfs": -2.18,
+     "audiosetTarget": 0.21,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 9452,
+    "opus": 5597
+   }
+  },
+  {
+   "id": "elephant",
+   "files": [
+    "assets/sfx/loudquiet/elephant.mp3",
+    "assets/sfx/loudquiet/elephant.opus"
+   ],
+   "pair": "zoo",
+   "role": "loud",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 819668,
+    "title": "Elephant sound",
+    "author": "ikbenraar",
+    "url": "https://freesound.org/people/ikbenraar/sounds/819668/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "an elephant calling",
+    "cutFromSec": 1.65
+   },
+   "measured": {
+    "durationSec": 1.18,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.99,
+    "snrDb": 13.0,
+    "centroidHz": 255,
+    "rolloff85Hz": 598,
+    "flatness": 0.001,
+    "f0Hz": 150,
+    "audioset": {
+     "targets": [
+      "Animal",
+      "Wild animals",
+      "Roaring cats (lions, tigers)",
+      "Trumpet"
+     ],
+     "targetProb": 0.27,
+     "targetRank": 2,
+     "speechProb": 0.01,
+     "top": [
+      "Roar",
+      "Animal",
+      "Roaring cats (lions, tigers)",
+      "Sound effect"
+     ]
+    },
+    "opus": {
+     "lufs": -16.24,
+     "truePeakDbfs": -2.68,
+     "audiosetTarget": 0.31,
+     "audiosetRank": 2
+    }
+   },
+   "bytes": {
+    "mp3": 10220,
+    "opus": 4864
+   }
+  },
+  {
+   "id": "mouse",
+   "files": [
+    "assets/sfx/loudquiet/mouse.mp3",
+    "assets/sfx/loudquiet/mouse.opus"
+   ],
+   "pair": "zoo",
+   "role": "quiet",
+   "kind": "recorded",
+   "source": {
+    "site": "Freesound",
+    "soundId": 435708,
+    "title": "Mouse squeak.m4a",
+    "author": "Alexepoch_YT",
+    "url": "https://freesound.org/people/Alexepoch_YT/sounds/435708/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a mouse squeaking",
+    "cutFromSec": 6.81
+   },
+   "measured": {
+    "durationSec": 1.57,
+    "lufs": -16.45,
+    "truePeakDbfs": -0.54,
+    "snrDb": 49.7,
+    "centroidHz": 4231,
+    "rolloff85Hz": 5927,
+    "flatness": 0.02,
+    "f0Hz": 1455,
+    "audioset": {
+     "targets": [
+      "Rodents, rats, mice",
+      "Squeak"
+     ],
+     "targetProb": 0.87,
+     "targetRank": 1,
+     "speechProb": 0.01,
+     "top": [
+      "Squeak",
+      "Sound effect",
+      "Whistle",
+      "Inside, small room"
+     ]
+    },
+    "opus": {
+     "lufs": -16.2,
+     "truePeakDbfs": -0.35,
+     "audiosetTarget": 0.86,
+     "audiosetRank": 1
+    }
+   },
+   "bytes": {
+    "mp3": 13292,
+    "opus": 7133
+   }
+  }
+ ],
+ "reused": [
+  {
+   "id": "cow",
+   "pair": "farm",
+   "role": "loud",
+   "kind": "recorded",
+   "files": [
+    "assets/sfx/animals/cow.mp3",
+    "assets/sfx/animals/cow.opus"
+   ],
+   "see": "assets/sfx/animals/sfx.json (Freesound #867553, CC0)"
+  },
+  {
+   "id": "dog",
+   "pair": "dogs",
+   "role": "loud",
+   "kind": "recorded",
+   "files": [
+    "assets/sfx/animals/dog.mp3",
+    "assets/sfx/animals/dog.opus"
+   ],
+   "see": "assets/sfx/animals/sfx.json (Freesound #180977, CC0)"
+  }
+ ]
+}

@@ -4,6 +4,7 @@ These are headless Chrome checks for the preview site. Each script opens **one p
 - phone: 390x844 (touch)
 - iPad: 1024x1366 (touch)
 - desktop: 1280x800
+- extra, by name only: `phone375` (375x667) and `tablet768` (768x1024)
 
 A step fails on any console error, any request outside the site's origin, or any 4xx/5xx or failed load. Screenshots and a `qa-results*.json` file go to the output directory you pass in. Keep that directory outside the repo: `qa/.gitignore` ignores images, logs and result files.
 
