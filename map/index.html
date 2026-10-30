@@ -47,6 +47,11 @@
   .band button[aria-pressed="true"] { background: var(--cream); background-image: var(--felt); color: var(--ink); box-shadow: 0 5px 0 var(--cream-d), 0 0 26px rgba(245,184,65,.45); }
   .band button:active { transform: translateY(3px); }
   @media (max-width: 380px) { .band button { min-width: 0; padding-right: 10px; font-size: .95rem; } .band button svg { width: 52px; height: 52px; flex-basis: 52px; } }
+  /* Little Lanterns band (ages 0-4): every target >= 96 px (the band switch, sound, backpack, grown-ups); the Explorers band is unchanged */
+  body.little .band button { min-height: 96px; }
+  body.little .bar .btn.round { width: 96px; height: 96px; } body.little .bar .btn.round svg { width: 46px; height: 46px; }
+  /* phones: Wick (left) + three 96 px buttons don't fit in one row, so the buttons sit right of Wick in rows of two */
+  @media (max-width: 480px) { body.little .bar { justify-content: flex-end; flex-wrap: wrap; gap: 8px 12px; padding-left: 122px; } body.little .bar .say { bottom: calc(196px + var(--safe-b)); } body.little .bar .wick { width: 110px; } }
 </style>
 </head>
 <body class="night">
