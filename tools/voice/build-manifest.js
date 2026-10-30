@@ -5,7 +5,7 @@
    Then writes voice/index.json (runtime lookup: normalized text key -> id) and VOICE-MANIFEST.md (human-readable).
    Usage: node tools/voice/build-manifest.js            (paths are relative to the app repo) */
 const fs = require('fs'), path = require('path'), vm = require('vm'), crypto = require('crypto');
-const APP = path.resolve(__dirname, '../..'), SRC = path.resolve(APP, '../seed/mothabet-src');
+const APP = path.resolve(__dirname, '../..'), SRC = path.join(APP, 'play/mothabet/game'); // versioned Mothabet source in this repo (was the untracked seed /home/box/elearnea/seed/mothabet-src)
 const OUT = path.join(APP, 'voice/manifest.json'), INDEX = path.join(APP, 'voice/index.json');
 const MD = path.resolve(APP, '../VOICE-MANIFEST.md');
 // Standard voice (Hexan, 2026-10-29): Kokoro-82M (Apache-2.0), voice af_bella. Mothabet clips come from the separate Mothabet Bella batch

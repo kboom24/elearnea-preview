@@ -60,7 +60,7 @@ Both live only on Mothabet's own title screen, which Elearnea lesson mode never 
 
 `play/mothabet/game/` in this repo is now the versioned source. The untracked seed (`/home/box/elearnea/seed/mothabet-src`) lacks the integration (bridge protocol, consent shim, lesson mode, QA gate). `tools/sync-mothabet.sh` therefore refuses to copy over it unless `MB_SYNC_FORCE=1` is set, and it lists the files that differ. Port seed changes (for example voice prompt wording) by hand.
 
-Note: `tools/voice/check.js` and `build-manifest.js` still scan the seed. They are left untouched on this branch, because another worker's voice change is editing them. Once that lands, point them at `play/mothabet/game/`.
+`tools/voice/check.js` and `build-manifest.js` read `play/mothabet/game/` (a repo-relative path), so they work from any checkout or worktree. They no longer read the seed.
 
 ## Voice
 
