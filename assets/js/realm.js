@@ -25,7 +25,10 @@
     const k = n - 1 - i, xPct = (k % 2 ? 66 : 34) + 4 * Math.sin(k * 1.7); const left = xPct < 50; pts.push(xPct);
     const node = document.createElement('button'); node.className = 'node'; node.style.left = xPct + '%';
     if (row.kind === 'chest') { node.classList.add('chest'); node.innerHTML = El.icon('chest'); node.setAttribute('aria-label', 'Treasure'); node.onclick = () => { El.sfx.tap(); El.Voice.say('A treasure! Finish the path to open it.', { rate: 1 }); El.ui.toast('Treasure! Finish the path to open it.'); }; }
-    else if (row.kind === 'soon') { node.classList.add('locked'); node.innerHTML = El.icon('lock'); node.setAttribute('aria-label', row.s.name + ' (coming soon)'); node.onclick = () => { El.sfx.tap(); El.Voice.say('Coming soon!', { rate: 1 }); El.ui.toast('🌙 ' + row.s.name + ': coming soon'); }; }
+    else if (row.kind === 'soon') { node.classList.add('locked'); node.innerHTML = El.icon('lock'); node.setAttribute('aria-label', row.s.name + ' (coming soon)'); node.onclick = () => { El.sfx.tap(); El.Voice.say('Coming soon!', { rate: 1 }); El.ui.toast('🌙 ' + row.s.name + ': coming soon'); };
+      // coming-soon stops get a picture too: the night "soon" tile with the stop's own icon, so no stop on the path is blank
+      const t = document.createElement('button'); t.className = 'tile soon'; t._x = xPct; t._l = left; tiles.push(t); t.style.setProperty('--r', (left ? 3 : -3) + 'deg');
+      t.innerHTML = `<img src="../../assets/img/tile-soon.svg" alt=""><span class="ico">${El.icon(row.s.icon || 'moon')}</span><span class="lbl">${row.s.name}</span>`; t.setAttribute('aria-label', row.s.name + ' (coming soon)'); t.onclick = node.onclick; el.appendChild(t); }
     else {
       const x = row.x; node.classList.add(x.st === 'locked' ? 'locked' : x.st === 'current' ? 'current' : x.st === 'done' ? 'done' : 'open');
       node.innerHTML = x.st === 'locked' ? El.icon('lock') : El.icon(x.ls.icon) + `<span class="st">${[0, 1, 2].map(s => El.icon('star', s < x.stars ? 'on' : '')).join('')}</span>`;
@@ -33,7 +36,8 @@
       node.onclick = () => (x.st === 'locked' ? locked() : open(x));
       const g = cat.games[x.ls.game.id]; const t = document.createElement('button'); t.className = 'tile' + (x.st === 'locked' ? ' locked' : '');
       t._x = xPct; t._l = left; tiles.push(t); t.style.setProperty('--r', (left ? 3 : -3) + 'deg');
-      t.innerHTML = `<img src="../../${g.tile}" alt="" loading="lazy"><span class="lbl">${x.ls.name}</span>`; t.setAttribute('aria-label', x.ls.name);
+      // each lesson can have its own picture (lesson.tile); lessons that share a game's picture get a sticker naming what they practise (lesson.tag)
+      t.innerHTML = `<img src="../../${x.ls.tile || g.tile}" alt="" loading="lazy" onerror="this.onerror=null;this.src='../../${g.tile}'">${x.ls.tag ? `<span class="tag">${x.ls.tag}</span>` : ''}<span class="lbl">${x.ls.name}</span>`; t.setAttribute('aria-label', x.ls.name);
       t.onclick = node.onclick; el.appendChild(t);
       if (x.st === 'current') { curEl = el; cur = x; const m = document.createElement('img'); m.className = 'mini'; m.src = '../../assets/img/wick-sm.webp'; m.alt = ''; m.style.left = `calc(${xPct}% ${left ? '-' : '+'} 70px - 39px)`; el.appendChild(m); }
     }
@@ -46,7 +50,8 @@
   const placeTiles = () => { const W = path.clientWidth; for (const t of tiles) { const tw = t.offsetWidth, nx = t._x / 100 * W; let x = t._l ? nx + 86 : nx - 86 - tw; x = Math.max(10, Math.min(W - tw - 10, x)); t.style.left = x + 'px'; } };
   drawRoad(); placeTiles(); addEventListener('resize', () => { drawRoad(); placeTiles(); });
   const sc = document.getElementById('scroller');
-  requestAnimationFrame(() => { const target = curEl || path.lastElementChild; sc.scrollTop = Math.max(0, target.offsetTop - sc.clientHeight / 2 + target.offsetHeight / 2 + 40); });
+  requestAnimationFrame(() => { const target = curEl || path.lastElementChild, foot = (document.querySelector('.foot') || {}).offsetHeight || 0, view = Math.max(target.offsetHeight, sc.clientHeight - foot);
+    sc.scrollTop = Math.max(0, target.offsetTop - view / 2 + target.offsetHeight / 2); });
   const go = document.getElementById('go'), bubble = document.getElementById('say');
   const next = cur || state.filter(x => x.st !== 'locked').slice(-1)[0];
   bubble.textContent = next ? (next.st === 'done' ? 'Play again: ' + next.ls.name : "Let's play: " + next.ls.name) : 'Coming soon!';
