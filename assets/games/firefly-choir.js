@@ -121,7 +121,7 @@
         speak('This firefly sings high.', () => { glow(hi); pulse(hi); note(hz(79), 0, .6, .2); T(() => { glow(hi, false);
           speak('This firefly sings low.', () => { glow(lo); pulse(lo); note(hz(55), 0, .6, .22); T(() => { glow(lo, false); cb(); }, 900); }, 3200); }, 900); }, 3200); }
       ROUND.highlow = () => { const want = hlPlan[qi]; cur = { want, lv: lvl() }; qaMark('want', want); qaMark('phase', 'choose');
-        const go = () => { setText('High or low?'); speak('Listen! High or low?', () => hlPlay(cur), 2600); replay = () => hlPlay(cur); };
+        const go = () => { setBusy(true); setText('High or low?'); speak('Listen! High or low?', () => hlPlay(cur), 2600); replay = () => hlPlay(cur); };
         if (!demoDone.hl) { demoDone.hl = 1; demoHighLow(go); } else go(); };
 
       /* ================= 2. fast/slow + loud/soft ================= */
@@ -142,7 +142,7 @@
       let tpPlan = null;
       ROUND.tempo = () => { const want = tpPlan[qi], kind = want === 'loud' || want === 'soft' ? 'dyn' : 'tempo'; cur = { want, lv: lvl(), kind }; qaMark('want', want); qaMark('phase', 'choose'); tpTray(kind);
         const q = kind === 'dyn' ? 'Loud or soft?' : 'Fast or slow?';
-        const go = () => { setText(q); speak(q, () => tpPlay(cur), 2200); replay = () => tpPlay(cur); };
+        const go = () => { setBusy(true); setText(q); speak(q, () => tpPlay(cur), 2200); replay = () => tpPlay(cur); };
         if (!demoDone[kind]) { demoDone[kind] = 1; demoTempo(kind, go); } else go(); };
 
       /* shared answer for the choice modes */
