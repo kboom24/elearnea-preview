@@ -18,10 +18,12 @@ El.defineGame({
       <div class="ff-field" id="ffField"></div><div class="ff-jars" id="ffJars"></div><div class="ff-answers hidden" id="ffAns"></div>
       <button class="wick ff-wick" id="ffWick" aria-label="Wick"><img src="${El.url('assets/img/wick-sm.webp')}" alt=""></button></div>`;
     const $ = (id) => root.querySelector('#' + id), field = $('ffField'), jars = $('ffJars'), ans = $('ffAns'), txt = $('ffTxt');
-    let prompt = '';
-    const speak = (t, o) => host.say(t, Object.assign({ rate: .95 }, o || {}));
+    let prompt = '', praising = false;
+    const speak = (t, o) => praising ? false : host.say(t, Object.assign({ rate: .95 }, o || {})); // nothing talks over praise
+    // speak, then go on once the line has ended (+ gap; watchdog = clip length + 1.5 s): feedback is never cut by the next line
+    const speakThen = (t, then, gap, o) => host.sayThen(t, Object.assign({ rate: .95 }, o || {}), () => { if (alive) then(); }, gap);
     const setPrompt = (t, spoken) => { prompt = spoken || t; txt.textContent = t; speak(prompt); };
-    $('ffSay').onclick = () => speak(prompt); $('ffWick').onclick = () => { const w = $('ffWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); speak(prompt); };
+    $('ffSay').onclick = () => { if (!praising) speak(prompt); }; $('ffWick').onclick = () => { const w = $('ffWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); if (!praising) speak(prompt); };
     const jarSVG = (id) => `<svg viewBox="0 0 120 146"><defs><radialGradient id="g${id}" cx="50%" cy="62%" r="55%"><stop offset="0" stop-color="#FFE9A0" stop-opacity=".95"/><stop offset="1" stop-color="#F5B841" stop-opacity="0"/></radialGradient></defs>
       <ellipse class="glow" cx="60" cy="92" rx="70" ry="66" fill="url(#g${id})" opacity="0"/>
       <path d="M26 34h68v8c10 6 14 16 14 28v52c0 12-8 20-20 20H32c-12 0-20-8-20-20V70c0-12 4-22 14-28z" fill="rgba(200,220,255,.16)" stroke="rgba(246,235,217,.85)" stroke-width="4"/>
@@ -36,7 +38,8 @@ El.defineGame({
       ans.innerHTML = ''; ans.classList.remove('hidden');
       rng.shuffle([...opts]).forEach(v => { const b = document.createElement('button'); b.className = 'btn ' + ['', 'teal', 'coral'][ans.children.length]; b.textContent = v; b.setAttribute('aria-label', W[v] || String(v)); b._v = v; b.onclick = () => onPick(b, v); ans.appendChild(b); });
     }
-    function countAlong(jar, n, done) { const dots = jar.querySelectorAll('.in i'); let k = 0; const step = () => { if (k > 0 && dots[k - 1]) dots[k - 1].classList.remove('hl'); if (k >= n) { if (done) T(done, 300); return; } if (dots[k]) dots[k].classList.add('hl'); jar.querySelector('.num').textContent = k + 1; host.sfx.step(k); speak(W[k + 1], { rate: 1.1 }); k++; T(step, 650); }; step(); }
+    function countAlong(jar, n, done) { const dots = jar.querySelectorAll('.in i'); let k = 0; const step = () => { if (praising || !jar.isConnected) return; /* answered mid-count: the count stops (and never runs into the next question), praise is not cut */ if (k > 0 && dots[k - 1]) dots[k - 1].classList.remove('hl'); if (k >= n) { if (done) T(done, 300); return; } if (dots[k]) dots[k].classList.add('hl'); jar.querySelector('.num').textContent = k + 1; host.sfx.step(k); const t0 = Date.now(); k++;
+      speakThen(W[k], () => T(step, Math.max(0, 650 - (Date.now() - t0))), 60, { rate: 1.1 }); }; step(); } // each number is heard in full
     function question() {
       if (qi >= total) { host.end({ total, done: total, firstTry }); return; }
       host.emit('progress', { done: qi, total });
@@ -46,12 +49,12 @@ El.defineGame({
         if (b.classList.contains('no')) return;
         if (v === correct) {
           host.sfx.right(); jar.classList.add('lit'); jar.querySelector('.num').textContent = correct; b.classList.add('glow');
-          speak(`Yes! ${W[correct]}!`); const wk = $('ffWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer');
+          const t0 = Date.now(); praising = true; speakThen(`Yes! ${W[correct]}!`, () => T(() => { praising = false; question(); }, Math.max(0, 1200 - (Date.now() - t0)))); const wk = $('ffWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer');
           const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item, correct: true, firstTry: ft });
-          [...ans.children].forEach(x => { x.onclick = null; }); qi++; T(question, 1500);
+          [...ans.children].forEach(x => { x.onclick = null; }); qi++;
         } else {
           misses++; host.sfx.wrong(); b.classList.add('no');
-          if (misses === 1) { speak("Let's count together."); T(() => countAlong(jar, correct, () => speak('How many?')), 900); }
+          if (misses === 1) speakThen("Let's count together.", () => countAlong(jar, correct, () => speak('How many?')), 150);
           else { [...ans.children].forEach(x => { if (x._v === correct) x.classList.add('hint'); }); speak('Here it is!'); }
         }
       };
@@ -81,7 +84,7 @@ El.defineGame({
         setPrompt(`${a} and ${b} more. How many in all?`, `${W[a]} ${a === 1 ? "firefly" : "fireflies"} and ${W[b]} more. How many in all?`);
         let poured = false; const pour = () => { if (poured) return; poured = true; ja.classList.add('lit'); jb.classList.add('lit'); setFill(big, s); big.querySelector('.num').textContent = ''; countAlong(big, s, () => speak('How many in all?')); };
         ja.onclick = jb.onclick = () => { host.sfx.tap(); pour(); };
-        answers(s, maxN(), (btn, v) => { if (v !== s && !poured && misses === 0) { misses++; host.sfx.wrong(); btn.classList.add('no'); speak("Let's pour them in and count."); T(pour, 700); return; } pick(s, big)(btn, v); });
+        answers(s, maxN(), (btn, v) => { if (praising) return; if (v !== s && !poured && misses === 0) { misses++; host.sfx.wrong(); btn.classList.add('no'); speakThen("Let's pour them in and count.", pour, 150); return; } pick(s, big)(btn, v); });
       }
     }
     T(question, 300);

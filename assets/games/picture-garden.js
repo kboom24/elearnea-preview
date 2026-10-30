@@ -23,7 +23,7 @@ El.defineGame({
       kit.run(plan, (id, i, finish) => { if (pre) pre(id); const n = El.Little.nChoices(L, cfg.skill, 2, 3), list = rng.shuffle([id, ...El.Little.others(rng, pool, n - 1, [id])]); let miss = 0;
         const btns = kit.options(list, render, label), right = btns.find(b => b._it === id), ln = lines(id); kit.mark(right);
         kit.speak(ln.cue);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); T(() => say(ln.yes), 350); finish(miss === 0, { wait: 2300 }); return; }
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: ln.yes, delay: 350 }); return; }
           miss++; kit.soft(b); if (miss === 1) T(() => say([lines(b._it).that, ln.cue]), 350); else { kit.hint(right); T(() => say(ln.here), 350); } }; });
       });
     }
@@ -53,7 +53,7 @@ El.defineGame({
         const btns = kit.options(rng.shuffle([r.b, r.c]), x => El.pic(x), x => x), right = btns.find(b => b._it === r.b); kit.mark(right);
         kit.speak(G.rhyme(r));
         kit.show.firstChild.onclick = () => kit.replay();
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); T(() => say(G.yesR(r)), 350); finish(miss === 0, { wait: 2900 }); return; }
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: G.yesR(r), delay: 350 }); return; }
           miss++; kit.soft(b); kit.hint(right); T(() => say(G.listenR(r)), 350); }; });
       });
     }
@@ -66,7 +66,7 @@ El.defineGame({
         kit.show.innerHTML = `<div class="ll-model">${tile(ch)}</div>`;
         const btns = kit.options(rng.shuffle([ch, ...others]), tile, () => 'Letter shape'), right = btns.find(b => b._it === ch); kit.mark(right);
         kit.speak(G.same);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); T(() => say(G.match), 350); finish(miss === 0, { wait: 2000 }); return; }
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: G.match, delay: 350 }); return; }
           miss++; kit.soft(b); if (miss === 1) T(() => say(G.lookAgain), 350); else { kit.hint(right); T(() => say(LN.common.here), 350); } }; });
       });
     }

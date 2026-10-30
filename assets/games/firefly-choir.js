@@ -38,8 +38,10 @@
       const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
       const lvl = () => L.levelIndex(cfg.skill, 4);
       // speech: every line below is in voice/manifest.json (tools/voice/build-manifest.js, Firefly Choir section)
-      const speak = (t, cb, wd) => { let done = false; const fin = () => { if (done) return; done = true; if (cb && alive) cb(); };
-        const ok = host.say(t, { rate: .95, onend: fin }); if (cb) T(fin, ok ? (wd || 3000) : 450); return ok; };
+      // cb runs once the line has really ended (host.sayThen = ElVoice's exactly-once onend: end, error, interruption or its clip watchdog;
+      // voice/voice-then.js), so praise and feedback always play to the end; a run token drops the callback of a line replaced by a newer one.
+      // (the third argument is the old fixed-watchdog hint, now ignored)
+      let sid = 0; const speak = (t, cb) => { const my = ++sid; return host.sayThen(t, { rate: .95 }, cb ? () => { if (alive && my === sid) cb(); } : null, 250).heard; };
 
       /* ---------------- synth: soft "firefly bell" voice, a wooden "tok" for rhythms, all into a gentle limiter ---------------- */
       let bus = null;
