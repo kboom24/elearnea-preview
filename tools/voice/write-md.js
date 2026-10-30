@@ -11,7 +11,7 @@ module.exports = function (m, file) {
   const c = m.counts; s += `## Totals\n- Lines: **${c.total}** (${c.spoken} spoken by the current code + ${c.reserved} reserved Mothabet phonemes from AUDIO-NEEDS.md)\n- With Bella clips shipped: ${c.withClip}; pending render/import: ${c.pending}; gaps (no clip planned in any script): ${c.gaps}; needing a human ear check: ${c.needsHumanCheck}\n- Mothabet script clips: ${m.mothabetMapping.scriptClips} (${m.mothabetMapping.usedByCode} used by the current code)\n\n| Game (first use) | Lines |\n|---|---|\n`;
   for (const [g, n] of Object.entries(c.byGame)) s += `| ${games[g] || g} | ${n} |\n`;
   s += `\n| Type | Lines |\n|---|---|\n`; for (const [t, n] of Object.entries(c.byType).sort((a, b) => b[1] - a[1])) s += `| ${t} | ${n} |\n`;
-  const counts = {}; for (const it of m.items) for (const u of it.uses) { const k = u.game + '|' + it.type; counts[k] = (counts[k] || 0) + 1; }
+  const counts = {}; for (const it of m.items) for (const g of new Set(it.uses.map(u => u.game))) { const k = g + '|' + it.type; counts[k] = (counts[k] || 0) + 1; }
   s += `\n### Lines by game and type (a line used in two games counts in both)\n| Game | Type | Lines |\n|---|---|---|\n`; for (const [k, n] of Object.entries(counts).sort()) { const [g, t] = k.split('|'); s += `| ${games[g] || g} | ${t} | ${n} |\n`; }
   const gaps = m.items.filter(x => x.source.gap && !x.reserved);
   s += `\n## Gaps: lines with no clip in any script (${gaps.length})\nThese play with device speech until a Bella clip is made.\n\n| id | text | where |\n|---|---|---|\n`; for (const it of gaps) s += `| \`${it.id}\` | ${esc(it.text)} | ${esc(it.uses.map(u => u.screen + ': ' + u.trigger).join('; '))} |\n`;

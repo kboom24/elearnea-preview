@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T03:03:48.174Z",
+ "generated": "2026-10-30T03:10:49.668Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -47,7 +47,7 @@
    "word": 546,
    "sentence": 430
   },
-  "needsHumanCheck": 239,
+  "needsHumanCheck": 416,
   "withClip": 1906,
   "pending": 0,
   "gaps": 23
@@ -13497,8 +13497,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_ten.mp3: batch QA heard \"\" for \"ten\""
+    ]
    },
    "parts": [
     "w_ten.mp3"
@@ -18603,8 +18605,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sun.mp3: batch QA heard \"son\" for \"sun\""
+    ]
    },
    "files": [
     "voice/mb/w_sun.mp3"
@@ -18635,8 +18639,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sun.mp3: batch QA heard \"son\" for \"sun\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -18673,8 +18679,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sun.mp3: batch QA heard \"son\" for \"sun\""
+    ]
    },
    "files": [
     "voice/mb/w_sun.mp3",
@@ -19464,8 +19472,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pot.mp3: batch QA heard \"Hot.\" for \"pot\""
+    ]
    },
    "files": [
     "voice/mb/w_pot.mp3"
@@ -19496,8 +19506,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pot.mp3: batch QA heard \"Hot.\" for \"pot\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -19529,8 +19541,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pot.mp3: batch QA heard \"Hot.\" for \"pot\""
+    ]
    },
    "files": [
     "voice/mb/w_pot.mp3",
@@ -19770,8 +19784,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_net.mp3: batch QA heard \"NAT\" for \"net\""
+    ]
    },
    "files": [
     "voice/mb/w_net.mp3"
@@ -19802,8 +19818,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_net.mp3: batch QA heard \"NAT\" for \"net\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -19840,8 +19858,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_net.mp3: batch QA heard \"NAT\" for \"net\""
+    ]
    },
    "files": [
     "voice/mb/w_net.mp3",
@@ -19882,8 +19902,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nut.mp3: batch QA heard \"not\" for \"nut\""
+    ]
    },
    "files": [
     "voice/mb/w_nut.mp3"
@@ -19914,8 +19936,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nut.mp3: batch QA heard \"not\" for \"nut\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -19947,8 +19971,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nut.mp3: batch QA heard \"not\" for \"nut\""
+    ]
    },
    "files": [
     "voice/mb/w_nut.mp3",
@@ -19994,8 +20020,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nest.mp3: batch QA heard \"Nast.\" for \"nest\""
+    ]
    },
    "files": [
     "voice/mb/w_nest.mp3"
@@ -20026,8 +20054,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nest.mp3: batch QA heard \"Nast.\" for \"nest\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -20059,8 +20089,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nest.mp3: batch QA heard \"Nast.\" for \"nest\""
+    ]
    },
    "files": [
     "voice/mb/w_nest.mp3",
@@ -22174,8 +22206,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_ox.mp3: batch QA heard \"Locks\" for \"ox\""
+    ]
    },
    "files": [
     "voice/mb/w_ox.mp3"
@@ -22206,8 +22240,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_ox.mp3: batch QA heard \"Locks\" for \"ox\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -22239,8 +22275,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_ox.mp3: batch QA heard \"Locks\" for \"ox\""
+    ]
    },
    "files": [
     "voice/mb/w_ox.mp3",
@@ -22475,8 +22513,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_leaf.mp3: batch QA heard \"Belief\" for \"leaf\""
+    ]
    },
    "files": [
     "voice/mb/w_leaf.mp3"
@@ -22507,8 +22547,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_leaf.mp3: batch QA heard \"Belief\" for \"leaf\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -22540,8 +22582,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_leaf.mp3: batch QA heard \"Belief\" for \"leaf\""
+    ]
    },
    "files": [
     "voice/mb/w_leaf.mp3",
@@ -23825,8 +23869,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jug.mp3: batch QA heard \"Jog\" for \"jug\""
+    ]
    },
    "files": [
     "voice/mb/w_jug.mp3"
@@ -23857,8 +23903,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jug.mp3: batch QA heard \"Jog\" for \"jug\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -23895,8 +23943,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jug.mp3: batch QA heard \"Jog\" for \"jug\""
+    ]
    },
    "files": [
     "voice/mb/w_jug.mp3",
@@ -23937,8 +23987,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_zip.mp3: batch QA heard \"ZEP\" for \"zip\""
+    ]
    },
    "files": [
     "voice/mb/w_zip.mp3"
@@ -23969,8 +24021,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_zip.mp3: batch QA heard \"ZEP\" for \"zip\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -24002,8 +24056,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_zip.mp3: batch QA heard \"ZEP\" for \"zip\""
+    ]
    },
    "files": [
     "voice/mb/w_zip.mp3",
@@ -24253,8 +24309,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_worm.mp3: batch QA heard \"warm\" for \"worm\""
+    ]
    },
    "files": [
     "voice/mb/w_worm.mp3"
@@ -24285,8 +24343,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_worm.mp3: batch QA heard \"warm\" for \"worm\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -24318,8 +24378,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_worm.mp3: batch QA heard \"warm\" for \"worm\""
+    ]
    },
    "files": [
     "voice/mb/w_worm.mp3",
@@ -24365,8 +24427,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_van.mp3: batch QA heard \"than\" for \"van\""
+    ]
    },
    "files": [
     "voice/mb/w_van.mp3"
@@ -24397,8 +24461,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_van.mp3: batch QA heard \"than\" for \"van\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -24430,8 +24496,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_van.mp3: batch QA heard \"than\" for \"van\""
+    ]
    },
    "files": [
     "voice/mb/w_van.mp3",
@@ -24559,8 +24627,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_yoyo.mp3: batch QA heard \"YOLA\" for \"yoyo\""
+    ]
    },
    "files": [
     "voice/mb/w_yoyo.mp3"
@@ -24591,8 +24661,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_yoyo.mp3: batch QA heard \"YOLA\" for \"yoyo\""
+    ]
    },
    "files": [
     "voice/mb/p_first.mp3",
@@ -24624,8 +24696,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_yoyo.mp3: batch QA heard \"YOLA\" for \"yoyo\""
+    ]
    },
    "files": [
     "voice/mb/w_yoyo.mp3",
@@ -25138,8 +25212,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_net.mp3: batch QA heard \"NAT\" for \"net\""
+    ]
    },
    "files": [
     "voice/mb/p_last.mp3",
@@ -25237,8 +25313,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jug.mp3: batch QA heard \"Jog\" for \"jug\""
+    ]
    },
    "files": [
     "voice/mb/p_last.mp3",
@@ -25270,8 +25348,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sun.mp3: batch QA heard \"son\" for \"sun\""
+    ]
    },
    "files": [
     "voice/mb/p_last.mp3",
@@ -25769,8 +25849,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_van.mp3: batch QA heard \"than\" for \"van\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -26183,8 +26265,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_zip.mp3: batch QA heard \"ZEP\" for \"zip\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -26368,8 +26452,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pin.mp3: batch QA heard \"10\" for \"pin\""
+    ]
    },
    "files": [
     "voice/mb/w_pin.mp3"
@@ -26400,8 +26486,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pin.mp3: batch QA heard \"10\" for \"pin\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -26745,8 +26833,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pot.mp3: batch QA heard \"Hot.\" for \"pot\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -26910,8 +27000,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nut.mp3: batch QA heard \"not\" for \"nut\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -26943,8 +27035,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sun.mp3: batch QA heard \"son\" for \"sun\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27050,8 +27144,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jug.mp3: batch QA heard \"Jog\" for \"jug\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27364,8 +27460,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_net.mp3: batch QA heard \"NAT\" for \"net\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27467,8 +27565,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pen.mp3: batch QA heard \"10\" for \"pen\""
+    ]
    },
    "files": [
     "voice/mb/w_pen.mp3"
@@ -27499,8 +27599,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pen.mp3: batch QA heard \"10\" for \"pen\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27532,8 +27634,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_ten.mp3: batch QA heard \"\" for \"ten\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27569,8 +27673,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jet.mp3: batch QA heard \"JAT\" for \"jet\""
+    ]
    },
    "files": [
     "voice/mb/w_jet.mp3"
@@ -27601,8 +27707,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_jet.mp3: batch QA heard \"JAT\" for \"jet\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27814,8 +27922,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shell.mp3: batch QA heard \"shall\" for \"shell\""
+    ]
    },
    "files": [
     "voice/mb/w_shell.mp3"
@@ -27846,8 +27956,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shell.mp3: batch QA heard \"shall\" for \"shell\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -27888,8 +28000,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sheep.mp3: batch QA heard \"Seep\" for \"sheep\""
+    ]
    },
    "files": [
     "voice/mb/w_sheep.mp3"
@@ -27920,8 +28034,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sheep.mp3: batch QA heard \"Seep\" for \"sheep\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -28036,8 +28152,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shed.mp3: batch QA heard \"Shad\" for \"shed\""
+    ]
    },
    "files": [
     "voice/mb/w_shed.mp3"
@@ -28068,8 +28186,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shed.mp3: batch QA heard \"Shad\" for \"shed\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -28486,8 +28606,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_moth.mp3: batch QA heard \"MOS\" for \"moth\""
+    ]
    },
    "files": [
     "voice/mb/w_moth.mp3"
@@ -28518,8 +28640,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_moth.mp3: batch QA heard \"MOS\" for \"moth\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -28904,8 +29028,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sack.mp3: batch QA heard \"Zach\" for \"sack\""
+    ]
    },
    "files": [
     "voice/mb/w_sack.mp3"
@@ -28936,8 +29062,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sack.mp3: batch QA heard \"Zach\" for \"sack\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -29210,8 +29338,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_quilt.mp3: batch QA heard \"Wilt\" for \"quilt\""
+    ]
    },
    "files": [
     "voice/mb/w_quilt.mp3"
@@ -29242,8 +29372,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_quilt.mp3: batch QA heard \"Wilt\" for \"quilt\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -29608,8 +29740,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nest.mp3: batch QA heard \"Nast.\" for \"nest\""
+    ]
    },
    "files": [
     "voice/mb/p_build.mp3",
@@ -29956,8 +30090,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_it.mp3: batch QA heard \"What?\" for \"it\""
+    ]
    },
    "files": [
     "voice/mb/w_it.mp3"
@@ -29989,8 +30125,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_it.mp3: batch QA heard \"What?\" for \"it\""
+    ]
    },
    "files": [
     "voice/mb/w_it.mp3",
@@ -30524,8 +30662,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_to.mp3: batch QA heard \"Two.\" for \"to\""
+    ]
    },
    "files": [
     "voice/mb/w_to.mp3"
@@ -30557,8 +30697,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_to.mp3: batch QA heard \"Two.\" for \"to\""
+    ]
    },
    "files": [
     "voice/mb/w_to.mp3",
@@ -30838,8 +30980,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_said.mp3: batch QA heard \"sad\" for \"said\""
+    ]
    },
    "files": [
     "voice/mb/w_said.mp3"
@@ -30876,8 +31020,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_said.mp3: batch QA heard \"sad\" for \"said\""
+    ]
    },
    "files": [
     "voice/mb/w_said.mp3",
@@ -32609,8 +32755,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_saw.mp3: batch QA heard \"So\" for \"saw\""
+    ]
    },
    "files": [
     "voice/mb/w_saw.mp3"
@@ -32642,8 +32790,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_saw.mp3: batch QA heard \"So\" for \"saw\""
+    ]
    },
    "files": [
     "voice/mb/w_saw.mp3",
@@ -32751,8 +32901,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_she.mp3: batch QA heard \"See.\" for \"she\""
+    ]
    },
    "files": [
     "voice/mb/w_she.mp3"
@@ -32784,8 +32936,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_she.mp3: batch QA heard \"See.\" for \"she\""
+    ]
    },
    "files": [
     "voice/mb/w_she.mp3",
@@ -32817,8 +32971,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_new.mp3: batch QA heard \"No.\" for \"new\""
+    ]
    },
    "files": [
     "voice/mb/w_new.mp3"
@@ -32850,8 +33006,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_new.mp3: batch QA heard \"No.\" for \"new\""
+    ]
    },
    "files": [
     "voice/mb/w_new.mp3",
@@ -32949,8 +33107,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_our.mp3: batch QA heard \"Hour.\" for \"our\""
+    ]
    },
    "files": [
     "voice/mb/w_our.mp3"
@@ -32982,8 +33142,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_our.mp3: batch QA heard \"Hour.\" for \"our\""
+    ]
    },
    "files": [
     "voice/mb/w_our.mp3",
@@ -33015,8 +33177,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_out.mp3: batch QA heard \"Naut\" for \"out\""
+    ]
    },
    "files": [
     "voice/mb/w_out.mp3"
@@ -33048,8 +33212,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_out.mp3: batch QA heard \"Naut\" for \"out\""
+    ]
    },
    "files": [
     "voice/mb/w_out.mp3",
@@ -33279,8 +33445,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_too.mp3: batch QA heard \"2\" for \"too\""
+    ]
    },
    "files": [
     "voice/mb/w_too.mp3"
@@ -33312,8 +33480,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_too.mp3: batch QA heard \"2\" for \"too\""
+    ]
    },
    "files": [
     "voice/mb/w_too.mp3",
@@ -33699,8 +33869,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_they.mp3: batch QA heard \"They are\" for \"they\""
+    ]
    },
    "files": [
     "voice/mb/w_they.mp3"
@@ -33732,8 +33904,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_they.mp3: batch QA heard \"They are\" for \"they\""
+    ]
    },
    "files": [
     "voice/mb/w_they.mp3",
@@ -34379,8 +34553,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sat.mp3: batch QA heard \"ZAT\" for \"sat\""
+    ]
    },
    "files": [
     "voice/mb/w_sat.mp3"
@@ -34412,8 +34588,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sat.mp3: batch QA heard \"ZAT\" for \"sat\""
+    ]
    },
    "files": [
     "voice/mb/w_sat.mp3",
@@ -34447,8 +34625,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pin.mp3: batch QA heard \"10\" for \"pin\""
+    ]
    },
    "files": [
     "voice/mb/w_pin.mp3",
@@ -35092,8 +35272,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_van.mp3: batch QA heard \"than\" for \"van\""
+    ]
    },
    "files": [
     "voice/mb/w_van.mp3",
@@ -35125,8 +35307,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_kit.mp3: batch QA heard \"can't\" for \"kit\""
+    ]
    },
    "files": [
     "voice/mb/w_kit.mp3"
@@ -35158,8 +35342,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_kit.mp3: batch QA heard \"can't\" for \"kit\""
+    ]
    },
    "files": [
     "voice/mb/w_kit.mp3",
@@ -35356,8 +35542,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_pet.mp3: batch QA heard \"is a little fish.\" for \"My pet is a little fish.\""
+    ]
    },
    "files": [
     "voice/mb/w_pet.mp3",
@@ -35389,8 +35577,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tub.mp3: batch QA heard \"Tabi.\" for \"tub\""
+    ]
    },
    "files": [
     "voice/mb/w_tub.mp3"
@@ -35422,8 +35612,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tub.mp3: batch QA heard \"Tabi.\" for \"tub\""
+    ]
    },
    "files": [
     "voice/mb/w_tub.mp3",
@@ -35698,8 +35890,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_flag.mp3: batch QA heard \"flag.\" for \"Wave the flag.\""
+    ]
    },
    "files": [
     "voice/mb/w_flag.mp3",
@@ -35731,8 +35925,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_step.mp3: batch QA heard \"Stop.\" for \"step\""
+    ]
    },
    "files": [
     "voice/mb/w_step.mp3"
@@ -35764,8 +35960,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_step.mp3: batch QA heard \"Stop.\" for \"step\""
+    ]
    },
    "files": [
     "voice/mb/w_step.mp3",
@@ -35832,8 +36030,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_trip.mp3: batch QA heard \"Drip.\" for \"trip\""
+    ]
    },
    "files": [
     "voice/mb/w_trip.mp3"
@@ -35865,8 +36065,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_trip.mp3: batch QA heard \"Drip.\" for \"trip\""
+    ]
    },
    "files": [
     "voice/mb/w_trip.mp3",
@@ -36036,8 +36238,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_plum.mp3: batch QA heard \"plumb\" for \"plum\""
+    ]
    },
    "files": [
     "voice/mb/w_plum.mp3"
@@ -36069,8 +36273,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_plum.mp3: batch QA heard \"plumb\" for \"plum\""
+    ]
    },
    "files": [
     "voice/mb/w_plum.mp3",
@@ -36337,7 +36543,8 @@
    "check": {
     "human": true,
     "reasons": [
-     "w_glad.mp3: batch QA heard \"GLAAD\" for \"glad\""
+     "w_glad.mp3: batch QA heard \"GLAAD\" for \"glad\"",
+     "s_glad.mp3: batch QA heard \"you came.\" for \"I am glad you came.\""
     ]
    },
    "files": [
@@ -36372,8 +36579,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nest.mp3: batch QA heard \"Nast.\" for \"nest\""
+    ]
    },
    "files": [
     "voice/mb/w_nest.mp3",
@@ -37652,8 +37861,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_moth.mp3: batch QA heard \"MOS\" for \"moth\""
+    ]
    },
    "files": [
     "voice/mb/w_moth.mp3",
@@ -37685,8 +37896,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_thick.mp3: batch QA heard \"thicc\" for \"thick\""
+    ]
    },
    "files": [
     "voice/mb/w_thick.mp3"
@@ -37718,8 +37931,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_thick.mp3: batch QA heard \"thicc\" for \"thick\""
+    ]
    },
    "files": [
     "voice/mb/w_thick.mp3",
@@ -37895,8 +38110,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shed.mp3: batch QA heard \"Shad\" for \"shed\""
+    ]
    },
    "files": [
     "voice/mb/w_shed.mp3",
@@ -38342,8 +38559,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_lake.mp3: batch QA heard \"Like\" for \"lake\""
+    ]
    },
    "files": [
     "voice/mb/w_lake.mp3"
@@ -38375,8 +38594,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_lake.mp3: batch QA heard \"Like\" for \"lake\""
+    ]
    },
    "files": [
     "voice/mb/w_lake.mp3",
@@ -38441,8 +38662,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_gate.mp3: batch QA heard \"Close the gate. K-K-K-K a-\" for \"Close the gate.\""
+    ]
    },
    "files": [
     "voice/mb/w_gate.mp3",
@@ -39640,8 +39863,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tube.mp3: batch QA heard \"ZOOB\" for \"tube\""
+    ]
    },
    "files": [
     "voice/mb/w_tube.mp3"
@@ -39673,8 +39898,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tube.mp3: batch QA heard \"ZOOB\" for \"tube\""
+    ]
    },
    "files": [
     "voice/mb/w_tube.mp3",
@@ -40168,8 +40395,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_train.mp3: batch QA heard \"\" for \"train\""
+    ]
    },
    "files": [
     "voice/mb/w_train.mp3"
@@ -40201,8 +40430,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_train.mp3: batch QA heard \"\" for \"train\""
+    ]
    },
    "files": [
     "voice/mb/w_train.mp3",
@@ -40234,8 +40465,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nail.mp3: batch QA heard \"snail\" for \"nail\""
+    ]
    },
    "files": [
     "voice/mb/w_nail.mp3"
@@ -40267,8 +40500,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_nail.mp3: batch QA heard \"snail\" for \"nail\""
+    ]
    },
    "files": [
     "voice/mb/w_nail.mp3",
@@ -40300,8 +40535,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_mail.mp3: batch QA heard \"male\" for \"mail\""
+    ]
    },
    "files": [
     "voice/mb/w_mail.mp3"
@@ -40333,8 +40570,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_mail.mp3: batch QA heard \"male\" for \"mail\""
+    ]
    },
    "files": [
     "voice/mb/w_mail.mp3",
@@ -40936,7 +41175,8 @@
    "check": {
     "human": true,
     "reasons": [
-     "w_clay.mp3: batch QA heard \"...Claire.\" for \"clay\""
+     "w_clay.mp3: batch QA heard \"...Claire.\" for \"clay\"",
+     "s_clay.mp3: batch QA heard \"Thanks for watching! Bye!\" for \"We made a pot out of clay.\""
     ]
    },
    "files": [
@@ -40969,8 +41209,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tray.mp3: batch QA heard \"Trey\" for \"tray\""
+    ]
    },
    "files": [
     "voice/mb/w_tray.mp3"
@@ -41002,8 +41244,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tray.mp3: batch QA heard \"Trey\" for \"tray\""
+    ]
    },
    "files": [
     "voice/mb/w_tray.mp3",
@@ -41101,8 +41345,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tree.mp3: batch QA heard \"3\" for \"tree\""
+    ]
    },
    "files": [
     "voice/mb/w_tree.mp3"
@@ -41134,8 +41380,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_tree.mp3: batch QA heard \"3\" for \"tree\""
+    ]
    },
    "files": [
     "voice/mb/w_tree.mp3",
@@ -41433,8 +41681,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sheep.mp3: batch QA heard \"Seep\" for \"sheep\""
+    ]
    },
    "files": [
     "voice/mb/w_sheep.mp3",
@@ -41466,8 +41716,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_week.mp3: batch QA heard \"Weak.\" for \"week\""
+    ]
    },
    "files": [
     "voice/mb/w_week.mp3"
@@ -41499,8 +41751,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_week.mp3: batch QA heard \"Weak.\" for \"week\""
+    ]
    },
    "files": [
     "voice/mb/w_week.mp3",
@@ -41831,8 +42085,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sea.mp3: batch QA heard \"See?\" for \"sea\""
+    ]
    },
    "files": [
     "voice/mb/w_sea.mp3"
@@ -41864,8 +42120,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_sea.mp3: batch QA heard \"See?\" for \"sea\""
+    ]
    },
    "files": [
     "voice/mb/w_sea.mp3",
@@ -41965,8 +42223,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_leaf.mp3: batch QA heard \"Belief\" for \"leaf\""
+    ]
    },
    "files": [
     "voice/mb/w_leaf.mp3",
@@ -42210,8 +42470,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_peach.mp3: batch QA heard \"Can't.\" for \"peach\""
+    ]
    },
    "files": [
     "voice/mb/w_peach.mp3"
@@ -42243,8 +42505,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_peach.mp3: batch QA heard \"Can't.\" for \"peach\""
+    ]
    },
    "files": [
     "voice/mb/w_peach.mp3",
@@ -43138,8 +43402,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_own.mp3: batch QA heard \"Loan\" for \"own\""
+    ]
    },
    "files": [
     "voice/mb/w_own.mp3"
@@ -43171,8 +43437,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_own.mp3: batch QA heard \"Loan\" for \"own\""
+    ]
    },
    "files": [
     "voice/mb/w_own.mp3",
@@ -43907,8 +44175,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_park.mp3: batch QA heard \"Hark!\" for \"park\""
+    ]
    },
    "files": [
     "voice/mb/w_park.mp3"
@@ -43940,8 +44210,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_park.mp3: batch QA heard \"Hark!\" for \"park\""
+    ]
    },
    "files": [
     "voice/mb/w_park.mp3",
@@ -44076,7 +44348,8 @@
    "check": {
     "human": true,
     "reasons": [
-     "w_far.mp3: batch QA heard \"S.A.R.\" for \"far\""
+     "w_far.mp3: batch QA heard \"S.A.R.\" for \"far\"",
+     "s_far.mp3: batch QA heard \"The moon is\" for \"The moon is far away.\""
     ]
    },
    "files": [
@@ -44637,8 +44910,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shirt.mp3: batch QA heard \"shart\" for \"shirt\""
+    ]
    },
    "files": [
     "voice/mb/w_shirt.mp3"
@@ -44670,8 +44945,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shirt.mp3: batch QA heard \"shart\" for \"shirt\""
+    ]
    },
    "files": [
     "voice/mb/w_shirt.mp3",
@@ -46659,8 +46936,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_just.mp3: batch QA heard \"you\" for \"It is just right.\""
+    ]
    },
    "files": [
     "voice/mb/w_just.mp3",
@@ -46692,8 +46971,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_know.mp3: batch QA heard \"No.\" for \"know\""
+    ]
    },
    "files": [
     "voice/mb/w_know.mp3"
@@ -46725,8 +47006,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_know.mp3: batch QA heard \"No.\" for \"know\""
+    ]
    },
    "files": [
     "voice/mb/w_know.mp3",
@@ -46824,8 +47107,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_live.mp3: batch QA heard \"LIES\" for \"live\""
+    ]
    },
    "files": [
     "voice/mb/w_live.mp3"
@@ -46857,8 +47142,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_live.mp3: batch QA heard \"LIES\" for \"live\""
+    ]
    },
    "files": [
     "voice/mb/w_live.mp3",
@@ -46956,8 +47243,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_old.mp3: batch QA heard \"Gold\" for \"old\""
+    ]
    },
    "files": [
     "voice/mb/w_old.mp3"
@@ -46989,8 +47278,11 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_old.mp3: batch QA heard \"Gold\" for \"old\"",
+     "s_old.mp3: batch QA heard \"\" for \"This book is old.\""
+    ]
    },
    "files": [
     "voice/mb/w_old.mp3",
@@ -48948,8 +49240,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_off.mp3: batch QA heard \"North.\" for \"off\""
+    ]
    },
    "files": [
     "voice/mb/w_off.mp3"
@@ -48981,8 +49275,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_off.mp3: batch QA heard \"North.\" for \"off\""
+    ]
    },
    "files": [
     "voice/mb/w_off.mp3",
@@ -49410,8 +49706,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_their.mp3: batch QA heard \"There!\" for \"their\""
+    ]
    },
    "files": [
     "voice/mb/w_their.mp3"
@@ -49443,8 +49741,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_their.mp3: batch QA heard \"There!\" for \"their\""
+    ]
    },
    "files": [
     "voice/mb/w_their.mp3",
@@ -49938,8 +50238,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_which.mp3: batch QA heard \"WIT\" for \"which\""
+    ]
    },
    "files": [
     "voice/mb/w_which.mp3"
@@ -49971,8 +50273,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_which.mp3: batch QA heard \"WIT\" for \"which\""
+    ]
    },
    "files": [
     "voice/mb/w_which.mp3",
@@ -50136,8 +50440,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_would.mp3: batch QA heard \"What?\" for \"would\""
+    ]
    },
    "files": [
     "voice/mb/w_would.mp3"
@@ -50169,8 +50475,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_would.mp3: batch QA heard \"What?\" for \"would\""
+    ]
    },
    "files": [
     "voice/mb/w_would.mp3",
@@ -50202,8 +50510,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_write.mp3: batch QA heard \"Right.\" for \"write\""
+    ]
    },
    "files": [
     "voice/mb/w_write.mp3"
@@ -50235,8 +50545,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_write.mp3: batch QA heard \"Right.\" for \"write\""
+    ]
    },
    "files": [
     "voice/mb/w_write.mp3",
@@ -50268,8 +50580,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_your.mp3: batch QA heard \"You're...\" for \"your\""
+    ]
    },
    "files": [
     "voice/mb/w_your.mp3"
@@ -50301,8 +50615,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_your.mp3: batch QA heard \"You're...\" for \"your\""
+    ]
    },
    "files": [
     "voice/mb/w_your.mp3",
@@ -50569,7 +50885,8 @@
    "check": {
     "human": true,
     "reasons": [
-     "w_carry.mp3: batch QA heard \"Carrie\" for \"carry\""
+     "w_carry.mp3: batch QA heard \"Carrie\" for \"carry\"",
+     "s_carry.mp3: batch QA heard \"Hurry the jar.\" for \"I can carry the jar.\""
     ]
    },
    "files": [
@@ -50635,8 +50952,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_cut.mp3: batch QA heard \"Cut the paint\" for \"Cut the paper.\""
+    ]
    },
    "files": [
     "voice/mb/w_cut.mp3",
@@ -51699,8 +52018,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pick.mp3: batch QA heard \"P.E.C.K.\" for \"pick\""
+    ]
    },
    "files": [
     "voice/mb/w_pick.mp3"
@@ -51732,8 +52053,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_pick.mp3: batch QA heard \"P.E.C.K.\" for \"pick\""
+    ]
    },
    "files": [
     "voice/mb/w_pick.mp3",
@@ -51800,8 +52123,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shall.mp3: batch QA heard \"Ciao.\" for \"shall\""
+    ]
    },
    "files": [
     "voice/mb/w_shall.mp3"
@@ -51833,8 +52158,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_shall.mp3: batch QA heard \"Ciao.\" for \"shall\""
+    ]
    },
    "files": [
     "voice/mb/w_shall.mp3",
@@ -52526,8 +52853,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_should.mp3: batch QA heard \"Then...\" for \"should\""
+    ]
    },
    "files": [
     "voice/mb/w_should.mp3"
@@ -52559,8 +52888,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_should.mp3: batch QA heard \"Then...\" for \"should\""
+    ]
    },
    "files": [
     "voice/mb/w_should.mp3",
@@ -52592,8 +52923,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_school.mp3: batch QA heard \"A school.\" for \"school\""
+    ]
    },
    "files": [
     "voice/mb/w_school.mp3"
@@ -52625,8 +52958,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_school.mp3: batch QA heard \"A school.\" for \"school\""
+    ]
    },
    "files": [
     "voice/mb/w_school.mp3",
@@ -55236,8 +55571,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_kitten.mp3: batch QA heard \"KETTON\" for \"kitten\""
+    ]
    },
    "files": [
     "voice/mb/w_kitten.mp3"
@@ -55269,8 +55606,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_kitten.mp3: batch QA heard \"KETTON\" for \"kitten\""
+    ]
    },
    "files": [
     "voice/mb/w_kitten.mp3",
@@ -55467,8 +55806,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_garden.mp3: batch QA heard \",\" for \"We grow beans in the garden.\""
+    ]
    },
    "files": [
     "voice/mb/w_garden.mp3",
@@ -56164,8 +56505,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_other.mp3: batch QA heard \"Mother.\" for \"other\""
+    ]
    },
    "files": [
     "voice/mb/w_other.mp3"
@@ -56197,8 +56540,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_other.mp3: batch QA heard \"Mother.\" for \"other\""
+    ]
    },
    "files": [
     "voice/mb/w_other.mp3",
@@ -56428,8 +56773,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_than.mp3: batch QA heard \"...then.\" for \"than\""
+    ]
    },
    "files": [
     "voice/mb/w_than.mp3"
@@ -56461,8 +56808,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_than.mp3: batch QA heard \"...then.\" for \"than\""
+    ]
    },
    "files": [
     "voice/mb/w_than.mp3",
@@ -56494,8 +56843,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_part.mp3: batch QA heard \"Heart\" for \"part\""
+    ]
    },
    "files": [
     "voice/mb/w_part.mp3"
@@ -56527,8 +56878,11 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_part.mp3: batch QA heard \"Heart\" for \"part\"",
+     "s_part.mp3: batch QA heard \"This is my part of the puzzle. I hope you enjoyed this video.\" for \"This is my part of the puzzle.\""
+    ]
    },
    "files": [
     "voice/mb/w_part.mp3",
@@ -56593,8 +56947,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "s_place.mp3: batch QA heard \"This is a good set.\" for \"This is a good place to sit.\""
+    ]
    },
    "files": [
     "voice/mb/w_place.mp3",
@@ -56824,8 +57180,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_land.mp3: batch QA heard \"Thank you.\" for \"land\""
+    ]
    },
    "files": [
     "voice/mb/w_land.mp3"
@@ -56857,8 +57215,10 @@
     "csv": "mothabet-voice-script.csv"
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "w_land.mp3: batch QA heard \"Thank you.\" for \"land\""
+    ]
    },
    "files": [
     "voice/mb/w_land.mp3",
