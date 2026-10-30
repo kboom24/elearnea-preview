@@ -198,8 +198,8 @@
       /* ================= 4. ABAB / AABB melody patterns: build, then play ================= */
       const NOTE = { A: hz(79), B: hz(76) }; // sol (G5) and mi (E5): the "cuckoo" interval every child can sing
       const UNIT = { ABAB: 'AB', AABB: 'AABB' };
-      function setupPattern() { playEl.innerHTML = `<div class="pt-branch" id="ptBranch"></div>`;
-        tray.innerHTML = `<button class="fc-card nt" id="pA" aria-label="Gold firefly">${fly(COL.A)}</button><button class="fc-play btn round big glow" id="pPlay" aria-label="Play the song">${play}</button><button class="fc-card nt" id="pB" aria-label="Teal firefly">${fly(COL.B)}</button>`;
+      function setupPattern() { playEl.innerHTML = `<div class="pt-wrap"><div class="pt-branch" id="ptBranch"></div><button class="fc-play btn round big glow" id="pPlay" aria-label="Play the song">${play}</button></div>`;
+        tray.innerHTML = `<button class="fc-card nt" id="pA" aria-label="Gold firefly">${fly(COL.A)}</button><button class="fc-card nt" id="pB" aria-label="Teal firefly">${fly(COL.B)}</button>`;
         $('pA').onclick = () => ptPick('A'); $('pB').onclick = () => ptPick('B'); $('pPlay').onclick = () => ptPlaySong(); }
       function ptDraw() { const b = $('ptBranch'); b.innerHTML = cur.seq.map((s, i) => `<span class="spot${i < cur.filled ? ' on' : ''}${i === cur.filled ? ' next' : ''}${i >= cur.given ? ' kid' : ''}" style="--c:${i < cur.filled ? COL[s] : 'transparent'}">${i < cur.filled ? fly(COL[s]) : ''}</span>`).join('');
         qaMark('want', cur.filled < cur.seq.length ? cur.seq[cur.filled] : 'play'); $('pPlay').classList.toggle('ready', cur.filled >= cur.seq.length); }

@@ -64,15 +64,21 @@
 /* 4. song branch */
 .pt-branch { position: relative; width: min(94vw, 900px); display: grid; grid-template-columns: repeat(8, 1fr); gap: clamp(4px, 1.2vw, 14px); padding: 26px 12px 34px; }
 .pt-branch::before { content: ""; position: absolute; left: 0; right: 0; bottom: 30px; height: 16px; border-radius: 10px; background: #7A4A2E; box-shadow: 0 5px 0 #5E3A24; }
-.pt-branch .spot { position: relative; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 4px rgba(246,235,217,.35); background: rgba(20,17,58,.35); }
+.pt-branch .spot { position: relative; z-index: 1; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 4px rgba(246,235,217,.35); background: rgba(20,17,58,.35); }
 .pt-branch .spot.kid:not(.on) { box-shadow: inset 0 0 0 4px rgba(246,235,217,.6); background: rgba(246,235,217,.08); }
-.pt-branch .spot.next { box-shadow: inset 0 0 0 5px var(--gold), 0 0 22px 4px rgba(245,184,65,.5); animation: fcNext 1.2s ease-in-out infinite; }
+.pt-wrap { display: flex; flex-direction: column; align-items: center; gap: clamp(10px, 3vh, 28px); }
+.pt-branch .spot.next, .pt-branch .spot.kid.next { box-shadow: inset 0 0 0 5px var(--gold), 0 0 22px 4px rgba(245,184,65,.5); animation: fcNext 1.2s ease-in-out infinite; }
 @keyframes fcNext { 50% { transform: scale(1.08); } }
 .pt-branch .spot.on { background: none; box-shadow: none; }
 .fc-card.nt { width: clamp(110px, 28vw, 170px); height: clamp(110px, 28vw, 170px); border-radius: 50%; }
-.fc-tray .fc-play { width: clamp(96px, 22vw, 130px); height: clamp(96px, 22vw, 130px); opacity: .45; transition: opacity .2s; }
-.fc-tray .fc-play.ready { opacity: 1; }
-.fc-tray .fc-play svg { width: 56%; height: 56%; }
+.fc-play { width: clamp(96px, 22vw, 130px); height: clamp(96px, 22vw, 130px); opacity: .45; transition: opacity .2s; }
+.fc-play.ready { opacity: 1; }
+.fc-play svg { width: 56%; height: 56%; }
+
+/* portrait phones: the song sits on two branches of four, so the repeat is easy to see and the fireflies are bigger */
+@media (max-width: 600px) { .pt-branch { grid-template-columns: repeat(4, 1fr); row-gap: 40px; width: min(88vw, 420px); }
+  .pt-branch::before { bottom: auto; top: calc(50% - 12px); box-shadow: 0 5px 0 #5E3A24, 0 calc(50% + 0px) 0 transparent; }
+  .pt-branch::after { content: ""; position: absolute; left: 0; right: 0; bottom: 30px; height: 16px; border-radius: 10px; background: #7A4A2E; box-shadow: 0 5px 0 #5E3A24; z-index: 0; } .pt-branch .spot { z-index: 1; } }
 
 /* demo hand + start */
 .fc-hand { position: absolute; z-index: 7; width: 56px; height: 66px; pointer-events: none; opacity: 0; transition: left .5s ease, top .5s ease, opacity .25s, transform .12s; }
