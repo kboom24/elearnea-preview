@@ -73,7 +73,7 @@
       <p class="lead">Meet Wick, the lantern fox. Together your child explores a glowing storybook world of game-like lessons in reading, math and more, made for ages 4 to 9.</p>
       <div class="cta">
         <a class="btn big glow" href="map/">Explore the demo</a>
-        <button class="btn ghost" id="waitBtn" type="button">Join the waitlist</button>
+        <a class="btn ghost" id="waitBtn" href="waitlist/">Join the waitlist</a>
       </div>
       <div class="trust">
         <span>__STAR__ Real skills, step by step</span>
@@ -124,7 +124,7 @@
       <ul>
         <li>__STAR__<span>Every lesson is mapped to a grade and to learning standards, from letter sounds to adding within 10.</span></li>
         <li>__AGAIN__<span>Spaced review brings back tricky words and facts on the days they are most useful.</span></li>
-        <li>__LOCK__<span>A grown-ups area sits behind a gate. A progress dashboard is coming next.</span></li>
+        <li>__LOCK__<span>A grown-ups area behind a gate shows skills, standards, time and a weekly plan. Try it with sample data.</span></li>
       </ul>
     </div>
     <div class="paper final">
@@ -136,21 +136,11 @@
 </div>
 <footer>Elearnea preview build. Not yet launched. &copy; 2026 Elearnea</footer>
 
-<div class="modal" id="waitModal" role="dialog" aria-modal="true" aria-labelledby="wmT">
-  <div class="paper">
-    <h2 id="wmT">Coming soon</h2>
-    <p>The waitlist isn't open yet. Check back soon. In the meantime, explore the demo!</p>
-    <div class="cta" style="justify-content:center"><a class="btn" href="map/">Explore the demo</a><button class="btn ghost" style="--t:var(--ink);box-shadow:inset 0 0 0 3px rgba(42,33,82,.4)" id="waitClose" type="button">Close</button></div>
-  </div>
-</div>
+<script src="voice/voice.js"></script>
 <script src="assets/js/el.js"></script>
 <script>
   const W = document.querySelector('.wrap'); W.innerHTML = W.innerHTML.replace(/__([A-Z]+)__/g, (m, n) => El.icon(n.toLowerCase()));
   El.ui.sky(40);
-  const m = document.getElementById('waitModal');
-  document.getElementById('waitBtn').onclick = () => m.classList.add('on');
-  document.getElementById('waitClose').onclick = () => m.classList.remove('on');
-  m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('on'); });
 </script>
 </body>
 </html>

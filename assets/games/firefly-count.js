@@ -46,7 +46,7 @@ El.defineGame({
         if (b.classList.contains('no')) return;
         if (v === correct) {
           host.sfx.right(); jar.classList.add('lit'); jar.querySelector('.num').textContent = correct; b.classList.add('glow');
-          speak((misses ? 'Yes! ' : 'Yes! ') + W[correct] + '!'); const wk = $('ffWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer');
+          speak(`Yes! ${W[correct]}!`); const wk = $('ffWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer');
           const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item, correct: true, firstTry: ft });
           [...ans.children].forEach(x => { x.onclick = null; }); qi++; T(question, 1500);
         } else {
@@ -74,7 +74,7 @@ El.defineGame({
         const plus = document.createElement('div'); plus.className = 'ff-sign'; plus.textContent = '+'; const eq = document.createElement('div'); eq.className = 'ff-sign'; eq.textContent = '=';
         ja.querySelector('.num').textContent = a; jb.querySelector('.num').textContent = b; big.querySelector('.num').textContent = '?';
         jars.append(ja, plus, jb, eq, big);
-        setPrompt(`${a} and ${b} more. How many in all?`, `${W[a]} fireflies and ${W[b]} more. How many in all?`);
+        setPrompt(`${a} and ${b} more. How many in all?`, `${W[a]} ${a === 1 ? "firefly" : "fireflies"} and ${W[b]} more. How many in all?`);
         let poured = false; const pour = () => { if (poured) return; poured = true; ja.classList.add('lit'); jb.classList.add('lit'); setFill(big, s); big.querySelector('.num').textContent = ''; countAlong(big, s, () => speak('How many in all?')); };
         ja.onclick = jb.onclick = () => { host.sfx.tap(); pour(); };
         answers(s, maxN(), (btn, v) => { if (v !== s && !poured && misses === 0) { misses++; host.sfx.wrong(); btn.classList.add('no'); speak("Let's pour them in and count."); T(pour, 700); return; } pick(s, big)(btn, v); });

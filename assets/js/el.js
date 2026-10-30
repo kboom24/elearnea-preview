@@ -17,7 +17,7 @@
 
   /* ------------------------------------------------------------ storage (localStorage, memory fallback) */
   const KEY = 'elearnea:v1'; let mem = null;
-  function blank() { return { v: 1, srs: {}, skills: {}, lessons: {}, days: {}, streak: { last: 0, cur: 0, best: 0 }, set: { voice: true, sound: true, rate: 1 }, demoUnlock: false }; }
+  function blank() { return { v: 1, srs: {}, skills: {}, lessons: {}, days: {}, log: [], streak: { last: 0, cur: 0, best: 0 }, set: { voice: true, sound: true, rate: 1 }, demoUnlock: false }; }
   El.store = {
     data: null,
     load() { if (this.data) return this.data; let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { d = mem; } this.data = Object.assign(blank(), d || {}); this.data.set = Object.assign(blank().set, this.data.set || {}); return this.data; },
@@ -55,34 +55,27 @@
     lesson(id) { return El.store.load().lessons[id] || null; },
     lessonDone(id, res) { const d = El.store.load(), cur = d.lessons[id] || { stars: 0, plays: 0, best: 0 };
       cur.plays++; cur.stars = Math.max(cur.stars, res.stars | 0); cur.best = Math.max(cur.best, res.acc | 0); cur.last = L.today(); d.lessons[id] = cur;
-      const day = d.days[L.today()] = d.days[L.today()] || { plays: 0, items: 0 }; day.plays++; day.items += res.total | 0;
+      const day = d.days[L.today()] = d.days[L.today()] || { plays: 0, items: 0, secs: 0 }; day.plays++; day.items += res.total | 0; day.secs = (day.secs | 0) + (res.secs | 0);
+      // activity log for the grown-ups dashboard / portfolio (lesson ids and numbers only; no names, no free text)
+      d.log = d.log || []; d.log.push({ t: Date.now(), l: id, s: res.stars | 0, a: res.acc | 0, n: res.total | 0, sec: res.secs | 0 }); if (d.log.length > 300) d.log.splice(0, d.log.length - 300);
       L.touchStreak(); El.store.save(); return cur; },
     totalStars() { return Object.values(El.store.load().lessons).reduce((a, l) => a + (l.stars | 0), 0); },
     starsFor(acc, done, total) { if (!done) return 0; const a = acc / 100; return done >= total && a >= .9 ? 3 : a >= .7 ? 2 : 1; }
   };
 
-  /* ------------------------------------------------------------ voice (from Mothabet voice.js; on-device voices only) */
-  const SS = root.speechSynthesis || null;
+  /* ------------------------------------------------------------ voice: a thin wrapper over the shared voice module (voice/voice.js).
+     All speech goes through ElVoice: recorded clips listed in voice/manifest.json first, this device's on-device voice as fallback. */
   const V = El.Voice = {
-    supported: !!(SS && root.SpeechSynthesisUtterance), voice: null, unlocked: false, _t: 0, _ls: [],
-    get ok() { return this.supported && El.store.load().set.voice && !!this.voice; },
-    init() { if (!this.supported || this._init) return; this._init = true;
-      const pick = () => { let vs = []; try { vs = SS.getVoices() || []; } catch (e) {}
-        const en = vs.filter(v => /^en([-_]|$)/i.test(v.lang || '') && v.localService !== false); // never network voices
-        const pref = [/samantha/i, /ava/i, /allison/i, /aria/i, /jenny/i, /zira/i, /karen/i, /moira/i, /serena/i, /female/i];
-        let best = null; for (const re of pref) { best = en.find(v => re.test(v.name)); if (best) break; }
-        this.voice = best || en[0] || null; this._ls.forEach(f => { try { f(); } catch (e) {} }); };
-      pick(); try { SS.addEventListener ? SS.addEventListener('voiceschanged', pick) : (SS.onvoiceschanged = pick); } catch (e) {}
-      const unlock = () => { if (this.unlocked) return; this.unlocked = true; try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; SS.speak(u); } catch (e) {} };
-      ['pointerdown', 'touchend', 'keydown'].forEach(ev => root.addEventListener(ev, unlock, { capture: true, passive: true })); },
-    onChange(f) { this._ls.push(f); },
-    say(text, o) { o = o || {}; if (!this.ok || !text) { if (o.onend) setTimeout(o.onend, 10); return false; }
-      try { SS.cancel(); const u = new SpeechSynthesisUtterance(String(text)); u.voice = this.voice; u.lang = this.voice.lang || 'en-US';
-        u.rate = clamp((o.rate || .9) * (El.store.load().set.rate || 1), .5, 1.3); u.pitch = o.pitch || 1.1;
-        const id = ++this._t, done = () => { if (id !== this._t) return; this._t++; if (o.onend) o.onend(); };
-        u.onend = done; u.onerror = done; SS.speak(u); setTimeout(() => { if (id === this._t) done(); }, 1500 + String(text).length * 140); return true;
-      } catch (e) { return false; } },
-    stop() { this._t++; try { if (this.supported) SS.cancel(); } catch (e) {} }
+    get core() { return root.ElVoice || null; },
+    get ok() { return El.store.load().set.voice && !!(this.core && this.core.available); },
+    get clips() { return !!(this.core && this.core.ready); },
+    init() { if (this.core) this.core.init(); },
+    onChange(f) { if (this.core) this.core.onChange(f); },
+    // say(text | [line, line], {rate, pitch, onend}) -> false when nothing can be heard (callers show a visual cue).
+    say(text, o) { o = o || {}; const set = El.store.load().set;
+      if (!set.voice || !this.core || !text) { this.stop(); if (o.onend) setTimeout(o.onend, 10); return false; }
+      this.core.rate = set.rate || 1; return this.core.say(text, o); },
+    stop() { if (this.core) this.core.stop(); }
   };
   root.addEventListener('pagehide', () => V.stop());
 
@@ -173,7 +166,7 @@
       let ls = cat.lessons[q.get('lesson')]; if (!ls || ls.game.id !== gameId) ls = Object.values(cat.lessons).find(l => l.game.id === gameId);
       const mod = El.games[gameId]; const back = El.url('realm/' + ls.realm + '/');
       const config = Object.assign({ lesson: ls.id, skill: ls.skill, grade: ls.grade, standards: ls.standards, catalog: cat }, ls.game.config);
-      let inst = null, stats = { done: 0, total: 0, first: 0 };
+      let inst = null, stats = { done: 0, total: 0, first: 0 }, t0 = Date.now();
       const host = {
         root: stage, say: (t, o) => V.say(t, o), sfx: El.sfx, learn: L, rng: El.rng(), voiceOk: () => V.ok,
         emit(type, ev) {
@@ -182,8 +175,8 @@
           root.dispatchEvent(new CustomEvent('el:' + type, { detail: ev }));
         },
         end(res) { const acc = res.total ? Math.round(100 * res.firstTry / res.total) : 0; const stars = res.stars != null ? res.stars : L.starsFor(acc, res.done != null ? res.done : res.total, res.total);
-          const rec = L.lessonDone(config.lesson, { stars, acc, total: res.total }); root.dispatchEvent(new CustomEvent('el:end', { detail: Object.assign({ stars, acc }, res) }));
-          ui.results && ui.results({ stars, acc, res, rec, again: () => { stage.innerHTML = ''; inst = mod.start(config, host); }, back }); }
+          const secs = Math.min(1800, Math.round((Date.now() - t0) / 1000)); t0 = Date.now(); const rec = L.lessonDone(config.lesson, { stars, acc, total: res.total, secs }); root.dispatchEvent(new CustomEvent('el:end', { detail: Object.assign({ stars, acc }, res) }));
+          ui.results && ui.results({ stars, acc, res, rec, again: () => { t0 = Date.now(); stage.innerHTML = ''; inst = mod.start(config, host); }, back }); }
       };
       ui.setBack && ui.setBack(back); ui.title && ui.title(ls);
       inst = mod.start(config, host); return { ls, config, host, stop: () => inst && inst.stop && inst.stop() };

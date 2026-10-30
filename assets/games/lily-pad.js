@@ -43,7 +43,7 @@ El.defineGame({
         p.onclick = () => { if (done || p.classList.contains('no')) return;
           if (w === target) { done = true; p.classList.add('yes'); p.classList.remove('hint'); hop(p, () => { host.sfx.right(); host.say(`${target}! Yes!`, { rate: .95 }); });
             const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item: target, correct: true, firstTry: ft }); const wk = $('lpWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); qi++; T(question, 1900); }
-          else { misses++; host.sfx.wrong(); p.classList.add('no'); host.say(`That says ${w}. Find ${target}.`, { rate: .9 });
+          else { misses++; host.sfx.wrong(); p.classList.add('no'); host.say([`That says ${w}.`, `Find... ${target}`], { rate: .9 });
             if (misses >= 2) { sign.classList.remove('hide'); field.querySelectorAll('.pad').forEach(x => { if (x.getAttribute('aria-label') === target) x.classList.add('hint'); }); } } };
         field.appendChild(p); });
       T(sayWord, 350);

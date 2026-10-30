@@ -11,7 +11,7 @@
   El.ui.soundBtn(document.getElementById('snd'));
   const pct = El.realmProgress(cat, realmId);
   document.getElementById('lantern').innerHTML = `<svg viewBox="0 0 76 76"><defs><radialGradient id="lg"><stop offset="0" stop-color="#FFF2B8"/><stop offset="1" stop-color="#F5B841"/></radialGradient></defs><circle cx="38" cy="44" r="34" fill="#F5B841" opacity=".22"/><path d="M28 10h20M30 10a8 8 0 0 1 16 0" fill="none" stroke="#3B2F1E" stroke-width="4" stroke-linecap="round"/><rect x="18" y="16" width="40" height="8" rx="4" fill="#3B2F1E"/><rect x="21" y="24" width="34" height="38" rx="9" fill="url(#lg)" stroke="#3B2F1E" stroke-width="4"/><rect x="18" y="62" width="40" height="8" rx="4" fill="#3B2F1E"/></svg><b>${pct}%</b>`;
-  const lantern = document.getElementById('lantern'); lantern.dataset.say = `Your ${realm.name} lantern is ${pct} percent full`;
+  const lantern = document.getElementById('lantern'); lantern.dataset.say = "Your lantern shows how much you've learned!";
   const state = El.pathState(cat, realmId);
   const path = document.getElementById('path');
   // rows top to bottom: treasure, coming-soon stops, then lessons from last to first (the path climbs from the bottom)

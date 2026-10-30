@@ -9,6 +9,7 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="icon" href="../assets/img/icon-32.png" type="image/png">
 <link rel="stylesheet" href="../assets/css/el.css">
+<link rel="stylesheet" href="../assets/css/dash.css">
 <style>
   .wrap { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 18px 40px; }
   .gate { padding: 30px 24px 28px; text-align: center; margin-top: 10px; }
@@ -38,29 +39,45 @@
     <div class="opts" id="opts"></div>
     <div class="err" id="err" role="status"></div>
   </div>
-  <div class="area" id="area">
-    <div class="paper card">
-      <span class="preview">Preview</span>
-      <h2 style="margin-top:10px">Parent dashboard: coming in phase 2</h2>
-      <p>This area will show progress, a standards map, a weekly plan and a homeschool record export. For now, here is what this device has saved.</p>
-    </div>
-    <div class="paper card"><h2>Progress on this device</h2><div id="prog"></div></div>
-    <div class="paper card">
-      <h2>Settings</h2>
-      <div class="acts">
-        <button class="btn teal" id="voiceB"></button>
-        <button class="btn lav" id="unlockB"></button>
-        <button class="btn coral" id="resetB">Reset progress</button>
-      </div>
-      <p style="margin-top:14px">Progress is stored only in this browser (no account, no name). Voice uses this device's own built-in speech voices.</p>
-    </div>
-  </div>
 </div>
+<div class="dsh" id="area">
+  <aside class="side">
+    <a class="logo" href="../"><img src="../assets/img/icon-192.png" alt="">Elearnea</a>
+    <nav aria-label="Dashboard sections">
+      <a href="#overview" class="on">__home__Overview</a><a href="#planC">__map__Weekly plan</a><a href="#skillsC">__star__Skills</a><a href="#recentC">__book__Activity</a><a href="#settingsC">__gear__Settings</a>
+    </nav>
+    <div class="wickbox"><img src="../assets/img/wick-sm.webp" alt="Wick the lantern fox">Wick keeps the lantern lit while your child learns.</div>
+    <a class="kidlink" href="../map/">__map__Back to the map</a>
+  </aside>
+  <main class="main" id="overview">
+    <div class="head"><h1>Parent dashboard</h1><div class="who" id="who"></div><button class="dbtn" id="exportB">__pencil__Export portfolio</button></div>
+    <div class="banner" id="banner"><span class="tagd">Demo data</span><p></p>
+      <div class="seg" role="group" aria-label="Which progress to show"><button data-mode="sample" aria-pressed="true">Sample learner</button><button data-mode="device" aria-pressed="false">This device</button></div></div>
+    <div class="grid">
+      <section class="c"><h2>__leaf__<span class="sp">Progress by realm</span></h2><div class="bars" id="realms"></div><p class="note">Stars earned out of all stars on each realm path.</p></section>
+      <section class="c"><h2>__flame__<span class="sp">Time learned</span></h2><div id="time"></div></section>
+      <section class="c" id="stdC"><h2>__star__<span class="sp">Standards</span></h2><div class="stds" id="stds"></div></section>
+      <section class="c w3" id="planC"><h2>__map__<span class="sp">Weekly plan</span><small>Suggested from the path. Every day labeled.</small></h2><div class="plan" id="plan"></div></section>
+      <section class="c w2" id="skillsC"><h2>__star__<span class="sp">Skills and mastery</span></h2><div class="scroll" id="skills"></div><p class="note">“Solid” = words or facts that have come back correct on spaced reviews (Leitner box 3+). The games aim for about 80% first-try success.</p></section>
+      <section class="c" id="recentC"><h2>__book__<span class="sp">Recent activity</span></h2><div class="scroll" id="recent"></div><p class="note" id="recent-note"></p></section>
+      <section class="c w3" id="settingsC"><h2>__gear__<span class="sp">Settings for this device</span></h2>
+        <div class="acts"><button class="dbtn teal" id="voiceB"></button><button class="dbtn lav" id="unlockB"></button><button class="dbtn coral" id="resetB">Reset progress</button></div>
+        <p class="note">Progress is stored only in this browser (no account, no name). Voice: pre-recorded clips that ship with the site (Kokoro-82M, Apache-2.0, voice “Bella”); this device's own speech voice is used for anything without a clip yet.</p></section>
+    </div>
+  </main>
+</div>
+<div class="rec-modal" id="recModal" role="dialog" aria-label="Portfolio record">
+  <div class="rec-bar"><button class="dbtn" id="recPrint">Print or save as PDF</button><button class="dbtn alt" id="recDl">Download (.html)</button><button class="dbtn alt" id="recClose">Close</button></div>
+  <div class="record" id="record"></div>
+</div>
+<script src="../voice/voice.js"></script>
 <script src="../assets/js/el.js"></script>
+<script src="../assets/js/dash.js"></script>
 <script>
 (async function () {
   const tb = document.querySelector('.topbar a'); tb.innerHTML = El.icon('back');
   El.ui.sky(30);
+  document.querySelectorAll('.dsh').forEach(el => { el.innerHTML = el.innerHTML.replace(/__([a-z]+)__/g, (m, n) => El.icon(n)); });
   // Gate: a multiplication question (beyond most 4-9 year olds); a new question after each miss, a short cool-down after 3.
   const r = El.rng(); let tries = 0;
   function ask() { const a = r.int(6, 9), b = r.int(3, 9), c = a * b; document.getElementById('q').textContent = `${a} × ${b} = ?`;
@@ -68,16 +85,11 @@
     r.shuffle([...s]).forEach(v => { const bt = document.createElement('button'); bt.className = 'btn cream'; bt.textContent = v; bt.onclick = () => pick(v === c); o.appendChild(bt); }); }
   function pick(ok) { const e = document.getElementById('err'); if (ok) { sessionStorage.setItem('el-gate', '1'); open(); return; }
     tries++; if (tries >= 3) { e.textContent = 'Please wait a moment and try again.'; document.querySelectorAll('#opts .btn').forEach(b => b.disabled = true); setTimeout(() => { tries = 0; e.textContent = ''; ask(); }, 8000); } else { e.textContent = 'Not quite. Try this one.'; ask(); } }
-  async function open() { document.getElementById('gate').style.display = 'none'; document.getElementById('area').classList.add('on');
-    const cat = await El.catalog(), d = El.store.load(); let h = '<table><tr><th>Lesson</th><th>Grade</th><th>Stars</th><th>Plays</th></tr>';
-    for (const rm of cat.realms) for (const ls of (cat.order[rm.id] || [])) { const rec = d.lessons[ls.id]; h += `<tr><td>${rm.name}: ${ls.name}<br>${ls.standards.map(s => `<span class="tag">${s.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ')}</span>`).join('')}</td><td>${ls.grade}</td><td>${rec ? rec.stars : 0}/3</td><td>${rec ? rec.plays : 0}</td></tr>`; }
-    h += '</table>'; const acc = (id) => { const a = El.Learn.accRecent(id); return a == null ? '-' : Math.round(a * 100) + '%'; };
-    const skills = Object.keys(d.skills); if (skills.length) h += '<p style="margin-top:14px"><b>Recent first-try accuracy</b> (target about 80%): ' + skills.map(s => `${s} ${acc(s)}`).join(' · ') + '</p>';
-    h += `<p>Day streak: ${El.Learn.streakNow()} · total stars: ${El.Learn.totalStars()}</p>`; document.getElementById('prog').innerHTML = h; paint(); }
+  async function open() { document.getElementById('gate').style.display = 'none'; await El.Dash.open(); paint(); }
   function paint() { const d = El.store.load(); document.getElementById('voiceB').textContent = 'Voice: ' + (d.set.voice ? 'on' : 'off'); document.getElementById('unlockB').textContent = 'Demo: unlock all lessons (' + (d.demoUnlock ? 'on' : 'off') + ')'; }
   document.getElementById('voiceB').onclick = () => { const d = El.store.load(); d.set.voice = !d.set.voice; El.store.save(); paint(); };
   document.getElementById('unlockB').onclick = () => { const d = El.store.load(); d.demoUnlock = !d.demoUnlock; El.store.save(); paint(); };
-  document.getElementById('resetB').onclick = () => { if (confirm('Reset all progress saved on this device?')) { El.store.reset(); open(); } };
+  document.getElementById('resetB').onclick = () => { if (confirm('Reset all progress saved on this device?')) { El.store.reset(); El.Dash.render(); } };
   if (sessionStorage.getItem('el-gate') === '1') open(); else ask();
 })();
 </script>

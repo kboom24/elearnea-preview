@@ -524,7 +524,7 @@
       this.bBook = B('', 'indigo', spoken('Moth book', () => g.leave('book')), { ico: 'book' });
       this.buttons = [this.bAgain, this.bNext, this.bHome, this.bBook];
       music('night'); SFX.end();
-      if (voiceOn()) setTimeout(() => { if (game.scene === this) say(r.done >= 10 ? `Wonderful! You caught all ${r.done} words!` : r.done ? `Great job! You caught ${r.done} word${r.done === 1 ? '' : 's'}!` : `Good try! Let's catch some moths.`, { rate: 1 }); }, 400);
+      if (voiceOn()) setTimeout(() => { if (game.scene === this) say(r.done >= 10 ? 'Wonderful! You caught all your words!' : r.done ? 'Great job! You caught some words!' : `Good try! Let's catch some moths.`, { rate: 1 }) /* Elearnea: lines match the recorded clips p_great_all / p_great_some / p_great_none (the count is shown on screen) */; }, 400);
     },
     leave(where) { const r = this.r;
       if (where === 'home') return game.go('title', null, { fade: .2 }); if (where === 'book') return game.go('book', null, { fade: .2 });
@@ -630,7 +630,7 @@
       this.bShare = B('Share', 'gold', () => game.go('share', null, { fade: .15 }), { ico: 'share' });
       this.bReset = B('Hold to reset progress', 'coral', () => {}, {});
       this.layout(); },
-    layout() { const s = game.save.data.settings; this.bVoice.label = `Voice: ${M.set.voice ? 'on' : 'off'}`; this.bVoice.sub = MB.Voice.voice ? MB.Voice.voice.name.slice(0, 40) : 'no voice on this device: visual cues on';
+    layout() { const s = game.save.data.settings; this.bVoice.label = `Voice: ${M.set.voice ? 'on' : 'off'}`; this.bVoice.sub = MB.Voice.clips ? 'recorded storyteller voice' : MB.Voice.voice ? MB.Voice.voice.name.slice(0, 40) : 'no voice on this device: visual cues on';
       this.bRate.label = `Speech: ${M.set.rate < 1 ? 'slow' : 'normal'}`; this.bMusic.label = `Music: ${M.set.music ? 'on' : 'off'}`; this.bMotion.label = `Reduce motion: ${s.reduceMotion ? 'on' : 'off'}`;
       this.tabs.forEach((b, i) => { b.style = i === this.tab ? 'gold' : 'indigo'; });
       this.buttons = [this.bBack, ...this.tabs]; if (this.tab === 2) this.buttons.push(this.bVoice, this.bRate, this.bMusic, this.bMotion, this.bReset); this.resize(game.W, game.H); },
