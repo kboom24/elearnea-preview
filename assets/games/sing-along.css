@@ -1,0 +1,124 @@
+/* Sing-along games (Zoo Parade, Word Stage). Layout top to bottom: karaoke lyrics, the moment (pick cards / spell tiles), shelf of collected words.
+   Targets >= 64 px (>= 96 px in Little Lanterns). Felt paper-cut look from el.css (--felt, --cream, --gold...). */
+.sa { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; --beat: 0; }
+.sa-bg { position: absolute; inset: 0; pointer-events: none; }
+.sa-bg i { position: absolute; display: block; }
+.sa-hill { left: -10%; right: -10%; border-radius: 50% 50% 0 0; background-image: var(--felt); }
+.sa-hill.a { bottom: 0; height: 34%; background-color: #2F5B4E; }
+.sa-hill.b { bottom: 0; height: 22%; left: 20%; right: -30%; background-color: #3F7A63; }
+.sa-road { left: 0; right: 0; bottom: 12%; height: 9%; background: #E8CFA2; background-image: var(--felt); box-shadow: 0 -6px 0 rgba(140,106,69,.55) inset; transform: skewY(-2deg); opacity: .85; }
+.sa-stage .sa-hill.b { background-color: #8C6A45; height: 18%; left: 6%; right: 6%; border-radius: 30px 30px 0 0; }
+.sa-curtain { top: 0; bottom: 14%; width: 13%; background: #C25F54; background-image: var(--felt), repeating-linear-gradient(90deg, rgba(0,0,0,.14) 0 6px, transparent 6px 22px); border-radius: 0 0 50% 50% / 0 0 14% 14%; }
+.sa-curtain.l { left: 0; } .sa-curtain.r { right: 0; }
+.sa-lights { left: 8%; right: 8%; top: 4px; height: 18px; background: radial-gradient(circle, #FFE28A 0 4px, transparent 5px) 0 0 / 40px 18px repeat-x; opacity: calc(.55 + var(--beat) * .45); transition: opacity .12s; }
+
+/* karaoke lyrics */
+.sa-lyr { position: relative; z-index: 4; min-height: 92px; padding: 8px 14px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.sa-line { font: 700 clamp(1.15rem, 4.9vw, 2rem)/1.3 var(--display); color: rgba(246,235,217,.5); text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.sa-line.nxt { font-size: clamp(.9rem, 3.4vw, 1.3rem); color: rgba(246,235,217,.32); }
+.sa-line .w { display: inline-block; transition: color .08s, transform .12s; }
+.sa-line .w.on { color: var(--cream); }
+.sa-line .w.now { color: var(--gold); transform: translateY(-3px) scale(1.12); text-shadow: 0 0 14px rgba(245,184,65,.8), 0 2px 0 rgba(0,0,0,.35); }
+.sa-line .w.key { text-decoration: underline 3px rgba(245,184,65,.65); text-underline-offset: 6px; }
+.sa-line .w.ltr { min-width: 1.15em; padding: 0 .12em; border-radius: 8px; background: rgba(246,235,217,.12); }
+.sa-line .w.ltr.now { background: var(--gold); color: var(--ink); text-shadow: none; }
+.sa-line.nxt .w.key { text-decoration: none; }
+.sa-line .notes { color: var(--lav); letter-spacing: .4em; animation: sanotes 1.2s ease-in-out infinite; display: inline-block; }
+.sa-line.in { animation: sain .35s ease-out; }
+@keyframes sain { from { opacity: 0; transform: translateY(8px); } }
+@keyframes sanotes { 50% { transform: translateY(-4px); } }
+
+/* Wick dances to the beat */
+.sa-wick { position: absolute; z-index: 2; left: 8px; bottom: 96px; width: clamp(72px, 15vw, 130px); aspect-ratio: 1; pointer-events: none; }
+.sa-wick img { width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); mask-image: radial-gradient(circle at 50% 52%, #000 52%, transparent 70%); }
+.sa-wick.bt img { animation: sabt .3s ease-out; }
+.sa-wick.cheer img { animation: llhop .6s; }
+@keyframes sabt { 40% { transform: translateY(-6px) rotate(calc(var(--beat) * 6deg - 3deg)); } }
+.sa.fin .sa-wick img { animation: llhop .6s infinite; }
+
+/* the moment */
+.sa-play { position: relative; z-index: 3; flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 4px 12px; }
+.sa-pick { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(12px, 3.5vw, 30px); max-width: 980px; }
+.sa-opt, .sa-chip, .sa-tile { position: relative; border: 0; cursor: pointer; touch-action: manipulation; background: var(--cream); background-image: var(--felt); color: var(--ink); font-family: var(--display); }
+.sa-opt { --sz: clamp(118px, 34vw, 210px); width: var(--sz); min-height: calc(var(--sz) + 34px); padding: 10px 8px 6px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  box-shadow: 0 8px 0 var(--cream-d), 0 14px 28px rgba(0,0,0,.35); animation: sawalk .6s cubic-bezier(.3,1.3,.5,1) both; animation-delay: calc(var(--k, 0) * 90ms); }
+.sa-pick[data-n="3"] .sa-opt { --sz: clamp(100px, 27vw, 190px); }
+.sa-pick[data-n="4"] .sa-opt { --sz: clamp(76px, 20vw, 170px); }
+.sa-opt .pc { width: 100%; aspect-ratio: 1; display: grid; place-items: center; }
+.sa-opt .pc svg, .sa-chip .pc svg, .sa-tgt .pc svg { width: 100%; height: 100%; }
+.sa-opt .lbl { font: 700 clamp(1.25rem, 5vw, 2rem)/1.1 var(--display); letter-spacing: .02em; }
+.sa-opt.word { --sz: clamp(118px, 30vw, 230px); min-height: clamp(96px, 20vw, 150px); }
+.sa-opt.word .lbl { font-size: clamp(2rem, 8vw, 3.4rem); }
+.sa-opt:active { transform: translateY(5px); }
+.sa-opt.yes, .sa-tgt.yes { box-shadow: 0 8px 0 var(--gold-d), 0 0 0 6px var(--gold), 0 0 46px 14px rgba(245,184,65,.6); }
+.sa-opt.yes .lbl, .sa-chip.say .lbl, .sa-chip.sing .lbl { color: #B8560F; text-shadow: 0 0 12px rgba(245,184,65,.9); }
+.sa-opt.hint, .sa-tile.hint { animation: llpulse 1.1s ease-in-out infinite; box-shadow: 0 8px 0 var(--gold-d), 0 0 0 6px #fff, 0 0 40px 12px rgba(245,184,65,.65); }
+.sa-opt.boing, .sa-tgt.boing { animation: llboing .55s cubic-bezier(.3,1.6,.5,1); }
+.sa-opt.wiggle, .sa-tile.wiggle { animation: llwiggle .5s; }
+.sa-ltr { font: 700 clamp(3.6rem, 16vw, 6.5rem)/1 var(--display); color: var(--ink); }
+.sa-zoo .sa-opt { --from: translateX(70vw) rotate(6deg); }
+.sa-stage .sa-opt { --from: translateY(-60vh) rotate(-4deg); }
+.sa-stage .sa-opt::before { content: ""; position: absolute; left: 50%; top: -60px; height: 56px; border-left: 3px dashed rgba(246,235,217,.5); }
+@keyframes sawalk { from { transform: var(--from, translateY(30px)); opacity: 0; } }
+.sa-play > .out { animation: saout .5s ease-in forwards; pointer-events: none; }
+@keyframes saout { to { transform: translateY(40px) scale(.85); opacity: 0; } }
+
+/* spell */
+.sa-spell { display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.8vh, 18px); width: 100%; max-width: 900px; animation: sain .4s ease-out; }
+.sa-tgt { display: flex; align-items: center; gap: 12px; padding: 6px 18px 6px 8px; border-radius: 26px; background: rgba(246,235,217,.92); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d); }
+.sa-tgt .pc { width: clamp(76px, 20vw, 130px); aspect-ratio: 1; display: grid; place-items: center; }
+.sa-tgt .lbl { font: 700 clamp(1.8rem, 7vw, 3rem)/1 var(--display); color: var(--ink); letter-spacing: .06em; }
+.sa-slots { display: flex; gap: clamp(6px, 2vw, 14px); }
+.sa-slot { position: relative; width: clamp(52px, 14vw, 84px); height: clamp(60px, 16vw, 96px); border-radius: 16px; background: rgba(20,17,58,.55); box-shadow: inset 0 0 0 3px rgba(246,235,217,.35); display: grid; place-items: center; font: 700 clamp(2rem, 9vw, 3.6rem)/1 var(--display); color: var(--cream); }
+.sa-slot .gh { position: absolute; font-style: normal; color: rgba(246,235,217,.28); }
+.sa-slot b { position: relative; }
+.sa-slot.fill, .sa-slot.auto { background: var(--cream); background-image: var(--felt); color: var(--ink); box-shadow: 0 5px 0 var(--cream-d); }
+.sa-slot.auto { color: #6B5FA8; }
+.sa-slot.sung { box-shadow: 0 0 0 4px var(--gold), 0 0 26px 6px rgba(245,184,65,.6); }
+.sa-slot.fill.sung, .sa-slot.auto.sung { box-shadow: 0 5px 0 var(--gold-d), 0 0 0 4px var(--gold), 0 0 26px 6px rgba(245,184,65,.6); }
+.sa-slot.pop { animation: llboing .45s cubic-bezier(.3,1.6,.5,1); }
+.sa-spell.built .sa-slot { background: var(--gold); color: var(--ink); }
+.sa-tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(8px, 2.4vw, 16px); max-width: 560px; }
+.sa-tile { width: 72px; height: 72px; border-radius: 20px; font: 700 2.4rem/1 var(--display); box-shadow: 0 6px 0 var(--cream-d), 0 10px 20px rgba(0,0,0,.3); animation: sawalk .5s cubic-bezier(.3,1.3,.5,1) both; animation-delay: calc(var(--k, 0) * 70ms); }
+.sa-tile:nth-child(4n+1) { background-color: #FCE3C0; } .sa-tile:nth-child(4n+2) { background-color: #D7EEDF; } .sa-tile:nth-child(4n+3) { background-color: #E6DEF7; } .sa-tile:nth-child(4n) { background-color: #FBD5CF; }
+.sa-tile.used { visibility: hidden; }
+.sa-tile:active { transform: translateY(4px); }
+
+/* shelf + pause */
+.sa-foot { position: relative; z-index: 4; display: flex; align-items: center; gap: 10px; padding: 6px 10px calc(10px + var(--safe-b)); min-height: 92px; background: linear-gradient(transparent, rgba(20,17,58,.55)); }
+.sa-pause { flex: 0 0 72px; width: 72px; height: 72px; border: 0; border-radius: 50%; background: var(--indigo); color: var(--cream); box-shadow: 0 6px 0 #110E33, inset 0 0 0 3px rgba(246,235,217,.25); display: grid; place-items: center; cursor: pointer; }
+.sa-pause .bars { display: flex; gap: 8px; } .sa-pause .bars i { width: 9px; height: 28px; border-radius: 4px; background: currentColor; }
+.sa-pause .tri { display: none; width: 40px; height: 40px; } .sa-pause.off .bars { display: none; } .sa-pause.off .tri { display: block; }
+.sa-shelf { flex: 1 1 auto; min-width: 0; display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; padding: 6px 4px 8px; scrollbar-width: none; }
+.sa-shelf::-webkit-scrollbar { display: none; }
+.sa-chip { flex: 0 0 auto; height: 72px; min-width: 72px; padding: 4px 12px 4px 4px; border-radius: 22px; display: flex; align-items: center; gap: 4px; box-shadow: 0 5px 0 var(--cream-d); }
+.sa-chip .pc { width: 60px; height: 60px; display: grid; place-items: center; } .sa-chip .sa-ltr { font-size: 2.6rem; }
+.sa-chip .lbl { font: 700 1.35rem/1 var(--display); }
+.sa-chip.star::after { content: "★"; position: absolute; right: -4px; top: -8px; color: var(--gold); font-size: 1.2rem; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.sa-chip.join { animation: sajoin .6s cubic-bezier(.3,1.5,.5,1); }
+.sa-chip.sing { animation: llboing .55s cubic-bezier(.3,1.6,.5,1); box-shadow: 0 5px 0 var(--gold-d), 0 0 0 4px var(--gold); }
+.sa-chip.say { box-shadow: 0 5px 0 var(--gold-d), 0 0 0 4px var(--gold), 0 0 24px 6px rgba(245,184,65,.6); }
+@keyframes sajoin { from { transform: translateY(-80px) scale(.4); opacity: 0; } }
+
+/* start / pause card */
+.sa-card { position: absolute; inset: 0; z-index: 8; display: none; align-items: center; justify-content: center; background: rgba(20,17,58,.55); padding: 16px; }
+.sa-card.on { display: flex; }
+.sa-card .paper { width: min(92vw, 460px); padding: 22px 18px 26px; border-radius: 34px; background: var(--cream); background-image: var(--felt); box-shadow: 0 10px 0 var(--cream-d), 0 20px 50px rgba(0,0,0,.45); text-align: center; color: var(--ink); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sa-title { font: 700 clamp(1.6rem, 7vw, 2.4rem)/1.1 var(--display); }
+.sa-wbig { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; cursor: pointer; }
+.sa-wbig.cheer { animation: llhop .6s; }
+.sa-big { width: 120px; height: 120px; border: 0; border-radius: 50%; background: var(--gold); color: var(--ink); box-shadow: 0 8px 0 var(--gold-d), 0 0 40px rgba(245,184,65,.6); display: grid; place-items: center; cursor: pointer; animation: llpulse 1.6s ease-in-out infinite; }
+.sa-big svg { width: 64px; height: 64px; } .sa-big:disabled { opacity: .55; animation: none; }
+.sa-sub:empty { display: none; }
+
+/* Little Lanterns: every target >= 96 px */
+.sa.little .sa-opt { --sz: clamp(130px, 38vw, 230px); }
+.sa.little .sa-tile { width: 96px; height: 96px; font-size: 3rem; border-radius: 26px; }
+.sa.little .sa-pause { flex-basis: 96px; width: 96px; height: 96px; }
+.sa.little .sa-chip { height: 96px; min-width: 96px; } .sa.little .sa-chip .pc { width: 80px; height: 80px; }
+.sa.little .sa-foot { min-height: 116px; }
+.sa.little .sa-wick { bottom: 120px; }
+
+/* short screens (phones in landscape-ish / 667 px tall): tighter */
+@media (max-height: 700px) { .sa-lyr { min-height: 72px; padding-top: 2px; } .sa-line.nxt { display: none; } .sa-tgt .pc { width: 64px; } .sa-slot { height: 56px; width: 48px; font-size: 2rem; } .sa-opt { --sz: clamp(100px, 30vw, 150px); } .sa-pick[data-n="3"] .sa-opt { --sz: clamp(92px, 27vw, 140px); } .sa-tiles { gap: 8px; } }
+@media (min-width: 900px) { .sa-tile { width: 84px; height: 84px; font-size: 2.8rem; } }

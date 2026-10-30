@@ -161,6 +161,9 @@ for (const m of MB.MOTHS) { add(m.name, { type: 'label', game: M, prefix: 'mb.mo
 /* ================= Little Lanterns (ages 0-4): Lantern Barn, Picture Garden, Glow Jars + map age switch ================= */
 require('./early-lines.js')({ add, APP });
 
+/* ================= Sing-along games (Zoo Parade, Word Stage): Bella's lines before/after the songs + shelf words ================= */
+require('./song-lines.js')({ add, APP });
+
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));
 const reviewTxt = Object.keys(MB_STATUS).length ? '' : ['REVIEW.md'].map(f => path.join(MB_DIR, f)).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8')).join('\n');

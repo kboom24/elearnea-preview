@@ -77,6 +77,7 @@ function ternary(e) { let d = 0, q = null, qi = -1, nest = 0;
     else if (d === 0 && c === ':' && qi >= 0) { if (nest) nest--; else return [e.slice(0, qi).trim(), e.slice(qi + 1, k).trim(), e.slice(k + 1).trim()]; } }
   return null; }
 const LITTLE = new Set(['assets/games/little.js', 'assets/games/lantern-barn.js', 'assets/games/picture-garden.js', 'assets/games/glow-jars.js']);
+const SING = new Set(['assets/games/sing-along.js']); // sing-along: every line comes from assets/games/sing-lines.js (SL.*), verified below
 const problems = []; let sites = 0;
 function checkExpr(e, where) {
   e = e.trim(); if (!e) return;
@@ -88,6 +89,7 @@ function checkExpr(e, where) {
   const tq = ternary(e); if (tq) { checkExpr(tq[1], where); checkExpr(tq[2], where); return; }
   // Little Lanterns games: every line comes from assets/games/little-lines.js (LN.* / its aliases G, J, C), whose full output is verified below
   if (LITTLE.has(where.split(':')[0]) && /^(?:(?:LN|G|J|C)\.[\w.]+(?:\([^()]*\))?|q\.(?:cue|yes|here)|ln\.(?:cue|yes|here)|lines\(b\._it\)\.that|lines|cur)$/.test(e)) return;
+  if (SING.has(where.split(':')[0]) && /^(?:SL\.[\w.]+(?:\[[\w.]+\])?(?:\([^()]*\))?|intro\(\)(?:\.slice\([^()]*\))?)$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
 const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt|sayThen|speakThen|praiseThen)\s*\(|\.(?:say|sayThen)\s*\()/g; // *Then: say, then continue when the line ended (voice/voice-then.js)
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
@@ -106,6 +108,10 @@ for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
   for (const l of LN.all(D)) { n++; if (!keys.has(norm(l.text))) problems.push(`little-lines: "${l.text}" is not in the manifest`); }
   // and every content item the games can ask about is enumerated by LN.all (spot check the data the games read)
   console.log(`voice check: ${n} Little Lanterns lines verified against the manifest`); }
+// Sing-along: every line sing-lines.js can produce over content/songs.json must be a manifest line
+{ const SL = require(path.join(APP, 'assets/games/sing-lines.js')), SG = JSON.parse(fs.readFileSync(path.join(APP, 'content/songs.json'), 'utf8')); let n = 0;
+  for (const l of SL.all(SG)) { n++; if (!keys.has(norm(l.text))) problems.push(`sing-lines: "${l.text}" is not in the manifest`); }
+  console.log(`voice check: ${n} sing-along lines verified against the manifest`); }
 // files + index: every shipped line has all its files (.mp3 + .opus) and is in index.json; lines still pending are reported, not failed
 let missing = 0, pending = 0; for (const it of man.items) { if (it.reserved) continue;
   if (idx.map[it.key] !== it.id) { problems.push(`index.json does not map "${it.key}" to ${it.id}`); continue; }
