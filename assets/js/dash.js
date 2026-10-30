@@ -24,6 +24,11 @@
     'CCSS.MATH.CONTENT.K.G.A.2': 'Name shapes (any size or turn)',
     'CCSS.MATH.CONTENT.K.G.B.4': 'Compare shapes: sides and corners',
     'CCSS.MATH.PRACTICE.MP7': 'Patterns: look for structure (practice standard)',
+    // CSTA K-12 Computer Science Standards (2017), level 1A (grades K-2)
+    'CSTA.1A-AP-08': 'Create and follow step-by-step algorithms',
+    'CSTA.1A-AP-10': 'Programs with sequences and simple loops',
+    'CSTA.1A-AP-11': 'Break a problem into a precise sequence of steps',
+    'CSTA.1A-AP-14': 'Debug: find and fix errors in a program',
     // Head Start ELOF goals (Little Lanterns lessons are aligned to these goals; this is not an assessment that a goal is met)
     'ELOF.IT-LC 1': 'Attends to and responds to communication (infant/toddler)',
     'ELOF.IT-LC 7': 'Understands more and more words (infant/toddler)',
@@ -39,7 +44,7 @@
     'ELOF.P-MATH 4': 'Compares numbers: more and fewer (preschool)',
     'ELOF.P-MATH 9': 'Identifies and describes shapes (preschool)'
   };
-  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ');
+  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ').replace('CSTA.', 'CSTA ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const DAY = 864e5;
   const dayNum = (t) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };
@@ -90,10 +95,10 @@
     const review = (rid) => { const played = (cat.order[rid] || []).filter(ls => (src.lessons[ls.id] || {}).stars > 0); return played.sort((a, b) => (src.lessons[a.id].stars - src.lessons[b.id].stars))[0] || next(rid); };
     const col = (rid) => (cat.realms.find(r => r.id === rid) || {}).color || '#9B8AD1';
     const L = (ls, what, m) => ({ ls, title: what || ls.name, m, color: col(ls.realm), tile: cat.games[ls.game.id].tile });
-    const rd = next('reading'), ma = next('math');
+    const rd = next('reading'), ma = next('math'), lg = next('logic'); // lg: undefined when the age band has no Logic & Coding lessons
     // Little Lanterns: much shorter sessions (under 2: a few minutes, played together)
     const k = El.band() === 'tiny' ? .2 : El.isLittle() ? 1 / 3 : 1, mm = (m) => Math.max(3, Math.round(m * k));
-    return [L(rd, 'New: ' + rd.name, mm(15)), L(ma, 'New: ' + ma.name, mm(15)), L(review('reading'), 'Review: ' + review('reading').name, mm(10)), L(review('math'), 'Review: ' + review('math').name, mm(10)), L(rd, 'Practice: ' + rd.name, mm(15)),
+    return [L(rd, 'New: ' + rd.name, mm(15)), L(ma, 'New: ' + ma.name, mm(15)), L(review('reading'), 'Review: ' + review('reading').name, mm(10)), L(review('math'), 'Review: ' + review('math').name, mm(10)), lg ? L(lg, 'New: ' + lg.name, mm(15)) : L(rd, 'Practice: ' + rd.name, mm(15)),
       { title: 'Free play: any open game', m: mm(10), color: '#F5B841', icon: 'star' }, { title: 'Rest day: read a picture book together', m: 0, color: '#9B8AD1', icon: 'book' }];
   }
 

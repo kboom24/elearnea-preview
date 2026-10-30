@@ -104,13 +104,13 @@
     paintBand(); if (was !== El.isLittle()) document.getElementById('stars').textContent = El.Learn.totalStars(); }));
   const cat = await El.catalog(); const w = document.getElementById('world');
   for (const r of cat.realms) {
-    const open = r.status === 'open', b = document.createElement('button');
+    const open = r.status === 'open' && (cat.order[r.id] || []).length > 0, b = document.createElement('button'); // open = has lessons for this age band
     b.className = 'isle ' + (open ? 'open' : 'soon'); b.style.setProperty('--c', r.color); b.setAttribute('aria-label', r.name + (open ? '' : ' (coming soon)'));
     b.innerHTML = `<span class="pic"><img src="../${r.img}-sm.webp" srcset="../${r.img}-sm.webp 360w, ../${r.img}.webp 720w" sizes="(min-width: 900px) 330px, 45vw" alt="">${open ? `<span class="star">${El.icon('star')}</span>` : `<span class="moon">${El.icon('moon')}</span>`}<span class="badge">${El.icon(open ? r.icon : 'lock')}</span></span><span class="name">${r.name}</span>`;
     b.addEventListener('click', () => {
       El.sfx.tap();
       if (open) { El.Voice.say(r.say, { rate: 1 }); setTimeout(() => { location.href = '../realm/' + r.id + '/'; }, El.Voice.ok ? 650 : 120); }
-      else { El.Voice.say(r.say, { rate: 1 }); El.ui.toast('🌙 ' + r.name + ' is still being built. Coming soon!'); const wk = document.getElementById('wick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); }
+      else { El.Voice.say(r.saySoon || r.say, { rate: 1 }); El.ui.toast('🌙 ' + r.name + ' is still being built. Coming soon!'); const wk = document.getElementById('wick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); }
     });
     w.appendChild(b);
   }
