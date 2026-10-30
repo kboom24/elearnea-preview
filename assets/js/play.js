@@ -12,11 +12,11 @@
     progress(done, total) { if (dots.children.length !== total) dots.innerHTML = '<i></i>'.repeat(total); [...dots.children].forEach((d, i) => d.classList.toggle('on', i < done)); },
     results({ stars, acc, res, again, back: url }) {
       if (res.embedded) { if (stars) El.ui.toast(`Saved! ${stars} star${stars === 1 ? '' : 's'} on your path`); return; }
-      El.sfx.win();
+      if (!res.empty) El.sfx.win();
       const msg = stars >= 3 ? 'Wonderful!' : stars === 2 ? 'Great job!' : 'Good try!';
       modal.querySelector('.paper').innerHTML = `<div class="stars3">${[0, 1, 2].map(i => El.icon('star', i < stars ? 'on' : '')).join('')}</div>
         <div class="wick cheer"><img src="${El.url('assets/img/wick-sm.webp')}" alt=""></div>
-        <h2>${msg}</h2><p>${res.firstTry} of ${res.total} right on the first try</p>
+        <h2>${msg}</h2><p>${res.empty ? 'Tap Again to play' : `${res.firstTry} of ${res.total} right on the first try`}</p>
         <div class="row2"><button class="btn" id="again" data-say="Again!">${El.icon('again')}Again</button><a class="btn teal" id="toPath" href="${url}" data-say="Back to the path">${El.icon('map')}Path</a></div>`;
       modal.classList.add('on'); setTimeout(() => El.Voice.say(`${msg} You earned ${stars} star${stars === 1 ? '' : 's'}!`, { rate: 1 }), 500);
       modal.querySelector('#again').onclick = () => { modal.classList.remove('on'); again(); };

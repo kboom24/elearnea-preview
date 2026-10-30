@@ -14,15 +14,18 @@ El.defineGame({
     f.src = El.url('play/mothabet/game/index.html') + '?' + qp.toString();
     host.root.innerHTML = ''; host.root.appendChild(f);
     let ended = false, total = 10;
+    const soundOn = () => { const s = El.store.load().set; return !!(s.sound || s.voice); }; // same rule as El.ui.soundBtn
     const send = (m) => { try { f.contentWindow.postMessage(Object.assign({ el: 1, src: 'elearnea' }, m), location.origin); } catch (er) {} };
     const onMsg = (e) => { if (e.origin !== location.origin || e.source !== f.contentWindow || !e.data || e.data.el !== 1 || e.data.src !== 'mothabet') return; const m = e.data;
-      if (m.type === 'ready') { try { f.contentWindow.focus(); } catch (er) {}
+      if (m.type === 'ready') { try { f.contentWindow.focus(); } catch (er) {} send({ type: 'sound', on: soundOn() });
         if (m.lesson && Array.isArray(m.pool) && m.pool.length) { const words = host.learn.pick(cfg.skill, m.pool.slice(), Math.min(10, m.pool.length), host.rng); total = words.length;
           send({ type: 'start', words, d: host.learn.difficulty(cfg.skill) }); host.emit('progress', { done: 0, total }); } }
       else if (m.type === 'word' && !ended) host.emit('mastery', { item: String(m.item), correct: !!m.correct, firstTry: !!m.firstTry });
       else if (m.type === 'progress' && !ended) host.emit('progress', { done: m.done | 0, total: m.total | 0 || total });
-      else if (m.type === 'results' && m.mode === 'lesson' && !ended) { ended = true; host.end({ total: m.total | 0 || total, done: m.words | 0, firstTry: m.firstTry | 0 }); } };
-    addEventListener('message', onMsg);
-    return { stop() { ended = true; removeEventListener('message', onMsg); } };
+      // total = words ATTEMPTED (never-reached words are neither recorded nor counted); 0 attempted -> host.end shows an empty card, no record
+      else if (m.type === 'results' && m.mode === 'lesson' && !ended) { ended = true; const n = Math.max(0, m.total | 0); host.end({ total: n, done: n, firstTry: Math.min(n, m.firstTry | 0), planned: m.planned | 0 }); } };
+    const onSound = (e) => send({ type: 'sound', on: !!(e.detail && e.detail.on) });
+    addEventListener('message', onMsg); addEventListener('el:sound', onSound);
+    return { stop() { ended = true; removeEventListener('message', onMsg); removeEventListener('el:sound', onSound); } };
   }
 });

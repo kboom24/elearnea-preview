@@ -156,7 +156,7 @@
     // picture-first: every button with data-say speaks its label for non-readers
     speakable(rootEl) { (rootEl || document).addEventListener('click', (e) => { const b = e.target.closest('[data-say]'); if (b) V.say(b.getAttribute('data-say'), { rate: 1 }); }, true); },
     soundBtn(btn) { const d = El.store.load(); const paint = () => { const on = d.set.voice || d.set.sound; btn.innerHTML = El.icon(on ? 'sound' : 'mute'); btn.setAttribute('aria-label', on ? 'Sound on' : 'Sound off'); };
-      paint(); btn.addEventListener('click', () => { const on = !(d.set.voice || d.set.sound); d.set.voice = d.set.sound = on; El.store.save(); paint(); if (on) { El.sfx.tap(); V.say('Sound on!'); } else V.stop(); }); }
+      paint(); btn.addEventListener('click', () => { const on = !(d.set.voice || d.set.sound); d.set.voice = d.set.sound = on; El.store.save(); paint(); if (on) { El.sfx.tap(); V.say('Sound on!'); } else V.stop(); root.dispatchEvent(new CustomEvent('el:sound', { detail: { on } })); }); }
   };
 
   /* ------------------------------------------------------------ game host (shared contract) */
@@ -176,7 +176,10 @@
           else if (type === 'mastery') { L.record(config.skill, String(ev.item), !!ev.firstTry); El.store.save(); }
           root.dispatchEvent(new CustomEvent('el:' + type, { detail: ev }));
         },
-        end(res) { const acc = res.total ? Math.round(100 * res.firstTry / res.total) : 0; const stars = res.stars != null ? res.stars : L.starsFor(acc, res.done != null ? res.done : res.total, res.total);
+        end(res) {
+          // nothing attempted (e.g. the timer ran out before the first word was touched): no stars, no lesson record, no log entry
+          if (!res.total) { root.dispatchEvent(new CustomEvent('el:end', { detail: Object.assign({ stars: 0, acc: 0, empty: true }, res) })); ui.results && ui.results({ stars: 0, acc: 0, res: Object.assign({ empty: true }, res), rec: null, again: () => { t0 = Date.now(); stage.innerHTML = ''; inst = mod.start(config, host); }, back }); return; }
+          const acc = res.total ? Math.round(100 * res.firstTry / res.total) : 0; const stars = res.stars != null ? res.stars : L.starsFor(acc, res.done != null ? res.done : res.total, res.total);
           const secs = Math.min(1800, Math.round((Date.now() - t0) / 1000)); t0 = Date.now(); const rec = L.lessonDone(config.lesson, { stars, acc, total: res.total, secs }); root.dispatchEvent(new CustomEvent('el:end', { detail: Object.assign({ stars, acc }, res) }));
           ui.results && ui.results({ stars, acc, res, rec, again: () => { t0 = Date.now(); stage.innerHTML = ''; inst = mod.start(config, host); }, back }); }
       };

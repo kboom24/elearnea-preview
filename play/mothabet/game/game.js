@@ -395,15 +395,18 @@
       game.save.write();
     },
     endRound(why) {
-      if (this.over) return; this.over = true; this.phase = 'end'; MB.Voice.stop();
+      if (this.over) return; this.over = true; const ph0 = this.phase; this.phase = 'end'; MB.Voice.stop();
       const done = this.results.length, perfect = this.results.filter(r => r.perfect).length;
       const r = { band: this.band, mode: this.mode, stage: this.stage, score: this.score, done, perfect, acc: done ? Math.round(perfect / done * 100) : 0, why, seed: this.seed, bestCombo: this.bestCombo, hints: this.hintsUsed, words: this.results.map(x => ({ w: x.it.w, p: x.perfect })), cfg: this.cfg, time: Math.round(ROUND_SEC - this.time) };
       // marks for the Daily Jar (per planned word)
       if (this.mode === 'jar') { r.marks = this.items.map(it => { const rs = this.results.filter(x => x.it === it); return rs.some(x => x.perfect && !x.retry) ? 2 : rs.length ? 1 : 0; }); r.right = r.marks.filter(k => k === 2).length; }
       r.stars = HX.Stars.evaluate(MB.STAR_RULES, r).count;
-      if (this.mode === 'lesson') { // planned words not reached before the timer count as not first-try right; Elearnea's starsFor scores the lesson
-        r.total = this.items.length; r.firstTry = this.results.filter(x => x.perfect && !x.retry).length; r.done = this.results.filter(x => !x.retry).length;
-        EB.progress(r.done, r.total); EB.results(r); game.go('lesson', { done: true }, { fade: .25 }); return; }
+      if (this.mode === 'lesson') { // only ATTEMPTED planned words count: finished ones, plus the word on screen at the buzzer if the child had
+        // already placed or missed a moth (recorded as a miss). Words never reached are not sent to El.Learn and are not in total.
+        const fin = this.results.filter(x => !x.retry), w = this.word, live = why === 'time' && w && !w.retry && ph0 === 'word' && (w.filled > 0 || w.misses > 0) && !fin.some(x => x.it === w.it);
+        if (live) EB.word({ item: w.it.w, correct: false, firstTry: false });
+        r.attempted = fin.length + (live ? 1 : 0); r.total = r.attempted; r.done = r.attempted; r.planned = this.items.length; r.firstTry = fin.filter(x => x.perfect).length;
+        EB.progress(fin.length, this.items.length); EB.results(r); game.go('lesson', { done: true }, { fade: .25 }); return; }
       game.go('results', r, { fade: .25 });
     },
 
@@ -749,10 +752,17 @@
   /* ------------------------------------------------------------------ boot */
   // Backing-store cap (rule 9): full DPR up to ~3.2 MP, then scale DPR down so big screens (iPad Pro 12.9" @2x = 5.6 MP) stay smooth. Read by the engine on every resize.
   const PX_CAP = 3.2e6, MAX_DPR = () => Math.max(1, Math.min(3, Math.sqrt(PX_CAP / Math.max(1, innerWidth * innerHeight))));
-  game = HX.createGame({ slug: SLUG, canvas: document.getElementById('game'), start: LESSON ? 'lesson' : 'title', menuScene: LESSON ? 'lesson' : 'title', bridge: false, get maxDpr() { return MAX_DPR(); }, letterbox: '#0b0920',
+  game = HX.createGame({ slug: SLUG, canvas: document.getElementById('game'), start: LESSON ? 'lesson' : 'title', menuScene: LESSON ? 'lesson' : 'title', bridge: false, hud: { pause: true, mute: !LESSON }, // lesson: Elearnea's top-bar sound button is the only one get maxDpr() { return MAX_DPR(); }, letterbox: '#0b0920',
     brand: { splash: false, badge: false },
     scenes: { lesson: Lesson, title: Title, path: Path, goal: Goal, play: Play, results: Results, book: Book, gate: Gate, grown: Grown, share: Share, challenge: Challenge } });
   M = MB.data(game.save); MB.Voice.enabled = M.set.voice; MB.Voice.rate = M.set.rate; MB.Voice.init(); MB.Voice.onChange(() => { if (game.scene && game.scene.layout && game.scene === game.scenes.grown) game.scene.layout(); });
+  // Lesson mode: Elearnea's sound button (parent top bar) is the single sound control. Start from its stored setting, follow its
+  // changes (bridge 'sound' message), and make the engine's own toggle (KeyM) a no-op so the two can't disagree.
+  if (LESSON) {
+    const apply = (on) => { HX.Audio.setMuted(!on, false); MB.Voice.enabled = on; if (!on) { MB.Voice.stop(); } };
+    let on = true; try { const st = (JSON.parse(localStorage.getItem('elearnea:v1') || '{}').set) || {}; on = st.sound !== false || st.voice !== false; } catch (e) {}
+    apply(on); EB.onSound = apply; HX.Audio.toggleMute = function () { return this.muted; };
+  }
   // finger-sized pause overlay
   const ps = game.scenes.pause, psl = ps.layout; if (psl) ps.layout = function () { psl.call(this); const bh = Math.max(T(), 74); const W = game.W, H = game.H, bw = Math.min(420, W - 60); this.buttons.forEach((b, i) => Object.assign(b, { x: W / 2 - bw / 2, y: H / 2 - bh * 1.2 + i * (bh + 16), w: bw, h: bh })); };
   // Letter entry: while a jar round is live, letter keys catch moths. Capture them before the engine's window listener so
@@ -768,13 +778,18 @@
   if (EB && EB.qa) window.__qa = {
     start: (o) => game.go('play', Object.assign({ mode: 'stage', band: 's', stage: 0 }, o || {})),
     forceGameOver: (s) => { const p = game.scenes.play; if (game.base !== p) window.__qa.start(); p.score = s; p.endRound('qa'); },
-    state: () => { const p = game.scenes.play, w = p.word; return { scene: game.scene && game.scene.name, base: game.base && game.base.name, phase: p.phase, idx: p.idx, word: w && w.it.w, tiles: w && w.it.tiles, filled: w && w.filled, need: p.need && p.need(), score: p.score, combo: p.combo, time: p.time, moths: (p.moths || []).filter(m => m.state === 'fly').map(m => ({ ch: m.ch, x: Math.round(m.x), y: Math.round(m.y) })), voice: MB.Voice.ok }; },
+    // safe before play starts (no round yet): same shape, phase 'idle', empty/zero defaults
+    state: () => { const p = game.scenes.play, live = !!p.queue && game.base === p, w = live ? p.word : null;
+      if (!live) return { scene: game.scene && game.scene.name, base: game.base && game.base.name, phase: 'idle', idx: -1, word: null, tiles: null, filled: 0, need: null, score: 0, combo: 0, time: ROUND_SEC, moths: [], voice: MB.Voice.ok };
+      return { scene: game.scene && game.scene.name, base: game.base && game.base.name, phase: p.phase, idx: p.idx, word: w && w.it.w, tiles: w && w.it.tiles, filled: w && w.filled, need: p.need && p.need(), score: p.score, combo: p.combo, time: p.time, moths: (p.moths || []).filter(m => m.state === 'fly').map(m => ({ ch: m.ch, x: Math.round(m.x), y: Math.round(m.y) })), voice: MB.Voice.ok }; },
     // place the next needed tile (true = correct, false = a wrong moth)
     place: (ok) => { const p = game.scenes.play, need = p.need(); const m = p.moths.find(x => x.state === 'fly' && (ok === false ? x.ch !== need : x.ch === need)); if (m) p.attempt(m); return !!m; },
     solveWord: () => { const p = game.scenes.play; let n = 0; while (p.phase === 'word' && n++ < 12) { if (!window.__qa.place(true)) break; } return p.phase; },
     toScreen: (x, y) => { const v = game.view; return { x: v.ox / 1 + x * v.scale, y: v.oy + y * v.scale }; },
     // lesson mode: current scene name + a named button's rect (game units), e.g. button('bGo') on the lesson card
-    scene: () => game.scene && game.scene.name, plan: () => EB && EB.plan && { words: EB.plan.items.map(i => i.w), d: EB.plan.d, local: !!EB.plan.local },
+    scene: () => game.scene && game.scene.name, muted: () => HX.Audio.muted, voiceOn: () => MB.Voice.enabled,
+    hud: () => game.hudButtons.map(b => ({ icon: b.icon, style: b.style, x: b.x, y: b.y, w: b.w, h: b.h, visible: b.visible !== false })), scale: () => game.view.scale, view: () => ({ W: game.W, H: game.H, scale: game.view.scale, ox: game.view.ox, oy: game.view.oy, iw: innerWidth, ih: innerHeight }), zone: () => zone(),
+    endNow: () => game.scenes.play.endRound('time'), plan: () => EB && EB.plan && { words: EB.plan.items.map(i => i.w), d: EB.plan.d, local: !!EB.plan.local },
     button: (n) => { const b = game.scene && game.scene[n]; return b ? { x: b.x, y: b.y, w: b.w, h: b.h, enabled: b.enabled !== false } : null; },
     M: () => M, MB
   };

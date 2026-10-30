@@ -7,7 +7,7 @@
    (3) Runtime: the QA run fails on any window.__voiceMisses entry, i.e. text spoken at runtime with no clip.)
    Usage: node tools/voice/check.js */
 const fs = require('fs'), path = require('path');
-const APP = path.resolve(__dirname, '../..'), SRC = path.resolve(APP, '../seed/mothabet-src');
+const APP = path.resolve(__dirname, '../..'), SRC = path.join(APP, 'play/mothabet/game'); // versioned Mothabet source in this repo (was the untracked seed /home/box/elearnea/seed/mothabet-src)
 const man = JSON.parse(fs.readFileSync(path.join(APP, 'voice/manifest.json'), 'utf8')), idx = JSON.parse(fs.readFileSync(path.join(APP, 'voice/index.json'), 'utf8'));
 const norm = (s) => String(s).toLowerCase().replace(/[‘’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
 const keys = new Set(man.items.filter(x => !x.reserved).map(x => x.key));

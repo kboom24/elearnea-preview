@@ -18,7 +18,15 @@ Flow, one round (protocol in `play/mothabet/game/bridge.js`, adapter in `assets/
 3. The adapter calls `host.learn.pick(skill, pool, 10)` and `host.learn.difficulty(skill)`, then posts `start {words, d}`.
 4. The frame plays those words at difficulty `d`, held fixed for the round. El.Learn adapts `d` after each word, and the next round uses the new value.
 5. On each planned word's FIRST attempt, the frame posts `word {item, firstTry}`. The adapter turns this into `host.emit('mastery')`, which runs `El.Learn.record` (Leitner box + difficulty). Easier retries of a missed word are played, but not recorded a second time. `progress {done, total}` drives the shell's progress.
-6. At round end the frame posts `results`. The adapter calls `host.end({total, done, firstTry})`, which runs `lessonDone` (path stars, dashboard log) and shows Elearnea's own results card (Again / Path). Stars come from `El.Learn.starsFor`, the same rule as every other game. Planned words not reached before the 90 s timer count as not right on the first try.
+6. At round end the frame posts `results`. The adapter calls `host.end({total, done, firstTry})`, which runs `lessonDone` (path stars, dashboard log) and shows Elearnea's own results card (Again / Path). Stars come from `El.Learn.starsFor`, the same rule as every other game.
+
+### The 90-second round: only attempted words count
+The round stays 90 s. When the timer ends:
+- **Finished planned words** are recorded once each (first attempt) and count toward the score.
+- **The word on screen at the buzzer** counts as attempted, and is recorded as a miss, only if the child had already placed or missed a moth. If the child hadn't touched it yet, it counts as not reached.
+- **Words never reached** are not sent to El.Learn (neither a hit nor a miss) and are not part of the total.
+- `host.end` gets `total = done = attempted`, so the card reads "X of *attempted* right on the first try" and `starsFor` scores attempted words only.
+- **0 attempted words:** `host.end` skips `lessonDone`. That means no stars, no lesson record, no dashboard log entry and no streak touch. The results card still shows: 0 stars, "Good try!" (an existing voice line), "Tap Again to play", and the Again / Path buttons, without the win chime.
 
 The frame's local save (`hexan:elearnea-mothabet`) still keeps settings (voice, music) and harmless round counters. It does not schedule anything in lesson mode. `El.store.reset()` already clears it.
 
@@ -39,6 +47,12 @@ Lesson mode (`?lesson=1`) starts on a new `lesson` base scene. It never shows Mo
 
 - There is no close button. Elearnea's top bar is the way out.
 - The pause menu's "Menu" returns to the card.
+
+### Controls in lessons: one sound button, one pause
+- **Sound:** Elearnea's top-bar sound button is the only sound control. Mothabet's own HUD mute is not created in lesson mode (`hud: {mute: false}`), and the engine's KeyM toggle is a no-op there.
+  - At boot the frame reads Elearnea's stored setting (`elearnea:v1` `set.sound`/`set.voice`, the same rule as `El.ui.soundBtn`).
+  - `El.ui.soundBtn` fires an `el:sound` event. The adapter forwards it as `{type:'sound', on}`. The frame then calls `HX.Audio.setMuted` (which covers sfx and music through the master gain), sets `MB.Voice.enabled`, and stops any speech in progress.
+- **Pause:** Elearnea's shell has no pause, so Mothabet keeps exactly one: its HUD pause, shown only during play. It is at least 64 CSS px (`hudFix`), it sits in the frame below Elearnea's top bar, and it stays clear of the top-centre exit zone. QA checks all of this.
 - On finish, Elearnea's results card offers **Path**, back to `realm/reading/`, where the lesson's stars show.
 
 ## 3. Playtoom leftovers
@@ -58,9 +72,11 @@ Both live only on Mothabet's own title screen, which Elearnea lesson mode never 
 
 ## Where the Mothabet source lives
 
-`play/mothabet/game/` in this repo is now the versioned source. The untracked seed (`/home/box/elearnea/seed/mothabet-src`) lacks the integration (bridge protocol, consent shim, lesson mode, QA gate). `tools/sync-mothabet.sh` therefore refuses to copy over it unless `MB_SYNC_FORCE=1` is set, and it lists the files that differ. Port seed changes (for example voice prompt wording) by hand.
+**`play/mothabet/game/` in this repo is the one Mothabet source.** Edit it there.
 
-Note: `tools/voice/check.js` and `build-manifest.js` still scan the seed. They are left untouched on this branch, because another worker's voice change is editing them. Once that lands, point them at `play/mothabet/game/`.
+The seed (`/home/box/elearnea/seed/mothabet-src`) is retired. `tools/sync-mothabet.sh` now just prints "retired", with a pointer to `play/mothabet/game/`, and exits. It reads, writes and deletes nothing. The seed folder itself is left in place, but it is frozen and not maintained.
+
+`tools/voice/check.js` and `build-manifest.js` read the Mothabet speech from `play/mothabet/game/` (a repo-relative path), so a new spoken line added in the repo copy is caught, and both tools work from any checkout or worktree. They no longer read the seed.
 
 ## Voice
 
