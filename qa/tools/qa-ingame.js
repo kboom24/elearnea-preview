@@ -90,6 +90,7 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
           if (GAME[ls] === 'moth-bridge') { // ?qa=1: #stage data-want = tap:<i> | slide | pick:<word> | seg:<letter>, data-miss = a wrong choice, data-busy
             const st = await waitFor(async () => await resultsOn() ? { end: 1 } : page.$eval('#stage', s => s.dataset.want && s.dataset.busy !== '1' ? { want: s.dataset.want, miss: s.dataset.miss, word: s.dataset.word } : null), 30000, 'moth bridge idle'); if (st.end) break;
             const [kind, arg] = st.want.split(':'); if (!aud.words) { aud.words = []; aud.steps = {}; } if (aud.words[aud.words.length - 1] !== st.word) aud.words.push(st.word); rounds = aud.words.length;
+            if (kind === 'pick' || kind === 'seg') await waitFor(() => page.evaluate(() => ![...document.querySelectorAll('#mbCards > button')].some(c => c.getAnimations().some(x => x.animationName === 'popin' && x.playState === 'running'))), 3000, 'cards settled'); // measure targets after their pop-in
             aud.steps[kind] = (aud.steps[kind] || 0) + 1; aud.maxOpts = Math.max(aud.maxOpts || 0, await page.$$eval('#mbCards > button', a => a.length)); await sleep(150); if (aud.steps[kind] === 1 || kind === 'pick') await sample(); if (aud.steps[kind] === 1) await shot(`${ls}-${kind}`);
             const before = st.want + '|' + st.word;
             if (kind === 'tap') await tapEl(await page.$(`#mbPlanks .plank:nth-child(${+arg + 1}) .moth`));

@@ -50,7 +50,7 @@
 .mbr-slide.on .mbr-lantern:active { cursor: grabbing; }
 .mbr-cards { width: 100%; max-width: 760px; min-height: clamp(116px, 20vh, 176px); display: flex; justify-content: center; align-items: center; gap: clamp(10px, 3vw, 26px); padding-right: 96px; padding-left: 0; }
 .mbr-cards.tray { flex-wrap: wrap; gap: 8px; }
-.mbr-card { width: clamp(104px, 26vw, 168px); aspect-ratio: 1; border: 0; padding: 8px; border-radius: 26px; background: var(--cream); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d), 0 10px 20px rgba(0,0,0,.35); cursor: pointer; animation: popin .4s cubic-bezier(.3,1.6,.5,1) backwards; }
+.mbr-card { flex: none; width: clamp(104px, 26vw, 168px); aspect-ratio: 1; border: 0; padding: 8px; border-radius: 26px; background: var(--cream); background-image: var(--felt); box-shadow: 0 6px 0 var(--cream-d), 0 10px 20px rgba(0,0,0,.35); cursor: pointer; animation: popin .4s cubic-bezier(.3,1.6,.5,1) backwards; }
 .mbr-card:nth-child(2) { animation-delay: .1s; } .mbr-card:nth-child(3) { animation-delay: .2s; }
 .mbr-card .in, .mbr-card .pic { display: block; width: 100%; height: 100%; }
 .mbr-card.no { opacity: .45; transform: scale(.92); } .mbr-card.fade { opacity: .3; }
@@ -61,6 +61,8 @@
 /* short screens (phones in landscape, small laptops) */
 @media (max-height: 700px) { .mbr-bridge { height: 140px; } .mbr-top { min-height: 72px; } .mbr-hear { width: 68px; height: 68px; } .mbr-pic { width: 112px; } .mbr-cards { min-height: 110px; } .mbr-card { width: 104px; } }
 @media (min-width: 900px) { .mbr-cards { padding-left: 96px; } }
+/* phones: three 104 px cards need the full width, so the row sits above Wick instead of beside him */
+@media (max-width: 599px) { .mbr-cards { padding-right: 0; margin-bottom: 64px; } .mbr-wick { width: 76px; } }
 /* big touch screens (iPad portrait and up): everything grows so the bridge fills the stage */
 @media (min-width: 700px) and (min-height: 900px) { .mbr-span { width: min(100%, 820px); } .mbr-bridge { height: 300px; } .moth { width: 168px; --mf: 3.6rem; } .moth.wide { width: 196px; } .plank { width: 190px; }
   .mbr-pic { width: 240px; } .mbr-card { width: 210px; border-radius: 32px; } .mbr-cards { min-height: 220px; } .mbr-hear { width: 92px; height: 92px; } .mbr-slide { height: 96px; } .mbr-lantern { width: 88px; height: 96px; } .mbr-wick { width: 120px; } }
