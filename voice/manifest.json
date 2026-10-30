@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T05:29:49.835Z",
+ "generated": "2026-10-30T05:56:57.602Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -36,28 +36,29 @@
  },
  "elearneaCsv": "/home/box/elearnea/voice/elearnea-lines.csv",
  "counts": {
-  "total": 1929,
-  "spoken": 1912,
+  "total": 1967,
+  "spoken": 1950,
   "reserved": 17,
   "byGame": {
-   "elearnea": 41,
+   "elearnea": 44,
    "lily-pad-hop": 327,
    "firefly-count": 72,
+   "clocktower-gears": 35,
    "mothabet": 1489
   },
   "byType": {
-   "instruction": 492,
+   "instruction": 510,
    "label": 133,
-   "feedback": 112,
-   "praise": 134,
+   "feedback": 120,
+   "praise": 141,
    "number": 10,
+   "word": 551,
    "phoneme": 47,
    "letter": 25,
-   "word": 546,
    "sentence": 430
   },
   "needsHumanCheck": 280,
-  "withClip": 1914,
+  "withClip": 1952,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
@@ -505,6 +506,108 @@
    },
    "files": [
     "voice/clips/el.bigger-jars-to-add.mp3"
+   ]
+  },
+  {
+   "id": "el.fix-the-gear-patterns",
+   "key": "fix the gear patterns",
+   "text": "Fix the gear patterns!",
+   "render": "Fix the gear patterns!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Gear patterns\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Fix the gear patterns.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.fix-the-gear-patterns.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-shapes-in-the-clocktower",
+   "key": "find the shapes in the clocktower",
+   "text": "Find the shapes in the clocktower!",
+   "render": "Find the shapes in the clocktower!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Find the shape\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the shapes in the clock tour.",
+     "score": 0.77,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.find-the-shapes-in-the-clocktower.mp3"
+   ]
+  },
+  {
+   "id": "el.sort-the-shapes-into-the-drawers",
+   "key": "sort the shapes into the drawers",
+   "text": "Sort the shapes into the drawers!",
+   "render": "Sort the shapes into the drawers!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Math realm path",
+     "trigger": "tap lesson stop \"Shape drawers\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Sort the shapes into the drawers.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.sort-the-shapes-into-the-drawers.mp3"
    ]
   },
   {
@@ -12739,6 +12842,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "2nd wrong answer: the right number glows"
+    },
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears sort round",
+     "trigger": "2nd wrong drawer: the right drawer glows"
     }
    ],
    "source": {
@@ -12843,6 +12951,11 @@
      "trigger": "each firefly tapped into the jar / count-along"
     },
     {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
+    },
+    {
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
@@ -12914,6 +13027,11 @@
      "trigger": "each firefly tapped into the jar / count-along"
     },
     {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
+    },
+    {
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
@@ -12983,6 +13101,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "each firefly tapped into the jar / count-along"
+    },
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
     }
    ],
    "source": {
@@ -13051,6 +13174,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "each firefly tapped into the jar / count-along"
+    },
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
     }
    ],
    "source": {
@@ -13119,6 +13247,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "each firefly tapped into the jar / count-along"
+    },
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
     },
     {
      "game": "mothabet",
@@ -13190,6 +13323,11 @@
      "game": "firefly-count",
      "screen": "Firefly Count round",
      "trigger": "each firefly tapped into the jar / count-along"
+    },
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along: each side highlighted"
     },
     {
      "game": "mothabet",
@@ -15082,6 +15220,1196 @@
    },
    "files": [
     "voice/clips/ff.nine-fireflies-and-one-more-how-many-in-all.mp3"
+   ]
+  },
+  {
+   "id": "cg.fix-the-gears-what-comes-next",
+   "key": "fix the gears what comes next",
+   "text": "Fix the gears! What comes next?",
+   "render": "Fix the gears! What comes next?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "first pattern of the round"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Fix the gears. What comes next?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.fix-the-gears-what-comes-next.mp3"
+   ]
+  },
+  {
+   "id": "cg.what-comes-next",
+   "key": "what comes next",
+   "text": "What comes next?",
+   "render": "What comes next?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "each next pattern; after Wick sings the pattern"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "What comes next?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.what-comes-next.mp3"
+   ]
+  },
+  {
+   "id": "cg.listen-to-the-pattern",
+   "key": "listen to the pattern",
+   "text": "Listen to the pattern.",
+   "render": "Listen to the pattern.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "1st wrong gear (Wick then sings the shapes along the gears)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Listen to the pattern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.listen-to-the-pattern.mp3"
+   ]
+  },
+  {
+   "id": "cg.this-one-fits",
+   "key": "this one fits",
+   "text": "This one fits!",
+   "render": "This one fits!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "2nd wrong gear: the right shape glows"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "This one fits.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.this-one-fits.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-the-gears-turn",
+   "key": "yes the gears turn",
+   "text": "Yes! The gears turn!",
+   "render": "Yes! The gears turn!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "pattern fixed (random praise)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the gears turn.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-the-gears-turn.mp3"
+   ]
+  },
+  {
+   "id": "cg.you-fixed-the-pattern",
+   "key": "you fixed the pattern",
+   "text": "You fixed the pattern!",
+   "render": "You fixed the pattern!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "pattern fixed (random praise)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "You fix the pattern.",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.you-fixed-the-pattern.mp3"
+   ]
+  },
+  {
+   "id": "cg.lets-count-the-sides",
+   "key": "let's count the sides",
+   "text": "Let's count the sides.",
+   "render": "Let's count the sides.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears shape rounds",
+     "trigger": "find: 2nd wrong shape / sort: 1st wrong drawer (count-along starts)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Let's count the sides.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.lets-count-the-sides.mp3"
+   ]
+  },
+  {
+   "id": "cg.which-drawer-does-it-go-in",
+   "key": "which drawer does it go in",
+   "text": "Which drawer does it go in?",
+   "render": "Which drawer does it go in?",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears sort round",
+     "trigger": "each new shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Which drawer does it go in?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.which-drawer-does-it-go-in.mp3"
+   ]
+  },
+  {
+   "id": "cg.put-the-shape-in-its-drawer",
+   "key": "put the shape in its drawer",
+   "text": "Put the shape in its drawer!",
+   "render": "Put the shape in its drawer!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears sort round",
+     "trigger": "first shape of the round"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Put the shape in its drawer.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.put-the-shape-in-its-drawer.mp3"
+   ]
+  },
+  {
+   "id": "cg.this-is-a-hexagon-it-has-six-sides",
+   "key": "this is a hexagon it has six sides",
+   "text": "This is a hexagon. It has six sides!",
+   "render": "This is a hexagon. It has six sides!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears sort round",
+     "trigger": "first hexagon of the round"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "This is a hexagon. It has six sides.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.this-is-a-hexagon-it-has-six-sides.mp3"
+   ]
+  },
+  {
+   "id": "cg.circle",
+   "key": "circle",
+   "text": "circle",
+   "render": "circle",
+   "type": "word",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "Wick sings the pattern: each gear's shape name"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "circle",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.circle.mp3"
+   ]
+  },
+  {
+   "id": "cg.find-the-circle",
+   "key": "find the circle",
+   "text": "Find the circle!",
+   "render": "Find the circle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "new shape to find; after a wrong shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the circle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.find-the-circle.mp3"
+   ]
+  },
+  {
+   "id": "cg.thats-a-circle",
+   "key": "that's a circle",
+   "text": "That's a circle.",
+   "render": "That's a circle.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "1st wrong shape (names the shape tapped)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "That's a circle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.thats-a-circle.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-a-circle",
+   "key": "yes a circle",
+   "text": "Yes! A circle!",
+   "render": "Yes! A circle!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "right shape / right drawer"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a circle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-a-circle.mp3"
+   ]
+  },
+  {
+   "id": "cg.round-with-no-corners-a-circle",
+   "key": "round with no corners a circle",
+   "text": "Round, with no corners. A circle!",
+   "render": "Round, with no corners. A circle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along ends (sides counted with highlights)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Round with no corners, a circle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.round-with-no-corners-a-circle.mp3"
+   ]
+  },
+  {
+   "id": "cg.square",
+   "key": "square",
+   "text": "square",
+   "render": "square",
+   "type": "word",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "Wick sings the pattern: each gear's shape name"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "square",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.square.mp3"
+   ]
+  },
+  {
+   "id": "cg.find-the-square",
+   "key": "find the square",
+   "text": "Find the square!",
+   "render": "Find the square!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "new shape to find; after a wrong shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the square.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.find-the-square.mp3"
+   ]
+  },
+  {
+   "id": "cg.thats-a-square",
+   "key": "that's a square",
+   "text": "That's a square.",
+   "render": "That's a square.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "1st wrong shape (names the shape tapped)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "That's a square.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.thats-a-square.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-a-square",
+   "key": "yes a square",
+   "text": "Yes! A square!",
+   "render": "Yes! A square!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "right shape / right drawer"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a square.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-a-square.mp3"
+   ]
+  },
+  {
+   "id": "cg.four-sides-all-the-same-a-square",
+   "key": "four sides all the same a square",
+   "text": "Four sides, all the same. A square!",
+   "render": "Four sides, all the same. A square!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along ends (sides counted with highlights)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Four sides all the same, a square.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.four-sides-all-the-same-a-square.mp3"
+   ]
+  },
+  {
+   "id": "cg.triangle",
+   "key": "triangle",
+   "text": "triangle",
+   "render": "triangle",
+   "type": "word",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "Wick sings the pattern: each gear's shape name"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "triangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.triangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.find-the-triangle",
+   "key": "find the triangle",
+   "text": "Find the triangle!",
+   "render": "Find the triangle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "new shape to find; after a wrong shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the triangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.find-the-triangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.thats-a-triangle",
+   "key": "that's a triangle",
+   "text": "That's a triangle.",
+   "render": "That's a triangle.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "1st wrong shape (names the shape tapped)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "That's a triangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.thats-a-triangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-a-triangle",
+   "key": "yes a triangle",
+   "text": "Yes! A triangle!",
+   "render": "Yes! A triangle!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "right shape / right drawer"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a triangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-a-triangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.three-sides-a-triangle",
+   "key": "three sides a triangle",
+   "text": "Three sides. A triangle!",
+   "render": "Three sides. A triangle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along ends (sides counted with highlights)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "three sides, a triangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.three-sides-a-triangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.rectangle",
+   "key": "rectangle",
+   "text": "rectangle",
+   "render": "rectangle",
+   "type": "word",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "Wick sings the pattern: each gear's shape name"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "rectangle",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.rectangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.find-the-rectangle",
+   "key": "find the rectangle",
+   "text": "Find the rectangle!",
+   "render": "Find the rectangle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "new shape to find; after a wrong shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the rectangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.find-the-rectangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.thats-a-rectangle",
+   "key": "that's a rectangle",
+   "text": "That's a rectangle.",
+   "render": "That's a rectangle.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "1st wrong shape (names the shape tapped)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "That's a rectangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.thats-a-rectangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-a-rectangle",
+   "key": "yes a rectangle",
+   "text": "Yes! A rectangle!",
+   "render": "Yes! A rectangle!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "right shape / right drawer"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a rectangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-a-rectangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.four-sides-two-long-two-short-a-rectangle",
+   "key": "four sides two long two short a rectangle",
+   "text": "Four sides. Two long, two short. A rectangle!",
+   "render": "Four sides. Two long, two short. A rectangle!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along ends (sides counted with highlights)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Four sides. Too long, too short. A rectangle.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.four-sides-two-long-two-short-a-rectangle.mp3"
+   ]
+  },
+  {
+   "id": "cg.hexagon",
+   "key": "hexagon",
+   "text": "hexagon",
+   "render": "hexagon",
+   "type": "word",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears pattern round",
+     "trigger": "Wick sings the pattern: each gear's shape name"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Hexagon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.hexagon.mp3"
+   ]
+  },
+  {
+   "id": "cg.find-the-hexagon",
+   "key": "find the hexagon",
+   "text": "Find the hexagon!",
+   "render": "Find the hexagon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "new shape to find; after a wrong shape; after the count-along"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the hexagon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.find-the-hexagon.mp3"
+   ]
+  },
+  {
+   "id": "cg.thats-a-hexagon",
+   "key": "that's a hexagon",
+   "text": "That's a hexagon.",
+   "render": "That's a hexagon.",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find round",
+     "trigger": "1st wrong shape (names the shape tapped)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "That's a hexagon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.thats-a-hexagon.mp3"
+   ]
+  },
+  {
+   "id": "cg.yes-a-hexagon",
+   "key": "yes a hexagon",
+   "text": "Yes! A hexagon!",
+   "render": "Yes! A hexagon!",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "right shape / right drawer"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a hexagon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.yes-a-hexagon.mp3"
+   ]
+  },
+  {
+   "id": "cg.six-sides-a-hexagon",
+   "key": "six sides a hexagon",
+   "text": "Six sides. A hexagon!",
+   "render": "Six sides. A hexagon!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "clocktower-gears",
+     "screen": "Clocktower Gears find/sort round",
+     "trigger": "count-along ends (sides counted with highlights)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Six sides, a hexagon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/cg.six-sides-a-hexagon.mp3"
    ]
   },
   {

@@ -7,7 +7,7 @@
 const fs = require('fs'), path = require('path'), vm = require('vm'), crypto = require('crypto');
 const APP = path.resolve(__dirname, '../..'), SRC = path.join(APP, 'play/mothabet/game'); // versioned Mothabet source in this repo (was the untracked seed /home/box/elearnea/seed/mothabet-src)
 const OUT = path.join(APP, 'voice/manifest.json'), INDEX = path.join(APP, 'voice/index.json');
-const MD = path.resolve(APP, '../VOICE-MANIFEST.md');
+const MD = process.env.VOICE_MD || path.resolve(APP, '../VOICE-MANIFEST.md'); // VOICE_MD / EL_CSV env: branch-local outputs (keep the shared files untouched)
 // Standard voice (Hexan, 2026-10-29): Kokoro-82M (Apache-2.0), voice af_bella. Mothabet clips come from the separate Mothabet Bella batch
 // (script: MB_CSV, files: MB_DIR, copied into app/voice/mb/ by import-mothabet.js); every other line is rendered from this manifest with say.py.
 const norm = (s) => String(s).toLowerCase().replace(/[‘’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -19,7 +19,7 @@ const MB_DIR = process.env.MB_DIR || '/home/box/elearnea/voice/mothabet/bella-07
 const MB_STATUS_F = process.env.MB_STATUS || '/home/box/elearnea/voice/mothabet/clip-status.tsv';
 const MB_STATUS = {}; if (fs.existsSync(MB_STATUS_F)) { const ls = fs.readFileSync(MB_STATUS_F, 'utf8').split(/\r?\n/).filter(Boolean); const h = ls.shift().split('\t'); for (const l of ls) { const c = l.split('\t'); MB_STATUS[c[0]] = Object.fromEntries(h.map((k, i) => [k, c[i] || ''])); } }
 const FIRST_NOTE = 'wording approved by Hexan 2026-10-29';
-const EL_CSV = path.resolve(APP, '../voice/elearnea-lines.csv');
+const EL_CSV = process.env.EL_CSV || path.resolve(APP, '../voice/elearnea-lines.csv');
 function readCsv(f) { const t = fs.readFileSync(f, 'utf8'); const rows = []; let row = [], cur = '', q = false;
   for (let i = 0; i < t.length; i++) { const c = t[i]; if (q) { if (c === '"' && t[i + 1] === '"') { cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
     else if (c === '"') q = true; else if (c === ',') { row.push(cur); cur = ''; } else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(cur); cur = ''; if (row.some(x => x !== '')) rows.push(row); row = []; } else cur += c; }
@@ -89,6 +89,23 @@ for (const [t, tr] of [['Tap each firefly to put it in the jar!', 'count round s
 for (let n = 1; n <= 10; n++) { add(NW[n], { type: 'number', game: F, prefix: 'ff', screen: 'Firefly Count round', trigger: 'each firefly tapped into the jar / count-along' });
   add(`Yes! ${NW[n]}!`, { type: 'praise', game: F, prefix: 'ff', screen: 'Firefly Count round', trigger: 'correct answer' }); }
 for (let a = 1; a < 10; a++) for (let b = 1; a + b <= 10; b++) add(`${NW[a]} ${a === 1 ? 'firefly' : 'fireflies'} and ${NW[b]} more. How many in all?`, { type: 'instruction', game: F, prefix: 'ff', screen: 'Firefly Count add round (Add within 5/10)', trigger: 'add round starts' });
+
+/* ================= Clocktower Gears (Math: patterns, shape names, shape sort) ================= */
+const CG = 'clocktower-gears', CGS = ['circle', 'square', 'triangle', 'rectangle', 'hexagon'];
+const CGFACT = { circle: 'Round, with no corners. A circle!', square: 'Four sides, all the same. A square!', triangle: 'Three sides. A triangle!', rectangle: 'Four sides. Two long, two short. A rectangle!', hexagon: 'Six sides. A hexagon!' };
+for (const [t, sc, tr, ty] of [['Fix the gears! What comes next?', 'pattern round', 'first pattern of the round'], ['What comes next?', 'pattern round', 'each next pattern; after Wick sings the pattern'],
+  ['Listen to the pattern.', 'pattern round', '1st wrong gear (Wick then sings the shapes along the gears)', 'feedback'], ['This one fits!', 'pattern round', '2nd wrong gear: the right shape glows', 'feedback'],
+  ['Yes! The gears turn!', 'pattern round', 'pattern fixed (random praise)', 'praise'], ['You fixed the pattern!', 'pattern round', 'pattern fixed (random praise)', 'praise'],   ["Let's count the sides.", 'shape rounds', 'find: 2nd wrong shape / sort: 1st wrong drawer (count-along starts)', 'feedback'], ['Which drawer does it go in?', 'sort round', 'each new shape; after the count-along'],
+  ['Put the shape in its drawer!', 'sort round', 'first shape of the round'], ['This is a hexagon. It has six sides!', 'sort round', 'first hexagon of the round']])
+  add(t, { type: ty || 'instruction', game: CG, prefix: 'cg', screen: 'Clocktower Gears ' + sc, trigger: tr });
+for (const s of CGS) {
+  add(s, { type: 'word', game: CG, prefix: 'cg', screen: 'Clocktower Gears pattern round', trigger: 'Wick sings the pattern: each gear\'s shape name' });
+  add(`Find the ${s}!`, { type: 'instruction', game: CG, prefix: 'cg', screen: 'Clocktower Gears find round', trigger: 'new shape to find; after a wrong shape; after the count-along' });
+  add(`That's a ${s}.`, { type: 'feedback', game: CG, prefix: 'cg', screen: 'Clocktower Gears find round', trigger: '1st wrong shape (names the shape tapped)' });
+  add(`Yes! A ${s}!`, { type: 'praise', game: CG, prefix: 'cg', screen: 'Clocktower Gears find/sort round', trigger: 'right shape / right drawer' });
+  add(CGFACT[s], { type: 'instruction', game: CG, prefix: 'cg', screen: 'Clocktower Gears find/sort round', trigger: 'count-along ends (sides counted with highlights)' }); }
+for (let n = 1; n <= 6; n++) add(NW[n], { type: 'number', game: CG, prefix: 'cg', screen: 'Clocktower Gears find/sort round', trigger: 'count-along: each side highlighted' });
+add('Here it is!', { type: 'feedback', game: CG, prefix: 'cg', screen: 'Clocktower Gears sort round', trigger: '2nd wrong drawer: the right drawer glows' });
 
 /* ================= Mothabet (clips: the Mothabet Bella batch, mapped by the Mothabet voice-script CSV) ================= */
 const M = 'mothabet';
