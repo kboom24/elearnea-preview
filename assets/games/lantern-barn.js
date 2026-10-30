@@ -81,9 +81,9 @@ El.defineGame({
         const model = (then) => { demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { let k = 0; const beat = () => { if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }); };
         const turn = () => { taps = 0; paint(0); drum.dataset.turn = '1'; say(LN.barn.turn(c)); };
         const claps = LN.barn.claps(c);
-        const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; kit.yes(drum); paint(c.n, 'on'); T(() => say(LN.barn.claps(c)), 300); finish(miss === 0, { wait: 2800 }); return; }
+        const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; drum.dataset.turn = ''; kit.yes(drum); paint(c.n, 'on'); T(() => say(LN.barn.claps(c)), 300); finish(miss === 0, { wait: 2800 }); return; }
           miss++; kit.soft(drum); if (miss === 1) T(() => say(LN.barn.together, () => model(turn)), 300);
-          else { done = true; drum.onclick = null; T(() => model(() => say(LN.barn.claps(c))), 300); finish(false, { wait: 7000 }); } };
+          else { done = true; drum.onclick = null; drum.dataset.turn = ''; T(() => model(() => say(LN.barn.claps(c))), 300); finish(false, { wait: 7000 }); } };
         kit.cue(() => model(turn));
         drum.onclick = () => { if (demo || done) return; taps++; hit(); paint(taps, 'on'); clearTimeout(idle); idle = T(judge, 1500); };
       });
