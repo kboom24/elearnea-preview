@@ -1,0 +1,4 @@
+# QA output never goes in the repo
+*.png
+*.log
+qa-results*.json
