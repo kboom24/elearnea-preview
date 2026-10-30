@@ -172,6 +172,11 @@ def fill_gaps(evs, lines, dur, sid):
     """Songs with hand-placed moments: every stretch longer than 2 s between moments gets "track" moments (tap each word as it is
     sung) for the lyric lines inside it, and a "beat" moment (tap the drum on the beat) where there are no words (music-note lines)."""
     main = [e for e in evs if e['type'] != 'roll']; rest = [e for e in evs if e['type'] == 'roll']
+    # moments open shortly before their cue (spell tiles 1.5 s before the first sung letter, pick cards 1.5 s before the word), so an
+    # eager child who finishes early isn't left waiting; the time before is filled with track moments below
+    for e in main:
+        cue = e['letters'][0] if e['type'] == 'spell' else e.get('t')
+        if cue is not None and cue - e['open'] > 2.0: e['open'] = round(cue - 1.5, 3)
     bounds = [(0.0, main[0]['open'])] + [(a['close'], b['open']) for a, b in zip(main, main[1:])] + [(main[-1]['close'], dur)]
     add = []
     for gs, ge in bounds:
