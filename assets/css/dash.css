@@ -39,7 +39,7 @@ body.dash .dsh { display: grid; grid-template-columns: 232px minmax(0, 1fr); }
 .c h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font: 700 1.25rem var(--display); color: var(--ink); }
 .c h2 svg { width: 26px; height: 26px; flex: none; } .c h2 .sp { flex: 1; } .c h2 small { font: 700 .85rem var(--ui); color: #6a5f8e; }
 .c p.note { margin: 10px 0 0; font-size: .85rem; color: #6a5f8e; line-height: 1.4; }
-.bars .r { display: grid; grid-template-columns: 30px 92px minmax(0, 1fr) 44px; align-items: center; gap: 8px; min-height: 34px; }
+.bars .r { display: grid; grid-template-columns: 30px 120px minmax(0, 1fr) 44px; /* 120px: longest realm name 'Logic & Coding' (112px) was ellipsized at 92px */ align-items: center; gap: 8px; min-height: 34px; }
 .bars .ic { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; } .bars .ic svg { width: 20px; height: 20px; }
 .bars .nm { font-size: .98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar { height: 14px; border-radius: 999px; background: #EFE3CC; overflow: hidden; } .bar i { display: block; height: 100%; border-radius: 999px; }
@@ -98,7 +98,8 @@ table.t td { padding: 9px 6px; border-bottom: 2px dashed rgba(42,33,82,.10); ver
   body.dash .dsh { grid-template-columns: minmax(0, 1fr); }
   .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 12px 14px; gap: 8px; }
   .side .logo { margin: 0 auto 0 0; font-size: 1.4rem; } .side .wickbox { display: none; }
-  .side nav { flex-direction: row; overflow-x: auto; width: 100%; order: 3; } .side nav a { white-space: nowrap; min-height: 44px; font-size: 1rem; padding: 0 12px; }
+  /* wrap instead of a sideways-scrolling strip: at 390px 'Skills', 'Activity' and 'Settings' sat off-screen with no hint they existed */
+  .side nav { flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; order: 3; gap: 6px; } .side nav a { white-space: nowrap; min-height: 44px; font-size: 1rem; padding: 0 12px; }
   .side .kidlink { min-height: 44px; }
   .main { padding: 14px 14px 30px; }
   .grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -108,3 +109,4 @@ table.t td { padding: 9px 6px; border-bottom: 2px dashed rgba(42,33,82,.10); ver
   .record { padding: 20px 16px; } .record .meta { grid-template-columns: minmax(0, 1fr); }
   .hide-sm { display: none; }
 }
+@media (max-width: 480px) { .side nav a svg { display: none; } .side nav a { padding: 0 10px; } } /* phone: text-only tabs fit in two rows */
