@@ -6,7 +6,9 @@
      kit.speak(lines)             speak + remember for "hear it again"; kit.say(lines, onend)
      kit.options(list, render)    -> big picture buttons in the answer row (render(item) returns inner HTML)
      kit.single(html)             -> one huge picture button (play-together / under-2 mode)
-     kit.run(plan, ask)           ask(item, i, finish) ... finish(firstTry) records mastery and moves on; ends with host.end()
+     kit.run(plan, ask)           ask(item, i, finish) ... finish(firstTry, {say, delay}) records mastery, plays the praise line and moves on
+                                  only after it has finished (clip 'ended' + 300 ms, watchdog = clip length + 1.5 s); ends with host.end()
+     kit.say(lines, onend)        every onend has a watchdog (ElVoice.sayThen), and only the newest line's onend runs (a replay restarts a cue)
      kit.yes(btn) / kit.soft(btn) / kit.hint(btn), kit.T(fn, ms), kit.stop() */
 (function () {
   'use strict';
@@ -21,14 +23,21 @@
         ${o.tip ? `<div class="ll-tip"><b>Grown-up tip:</b> ${o.tip}</div>` : ''}</div>`;
       const $ = (id) => root.querySelector('#' + id), wick = $('llWick'), txt = $('llTxt'), show = $('llShow'), opts = $('llOpts');
       const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
-      const say = (lines, onend) => host.say(lines, { rate: 1, onend: onend ? () => { if (alive) onend(); } : undefined });
+      // say: onend runs once the line has really ended (watchdog: clip length + 1.5 s), and only if no newer kit line started meanwhile
+      let gen = 0, praising = false, busy = false;
+      const VT = window.ElVoice && window.ElVoice.sayThen;
+      // while a praise line plays, every other kit line (a cue or count-along still in flight) is dropped, so nothing talks over it;
+      // the praise line's own onend always runs (never dropped by the newest-line rule)
+      const say = (lines, onend, gap, isPraise) => { if (praising && !isPraise) return false; const my = ++gen, cb = onend ? () => { if (alive && (isPraise || my === gen)) onend(); } : null;
+        if (!VT) return host.say(lines, { rate: 1, onend: cb || undefined });
+        return window.ElVoice.sayThen(lines, { rate: 1 }, cb, gap || 0, host.say).heard; };
       const bounce = (el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
       const kit = {
         root, show, opts, T, say, host,
         speak(lines, label) { cur = lines; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); return say(lines); },
         // cue(fn): a custom prompt sequence (e.g. a sound effect, then a spoken question); Wick replays it
         cue(fn, label) { cur = fn; txt.textContent = label || ''; txt.classList.toggle('on', !!label); bounce(wick, 'cheer'); fn(); },
-        replay() { if (!cur) return; bounce(wick, 'cheer'); if (typeof cur === 'function') cur(); else say(cur); },
+        replay() { if (!cur || praising || busy) return; bounce(wick, 'cheer'); if (typeof cur === 'function') cur(); else say(cur); }, // never over praise
         btn(html, cls, label) { const b = document.createElement('button'); b.className = 'll-card ' + (cls || ''); b.innerHTML = html; if (label) b.setAttribute('aria-label', label); return b; },
         options(list, render, label) { opts.innerHTML = ''; opts.dataset.n = list.length; return list.map(it => { const b = kit.btn(render(it), '', label ? label(it) : ''); b._it = it; opts.appendChild(b); return b; }); },
         single(html, label) { opts.innerHTML = ''; opts.dataset.n = 1; const b = kit.btn(html, 'huge', label); opts.appendChild(b); return b; },
@@ -37,11 +46,21 @@
         hint(b) { if (b) b.classList.add('hint'); },
         mark(b) { if (b && QA) b.dataset.ok = '1'; }, // QA marker on the right answer, only with ?qa=1 (automated full-round tests); never set for kids
         lock() { opts.querySelectorAll('.ll-card').forEach(b => { b.onclick = null; b.classList.add('done'); }); },
-        // plan: items; ask(item, index, finish): finish(firstTry, {noMastery}) records and goes to the next item
+        // praise(lines, delay, done): the feedback line after a right answer. Wick can't restart a cue over it, and done() runs once,
+        // 300 ms after its clip ended (or from the watchdog); with voice off, after the visual celebration (min ms)
+        praise(lines, delay, done) { praising = true; gen++; T(() => { if (!say(lines, () => { praising = false; done(); }, 300, true)) { praising = false; done(); } }, delay == null ? 350 : delay); },
+        get praising() { return praising || busy; },
+        // plan: items; ask(item, index, finish): finish(firstTry, m) records mastery once and goes to the next item when the feedback is over:
+        //   m.say (+ m.delay): praise line (kit.praise); m.after(done): a custom feedback sequence; m.min: shortest pause (ms) from the tap
         run(plan, ask) { let qi = 0, first = 0; const total = plan.length;
           const next = () => { if (!alive) return; host.emit('progress', { done: qi, total }); if (qi >= total) { T(() => host.end({ total, done: total, firstTry: first }), 600); return; }
             const item = plan[qi]; let fin = false;
-            ask(item, qi, (ft, m) => { if (fin) return; fin = true; if (ft) first++; if (!(m && m.noMastery)) host.emit('mastery', { item: item.id || item, correct: true, firstTry: !!ft }); qi++; T(next, (m && m.wait) || 1700); }); };
+            ask(item, qi, (ft, m) => { if (fin) return; fin = true; m = m || {}; if (ft) first++; if (!m.noMastery) host.emit('mastery', { item: item.id || item, correct: true, firstTry: !!ft }); qi++;
+              const t0 = Date.now(), min = m.min == null ? 1200 : m.min; let went = false;
+              const go = () => { if (went) return; went = true; praising = busy = false; T(next, Math.max(0, min - (Date.now() - t0))); };
+              if (m.say) kit.praise(m.say, m.delay, go);
+              else if (m.after) { busy = true; T(go, 20000); m.after(() => T(go, 300)); } // custom sequence (its own lines have watchdogs); 20 s cap
+              else T(go, m.wait || 1700); }); };
           T(next, 350); },
         stop() { alive = false; timers.forEach(clearTimeout); host.say(''); },
         get alive() { return alive; }

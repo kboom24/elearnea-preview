@@ -1,7 +1,6 @@
 // Mothabet integration QA (branch mothabet/integration): lesson deep links, El.Learn records, Elearnea results + Path, dashboard, consent key, QA gate.
 // One page at a time. Usage: node qa-mothabet-integration.js <baseUrl> <outDir> [viewports=phone,ipad,desktop]
-const { launch } = require('./lib'); // QA_PLAYWRIGHT / QA_CHROME override the defaults
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'); const { launch } = require('./lib'); const PROBE = require('./praise-probe'); const PRAISE = PROBE.praiseSet(path.join(__dirname, '../../voice/manifest.json')); // QA_PLAYWRIGHT / QA_CHROME override the defaults
 const BASE = process.argv[2].replace(/\/?$/, '/'), OUT = process.argv[3]; const VPS = (process.argv[4] || 'phone,ipad,desktop').split(',');
 const VP = { phone: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, ipad: { width: 1024, height: 1366, isMobile: true, hasTouch: true, deviceScaleFactor: 2 }, desktop: { width: 1280, height: 800, isMobile: false, hasTouch: false, deviceScaleFactor: 1 } };
 const origin = new URL(BASE).origin; const results = []; fs.mkdirSync(OUT, { recursive: true });
@@ -10,6 +9,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   const browser = await launch();
   for (const vpn of VPS) {
     const ctx = await browser.newContext(Object.assign({ viewport: { width: VP[vpn].width, height: VP[vpn].height } }, VP[vpn], { serviceWorkers: 'block' }));
+    await ctx.addInitScript(PROBE.init); // the word cheer ("sun!") must play to its end before the next word
     const page = await ctx.newPage(); let errs = [], ext = [], fails = [];
     page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
     page.on('pageerror', e => errs.push('pageerror: ' + e.message));
@@ -43,7 +43,8 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
       while (n++ < 30) { const sc = await frame().evaluate(() => window.__qa.scene()); if (sc !== 'play') break; const st = await frame().evaluate(() => window.__qa.state());
         if (st.phase === 'word') { if (st.idx === 1 && !wrongDone) { wrongDone = true; await frame().evaluate(() => window.__qa.place(false)); await sleep(300); } await frame().evaluate(() => window.__qa.solveWord()); if (n === 4) { await sleep(500); await shot('rd-l1-play-mid'); } }
         await sleep(1500); }
-      const sc = await frame().evaluate(() => window.__qa.scene()); if (sc !== 'lesson') throw new Error('round did not end, scene=' + sc); return 'rounds loop=' + n + ' wrongOnWord2=' + wrongDone; });
+      const sc = await frame().evaluate(() => window.__qa.scene()); if (sc !== 'lesson') throw new Error('round did not end, scene=' + sc);
+      const pv = await PROBE.check(page, PRAISE); if (!pv.ok || !pv.praise) throw new Error('voice: ' + pv.note); return 'rounds loop=' + n + ' wrongOnWord2=' + wrongDone + ' | voice: ' + pv.note; });
     await step('rd-l1-results', async () => { await page.waitForSelector('#toPath', { state: 'visible', timeout: 6000 }); await sleep(900); await shot('rd-l1-results');
       const txt = await page.locator('.paper').innerText(); const d = JSON.parse((await store())['elearnea:v1'] || '{}');
       const keys = Object.keys(d.srs || {}).filter(k => k.startsWith('rd.letter-sounds|')); const ls = (d.lessons || {})['rd-l1'];

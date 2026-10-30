@@ -5,7 +5,7 @@
    - loudquiet: hear a drum, tap the elephant (loud) or the mouse (quiet).
    - clap:      syllable clapping. Wick claps a word on the drum, then the child claps it (counts the beats).
    No fail states and no timers: a miss replays the sound with a gentle hint; a second miss shows the answer.
-   Contract: start(config, host) -> {stop}; host.emit('progress'|'mastery'); host.end(results). Sounds: assets/js/sfx-animals.js (synthesized). */
+   Contract: start(config, host) -> {stop}; host.emit('progress'|'mastery'); host.end(results). Sounds: assets/js/sfx-animals.js (recorded CC0 animal sounds, synthesized drum). */
 El.defineGame({
   id: 'lantern-barn',
   start(cfg, host) {
@@ -16,7 +16,9 @@ El.defineGame({
     const kit = El.Little.setup(host, cfg, { scene: 'barn', bg: barn, tip: mode === 'tiny' ? tips.tiny : null });
     const say = kit.say, T = kit.T;
     const sfx = (id, o) => El.animal.play(id, o) || 0;
-    El.Little.data().then(D => { if (!kit.alive) return;
+    El.animal.load(); // the recorded animal sounds (assets/sfx/animals), decoded once; the barn waits for them below (max 2.5 s)
+    const ready = Promise.race([El.animal.load(), new Promise(r => setTimeout(r, 2500))]);
+    Promise.all([El.Little.data(), ready]).then(([D]) => { if (!kit.alive) return;
       const A = {}; D.animals.forEach(a => { A[a.id] = a; });
       if (mode === 'tiny') return tiny(D, A);
       if (mode === 'loudquiet') return loudquiet();
@@ -33,9 +35,10 @@ El.defineGame({
       host.emit('progress', { done: 0, total: order.length });
       let busy = false;
       b.onclick = () => { if (busy || k >= order.length) return; busy = true; const a = A[order[k]];
-        peek.innerHTML = El.pic(a.id); b.classList.add('open'); kit.yes(b); T(() => { sfx(a.id); }, 250);
-        T(() => say(LN.barn.says(a), () => { k++; host.emit('progress', { done: k, total: order.length });
-          T(() => { b.classList.remove('open', 'yes'); busy = false; if (k >= order.length) T(() => host.end({ total: order.length, done: order.length, firstTry: order.length }), 500); }, 700); }), 1100); };
+        peek.innerHTML = El.pic(a.id); b.classList.add('open'); kit.yes(b);
+        // the animal's sound, then Bella names it ("The pig says oink!"); the door closes only after her line has ended (+ 300 ms)
+        T(() => { const d = sfx(a.id); T(() => say(LN.barn.says(a), () => { k++; host.emit('progress', { done: k, total: order.length });
+          T(() => { b.classList.remove('open', 'yes'); busy = false; if (k >= order.length) T(() => host.end({ total: order.length, done: order.length, firstTry: order.length }), 500); }, 400); }, 300), Math.max(850, d * 1000 + 250)); }, 250); };
     }
 
     // who says that?
@@ -44,12 +47,14 @@ El.defineGame({
       kit.run(plan, (id, i, finish) => { const a = A[id], n = El.Little.nChoices(L, cfg.skill, 2, 3);
         const list = rng.shuffle([id, ...El.Little.others(rng, pool, n - 1, [id])]); let miss = 0;
         const btns = kit.options(list, x => El.pic(x), x => A[x].name); const right = btns.find(b => b._it === id); kit.mark(right);
-        const cue = () => say(LN.barn.listen, () => { const d = sfx(id); T(() => say(LN.barn.who(a)), d * 1000 + 250); });
+        // the cue stops as soon as the right animal is picked (no animal sound or question over the praise)
+        const cue = () => say(LN.barn.listen, () => { if (kit.praising) return; const d = sfx(id); T(() => say(LN.barn.who(a)), d * 1000 + 250); });
         kit.cue(cue);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); sfx(id); T(() => say(LN.barn.yes(a)), 500); finish(miss === 0, { wait: 2600 }); return; }
-          const o = A[b._it]; miss++; kit.soft(b); sfx(o.id);
-          if (miss === 1) T(() => say(LN.barn.that(o), () => T(cue, 300)), 600);
-          else { kit.hint(right); T(() => say(LN.barn.hereA(a)), 600); } }; });
+        // right: its sound, then the praise; the next animal comes only after the praise line has ended (kit.run / kit.praise)
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); const d = sfx(id); finish(miss === 0, { say: LN.barn.yes(a), delay: Math.max(500, d * 1000 + 200) }); return; }
+          if (kit.praising) return; const o = A[b._it]; miss++; kit.soft(b); const d = sfx(o.id);
+          if (miss === 1) T(() => say(LN.barn.that(o), () => T(cue, 300)), Math.max(600, d * 1000 + 200));
+          else { kit.hint(right); T(() => say(LN.barn.hereA(a)), Math.max(600, d * 1000 + 200)); } }; });
       });
     }
 
@@ -60,9 +65,9 @@ El.defineGame({
         const btns = kit.options(rng.shuffle(['elephant', 'mouse']), x => El.pic(x), x => x === 'elephant' ? 'Loud, like the elephant' : 'Quiet, like the mouse');
         const right = btns.find(b => b._it === (id === 'loud' ? 'elephant' : 'mouse')); kit.mark(right);
         const beat = () => { const g = id === 'loud' ? 1 : .12; sfx('drum', { gain: g }); T(() => sfx('drum', { gain: g }), 420); T(() => sfx('drum', { gain: g }), 840); };
-        const cue = () => say(LN.barn.listen, () => { beat(); T(() => say(LN.barn.lq), 1500); });
+        const cue = () => say(LN.barn.listen, () => { if (kit.praising) return; beat(); T(() => say(LN.barn.lq), 1500); });
         kit.cue(cue);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); T(() => say(id === 'loud' ? LN.barn.loud : LN.barn.quiet), 400); finish(miss === 0, { wait: 3000 }); return; }
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: id === 'loud' ? LN.barn.loud : LN.barn.quiet, delay: 400 }); return; }
           miss++; kit.soft(b); if (miss === 1) T(() => say(LN.barn.again, () => T(cue, 300)), 500); else { kit.hint(right); T(() => say(LN.common.here), 500); } }; });
       });
     }
@@ -82,9 +87,9 @@ El.defineGame({
         let mt = 0; const model = (then) => { const my = ++mt; demo = true; drum.dataset.turn = ''; paint(0); say(LN.barn.clap(c), () => { if (my !== mt) return; let k = 0; const beat = () => { if (my !== mt) return; if (k >= c.n) { demo = false; T(then, 500); return; } k++; paint(k, 'demo'); sfx('drum', { gain: .7 }); drum.classList.remove('boing'); void drum.offsetWidth; drum.classList.add('boing'); T(beat, 650); }; T(beat, 350); }); };
         const turn = () => { taps = 0; paint(0); drum.dataset.turn = '1'; say(LN.barn.turn(c)); };
         const claps = LN.barn.claps(c);
-        const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; drum.dataset.turn = ''; kit.yes(drum); paint(c.n, 'on'); T(() => say(LN.barn.claps(c)), 300); finish(miss === 0, { wait: 2800 }); return; }
+        const judge = () => { if (done) return; if (taps === c.n) { done = true; drum.onclick = null; drum.dataset.turn = ''; kit.yes(drum); paint(c.n, 'on'); finish(miss === 0, { say: LN.barn.claps(c), delay: 300 }); return; }
           miss++; kit.soft(drum); if (miss === 1) T(() => say(LN.barn.together, () => model(turn)), 300);
-          else { done = true; drum.onclick = null; drum.dataset.turn = ''; T(() => model(() => say(LN.barn.claps(c))), 300); finish(false, { wait: 7000 }); } };
+          else { done = true; drum.onclick = null; drum.dataset.turn = ''; finish(false, { after: (end) => T(() => model(() => say(LN.barn.claps(c), end)), 300) }); } };
         kit.cue(() => model(turn));
         drum.onclick = () => { if (demo || done) return; taps++; hit(); paint(taps, 'on'); clearTimeout(idle); idle = T(judge, 1500); };
       });

@@ -341,7 +341,7 @@
       setTimeout(() => { if (game.base === this && this.word === w && !this.over) this.prompt(false); }, this.idx === 0 ? 350 : 250);
     },
     prompt(manual) {
-      if (this.phase !== 'word' && !manual) return; const it = this.word && this.word.it; if (!it) return; SFX.tap();
+      if (this.phase !== 'word' && !manual || this.phase === 'glow') return; const it = this.word && this.word.it; if (!it) return; SFX.tap();
       if (!voiceOn()) { // visual fallback: show the word again ("look, cover, spell") and pulse the picture
         if (it.kind !== 'first' && it.kind !== 'last') this.look = Math.max(this.look, manual ? 1.6 : 2.6); this.picPulse = 1; return; }
       const s = it.s && this.band === 'f' ? it.s : null;
@@ -391,7 +391,10 @@
         if (perfect) for (const p of w.it.pats) M.pts[p] = (M.pts[p] || 0) + 1; }
       // a missed word comes back later this round in an easier form (fewer decoys, slower moths)
       if (!perfect && !w.retry && this.queue.length - this.idx > 2) { const at = Math.min(this.queue.length, this.idx + 3); this.queue.splice(at, 0, { it: w.it, retry: true }); if (this.queue.length > this.cap()) this.queue.splice(this.cap()); }
-      if (voiceOn()) setTimeout(() => { if (game.base === this) say(w.it.w + '!', { rate: .95, pitch: 1.2 }); }, 180);
+      // praise ("sun!"): the next word waits until it has been heard to its end (+ 300 ms; watchdog = clip length + 1.5 s), see update()
+      this.praiseDone = !voiceOn();
+      if (voiceOn()) setTimeout(() => { if (game.base !== this) return; const c = window.ElVoice, line = w.it.w + '!', o = { rate: .95, pitch: 1.2 };
+        if (c && c.sayThen) c.sayThen(line, o, () => { this.praiseDone = true; }, 300, (t, oo) => say(t, oo)); else { say(line, o); this.praiseDone = true; } }, 180);
       game.save.write();
     },
     endRound(why) {
@@ -431,7 +434,7 @@
       this.hintLit = Math.max(0, (this.hintLit || 0) - dt); this.speakPulse = Math.max(0, (this.speakPulse || 0) - dt * 1.5); this.picPulse = Math.max(0, (this.picPulse || 0) - dt * 1.5); this.look = Math.max(0, this.look - dt);
       if (this.letterPop) { this.letterPop.t += dt; if (this.letterPop.t > .5) this.letterPop = null; }
       if (this.phase === 'word') { const prev = Math.ceil(this.time); this.time -= dt; if (this.time <= 10 && Math.ceil(this.time) !== prev) SFX.tick(); if (this.time <= 0) { this.time = 0; return this.endRound('time'); } }
-      if (this.phase === 'glow') { this.pt += dt; if (this.pt > 1.25) this.nextWord(); }
+      if (this.phase === 'glow') { this.pt += dt; if (this.pt > 1.25 && (this.praiseDone || this.pt > 8)) this.nextWord(); } // the round clock is paused in 'glow'
       const p = game.input.p, near = p && (p.down || p.type === 'mouse'), R = this.R, a = this.area(), bl = this.blockers();
       for (const m of this.moths) {
         m.ph += dt * (m.state === 'drag' ? 16 : 9); if (m.hintT) m.hintT = Math.max(0, m.hintT - dt);
