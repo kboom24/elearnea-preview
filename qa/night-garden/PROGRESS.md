@@ -22,3 +22,8 @@ server pid 3695401 port 8871 (kill when done)
 - TODO: item `say` overrides in night-garden-lines.js, copy passing clips to voice/clips/<newid>.{mp3,opus}, rebuild manifest (VOICE_MD/EL_CSV in /tmp/ng), asr-check new ids, hold any still failing
 - TODO: moon overlaps replay button on phone -> move moon
 - TODO: full QA 3 viewports via qa/night-garden/elslot.sh node qa/tools/qa-night-garden.js http://127.0.0.1:8871/elearnea-preview/ /home/box/elearnea/qa/night-garden <vp>
+## 02:38 status (resume here)
+- done: wording overrides (moth/bee/car/pumpkin/recap-3) in night-garden-lines.js; passing retry clips copied to voice/clips (ng.look-a-moth, ng.a-buzzy-bee, ng.a-toy-car, ng.the-pumpkin-grew-from-a-tiny-seed, ng.seed-then-sprout-then-flower); orphan clips removed; manifest rebuilt; check.js 0 problems; moon moved
+- waiting: round 2 (cup/ball) -> /tmp/ng/retry/score2.log. If a candidate passes: change NGL item `name` for cup/ball to it, rebuild manifest, cp /tmp/ng/retry/out/{mp3,opus}/<cand>.* voice/clips/<newid>.*
+- then: asr-check the ng range again (find indices: node -e on manifest, game==='night-garden'), rebuild manifest -> held list = lines still flagged
+- then: full QA (server pid in /tmp/ng/serve.pid, port 8871): qa/night-garden/elslot.sh node qa/tools/qa-night-garden.js http://127.0.0.1:8871/elearnea-preview/ /home/box/elearnea/qa/night-garden phone  (then ipad, desktop separately, each <15 min)

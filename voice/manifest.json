@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:10:34.704Z",
+ "generated": "2026-10-30T09:33:52.712Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -61,9 +61,9 @@
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 290,
-  "withClip": 2360,
-  "heldForHumanCheck": 15,
+  "needsHumanCheck": 294,
+  "withClip": 2356,
+  "heldForHumanCheck": 19,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
   "pending": 0,
@@ -1036,7 +1036,7 @@
     "reasons": [],
     "asr": {
      "heard": "Nature land. Tap to go in.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -1070,7 +1070,7 @@
     "reasons": [],
     "asr": {
      "heard": "Is it living? Let's sort the garden.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -1104,7 +1104,7 @@
     "reasons": [],
     "asr": {
      "heard": "What do plants and animals need? Let's help.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -1138,7 +1138,7 @@
     "reasons": [],
     "asr": {
      "heard": "Grow a seed into a flower.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -1172,7 +1172,7 @@
     "reasons": [],
     "asr": {
      "heard": "Help the animals find their homes.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -17063,7 +17063,7 @@
    "id": "mb.ph.aah",
    "key": "aah",
    "text": "aah",
-   "render": "[[ \u00e6 ]]",
+   "render": "[[ æ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17072,7 +17072,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u00e6",
+   "ipa": "æ",
    "example": "/a/ as in \"apple\"",
    "audioNeedsId": "ph_a",
    "parts": [
@@ -17101,7 +17101,7 @@
    "id": "mb.hint.try-this-one-aah",
    "key": "try this one aah",
    "text": "Try this one. aah.",
-   "render": "Try this one. [[ \u00e6 ]].",
+   "render": "Try this one. [[ æ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17110,7 +17110,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u00e6",
+   "ipa": "æ",
    "example": "/a/ as in \"apple\"",
    "parts": [
     "p_try.mp3",
@@ -17140,7 +17140,7 @@
    "id": "mb.ph.buh",
    "key": "buh",
    "text": "buh",
-   "render": "[[ b\u0259 ]]",
+   "render": "[[ bə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17149,7 +17149,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "b\u0259",
+   "ipa": "bə",
    "example": "/b/ as in \"bat\"",
    "audioNeedsId": "ph_b",
    "parts": [
@@ -17178,7 +17178,7 @@
    "id": "mb.hint.try-this-one-buh",
    "key": "try this one buh",
    "text": "Try this one. buh.",
-   "render": "Try this one. [[ b\u0259 ]].",
+   "render": "Try this one. [[ bə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17187,7 +17187,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "b\u0259",
+   "ipa": "bə",
    "example": "/b/ as in \"bat\"",
    "parts": [
     "p_try.mp3",
@@ -17217,7 +17217,7 @@
    "id": "mb.ph.kuh",
    "key": "kuh",
    "text": "kuh",
-   "render": "[[ k\u0259 ]]",
+   "render": "[[ kə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17226,7 +17226,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "k\u0259",
+   "ipa": "kə",
    "example": "/c/ as in \"cat\"",
    "audioNeedsId": "ph_c",
    "parts": [
@@ -17255,7 +17255,7 @@
    "id": "mb.hint.try-this-one-kuh",
    "key": "try this one kuh",
    "text": "Try this one. kuh.",
-   "render": "Try this one. [[ k\u0259 ]].",
+   "render": "Try this one. [[ kə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17264,7 +17264,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "k\u0259",
+   "ipa": "kə",
    "example": "/c/ as in \"cat\"",
    "parts": [
     "p_try.mp3",
@@ -17294,7 +17294,7 @@
    "id": "mb.ph.duh",
    "key": "duh",
    "text": "duh",
-   "render": "[[ d\u0259 ]]",
+   "render": "[[ də ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17303,7 +17303,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "d\u0259",
+   "ipa": "də",
    "example": "/d/ as in \"dog\"",
    "audioNeedsId": "ph_d",
    "parts": [
@@ -17332,7 +17332,7 @@
    "id": "mb.hint.try-this-one-duh",
    "key": "try this one duh",
    "text": "Try this one. duh.",
-   "render": "Try this one. [[ d\u0259 ]].",
+   "render": "Try this one. [[ də ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17341,7 +17341,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "d\u0259",
+   "ipa": "də",
    "example": "/d/ as in \"dog\"",
    "parts": [
     "p_try.mp3",
@@ -17371,7 +17371,7 @@
    "id": "mb.ph.eh",
    "key": "eh",
    "text": "eh",
-   "render": "[[ \u025b ]]",
+   "render": "[[ ɛ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17380,7 +17380,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u025b",
+   "ipa": "ɛ",
    "example": "/e/ as in \"egg\"",
    "audioNeedsId": "ph_e",
    "parts": [
@@ -17409,7 +17409,7 @@
    "id": "mb.hint.try-this-one-eh",
    "key": "try this one eh",
    "text": "Try this one. eh.",
-   "render": "Try this one. [[ \u025b ]].",
+   "render": "Try this one. [[ ɛ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17418,7 +17418,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u025b",
+   "ipa": "ɛ",
    "example": "/e/ as in \"egg\"",
    "parts": [
     "p_try.mp3",
@@ -17448,7 +17448,7 @@
    "id": "mb.ph.fff",
    "key": "fff",
    "text": "fff",
-   "render": "[[ f\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ fːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17457,7 +17457,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "f\u02d0\u02d0\u02d0",
+   "ipa": "fːːː",
    "example": "/f/ as in \"fish\"",
    "audioNeedsId": "ph_f",
    "parts": [
@@ -17486,7 +17486,7 @@
    "id": "mb.hint.try-this-one-fff",
    "key": "try this one fff",
    "text": "Try this one. fff.",
-   "render": "Try this one. [[ f\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ fːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17495,7 +17495,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "f\u02d0\u02d0\u02d0",
+   "ipa": "fːːː",
    "example": "/f/ as in \"fish\"",
    "parts": [
     "p_try.mp3",
@@ -17525,7 +17525,7 @@
    "id": "mb.ph.guh",
    "key": "guh",
    "text": "guh",
-   "render": "[[ \u0261\u0259 ]]",
+   "render": "[[ ɡə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17534,7 +17534,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u0261\u0259",
+   "ipa": "ɡə",
    "example": "/g/ as in \"gift\"",
    "audioNeedsId": "ph_g",
    "parts": [
@@ -17563,7 +17563,7 @@
    "id": "mb.hint.try-this-one-guh",
    "key": "try this one guh",
    "text": "Try this one. guh.",
-   "render": "Try this one. [[ \u0261\u0259 ]].",
+   "render": "Try this one. [[ ɡə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17572,7 +17572,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u0261\u0259",
+   "ipa": "ɡə",
    "example": "/g/ as in \"gift\"",
    "parts": [
     "p_try.mp3",
@@ -17602,7 +17602,7 @@
    "id": "mb.ph.hhuh",
    "key": "hhuh",
    "text": "hhuh",
-   "render": "[[ h\u0259 ]]",
+   "render": "[[ hə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17611,7 +17611,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "h\u0259",
+   "ipa": "hə",
    "example": "/h/ as in \"hat\"",
    "audioNeedsId": "ph_h",
    "parts": [
@@ -17640,7 +17640,7 @@
    "id": "mb.hint.try-this-one-hhuh",
    "key": "try this one hhuh",
    "text": "Try this one. hhuh.",
-   "render": "Try this one. [[ h\u0259 ]].",
+   "render": "Try this one. [[ hə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17649,7 +17649,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "h\u0259",
+   "ipa": "hə",
    "example": "/h/ as in \"hat\"",
    "parts": [
     "p_try.mp3",
@@ -17679,7 +17679,7 @@
    "id": "mb.ph.ih",
    "key": "ih",
    "text": "ih",
-   "render": "[[ \u026a ]]",
+   "render": "[[ ɪ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17688,7 +17688,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u026a",
+   "ipa": "ɪ",
    "example": "/i/ as in \"igloo\"",
    "audioNeedsId": "ph_i",
    "parts": [
@@ -17717,7 +17717,7 @@
    "id": "mb.hint.try-this-one-ih",
    "key": "try this one ih",
    "text": "Try this one. ih.",
-   "render": "Try this one. [[ \u026a ]].",
+   "render": "Try this one. [[ ɪ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17726,7 +17726,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u026a",
+   "ipa": "ɪ",
    "example": "/i/ as in \"igloo\"",
    "parts": [
     "p_try.mp3",
@@ -17756,7 +17756,7 @@
    "id": "mb.ph.juh",
    "key": "juh",
    "text": "juh",
-   "render": "[[ d\u0292\u0259 ]]",
+   "render": "[[ dʒə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17765,7 +17765,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "d\u0292\u0259",
+   "ipa": "dʒə",
    "example": "/j/ as in \"jam\"",
    "audioNeedsId": "ph_j",
    "parts": [
@@ -17794,7 +17794,7 @@
    "id": "mb.hint.try-this-one-juh",
    "key": "try this one juh",
    "text": "Try this one. juh.",
-   "render": "Try this one. [[ d\u0292\u0259 ]].",
+   "render": "Try this one. [[ dʒə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17803,7 +17803,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "d\u0292\u0259",
+   "ipa": "dʒə",
    "example": "/j/ as in \"jam\"",
    "parts": [
     "p_try.mp3",
@@ -17833,7 +17833,7 @@
    "id": "mb.ph.lll",
    "key": "lll",
    "text": "lll",
-   "render": "[[ l\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ lːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17842,7 +17842,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "l\u02d0\u02d0\u02d0",
+   "ipa": "lːːː",
    "example": "/l/ as in \"leaf\"",
    "audioNeedsId": "ph_l",
    "parts": [
@@ -17871,7 +17871,7 @@
    "id": "mb.hint.try-this-one-lll",
    "key": "try this one lll",
    "text": "Try this one. lll.",
-   "render": "Try this one. [[ l\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ lːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17880,7 +17880,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "l\u02d0\u02d0\u02d0",
+   "ipa": "lːːː",
    "example": "/l/ as in \"leaf\"",
    "parts": [
     "p_try.mp3",
@@ -17910,7 +17910,7 @@
    "id": "mb.ph.mmm",
    "key": "mmm",
    "text": "mmm",
-   "render": "[[ m\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ mːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17919,7 +17919,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "m\u02d0\u02d0\u02d0",
+   "ipa": "mːːː",
    "example": "/m/ as in \"moon\"",
    "audioNeedsId": "ph_m",
    "parts": [
@@ -17948,7 +17948,7 @@
    "id": "mb.hint.try-this-one-mmm",
    "key": "try this one mmm",
    "text": "Try this one. mmm.",
-   "render": "Try this one. [[ m\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ mːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -17957,7 +17957,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "m\u02d0\u02d0\u02d0",
+   "ipa": "mːːː",
    "example": "/m/ as in \"moon\"",
    "parts": [
     "p_try.mp3",
@@ -17987,7 +17987,7 @@
    "id": "mb.ph.nnn",
    "key": "nnn",
    "text": "nnn",
-   "render": "[[ n\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ nːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -17996,7 +17996,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "n\u02d0\u02d0\u02d0",
+   "ipa": "nːːː",
    "example": "/n/ as in \"net\"",
    "audioNeedsId": "ph_n",
    "parts": [
@@ -18025,7 +18025,7 @@
    "id": "mb.hint.try-this-one-nnn",
    "key": "try this one nnn",
    "text": "Try this one. nnn.",
-   "render": "Try this one. [[ n\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ nːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18034,7 +18034,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "n\u02d0\u02d0\u02d0",
+   "ipa": "nːːː",
    "example": "/n/ as in \"net\"",
    "parts": [
     "p_try.mp3",
@@ -18064,7 +18064,7 @@
    "id": "mb.ph.ah",
    "key": "ah",
    "text": "ah",
-   "render": "[[ \u0251 ]]",
+   "render": "[[ ɑ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18073,7 +18073,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u0251",
+   "ipa": "ɑ",
    "example": "/o/ as in \"octopus\"",
    "audioNeedsId": "ph_o",
    "parts": [
@@ -18102,7 +18102,7 @@
    "id": "mb.hint.try-this-one-ah",
    "key": "try this one ah",
    "text": "Try this one. ah.",
-   "render": "Try this one. [[ \u0251 ]].",
+   "render": "Try this one. [[ ɑ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18111,7 +18111,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u0251",
+   "ipa": "ɑ",
    "example": "/o/ as in \"octopus\"",
    "parts": [
     "p_try.mp3",
@@ -18141,7 +18141,7 @@
    "id": "mb.ph.puh",
    "key": "puh",
    "text": "puh",
-   "render": "[[ p\u0259 ]]",
+   "render": "[[ pə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18150,7 +18150,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "p\u0259",
+   "ipa": "pə",
    "example": "/p/ as in \"pig\"",
    "audioNeedsId": "ph_p",
    "parts": [
@@ -18179,7 +18179,7 @@
    "id": "mb.hint.try-this-one-puh",
    "key": "try this one puh",
    "text": "Try this one. puh.",
-   "render": "Try this one. [[ p\u0259 ]].",
+   "render": "Try this one. [[ pə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18188,7 +18188,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "p\u0259",
+   "ipa": "pə",
    "example": "/p/ as in \"pig\"",
    "parts": [
     "p_try.mp3",
@@ -18292,7 +18292,7 @@
    "id": "mb.ph.rrr",
    "key": "rrr",
    "text": "rrr",
-   "render": "[[ \u0279\u02d0 ]]",
+   "render": "[[ ɹː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18301,7 +18301,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u0279\u02d0",
+   "ipa": "ɹː",
    "example": "/r/ as in \"rat\"",
    "audioNeedsId": "ph_r",
    "parts": [
@@ -18330,7 +18330,7 @@
    "id": "mb.hint.try-this-one-rrr",
    "key": "try this one rrr",
    "text": "Try this one. rrr.",
-   "render": "Try this one. [[ \u0279\u02d0 ]].",
+   "render": "Try this one. [[ ɹː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18339,7 +18339,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u0279\u02d0",
+   "ipa": "ɹː",
    "example": "/r/ as in \"rat\"",
    "parts": [
     "p_try.mp3",
@@ -18369,7 +18369,7 @@
    "id": "mb.ph.sss",
    "key": "sss",
    "text": "sss",
-   "render": "[[ s\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ sːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18378,7 +18378,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "s\u02d0\u02d0\u02d0",
+   "ipa": "sːːː",
    "example": "/s/ as in \"sun\"",
    "audioNeedsId": "ph_s",
    "parts": [
@@ -18407,7 +18407,7 @@
    "id": "mb.hint.try-this-one-sss",
    "key": "try this one sss",
    "text": "Try this one. sss.",
-   "render": "Try this one. [[ s\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ sːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18416,7 +18416,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "s\u02d0\u02d0\u02d0",
+   "ipa": "sːːː",
    "example": "/s/ as in \"sun\"",
    "parts": [
     "p_try.mp3",
@@ -18446,7 +18446,7 @@
    "id": "mb.ph.tuh",
    "key": "tuh",
    "text": "tuh",
-   "render": "[[ t\u0259 ]]",
+   "render": "[[ tə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18455,7 +18455,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "t\u0259",
+   "ipa": "tə",
    "example": "/t/ as in \"tent\"",
    "audioNeedsId": "ph_t",
    "parts": [
@@ -18484,7 +18484,7 @@
    "id": "mb.hint.try-this-one-tuh",
    "key": "try this one tuh",
    "text": "Try this one. tuh.",
-   "render": "Try this one. [[ t\u0259 ]].",
+   "render": "Try this one. [[ tə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18493,7 +18493,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "t\u0259",
+   "ipa": "tə",
    "example": "/t/ as in \"tent\"",
    "parts": [
     "p_try.mp3",
@@ -18523,7 +18523,7 @@
    "id": "mb.ph.uh",
    "key": "uh",
    "text": "uh",
-   "render": "[[ \u028c ]]",
+   "render": "[[ ʌ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18532,7 +18532,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u028c",
+   "ipa": "ʌ",
    "example": "/u/ as in \"up\"",
    "audioNeedsId": "ph_u",
    "parts": [
@@ -18561,7 +18561,7 @@
    "id": "mb.hint.try-this-one-uh",
    "key": "try this one uh",
    "text": "Try this one. uh.",
-   "render": "Try this one. [[ \u028c ]].",
+   "render": "Try this one. [[ ʌ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18570,7 +18570,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u028c",
+   "ipa": "ʌ",
    "example": "/u/ as in \"up\"",
    "parts": [
     "p_try.mp3",
@@ -18600,7 +18600,7 @@
    "id": "mb.ph.vvv",
    "key": "vvv",
    "text": "vvv",
-   "render": "[[ v\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ vːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18609,7 +18609,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "v\u02d0\u02d0\u02d0",
+   "ipa": "vːːː",
    "example": "/v/ as in \"van\"",
    "audioNeedsId": "ph_v",
    "parts": [
@@ -18638,7 +18638,7 @@
    "id": "mb.hint.try-this-one-vvv",
    "key": "try this one vvv",
    "text": "Try this one. vvv.",
-   "render": "Try this one. [[ v\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ vːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18647,7 +18647,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "v\u02d0\u02d0\u02d0",
+   "ipa": "vːːː",
    "example": "/v/ as in \"van\"",
    "parts": [
     "p_try.mp3",
@@ -18677,7 +18677,7 @@
    "id": "mb.ph.wuh",
    "key": "wuh",
    "text": "wuh",
-   "render": "[[ w\u0259 ]]",
+   "render": "[[ wə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18686,7 +18686,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "w\u0259",
+   "ipa": "wə",
    "example": "/w/ as in \"web\"",
    "audioNeedsId": "ph_w",
    "parts": [
@@ -18715,7 +18715,7 @@
    "id": "mb.hint.try-this-one-wuh",
    "key": "try this one wuh",
    "text": "Try this one. wuh.",
-   "render": "Try this one. [[ w\u0259 ]].",
+   "render": "Try this one. [[ wə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18724,7 +18724,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "w\u0259",
+   "ipa": "wə",
    "example": "/w/ as in \"web\"",
    "parts": [
     "p_try.mp3",
@@ -18831,7 +18831,7 @@
    "id": "mb.ph.yuh",
    "key": "yuh",
    "text": "yuh",
-   "render": "[[ j\u0259 ]]",
+   "render": "[[ jə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18840,7 +18840,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "j\u0259",
+   "ipa": "jə",
    "example": "/y/ as in \"yak\"",
    "audioNeedsId": "ph_y",
    "parts": [
@@ -18869,7 +18869,7 @@
    "id": "mb.hint.try-this-one-yuh",
    "key": "try this one yuh",
    "text": "Try this one. yuh.",
-   "render": "Try this one. [[ j\u0259 ]].",
+   "render": "Try this one. [[ jə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18878,7 +18878,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "j\u0259",
+   "ipa": "jə",
    "example": "/y/ as in \"yak\"",
    "parts": [
     "p_try.mp3",
@@ -18908,7 +18908,7 @@
    "id": "mb.ph.zzz",
    "key": "zzz",
    "text": "zzz",
-   "render": "[[ z\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ zːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18917,7 +18917,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "z\u02d0\u02d0\u02d0",
+   "ipa": "zːːː",
    "example": "/z/ as in \"zip\"",
    "audioNeedsId": "ph_z",
    "parts": [
@@ -18946,7 +18946,7 @@
    "id": "mb.hint.try-this-one-zzz",
    "key": "try this one zzz",
    "text": "Try this one. zzz.",
-   "render": "Try this one. [[ z\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ zːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -18955,7 +18955,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "z\u02d0\u02d0\u02d0",
+   "ipa": "zːːː",
    "example": "/z/ as in \"zip\"",
    "parts": [
     "p_try.mp3",
@@ -18985,7 +18985,7 @@
    "id": "mb.ph.shhh",
    "key": "shhh",
    "text": "shhh",
-   "render": "[[ \u0283\u02d0\u02d0\u02d0 ]]",
+   "render": "[[ ʃːːː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -18994,7 +18994,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u0283\u02d0\u02d0\u02d0",
+   "ipa": "ʃːːː",
    "example": "/sh/ as in \"ship\"",
    "audioNeedsId": "ph_sh",
    "parts": [
@@ -19023,7 +19023,7 @@
    "id": "mb.hint.try-this-one-shhh",
    "key": "try this one shhh",
    "text": "Try this one. shhh.",
-   "render": "Try this one. [[ \u0283\u02d0\u02d0\u02d0 ]].",
+   "render": "Try this one. [[ ʃːːː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -19032,7 +19032,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u0283\u02d0\u02d0\u02d0",
+   "ipa": "ʃːːː",
    "example": "/sh/ as in \"ship\"",
    "parts": [
     "p_try.mp3",
@@ -19062,7 +19062,7 @@
    "id": "mb.ph.chuh",
    "key": "chuh",
    "text": "chuh",
-   "render": "[[ t\u0283\u0259 ]]",
+   "render": "[[ tʃə ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19071,7 +19071,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "t\u0283\u0259",
+   "ipa": "tʃə",
    "example": "/ch/ as in \"chick\"",
    "audioNeedsId": "ph_ch",
    "parts": [
@@ -19100,7 +19100,7 @@
    "id": "mb.hint.try-this-one-chuh",
    "key": "try this one chuh",
    "text": "Try this one. chuh.",
-   "render": "Try this one. [[ t\u0283\u0259 ]].",
+   "render": "Try this one. [[ tʃə ]].",
    "type": "instruction",
    "uses": [
     {
@@ -19109,7 +19109,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "t\u0283\u0259",
+   "ipa": "tʃə",
    "example": "/ch/ as in \"chick\"",
    "parts": [
     "p_try.mp3",
@@ -19139,7 +19139,7 @@
    "id": "mb.ph.thhh",
    "key": "thhh",
    "text": "thhh",
-   "render": "[[ \u03b8\u02d0 ]]",
+   "render": "[[ θː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19148,7 +19148,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u03b8\u02d0",
+   "ipa": "θː",
    "example": "/th/ as in \"thin\"",
    "audioNeedsId": "ph_th",
    "parts": [
@@ -19177,7 +19177,7 @@
    "id": "mb.hint.try-this-one-thhh",
    "key": "try this one thhh",
    "text": "Try this one. thhh.",
-   "render": "Try this one. [[ \u03b8\u02d0 ]].",
+   "render": "Try this one. [[ θː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -19186,7 +19186,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u03b8\u02d0",
+   "ipa": "θː",
    "example": "/th/ as in \"thin\"",
    "parts": [
     "p_try.mp3",
@@ -19216,7 +19216,7 @@
    "id": "mb.ph.ing",
    "key": "ing",
    "text": "ing",
-   "render": "[[ \u026a\u014b ]]",
+   "render": "[[ ɪŋ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19225,7 +19225,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "\u026a\u014b",
+   "ipa": "ɪŋ",
    "example": "/ng/ as in \"ring\"",
    "audioNeedsId": "ph_ng",
    "parts": [
@@ -19254,7 +19254,7 @@
    "id": "mb.hint.try-this-one-ing",
    "key": "try this one ing",
    "text": "Try this one. ing.",
-   "render": "Try this one. [[ \u026a\u014b ]].",
+   "render": "Try this one. [[ ɪŋ ]].",
    "type": "instruction",
    "uses": [
     {
@@ -19263,7 +19263,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "\u026a\u014b",
+   "ipa": "ɪŋ",
    "example": "/ng/ as in \"ring\"",
    "parts": [
     "p_try.mp3",
@@ -19293,7 +19293,7 @@
    "id": "mb.ph.eee",
    "key": "eee",
    "text": "eee",
-   "render": "[[ i\u02d0 ]]",
+   "render": "[[ iː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19302,7 +19302,7 @@
      "trigger": "a letter moth is tapped; or the hint button"
     }
    ],
-   "ipa": "i\u02d0",
+   "ipa": "iː",
    "example": "/ee/ as in \"tree\"",
    "audioNeedsId": "ph_ee",
    "parts": [
@@ -19331,7 +19331,7 @@
    "id": "mb.hint.try-this-one-eee",
    "key": "try this one eee",
    "text": "Try this one. eee.",
-   "render": "Try this one. [[ i\u02d0 ]].",
+   "render": "Try this one. [[ iː ]].",
    "type": "instruction",
    "uses": [
     {
@@ -19340,7 +19340,7 @@
      "trigger": "auto hint after the child is stuck"
     }
    ],
-   "ipa": "i\u02d0",
+   "ipa": "iː",
    "example": "/ee/ as in \"tree\"",
    "parts": [
     "p_try.mp3",
@@ -19370,7 +19370,7 @@
    "id": "mb.ph-reserved.reserved-ph-th-v",
    "key": "reserved ph_th_v",
    "text": "th_v as in this",
-   "render": "[[ \u00f0 ]]",
+   "render": "[[ ð ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19379,7 +19379,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "\u00f0",
+   "ipa": "ð",
    "example": "as in \"this\"",
    "audioNeedsId": "ph_th_v",
    "reserved": true,
@@ -19448,7 +19448,7 @@
    "id": "mb.ph-reserved.reserved-ph-ea",
    "key": "reserved ph_ea",
    "text": "ea as in leaf",
-   "render": "[[ i\u02d0 ]]",
+   "render": "[[ iː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19457,7 +19457,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "i\u02d0",
+   "ipa": "iː",
    "example": "as in \"leaf\"",
    "audioNeedsId": "ph_ea",
    "reserved": true,
@@ -19487,7 +19487,7 @@
    "id": "mb.ph-reserved.reserved-ph-ai",
    "key": "reserved ph_ai",
    "text": "ai as in rain",
-   "render": "[[ e\u026a ]]",
+   "render": "[[ eɪ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19496,7 +19496,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "e\u026a",
+   "ipa": "eɪ",
    "example": "as in \"rain\"",
    "audioNeedsId": "ph_ai",
    "reserved": true,
@@ -19526,7 +19526,7 @@
    "id": "mb.ph-reserved.reserved-ph-ay",
    "key": "reserved ph_ay",
    "text": "ay as in play",
-   "render": "[[ e\u026a ]]",
+   "render": "[[ eɪ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19535,7 +19535,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "e\u026a",
+   "ipa": "eɪ",
    "example": "as in \"play\"",
    "audioNeedsId": "ph_ay",
    "reserved": true,
@@ -19565,7 +19565,7 @@
    "id": "mb.ph-reserved.reserved-ph-oa",
    "key": "reserved ph_oa",
    "text": "oa as in boat",
-   "render": "[[ o\u028a ]]",
+   "render": "[[ oʊ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19574,7 +19574,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "o\u028a",
+   "ipa": "oʊ",
    "example": "as in \"boat\"",
    "audioNeedsId": "ph_oa",
    "reserved": true,
@@ -19604,7 +19604,7 @@
    "id": "mb.ph-reserved.reserved-ph-ow",
    "key": "reserved ph_ow",
    "text": "ow as in snow",
-   "render": "[[ o\u028a ]]",
+   "render": "[[ oʊ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19613,7 +19613,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "o\u028a",
+   "ipa": "oʊ",
    "example": "as in \"snow\"",
    "audioNeedsId": "ph_ow",
    "reserved": true,
@@ -19643,7 +19643,7 @@
    "id": "mb.ph-reserved.reserved-ph-oo",
    "key": "reserved ph_oo",
    "text": "oo as in moon",
-   "render": "[[ u\u02d0 ]]",
+   "render": "[[ uː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19652,7 +19652,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "u\u02d0",
+   "ipa": "uː",
    "example": "as in \"moon\"",
    "audioNeedsId": "ph_oo",
    "reserved": true,
@@ -19682,7 +19682,7 @@
    "id": "mb.ph-reserved.reserved-ph-oo-s",
    "key": "reserved ph_oo_s",
    "text": "oo_s as in book",
-   "render": "[[ \u028a ]]",
+   "render": "[[ ʊ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19691,7 +19691,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "\u028a",
+   "ipa": "ʊ",
    "example": "as in \"book\"",
    "audioNeedsId": "ph_oo_s",
    "reserved": true,
@@ -19721,7 +19721,7 @@
    "id": "mb.ph-reserved.reserved-ph-ar",
    "key": "reserved ph_ar",
    "text": "ar as in star",
-   "render": "[[ \u0251\u02d0\u0279 ]]",
+   "render": "[[ ɑːɹ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19730,7 +19730,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "\u0251\u02d0\u0279",
+   "ipa": "ɑːɹ",
    "example": "as in \"star\"",
    "audioNeedsId": "ph_ar",
    "reserved": true,
@@ -19760,7 +19760,7 @@
    "id": "mb.ph-reserved.reserved-ph-ir-er-ur",
    "key": "reserved ph_ir_er_ur",
    "text": "ir_er_ur as in her",
-   "render": "[[ \u025c\u02d0\u0279 ]]",
+   "render": "[[ ɜːɹ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19769,7 +19769,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "\u025c\u02d0\u0279",
+   "ipa": "ɜːɹ",
    "example": "as in \"her\"",
    "audioNeedsId": "ph_ir_er_ur",
    "reserved": true,
@@ -19799,7 +19799,7 @@
    "id": "mb.ph-reserved.reserved-ph-or",
    "key": "reserved ph_or",
    "text": "or as in corn",
-   "render": "[[ \u0254\u02d0\u0279 ]]",
+   "render": "[[ ɔːɹ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19808,7 +19808,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "\u0254\u02d0\u0279",
+   "ipa": "ɔːɹ",
    "example": "as in \"corn\"",
    "audioNeedsId": "ph_or",
    "reserved": true,
@@ -19838,7 +19838,7 @@
    "id": "mb.ph-reserved.reserved-ph-a-e",
    "key": "reserved ph_a_e",
    "text": "a_e as in cake",
-   "render": "[[ e\u026a ]]",
+   "render": "[[ eɪ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19847,7 +19847,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "e\u026a",
+   "ipa": "eɪ",
    "example": "as in \"cake\"",
    "audioNeedsId": "ph_a_e",
    "reserved": true,
@@ -19877,7 +19877,7 @@
    "id": "mb.ph-reserved.reserved-ph-i-e",
    "key": "reserved ph_i_e",
    "text": "i_e as in kite",
-   "render": "[[ a\u026a ]]",
+   "render": "[[ aɪ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19886,7 +19886,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "a\u026a",
+   "ipa": "aɪ",
    "example": "as in \"kite\"",
    "audioNeedsId": "ph_i_e",
    "reserved": true,
@@ -19916,7 +19916,7 @@
    "id": "mb.ph-reserved.reserved-ph-o-e",
    "key": "reserved ph_o_e",
    "text": "o_e as in home",
-   "render": "[[ o\u028a ]]",
+   "render": "[[ oʊ ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19925,7 +19925,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "o\u028a",
+   "ipa": "oʊ",
    "example": "as in \"home\"",
    "audioNeedsId": "ph_o_e",
    "reserved": true,
@@ -19955,7 +19955,7 @@
    "id": "mb.ph-reserved.reserved-ph-u-e",
    "key": "reserved ph_u_e",
    "text": "u_e as in cube",
-   "render": "[[ ju\u02d0 ]]",
+   "render": "[[ juː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -19964,7 +19964,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "ju\u02d0",
+   "ipa": "juː",
    "example": "as in \"cube\"",
    "audioNeedsId": "ph_u_e",
    "reserved": true,
@@ -19994,7 +19994,7 @@
    "id": "mb.ph-reserved.reserved-ph-e-e",
    "key": "reserved ph_e_e",
    "text": "e_e as in these",
-   "render": "[[ i\u02d0 ]]",
+   "render": "[[ iː ]]",
    "type": "phoneme",
    "uses": [
     {
@@ -20003,7 +20003,7 @@
      "trigger": "reserved in AUDIO-NEEDS.md for later stages"
     }
    ],
-   "ipa": "i\u02d0",
+   "ipa": "iː",
    "example": "as in \"these\"",
    "audioNeedsId": "ph_e_e",
    "reserved": true,
@@ -24761,7 +24761,7 @@
     "set": "mothabet-bella-076",
     "csv": "mothabet-voice-script.csv",
     "respelled": [
-     "w_umbrella.mp3: \"umbrella\" ipa \u02cc\u028cmb\u0279\u02c8\u025bl\u0251 @0.7"
+     "w_umbrella.mp3: \"umbrella\" ipa ˌʌmbɹˈɛlɑ @0.7"
     ]
    },
    "check": {
@@ -24797,7 +24797,7 @@
     "set": "elearnea-first-sound",
     "csv": "",
     "ipaOverride": [
-     "p_first_w_umbrella.mp3: f\u02c8Ind \u00f0\u0259 f\u02c8\u025c\u0279st s\u02c8Wnd \u026an \u00f0\u0259 w\u02c8\u025c\u0279d... \u02cc\u028cmb\u0279\u02c8\u025bl\u0251... \u02cc\u028cmb\u0279\u02c8\u025bl\u0251."
+     "p_first_w_umbrella.mp3: fˈInd ðə fˈɜɹst sˈWnd ɪn ðə wˈɜɹd... ˌʌmbɹˈɛlɑ... ˌʌmbɹˈɛlɑ."
     ]
    },
    "check": {
@@ -24833,7 +24833,7 @@
     "set": "mothabet-bella-076",
     "csv": "mothabet-voice-script.csv",
     "respelled": [
-     "w_umbrella.mp3: \"umbrella\" ipa \u02cc\u028cmb\u0279\u02c8\u025bl\u0251 @0.7"
+     "w_umbrella.mp3: \"umbrella\" ipa ˌʌmbɹˈɛlɑ @0.7"
     ]
    },
    "check": {
@@ -71754,14 +71754,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "l\u02c8\u025bts kl\u02c8\u00e6p... b\u0259n\u02c8\u00e6n\u0251!",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "lˈɛts klˈæp... bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.lets-clap-banana.mp3"
    ]
@@ -71789,14 +71789,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "j\u02cc\u028a\u0279 t\u02c8\u025c\u0279n! kl\u02c8\u00e6p... b\u0259n\u02c8\u00e6n\u0251.",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "jˌʊɹ tˈɜɹn! klˈæp... bənˈænɑ.",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.your-turn-clap-banana.mp3"
    ]
@@ -71824,14 +71824,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "b\u0259n\u02c8\u00e6n\u0251 h\u00e6z \u03b8\u0279\u02c8i kl\u02c8\u00e6ps!",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "bənˈænɑ hæz θɹˈi klˈæps!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.banana-has-three-claps.mp3"
    ]
@@ -72027,14 +72027,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (umbrella rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "umbrella"
    ],
-   "renderIpa": "l\u02c8\u025bts kl\u02c8\u00e6p... \u02cc\u028cmb\u0279\u02c8\u025bl\u0251!",
-   "ipaNote": "final \u0259 of \"umbrella\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "lˈɛts klˈæp... ˌʌmbɹˈɛlɑ!",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.lets-clap-umbrella.mp3"
    ]
@@ -72062,14 +72062,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (umbrella rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "umbrella"
    ],
-   "renderIpa": "j\u02cc\u028a\u0279 t\u02c8\u025c\u0279n! kl\u02c8\u00e6p... \u02cc\u028cmb\u0279\u02c8\u025bl\u0251.",
-   "ipaNote": "final \u0259 of \"umbrella\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "jˌʊɹ tˈɜɹn! klˈæp... ˌʌmbɹˈɛlɑ.",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.your-turn-clap-umbrella.mp3"
    ]
@@ -72097,14 +72097,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (umbrella rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "umbrella"
    ],
-   "renderIpa": "\u02cc\u028cmb\u0279\u02c8\u025bl\u0251 h\u00e6z \u03b8\u0279\u02c8i kl\u02c8\u00e6ps!",
-   "ipaNote": "final \u0259 of \"umbrella\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "ˌʌmbɹˈɛlɑ hæz θɹˈi klˈæps!",
+   "ipaNote": "final ə of \"umbrella\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.umbrella-has-three-claps.mp3"
    ]
@@ -72944,14 +72944,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "w\u02cc\u025b\u0279 \u026az \u00f0\u0259 b\u0259n\u02c8\u00e6n\u0251?",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "wˌɛɹ ɪz ðə bənˈænɑ?",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.where-is-the-banana.mp3"
    ]
@@ -72979,14 +72979,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "j\u02c8\u025bs! \u00f0\u0259 b\u0259n\u02c8\u00e6n\u0251!",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "jˈɛs! ðə bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.yes-the-banana.mp3"
    ]
@@ -73014,14 +73014,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "\u00f0\u02c8\u00e6ts \u00f0\u0259 b\u0259n\u02c8\u00e6n\u0251.",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "ðˈæts ðə bənˈænɑ.",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.thats-the-banana.mp3"
    ]
@@ -73049,14 +73049,14 @@
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final \u0251): listen that it ends in a clear \"ah\""
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
     ]
    },
    "schwaFix": [
     "banana"
    ],
-   "renderIpa": "h\u02c8\u026a\u0279z \u00f0\u0259 b\u0259n\u02c8\u00e6n\u0251!",
-   "ipaNote": "final \u0259 of \"banana\" rendered as \u0251 (clear \"ah\"), Hexan 2026-10-29",
+   "renderIpa": "hˈɪɹz ðə bənˈænɑ!",
+   "ipaNote": "final ə of \"banana\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
    "files": [
     "voice/clips/ll.heres-the-banana.mp3"
    ]
@@ -75836,7 +75836,7 @@
     "reasons": [],
     "asr": {
      "heard": "living or not living.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -75904,7 +75904,7 @@
     "reasons": [],
     "asr": {
      "heard": "You sorted the whole garden.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -75938,7 +75938,7 @@
     "reasons": [],
     "asr": {
      "heard": "on living.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -75972,7 +75972,7 @@
     "reasons": [],
     "asr": {
      "heard": "It's not living.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76040,7 +76040,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a fox is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76074,7 +76074,7 @@
     "reasons": [],
     "asr": {
      "heard": "A fox is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76108,7 +76108,7 @@
     "reasons": [],
     "asr": {
      "heard": "A tree.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76142,7 +76142,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a tree is living. It grows, and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76176,7 +76176,7 @@
     "reasons": [],
     "asr": {
      "heard": "A tree is living. It grows, and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76186,10 +76186,10 @@
    ]
   },
   {
-   "id": "ng.a-moth",
-   "key": "a moth",
-   "text": "A moth!",
-   "render": "A moth!",
+   "id": "ng.look-a-moth",
+   "key": "look a moth",
+   "text": "Look, a moth!",
+   "render": "Look, a moth!",
    "type": "word",
    "uses": [
     {
@@ -76207,16 +76207,10 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Moss.",
-     "score": 0.33,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
-    "voice/clips/ng.a-moth.mp3"
+    "voice/clips/ng.look-a-moth.mp3"
    ]
   },
   {
@@ -76244,7 +76238,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a moth is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76278,7 +76272,7 @@
     "reasons": [],
     "asr": {
      "heard": "A moth is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76312,7 +76306,7 @@
     "reasons": [],
     "asr": {
      "heard": "A rabbit.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76346,7 +76340,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a rabbit is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76380,7 +76374,7 @@
     "reasons": [],
     "asr": {
      "heard": "A rabbit is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76453,7 +76447,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a flower is living. It grows, and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76487,7 +76481,7 @@
     "reasons": [],
     "asr": {
      "heard": "A flower is living. It grows and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76555,7 +76549,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, an owl is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76589,7 +76583,7 @@
     "reasons": [],
     "asr": {
      "heard": "An owl is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76623,7 +76617,7 @@
     "reasons": [],
     "asr": {
      "heard": "A fish.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76657,7 +76651,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a fish is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76691,7 +76685,7 @@
     "reasons": [],
     "asr": {
      "heard": "A fish is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76759,7 +76753,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a frog is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76793,7 +76787,7 @@
     "reasons": [],
     "asr": {
      "heard": "A frog is living. It grows and it needs food and water. //",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76803,10 +76797,10 @@
    ]
   },
   {
-   "id": "ng.a-bee",
-   "key": "a bee",
-   "text": "A bee!",
-   "render": "A bee!",
+   "id": "ng.a-buzzy-bee",
+   "key": "a buzzy bee",
+   "text": "A buzzy bee!",
+   "render": "A buzzy bee!",
    "type": "word",
    "uses": [
     {
@@ -76824,16 +76818,10 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "lobby",
-     "score": 0.25,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
-    "voice/clips/ng.a-bee.mp3"
+    "voice/clips/ng.a-buzzy-bee.mp3"
    ]
   },
   {
@@ -76861,7 +76849,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a bee is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76895,7 +76883,7 @@
     "reasons": [],
     "asr": {
      "heard": "A bee is living. It grows and it needs food and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76929,7 +76917,7 @@
     "reasons": [],
     "asr": {
      "heard": "A mushroom.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76963,7 +76951,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a mushroom is living. It grows and it needs water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -76997,7 +76985,7 @@
     "reasons": [],
     "asr": {
      "heard": "A mushroom is living. It grows and it needs water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77036,7 +77024,7 @@
     "reasons": [],
     "asr": {
      "heard": "A seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77070,7 +77058,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a seed is living. It can grow into a new plant.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77104,7 +77092,7 @@
     "reasons": [],
     "asr": {
      "heard": "A seed is living. It can grow into a new plant.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77138,7 +77126,7 @@
     "reasons": [],
     "asr": {
      "heard": "Grass",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77172,7 +77160,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, grass is living. It grows, and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77206,7 +77194,7 @@
     "reasons": [],
     "asr": {
      "heard": "Grass is living. It grows and it needs water and light.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77274,7 +77262,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a rock is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77331,18 +77319,25 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ng.a-toy-ball.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": [],
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"The Toyball.\""
+    ],
     "asr": {
      "heard": "The Toyball.",
-     "score": 0.0,
+     "score": 0,
      "ok": false,
      "voice": "af_bella"
     }
@@ -77376,7 +77371,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a toy ball is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77433,15 +77428,22 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ng.a-cup.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": [],
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Look up.\""
+    ],
     "asr": {
      "heard": "Look up.",
      "score": 0.4,
@@ -77478,7 +77480,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a cup is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77512,7 +77514,7 @@
     "reasons": [],
     "asr": {
      "heard": "A cup is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77546,7 +77548,7 @@
     "reasons": [],
     "asr": {
      "heard": "A shoe.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77580,7 +77582,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a shoe is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77614,7 +77616,7 @@
     "reasons": [],
     "asr": {
      "heard": "A shoe is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77648,7 +77650,7 @@
     "reasons": [],
     "asr": {
      "heard": "A spoon.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77682,7 +77684,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a spoon is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77716,7 +77718,7 @@
     "reasons": [],
     "asr": {
      "heard": "A spoon is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77784,7 +77786,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a hat is not living. It does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77830,8 +77832,8 @@
   {
    "id": "ng.a-toy-car",
    "key": "a toy car",
-   "text": "A toy car!",
-   "render": "A toy car!",
+   "text": "A toy car.",
+   "render": "A toy car.",
    "type": "word",
    "uses": [
     {
@@ -77841,15 +77843,22 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ng.a-toy-car.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": [],
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"The Toy Car\""
+    ],
     "asr": {
      "heard": "The Toy Car",
      "score": 0.67,
@@ -77886,7 +77895,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a toy car is not living. It can move, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77954,7 +77963,7 @@
     "reasons": [],
     "asr": {
      "heard": "The Sun.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -77988,7 +77997,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, the sun is not living. It shines, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78022,7 +78031,7 @@
     "reasons": [],
     "asr": {
      "heard": "The sun is not living. It shines, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78056,7 +78065,7 @@
     "reasons": [],
     "asr": {
      "heard": "The moon.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78090,7 +78099,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, the moon is not living. It glows, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78124,7 +78133,7 @@
     "reasons": [],
     "asr": {
      "heard": "The moon is not living. It glows, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78158,7 +78167,7 @@
     "reasons": [],
     "asr": {
      "heard": "A toy robot.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78192,7 +78201,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a toy robot is not living. It can walk, but it does not grow or eat.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78260,7 +78269,7 @@
     "reasons": [],
     "asr": {
      "heard": "Plants and animals need things to live. Help the garden.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78294,7 +78303,7 @@
     "reasons": [],
     "asr": {
      "heard": "Plants make their own food from light and water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78328,7 +78337,7 @@
     "reasons": [],
     "asr": {
      "heard": "You helped the whole garden grow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78362,7 +78371,7 @@
     "reasons": [],
     "asr": {
      "heard": "Look, the ground is so dry.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78396,7 +78405,7 @@
     "reasons": [],
     "asr": {
      "heard": "Living things need water. Here it is.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78430,7 +78439,7 @@
     "reasons": [],
     "asr": {
      "heard": "Look, it is very dark in there.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78464,7 +78473,7 @@
     "reasons": [],
     "asr": {
      "heard": "Plants need light. Here it is.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78498,7 +78507,7 @@
     "reasons": [],
     "asr": {
      "heard": "Listen, a rumbly empty tummy.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78532,7 +78541,7 @@
     "reasons": [],
     "asr": {
      "heard": "Animals need food. Here it is.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78600,7 +78609,7 @@
     "reasons": [],
     "asr": {
      "heard": "Living things need air to breathe. Here it is.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78634,7 +78643,7 @@
     "reasons": [],
     "asr": {
      "heard": "Look, the rain and wind are coming.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78668,7 +78677,7 @@
     "reasons": [],
     "asr": {
      "heard": "Animals need shelter, a safe place. Here it is.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78702,7 +78711,7 @@
     "reasons": [],
     "asr": {
      "heard": "The flower is drooping. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78736,7 +78745,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, plants need water to live.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78770,7 +78779,7 @@
     "reasons": [],
     "asr": {
      "heard": "The little plant is in the dark. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78804,7 +78813,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, plants need light to grow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78838,7 +78847,7 @@
     "reasons": [],
     "asr": {
      "heard": "The rabbit is hungry. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78872,7 +78881,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, animals need food. Rabbits eat plants.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78906,7 +78915,7 @@
     "reasons": [],
     "asr": {
      "heard": "The Fox is thirsty. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78940,7 +78949,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, animals need water too.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -78974,7 +78983,7 @@
     "reasons": [],
     "asr": {
      "heard": "Rain is coming. What does the bird need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79008,7 +79017,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, animals need shelter a safe home.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79042,7 +79051,7 @@
     "reasons": [],
     "asr": {
      "heard": "The B is hungry. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79076,7 +79085,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, bees drink sweet nectar from flowers.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79110,7 +79119,7 @@
     "reasons": [],
     "asr": {
      "heard": "The tree has dry leaves. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79144,7 +79153,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, trees drink water with their roots.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79212,7 +79221,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, plants need light. Plants use light to make their food.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79246,7 +79255,7 @@
     "reasons": [],
     "asr": {
      "heard": "The jar lid is shut tight. What does the moth need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79280,7 +79289,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, animals need air to breathe. Let it fly free.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79314,7 +79323,7 @@
     "reasons": [],
     "asr": {
      "heard": "It is cold and windy. What does the mouse need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79348,7 +79357,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a cozy shelter keeps the mouse warm.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79382,7 +79391,7 @@
     "reasons": [],
     "asr": {
      "heard": "The pond is drying up. What does the fish need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79416,7 +79425,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, fish need water to live and breathe.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79450,7 +79459,7 @@
     "reasons": [],
     "asr": {
      "heard": "The owl is hungry. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79484,7 +79493,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, animals need food to grow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79518,7 +79527,7 @@
     "reasons": [],
     "asr": {
      "heard": "The frog is in a shut box. What does it need?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79552,7 +79561,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, frogs need air to breathe just like you.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79586,7 +79595,7 @@
     "reasons": [],
     "asr": {
      "heard": "Help the seed grow. What comes first?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79620,7 +79629,7 @@
     "reasons": [],
     "asr": {
      "heard": "Everything starts very, very small.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79654,7 +79663,7 @@
     "reasons": [],
     "asr": {
      "heard": "Look at the last one. What grows from it?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79688,7 +79697,7 @@
     "reasons": [],
     "asr": {
      "heard": "Your garden is in bloom.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79722,7 +79731,7 @@
     "reasons": [],
     "asr": {
      "heard": "First comes the seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79756,7 +79765,7 @@
     "reasons": [],
     "asr": {
      "heard": "A sprout.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79790,7 +79799,7 @@
     "reasons": [],
     "asr": {
      "heard": "Next comes the sprout.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79824,7 +79833,7 @@
     "reasons": [],
     "asr": {
      "heard": "a young plant.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79858,7 +79867,7 @@
     "reasons": [],
     "asr": {
      "heard": "Next comes the young plant.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79926,7 +79935,7 @@
     "reasons": [],
     "asr": {
      "heard": "Next comes the bud.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79960,7 +79969,7 @@
     "reasons": [],
     "asr": {
      "heard": "Next comes the flower.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -79994,7 +80003,7 @@
     "reasons": [],
     "asr": {
      "heard": "fruit with new seeds.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80028,7 +80037,7 @@
     "reasons": [],
     "asr": {
      "heard": "Next comes the fruit.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80062,7 +80071,7 @@
     "reasons": [],
     "asr": {
      "heard": "Let's grow a sunflower.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80096,7 +80105,7 @@
     "reasons": [],
     "asr": {
      "heard": "The sunflower grew from a tiny seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80130,7 +80139,7 @@
     "reasons": [],
     "asr": {
      "heard": "Let's grow a apple tree.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80164,7 +80173,7 @@
     "reasons": [],
     "asr": {
      "heard": "The apple tree grew from a tiny seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80198,7 +80207,7 @@
     "reasons": [],
     "asr": {
      "heard": "Let's grow a pumpkin.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80210,8 +80219,8 @@
   {
    "id": "ng.the-pumpkin-grew-from-a-tiny-seed",
    "key": "the pumpkin grew from a tiny seed",
-   "text": "The pumpkin grew from a tiny seed!",
-   "render": "The pumpkin grew from a tiny seed!",
+   "text": "The pumpkin grew from a tiny seed.",
+   "render": "The pumpkin grew from a tiny seed.",
    "type": "praise",
    "uses": [
     {
@@ -80221,15 +80230,22 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ng.the-pumpkin-grew-from-a-tiny-seed.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": [],
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"The pump can grow from a tiny seed.\""
+    ],
     "asr": {
      "heard": "The pump can grow from a tiny seed.",
      "score": 0.67,
@@ -80266,7 +80282,7 @@
     "reasons": [],
     "asr": {
      "heard": "Let's grow a bean plant.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80300,7 +80316,7 @@
     "reasons": [],
     "asr": {
      "heard": "The bean plant grew from a tiny seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80334,7 +80350,7 @@
     "reasons": [],
     "asr": {
      "heard": "Let's grow a poppy.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80368,7 +80384,7 @@
     "reasons": [],
     "asr": {
      "heard": "The poppy grew from a tiny seed.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80378,10 +80394,10 @@
    ]
   },
   {
-   "id": "ng.seed-sprout-flower",
-   "key": "seed sprout flower",
-   "text": "Seed, sprout, flower!",
-   "render": "Seed, sprout, flower!",
+   "id": "ng.seed-then-sprout-then-flower",
+   "key": "seed then sprout then flower",
+   "text": "Seed, then sprout, then flower!",
+   "render": "Seed, then sprout, then flower!",
    "type": "praise",
    "uses": [
     {
@@ -80399,16 +80415,10 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "seeds sprout flour.",
-     "score": 0.67,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
-    "voice/clips/ng.seed-sprout-flower.mp3"
+    "voice/clips/ng.seed-then-sprout-then-flower.mp3"
    ]
   },
   {
@@ -80436,7 +80446,7 @@
     "reasons": [],
     "asr": {
      "heard": "Seed Sprout Plant Flower",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80470,7 +80480,7 @@
     "reasons": [],
     "asr": {
      "heard": "Seed Sprout Plant Bud Flower",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80504,7 +80514,7 @@
     "reasons": [],
     "asr": {
      "heard": "seed sprout plant bud flower fruit. The fruit has new seeds so it starts again.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80538,7 +80548,7 @@
     "reasons": [],
     "asr": {
      "heard": "The animals are going home for the night. Help them find their homes.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80572,7 +80582,7 @@
     "reasons": [],
     "asr": {
      "heard": "Everyone is home, safe and cozy.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80606,7 +80616,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the owl live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80640,7 +80650,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, an owl rests in a tree hollow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80674,7 +80684,7 @@
     "reasons": [],
     "asr": {
      "heard": "Owls sleep up high inside a tree.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80708,7 +80718,7 @@
     "reasons": [],
     "asr": {
      "heard": "An owl lives in a tree hollow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80742,7 +80752,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the fish live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80776,7 +80786,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a fish swims in the pond.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80810,7 +80820,7 @@
     "reasons": [],
     "asr": {
      "heard": "Fish need water to swim.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80844,7 +80854,7 @@
     "reasons": [],
     "asr": {
      "heard": "A fish lives in a pond.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80912,7 +80922,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, bees build a hive out of wax.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80946,7 +80956,7 @@
     "reasons": [],
     "asr": {
      "heard": "Bees buzz home to make honey.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -80980,7 +80990,7 @@
     "reasons": [],
     "asr": {
      "heard": "A bee lives in a hive.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81014,7 +81024,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the rabbit live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81048,7 +81058,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a rabbit digs a burrow under the ground.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81082,7 +81092,7 @@
     "reasons": [],
     "asr": {
      "heard": "Rabbits dig a hole in the ground.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81116,7 +81126,7 @@
     "reasons": [],
     "asr": {
      "heard": "A rabbit lives in a burrow.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81150,7 +81160,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the bird live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81184,7 +81194,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a bird builds a nest out of twigs.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81218,7 +81228,7 @@
     "reasons": [],
     "asr": {
      "heard": "Birds lay their eggs in a cozy cup of twigs.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81251,8 +81261,8 @@
     "human": false,
     "reasons": [],
     "asr": {
-     "heard": "A bird lives\ufffd\ufffd in a nest.",
-     "score": 1.0,
+     "heard": "A bird lives�� in a nest.",
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81286,7 +81296,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the Fox live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81320,7 +81330,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a Fox digs a den to keep its cubs safe.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81354,7 +81364,7 @@
     "reasons": [],
     "asr": {
      "heard": "Foxes dig a cozy den in the hillside.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81388,7 +81398,7 @@
     "reasons": [],
     "asr": {
      "heard": "A fox lives in a den.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81422,7 +81432,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the spider live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81456,7 +81466,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a spider spins a web out of silk.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81490,7 +81500,7 @@
     "reasons": [],
     "asr": {
      "heard": "Spiders spin silky threads.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81524,7 +81534,7 @@
     "reasons": [],
     "asr": {
      "heard": "A spider lives on a web.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81558,7 +81568,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the beaver live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81626,7 +81636,7 @@
     "reasons": [],
     "asr": {
      "heard": "Beavers build with sticks in the water.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81660,7 +81670,7 @@
     "reasons": [],
     "asr": {
      "heard": "A beaver lives in a lodge.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81694,7 +81704,7 @@
     "reasons": [],
     "asr": {
      "heard": "Where does the frog live?",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81728,7 +81738,7 @@
     "reasons": [],
     "asr": {
      "heard": "Yes, a frog lives in and near the pond.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81796,7 +81806,7 @@
     "reasons": [],
     "asr": {
      "heard": "A frog lives by a pond.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }
@@ -81830,7 +81840,7 @@
     "reasons": [],
     "asr": {
      "heard": "Tap the glowing one.",
-     "score": 1.0,
+     "score": 1,
      "ok": true,
      "voice": "af_bella"
     }

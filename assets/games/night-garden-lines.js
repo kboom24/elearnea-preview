@@ -10,14 +10,14 @@
   const NGL = {};
   /* ---------- lesson 1: living or not living (sorting) ---------- lv = first difficulty level the item appears at */
   NGL.LIVING = [
-    { id: 'fox', a: 'A fox', kind: 'animal', lv: 0 }, { id: 'tree', a: 'A tree', kind: 'plant', lv: 0 }, { id: 'moth', a: 'A moth', kind: 'animal', lv: 0 },
+    { id: 'fox', a: 'A fox', kind: 'animal', lv: 0 }, { id: 'tree', a: 'A tree', kind: 'plant', lv: 0 }, { id: 'moth', a: 'A moth', kind: 'animal', lv: 0, name: 'Look, a moth!' },
     { id: 'rabbit', a: 'A rabbit', kind: 'animal', lv: 0 }, { id: 'flower', a: 'A flower', kind: 'plant', lv: 0 }, { id: 'owl', a: 'An owl', kind: 'animal', lv: 1 },
-    { id: 'fish', a: 'A fish', kind: 'animal', lv: 1 }, { id: 'frog', a: 'A frog', kind: 'animal', lv: 1 }, { id: 'bee', a: 'A bee', kind: 'animal', lv: 1 },
+    { id: 'fish', a: 'A fish', kind: 'animal', lv: 1 }, { id: 'frog', a: 'A frog', kind: 'animal', lv: 1 }, { id: 'bee', a: 'A bee', kind: 'animal', lv: 1, name: 'A buzzy bee!' },
     { id: 'mushroom', a: 'A mushroom', kind: 'fungus', lv: 2 }, { id: 'seed', a: 'A seed', kind: 'seed', lv: 2 }, { id: 'grass', a: 'Grass', kind: 'plant', lv: 2, is: 'is' }
   ].map(x => Object.assign({ living: true }, x));
   NGL.NOTLIVING = [
     { id: 'rock', a: 'A rock', lv: 0 }, { id: 'ball', a: 'A toy ball', lv: 0 }, { id: 'cup', a: 'A cup', lv: 0 }, { id: 'shoe', a: 'A shoe', lv: 0 },
-    { id: 'spoon', a: 'A spoon', lv: 1 }, { id: 'hat', a: 'A hat', lv: 1 }, { id: 'car', a: 'A toy car', lv: 2, why: 'It can move, but it does not grow or eat.' },
+    { id: 'spoon', a: 'A spoon', lv: 1 }, { id: 'hat', a: 'A hat', lv: 1 }, { id: 'car', a: 'A toy car', lv: 2, name: 'A toy car.', why: 'It can move, but it does not grow or eat.' },
     { id: 'sun', a: 'The sun', lv: 2, why: 'It shines, but it does not grow or eat.' }, { id: 'moon', a: 'The moon', lv: 2, why: 'It glows, but it does not grow or eat.' },
     { id: 'robot', a: 'A toy robot', lv: 3, why: 'It can walk, but it does not grow or eat.' }
   ].map(x => Object.assign({ living: false, kind: 'thing' }, x));
@@ -25,7 +25,8 @@
   const lis = (it) => `${it.a} is ${it.living ? 'living' : 'not living'}.`;
   NGL.sort = {
     intro: "Welcome to Wick's night garden! Living things grow, and need food or water. Is it living, or not living?",
-    name: (it) => `${it.a}!`, ask: 'Living, or not living?',
+    // name lines: speech-recognition retries picked the wording that is heard clearly ("A moth!" was heard as "the moss")
+    name: (it) => it.name || `${it.a}!`, ask: 'Living, or not living?',
     yes: (it) => `Yes! ${lis(it)} ${lwhy(it)}`, model: (it) => `${lis(it)} ${lwhy(it)}`,
     hint: 'Hmm. Does it grow? Does it need food or water?',
     living: 'Living', notLiving: 'Not living', end: 'You sorted the whole garden!'
@@ -63,7 +64,7 @@
   NGL.PLANTS = [
     { id: 'sunflower', name: 'sunflower', petal: '#F5B841', petalD: '#C98A1C', fruit: 'seedhead' },
     { id: 'apple', name: 'apple tree', petal: '#F7C6CF', petalD: '#D98A99', fruit: 'apple' },
-    { id: 'pumpkin', name: 'pumpkin', petal: '#F7A23B', petalD: '#C2672E', fruit: 'pumpkin' },
+    { id: 'pumpkin', name: 'pumpkin', petal: '#F7A23B', petalD: '#C2672E', fruit: 'pumpkin', done: 'The pumpkin grew from a tiny seed.' },
     { id: 'bean', name: 'bean plant', petal: '#B9ABE3', petalD: '#8E7FC4', fruit: 'pod' },
     { id: 'poppy', name: 'poppy', petal: '#E0584F', petalD: '#A8372F', fruit: 'poppyhead' }
   ];
@@ -73,8 +74,8 @@
     stage: { seed: 'A seed.', sprout: 'A sprout.', plant: 'A young plant.', bud: 'A bud.', flower: 'A flower!', fruit: 'Fruit, with new seeds!' },
     hintFirst: 'Everything starts very, very small.', hint: 'Look at the last one. What grows from it?',
     model: { seed: 'First comes the seed.', sprout: 'Next comes the sprout.', plant: 'Next comes the young plant.', bud: 'Next comes the bud.', flower: 'Next comes the flower.', fruit: 'Next comes the fruit.' },
-    done: (p) => `The ${p.name} grew from a tiny seed!`,
-    recap: { 3: 'Seed, sprout, flower!', 4: 'Seed, sprout, plant, flower!', 5: 'Seed, sprout, plant, bud, flower!', 6: 'Seed, sprout, plant, bud, flower, fruit! The fruit has new seeds, so it starts again!' },
+    done: (p) => p.done || `The ${p.name} grew from a tiny seed!`,
+    recap: { 3: 'Seed, then sprout, then flower!', 4: 'Seed, sprout, plant, flower!', 5: 'Seed, sprout, plant, bud, flower!', 6: 'Seed, sprout, plant, bud, flower, fruit! The fruit has new seeds, so it starts again!' },
     end: 'Your garden is in bloom!'
   };
   /* ---------- lesson 4: animal homes (matching, K-ESS2-2: animals change their surroundings to make homes) ---------- */
