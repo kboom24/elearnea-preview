@@ -21,6 +21,8 @@ Echo judging (`El.fireflyChoirJudge(target, taps, tol, beatMs)`): the tap count 
 least-squares tempo scale (allowed 0.45x-2.2x of the 520 ms beat, so a child may echo faster or slower), then every interval must be within `tol`
 of the target ratio. Tap times are `performance.now()` in the pointerdown handler. Taps during Wick's demo or while judging are not counted.
 
+Voice ASR (tools/voice/asr-check.py --ids, faster-whisper base.en, under the voice lock + qa-slot, 2026-10-30 04:22 PDT): all 29 Firefly Choir lines (23 fc.*, 5 catalog el.* lines, shared ll.listen-again) heard exactly (score 1.0), 0 flagged, 0 rewordings, 0 held for a human listen.
+
 QA: `qa/tools/qa-firefly-choir.js` (see qa/tools/README.md); results and screenshots in /home/box/elearnea/qa/firefly-choir/.
 
 iPad timing (`qa/tools/perf-ipad-firefly-choir.js`, adapted from a copy of the shared perf-ipad template, run under `qa-slot.sh --perf`,

@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:31:20.437Z",
+ "generated": "2026-10-30T11:22:22.558Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -1357,7 +1357,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "art and music land. Tap to go in.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.art-and-music-land-tap-to-go-in.mp3"
@@ -1385,7 +1391,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Hi or low, let's listen.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.high-or-low-lets-listen.mp3"
@@ -1413,7 +1425,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Fast or slow, loud or soft.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.fast-or-slow-loud-or-soft.mp3"
@@ -1441,7 +1459,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Echo the Firefly rhythm.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.echo-the-firefly-rhythm.mp3"
@@ -1469,7 +1493,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Make a Firefly song pattern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.make-a-firefly-song-pattern.mp3"
@@ -17356,7 +17386,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This firefly sings high.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-firefly-sings-high.mp3"
@@ -17384,7 +17420,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This firefly sings low.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-firefly-sings-low.mp3"
@@ -17412,7 +17454,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, high or low.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.listen-high-or-low.mp3"
@@ -17440,7 +17488,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Fast or slow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.fast-or-slow.mp3"
@@ -17468,7 +17522,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "loud or soft.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.loud-or-soft.mp3"
@@ -17496,7 +17556,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This is fast.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-is-fast.mp3"
@@ -17524,7 +17590,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This is slow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-is-slow.mp3"
@@ -17552,7 +17624,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This is loud.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-is-loud.mp3"
@@ -17580,7 +17658,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This is soft.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.this-is-soft.mp3"
@@ -17608,7 +17692,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Hi.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-high.mp3"
@@ -17636,7 +17726,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Low.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-low.mp3"
@@ -17664,7 +17760,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, fast.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-fast.mp3"
@@ -17692,7 +17794,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, slow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-slow.mp3"
@@ -17720,7 +17828,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, loud.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-loud.mp3"
@@ -17748,7 +17862,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, soft.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-soft.mp3"
@@ -17781,7 +17901,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen again.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-again.mp3"
@@ -17809,7 +17935,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Watch me first.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.watch-me-first.mp3"
@@ -17837,7 +17969,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, then tap it back.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.listen-then-tap-it-back.mp3"
@@ -17865,7 +18003,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.your-turn.mp3"
@@ -17893,7 +18037,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, you echoed it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.yes-you-echoed-it.mp3"
@@ -17921,7 +18071,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap with the lights.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.tap-with-the-lights.mp3"
@@ -17949,7 +18105,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Finish the song pattern.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.finish-the-song-pattern.mp3"
@@ -17977,7 +18139,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Now play your song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.now-play-your-song.mp3"
@@ -18005,7 +18173,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your song repeats.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/fc.your-song-repeats.mp3"
