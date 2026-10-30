@@ -3,7 +3,9 @@
      Freesound, cut to < 2 s, -16 LUFS like the voice clips, shipped in assets/sfx/animals/<id>.opus|.mp3 (sources + licenses:
      assets/sfx/animals/LICENSES.md). Same-origin files, decoded once into WebAudio buffers: no third-party requests at play time.
      El.animal.load() starts the downloads (the games call it at start); until a file is decoded the synthesized sound below plays.
-   - elephant, mouse, drum and the fallbacks: synthesized live with WebAudio.
+   - Loud/quiet sounds (lion kitten bigdrum bell siren bikebell thunder rain chick trumpet flute whimper elephant mouse): REAL CC0 recordings
+     too, same processing, in assets/sfx/loudquiet/ (LICENSES.md there). El.animal.load(El.animal.LQ) fetches them (Lantern Barn loud/quiet only).
+   - drum (clapping) and the fallbacks while a file loads: synthesized live with WebAudio.
    El.animal.play(id, {gain}) -> duration in seconds (0 when sound is off). El.animal.recorded(id) -> true once the recording is ready.
    Volumes are kept gentle for small ears: "loud" drum peaks at 0.42, "quiet" at 0.05. */
 (function () {
@@ -41,22 +43,27 @@
   };
   // recorded animal sounds: fetched + decoded once (an OfflineAudioContext decodes even while sound is off); Ogg Opus where the
   // browser plays it, else (or when decoding fails, e.g. Safari < 18.4) the mp3 copy
-  const REC = ['cow', 'duck', 'cat', 'dog', 'sheep', 'pig', 'frog', 'bird', 'owl'], BUF = {}, P = {};
+  const ANIMALS = ['cow', 'duck', 'cat', 'dog', 'sheep', 'pig', 'frog', 'bird', 'owl'];
+  // loud/quiet sounds (Lantern Barn loudquiet; assets/sfx/loudquiet, same processing + licensing as the animals); cow and dog reuse the animal files
+  const LQ = ['lion', 'kitten', 'bigdrum', 'bell', 'siren', 'bikebell', 'thunder', 'rain', 'chick', 'trumpet', 'flute', 'whimper', 'elephant', 'mouse'];
+  const REC = ANIMALS.concat(LQ), DIR = (id) => LQ.includes(id) ? 'loudquiet' : 'animals', BUF = {}, P = {};
   let ext = null; const pickExt = () => { if (ext) return ext; let a = null; try { a = document.createElement('audio'); } catch (e) {}
     return (ext = a && a.canPlayType && a.canPlayType('audio/ogg; codecs="opus"') === 'probably' ? 'opus' : 'mp3'); };
   let dc = null; const dctx = () => { if (dc) return dc; const O = window.OfflineAudioContext || window.webkitOfflineAudioContext; try { dc = O ? new O(1, 1, 44100) : null; } catch (e) { dc = null; } return dc; };
   const decode = (ab) => new Promise((res, rej) => { const c = dctx(); if (!c) return rej(new Error('no audio')); try { const p = c.decodeAudioData(ab, res, rej); if (p && p.catch) p.catch(rej); } catch (e) { rej(e); } });
-  const grab = (id, e) => fetch(El.url('assets/sfx/animals/' + id + '.' + e)).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }).then(decode);
+  const grab = (id, e) => fetch(El.url('assets/sfx/' + DIR(id) + '/' + id + '.' + e)).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }).then(decode);
   const load1 = (id) => P[id] || (P[id] = grab(id, pickExt()).catch(() => { if (ext !== 'opus') throw 0; ext = 'mp3'; return grab(id, 'mp3'); }).then(b => { BUF[id] = b; return b; }).catch(() => null));
   El.animal = {
     has: (id) => !!S[id] || REC.includes(id),
     recorded: (id) => !!BUF[id],
-    load(ids) { return Promise.all((ids || REC).filter(id => REC.includes(id)).map(load1)); },
+    LQ: LQ.concat(['cow', 'dog']),
+    canPlay: (id) => !!BUF[id] || !!S[id === 'bigdrum' ? 'drum' : id], // recording decoded, or a synthesized stand-in
+    load(ids) { return Promise.all((ids || ANIMALS).filter(id => REC.includes(id)).map(load1)); },
     // gain: 1 = normal; drum uses {gain} for loud (1) / quiet (0.12)
     play(id, o) { o = o || {}; const c = El.audio && El.audio(); if (!c || !El.animal.has(id)) return 0;
       if (BUF[id]) { const src = c.createBufferSource(), g = c.createGain(); src.buffer = BUF[id]; g.gain.value = o.gain == null ? 1 : o.gain; // -16 LUFS, like Bella's clips
         src.connect(g); g.connect(c.destination); src.start(c.currentTime + .02); return BUF[id].duration + .02; }
-      if (REC.includes(id)) load1(id); if (!S[id]) return 0;
+      if (REC.includes(id)) load1(id); if (id === 'bigdrum') id = 'drum'; if (!S[id]) return 0;
       const out = c.createGain(); out.gain.value = .85; out.connect(c.destination);
       if (id === 'drum') { out.gain.value = .47; return S.drum(c, out, c.currentTime + .02, o.gain == null ? 1 : o.gain); }
       out.gain.value = .85 * (o.gain == null ? 1 : o.gain); return S[id](c, out, c.currentTime + .02); }

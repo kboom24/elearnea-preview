@@ -11,7 +11,10 @@
     barn: {
       knock: 'Knock knock! Tap the door!', says: (a) => `The ${a.name} says ${a.sound}!`,
       listen: 'Listen!', who: (a) => `Who says ${a.sound}?`, yes: (a) => `Yes! The ${a.name} says ${a.sound}!`, that: (a) => `That's the ${a.name}!`, hereA: (a) => `Here's the ${a.name}!`,
-      lq: 'Loud, or quiet?', loud: 'Yes! That was loud, like the elephant!', quiet: 'Yes! That was quiet, like the mouse!', again: 'Listen again!',
+      // loud or quiet (content/early.json "loudquiet": 8 pairs; m = one side of a pair). Lines vary from round to round.
+      lqListen: ['Listen!', 'Shh... listen!', 'Listen carefully!'], lqAsk: ['Was that loud, or quiet?', 'Loud, or quiet?', 'Hmm... loud, or quiet?'],
+      lqWas: (m) => `Was the ${m.name} loud, or quiet?`, lqThing: (m, loud) => `Yes! That was ${loud ? 'loud' : 'quiet'}, ${m.like}!`,
+      lqSame: (m, loud) => `Yes! A ${loud ? 'loud' : 'quiet'} ${m.sound}!`, again: 'Listen again!',
       clap: (c) => `Let's clap... ${c.word}!`, turn: (c) => `Your turn! Clap... ${c.word}.`, claps: (c) => `${c.word} has ${NW[c.n]} clap${c.n === 1 ? '' : 's'}!`, together: "Let's clap it together."
     },
     garden: {
@@ -36,7 +39,14 @@
     add(B.knock, lb, 'Lantern Barn (under 2, play together)', 'round starts');
     for (const a of D.animals) { add(B.says(a), lb, 'Lantern Barn (under 2)', 'barn door opens and the animal makes its sound', 'feedback'); add(B.who(a), lb, 'Lantern Barn: who says that?', 'after "Listen!" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again');
       add(B.yes(a), lb, 'Lantern Barn: who says that?', 'right animal tapped', 'praise'); add(B.that(a), lb, 'Lantern Barn: who says that?', 'another animal tapped (then the sound replays)', 'feedback'); add(B.hereA(a), lb, 'Lantern Barn: who says that?', 'second miss: the right animal glows', 'feedback'); }
-    add(B.listen, lb, 'Lantern Barn (animals, loud/quiet)', 'before each sound'); add(B.lq, lb, 'Lantern Barn: loud or quiet', 'after the drum beats'); add(B.loud, lb, 'Lantern Barn: loud or quiet', 'elephant tapped after a loud drum', 'praise'); add(B.quiet, lb, 'Lantern Barn: loud or quiet', 'mouse tapped after a quiet drum', 'praise'); add(B.again, lb, 'Lantern Barn: loud or quiet', 'first miss (the drum replays)', 'feedback');
+    add(B.listen, lb, 'Lantern Barn (animals, loud/quiet)', 'before each sound');
+    const lq = 'Lantern Barn: loud or quiet', snd = (m) => `the ${m.name} sound (assets/sfx/loudquiet)`;
+    B.lqListen.forEach(t => { if (t !== B.listen) add(t, lb, lq, 'before the sound (varies by round)'); }); B.lqAsk.forEach(t => add(t, lb, lq, 'after the sound (things rounds; varies by round); tap Wick to hear it again'));
+    for (const pr of D.loudquiet || []) for (const [m, isLoud] of [[pr.loud, true], [pr.quiet, false]]) {
+      add(B.lqThing(m, isLoud), lb, lq, `${isLoud ? 'loud' : 'quiet'} round: ${m.name} picture tapped after ${snd(m)}`, 'praise');
+      add(B.lqWas(m), lb, lq, `same-sound round: after ${snd(m)} played loud or quiet; tap Wick to hear it again`);
+      add(B.lqSame(m, true), lb, lq, `same-sound round: loud ${m.name} picture tapped after the LOUD ${snd(m)}`, 'praise'); add(B.lqSame(m, false), lb, lq, `same-sound round: quiet ${m.name} picture tapped after the QUIET ${snd(m)}`, 'praise'); }
+    add(B.again, lb, lq, 'first miss (the sound plays again)', 'feedback');
     for (const c of D.claps) { add(B.clap(c), lb, 'Lantern Barn: clap the beats', 'Wick claps the word on the drum (model)'); add(B.turn(c), lb, 'Lantern Barn: clap the beats', "child's turn to clap"); add(B.claps(c), lb, 'Lantern Barn: clap the beats', 'right number of claps (or after the 2nd model)', 'praise'); }
     add(B.together, lb, 'Lantern Barn: clap the beats', 'wrong number of claps (Wick models it again)', 'feedback');
     add(C.here, pg + '+' + lb, 'Picture Garden / Lantern Barn / Glow Jars', 'second miss: the answer glows', 'feedback');

@@ -41,6 +41,16 @@
     { "a": "moon", "b": "spoon", "c": "duck" },
     { "a": "frog", "b": "log", "c": "cup" }
   ],
+  "loudquiet": [
+    {"id": "lion", "loud": {"id": "lion", "name": "lion", "like": "like a lion", "sound": "roar", "sfx": "lion"}, "quiet": {"id": "kitten", "name": "kitten", "like": "like a kitten", "sound": "meow", "sfx": "kitten"}},
+    {"id": "drum", "loud": {"id": "drum", "name": "big drum", "like": "like a big drum", "sound": "boom", "sfx": "bigdrum"}, "quiet": {"id": "bell", "name": "little bell", "like": "like a little bell", "sound": "ding", "sfx": "bell"}},
+    {"id": "truck", "loud": {"id": "firetruck", "name": "fire truck", "like": "like a fire truck", "sound": "siren", "sfx": "siren"}, "quiet": {"id": "bicycle", "name": "bicycle bell", "like": "like a bicycle bell", "sound": "ring-ring", "sfx": "bikebell"}},
+    {"id": "storm", "loud": {"id": "thunder", "name": "thunder", "like": "like thunder", "sound": "rumble", "sfx": "thunder"}, "quiet": {"id": "rain", "name": "rain", "like": "like raindrops", "sound": "pitter-patter", "sfx": "rain"}},
+    {"id": "farm", "loud": {"id": "cow", "name": "cow", "like": "like a cow", "sound": "moo", "sfx": "cow"}, "quiet": {"id": "chick", "name": "chick", "like": "like a baby chick", "sound": "peep", "sfx": "chick"}},
+    {"id": "band", "loud": {"id": "trumpet", "name": "trumpet", "like": "like a trumpet", "sound": "toot", "sfx": "trumpet"}, "quiet": {"id": "flute", "name": "flute", "like": "like a flute", "sound": "flute song", "sfx": "flute"}},
+    {"id": "dogs", "loud": {"id": "dog", "name": "dog", "like": "like a barking dog", "sound": "woof", "sfx": "dog"}, "quiet": {"id": "puppy", "name": "puppy", "like": "like a sleepy puppy", "sound": "whimper", "sfx": "whimper"}},
+    {"id": "zoo", "loud": {"id": "elephant", "name": "elephant", "like": "like an elephant", "sound": "elephant call", "sfx": "elephant"}, "quiet": {"id": "mouse", "name": "mouse", "like": "like a mouse", "sound": "squeak", "sfx": "mouse"}}
+  ],
   "claps": [
     { "id": "cat", "word": "cat", "n": 1 }, { "id": "sun", "word": "sun", "n": 1 }, { "id": "ball", "word": "ball", "n": 1 },
     { "id": "apple", "word": "apple", "n": 2 }, { "id": "rabbit", "word": "rabbit", "n": 2 }, { "id": "flower", "word": "flower", "n": 2 },
