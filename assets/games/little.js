@@ -11,6 +11,7 @@
 (function () {
   'use strict';
   const El = window.El;
+  const QA = /[?&]qa=1(&|$)/.test(location.search);
   El.Little = {
     setup(host, cfg, o) {
       o = o || {}; const root = host.root; let alive = true, timers = [], cur = null;
@@ -34,7 +35,7 @@
         yes(b) { host.sfx.right(); if (b) { b.classList.add('yes'); bounce(b, 'boing'); sparkle(b); } bounce(wick, 'cheer'); },
         soft(b) { softTone(); if (b) bounce(b, 'wiggle'); },
         hint(b) { if (b) b.classList.add('hint'); },
-        mark(b) { if (b) b.dataset.ok = '1'; }, // QA marker on the right answer (automated full-round tests)
+        mark(b) { if (b && QA) b.dataset.ok = '1'; }, // QA marker on the right answer, only with ?qa=1 (automated full-round tests); never set for kids
         lock() { opts.querySelectorAll('.ll-card').forEach(b => { b.onclick = null; b.classList.add('done'); }); },
         // plan: items; ask(item, index, finish): finish(firstTry, {noMastery}) records and goes to the next item
         run(plan, ask) { let qi = 0, first = 0; const total = plan.length;
