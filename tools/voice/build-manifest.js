@@ -152,7 +152,10 @@ const out = [...items.values()].map(it => { const p = it._prev; delete it._prev;
     // Mothabet line: played as a sequence of Mothabet Bella clips (copied to app/voice/mb/ by import-mothabet.js)
     if (it.parts) { it.files = it.parts.map(f => 'voice/mb/' + f); it.parts.forEach(f => usedMb.add(f));
       const sts = it.parts.map(f => MB_STATUS[f] || {}), sets = [...new Set(sts.map(x => x.set || 'mothabet-bella'))];
-      const held = [...new Set(it.parts.filter(f => (MB_STATUS[f] || {}).status === 'flagged'))];
+      // Hexan 2026-10-29: a short single word (w_*) or letter name (l_*) flagged only by ASR still PLAYS and is listed for a human listen
+      // (Whisper is unreliable on isolated words); longer flagged clips (sentences, prompts, moth lines) are held back -> device speech.
+      const shortClip = (f) => /^(w|l)_/.test(f);
+      const held = [...new Set(it.parts.filter(f => (MB_STATUS[f] || {}).status === 'flagged' && !shortClip(f)))];
       it.source = !it.files.every(exists) ? { kind: 'device-speech', pending: 'Mothabet clips not imported yet' }
         : held.length ? { kind: 'device-speech', fallback: 'ASR-flagged clip held back: plays device speech until a human listens', held, wouldPlay: { label: VOICE.label, set: sets.join('+') } }
         : { kind: VOICE.kind, voice: VOICE.voice, label: VOICE.label, speed: VOICE.speed, set: sets.join('+'), csv: sets.includes('mothabet-bella-076') || sets.includes('mothabet-bella-phonemes') ? path.basename(MB_CSV) : sts[0].csv || '' };
@@ -164,7 +167,7 @@ const out = [...items.values()].map(it => { const p = it._prev; delete it._prev;
   const reasons = [];
   if (it.ipa || /\[\[/.test(it.render) || it.type === 'phoneme') reasons.push('phoneme: needs an ear check (pure sound, no extra vowel)');
   if (it.type === 'letter') reasons.push('letter name: check it is said as the letter, not a word');
-  for (const f of [...new Set(it.parts || [])]) { const st = MB_STATUS[f]; if (st && (st.status === 'flagged' || st.status === 'unverified')) reasons.push(`${f}: ${st.status}: ${st.reason}`); else if (!st) { const r = reviewFlag(f); if (r) reasons.push(`${f}: ${r}`); } }
+  for (const f of [...new Set(it.parts || [])]) { const st = MB_STATUS[f]; if (st && (st.status === 'flagged' || st.status === 'unverified')) reasons.push(`${f}: ${st.status === 'flagged' ? (/^(w|l)_/.test(f) ? 'ASR-flagged short word/letter, still plays: human listen needed' : 'ASR-flagged, held back (device speech)') : st.status}: ${st.reason}`); else if (!st) { const r = reviewFlag(f); if (r) reasons.push(`${f}: ${r}`); } }
   // speech-recognition results only count for the voice that is shipping now
   if (p && p.check && p.check.asr && p.check.asr.voice === VOICE.voice && JSON.stringify(p.files || []) === JSON.stringify(it.files)) { it.check.asr = p.check.asr; if (!p.check.asr.ok) reasons.push(`speech-recognition check heard "${p.check.asr.heard}"`); }
   // policy (Hexan 2026-10-29): a clip still ASR-flagged after the respelling retries is held back -> device speech until a human listens
@@ -181,7 +184,7 @@ const manifest = { version: 2, generated: new Date().toISOString(),
   mothabetMapping: { csv: MB_CSV, clipsFrom: MB_DIR, clipStatus: MB_STATUS_F, extraSets: { 'elearnea-first-sound': '/home/box/elearnea/voice/mothabet/first-sound/lines.csv', 'elearnea-letters': '/home/box/elearnea/voice/mothabet/letters/lines.csv', 'elearnea-fixes': '/home/box/elearnea/voice/mothabet/fixes-076/fixes.tsv (respelling retries)', 'mothabet-bella-phonemes': 'ph_* from the original Mothabet Bella batch (pure sounds; not speed-dependent; unverified)' }, copiedTo: 'app/voice/mb/', rule: 'each Mothabet line = sequence of script clips, e.g. "sun. The sun is hot. sun." = w_sun + s_sun + w_sun; "Find the first sound in the word... sun... sun." = p_first_w_sun (one Elearnea-rendered clip, wording approved by Hexan 2026-10-29); "Find the last sound in... sun." = p_last + w_sun; "Try this one. sss." = p_try + ph_s', scriptClips: mbRows.length, usedByCode: usedMb.size },
   elearneaCsv: EL_CSV,
   counts: { total: out.length, spoken: out.filter(x => !x.reserved).length, reserved: out.filter(x => x.reserved).length, byGame, byType, needsHumanCheck: out.filter(x => x.check.human).length,
-    withClip: out.filter(has).length, heldForHumanCheck: out.filter(x => x.source.fallback).length, unverifiedPhonemes: out.filter(x => (x.parts || []).some(f => (MB_STATUS[f] || {}).status === 'unverified')).length, pending: out.filter(x => !has(x) && x.source.pending).length, gaps: out.filter(x => !x.reserved && x.source.gap).length },
+    withClip: out.filter(has).length, heldForHumanCheck: out.filter(x => x.source.fallback).length, playingButFlaggedShort: out.filter(x => !x.source.fallback && (x.parts || []).some(f => (MB_STATUS[f] || {}).status === 'flagged')).length, unverifiedPhonemes: out.filter(x => (x.parts || []).some(f => (MB_STATUS[f] || {}).status === 'unverified')).length, pending: out.filter(x => !has(x) && x.source.pending).length, gaps: out.filter(x => !x.reserved && x.source.gap).length },
   items: out };
 fs.writeFileSync(OUT, JSON.stringify(manifest, null, 1));
 // CSV for say.py (filename,text) = every non-Mothabet line; ids are the file names, so a provider swap is just a re-render
