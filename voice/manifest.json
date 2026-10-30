@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T10:44:22.406Z",
+ "generated": "2026-10-30T12:26:14.631Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -353,11 +353,11 @@
    "sentence": 430
   },
   "needsHumanCheck": 299,
-  "withClip": 2222,
+  "withClip": 2242,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 20,
+  "pending": 0,
   "gaps": 0
  },
  "items": [
@@ -749,12 +749,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Help the moths cross the bridge.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.help-the-moths-cross-the-bridge.mp3"
@@ -77778,8 +77787,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77805,8 +77817,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77832,8 +77847,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77859,8 +77877,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77886,8 +77907,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77913,8 +77937,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77940,8 +77967,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77967,8 +77997,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -77994,8 +78027,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": true,
@@ -78021,12 +78057,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap each moth to hear its sound.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.tap-each-moth-to-hear-its-sound.mp3"
@@ -78046,12 +78091,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Now slide them together.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.now-slide-them-together.mp3"
@@ -78071,12 +78125,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which picture is it?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.which-picture-is-it.mp3"
@@ -78096,12 +78159,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the sounds in order.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.tap-the-sounds-in-order.mp3"
@@ -78121,12 +78193,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "What sound�起 comes first?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.what-sound-comes-first.mp3"
@@ -78146,12 +78227,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "What sound comes next?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.what-sound-comes-next.mp3"
@@ -78171,12 +78261,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "What is the last sound?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.what-is-the-last-sound.mp3"
@@ -78196,12 +78295,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "You blended it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.you-blended-it.mp3"
@@ -78221,12 +78329,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "over the bridge.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.over-the-bridge.mp3"
@@ -78246,12 +78363,21 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "You found every sound.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/mbr.you-found-every-sound.mp3"

@@ -68,7 +68,10 @@ Every word uses a Mothabet word clip that passed the check, plus a picture a chi
 
 `tools/voice/check.js` enforces this. It fails if any Moth Bridge word has no passing Mothabet clip, or if a rime reuses a held or flagged clip. It also checks every line from `B.all()` against the manifest.
 
-## VOICE-NEEDS (for Voice & Audio; not rendered, device speech until then)
+## VOICE-NEEDS (rendered 2026-10-30: Kokoro af_bella 0.76, one batch under the TTS lock)
+
+All 20 are rendered. The 11 prompt/praise lines passed the speech check (faster-whisper base.en, 11/11 ok). The 9 rimes used IPA overrides (listed in voice/ipa-overrides.json) and are phonemes, so they play but need a human ear check (the recognizer can't judge a bare rime). Render files: /home/box/elearnea/voice/moth-bridge/.
+
 
 Render these with say.py into `voice/clips/<file>.mp3` (+ .opus). Ids come from voice/manifest.json, and the CSV row is in the branch-local elearnea-lines.csv. Rimes are sounds, not letter names: a short vowel plus a held or clipped end, with no extra "uh".
 

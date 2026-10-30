@@ -78,5 +78,50 @@
    "banana",
    "umbrella"
   ]
+ },
+ "mbr.att": {
+  "ipa": "ˈæt.",
+  "text": "att",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.app": {
+  "ipa": "ˈæp.",
+  "text": "app",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.ann": {
+  "ipa": "ˈæn.",
+  "text": "ann",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.ugg": {
+  "ipa": "ˈʌɡ.",
+  "text": "ugg",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.opp": {
+  "ipa": "ˈɑp.",
+  "text": "opp",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.ogg": {
+  "ipa": "ˈɑɡ.",
+  "text": "ogg",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.igg": {
+  "ipa": "ˈɪɡ.",
+  "text": "igg",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.unn": {
+  "ipa": "ˈʌn.",
+  "text": "unn",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "mbr.upp": {
+  "ipa": "ˈʌp.",
+  "text": "upp",
+  "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
  }
 }
