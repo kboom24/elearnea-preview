@@ -3,6 +3,6 @@ Noindex preview of Elearnea, a storybook world of learning games for kids 4-9, p
 - `index.html` landing · `map/` world hub · `realm/<id>/` lesson paths · `play/<game>/` game host pages · `grown-ups/` gated parent area (stub)
 - `content/catalog.json` content catalog: subject > realm > skill > lesson > game, grade + standards tags
 - `assets/js/el.js` core: storage, learning engine (from Mothabet learn.js), on-device voice (from Mothabet voice.js), game host contract
-- `assets/games/*` game modules (`lily-pad`, `firefly-count`, `clocktower-gears`, `mothabet` adapter); `play/mothabet/game/` kid-safe Mothabet copy, the one Mothabet source (see `docs/MOTHABET-INTEGRATION.md`; the seed and `tools/sync-mothabet.sh` are retired)
+- `assets/games/*` game modules (`lily-pad`, `firefly-count`, `clocktower-gears`, `wicks-path` (Logic & Coding: sequences, debugging, loops), `mothabet` adapter); `play/mothabet/game/` kid-safe Mothabet copy, the one Mothabet source (see `docs/MOTHABET-INTEGRATION.md`; the seed and `tools/sync-mothabet.sh` are retired)
 - Little Lanterns (0-4): `assets/games/little.js` kit, `little-lines.js` (every spoken line), `lantern-barn`, `picture-garden`, `glow-jars`; data in `content/early.json`; art `assets/js/pics.js`; sound effects `assets/js/sfx-animals.js` (CC0 recordings in `assets/sfx/animals/` and `assets/sfx/loudquiet/`); age band in `El.band()` (set in grown-ups or with the map's lantern switch)
 All pages: `noindex, nofollow`; `robots.txt` disallows all. No third-party requests.

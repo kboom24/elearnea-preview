@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only.",
+  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; CSTA K-12 CS Standards (2017) codes as CSTA.<id> (e.g. CSTA.1A-AP-10) for Logic & Coding; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only.",
   "games": {
     "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
     "lily-pad": { "name": "Lily Pad Hop", "path": "play/lily-pad/", "tile": "assets/img/tile-lily.webp", "kind": "module", "ages": "4-7" },
@@ -8,7 +8,8 @@
     "clocktower-gears": { "name": "Clocktower Gears", "path": "play/clocktower-gears/", "tile": "assets/img/tile-clocktower.webp", "kind": "module", "ages": "4-9" },
     "lantern-barn": { "name": "Lantern Barn", "path": "play/lantern-barn/", "tile": "assets/img/tile-barn.svg", "kind": "module", "ages": "0-4" },
     "picture-garden": { "name": "Picture Garden", "path": "play/picture-garden/", "tile": "assets/img/tile-garden.svg", "kind": "module", "ages": "0-4" },
-    "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" }
+    "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" },
+    "wicks-path": { "name": "Wick's Lantern Path", "path": "play/wicks-path/", "tile": "assets/img/tile-wicks-path.svg", "kind": "module", "ages": "4-9" }
   },
   "subjects": [
     {
@@ -163,7 +164,37 @@
     { "id": "science", "name": "Nature & Science", "realm": { "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "soon", "color": "#7CC4A4", "icon": "leaf", "img": "assets/img/isle-nature", "say": "Nature land is still growing. Coming soon!", "skills": [] } },
     { "id": "art-music", "name": "Art & Music", "realm": { "id": "art-music", "name": "Art & Music", "landmark": "Windmill", "status": "soon", "color": "#F08A7E", "icon": "palette", "img": "assets/img/isle-art", "say": "Art and music land is coming soon!", "skills": [] } },
     { "id": "world", "name": "World & Languages", "realm": { "id": "world", "name": "World", "landmark": "Globe", "status": "soon", "color": "#7CC4A4", "icon": "globe", "img": "assets/img/isle-world", "say": "World land is coming soon!", "skills": [] } },
-    { "id": "logic", "name": "Logic & Coding", "realm": { "id": "logic", "name": "Logic & Coding", "landmark": "Castle", "status": "soon", "color": "#9B8AD1", "icon": "puzzle", "img": "assets/img/isle-logic", "say": "Puzzle castle is coming soon!", "skills": [] } }
+    { "id": "logic", "name": "Logic & Coding",
+      "realm": {
+        "id": "logic", "name": "Logic & Coding", "landmark": "Castle", "status": "open", "color": "#9B8AD1", "icon": "puzzle",
+        "img": "assets/img/isle-logic", "say": "Puzzle castle! Tap to go in.", "saySoon": "Puzzle castle is coming soon!",
+        "standardsNote": "Logic & Coding lessons are tagged with CSTA K-12 Computer Science Standards (2017), level 1A (grades K-2, ages 5-7), Algorithms & Programming: 1A-AP-08 algorithms, 1A-AP-10 programs with sequences and simple loops, 1A-AP-11 decompose into a precise sequence, 1A-AP-14 debug. Each lesson lists only the codes its core play practises.",
+        "skills": [
+          { "id": "lg.one-step", "name": "One-step directions", "grade": "K", "standards": ["CSTA.1A-AP-08"],
+            "lessons": [
+              { "id": "lg-l1", "name": "First step", "icon": "arrow", "grade": "K", "standards": ["CSTA.1A-AP-08"], "say": "One arrow to the lantern!",
+                "game": { "id": "wicks-path", "config": { "mode": "step", "rounds": 6 } } }
+            ] },
+          { "id": "lg.sequence", "name": "Step-by-step sequences", "grade": "K", "standards": ["CSTA.1A-AP-08", "CSTA.1A-AP-10", "CSTA.1A-AP-11"],
+            "lessons": [
+              { "id": "lg-l2", "name": "Lantern path", "icon": "steps", "grade": "K", "standards": ["CSTA.1A-AP-08", "CSTA.1A-AP-10", "CSTA.1A-AP-11"], "say": "Make a path for Wick!",
+                "game": { "id": "wicks-path", "config": { "mode": "seq", "rounds": 5 } } }
+            ] },
+          { "id": "lg.debug", "name": "Debugging", "grade": "1", "standards": ["CSTA.1A-AP-14"],
+            "lessons": [
+              { "id": "lg-l3", "name": "Fix the path", "icon": "bug", "grade": "1", "standards": ["CSTA.1A-AP-14"], "say": "Fix the path!",
+                "game": { "id": "wicks-path", "config": { "mode": "debug", "rounds": 5 } } }
+            ] },
+          { "id": "lg.loops", "name": "Loops", "grade": "1", "standards": ["CSTA.1A-AP-10"],
+            "lessons": [
+              { "id": "lg-l4", "name": "Repeat it", "icon": "loop", "grade": "1", "standards": ["CSTA.1A-AP-10"], "say": "Make it short with repeat!",
+                "game": { "id": "wicks-path", "config": { "mode": "loop", "rounds": 5 } } }
+            ] }
+        ],
+        "comingSoon": [ { "name": "If this, then that", "icon": "puzzle" } ],
+        "comingSoonLittle": [ { "name": "Follow the path", "icon": "puzzle" } ]
+      }
+    }
   ],
   "wordLists": {
     "dolch-preprimer-a": { "name": "Dolch pre-primer (part 1)", "source": "Dolch (public domain)", "words": ["a", "and", "big", "can", "go", "I", "is", "it", "me", "my", "see", "the", "to", "up", "we", "you"] },

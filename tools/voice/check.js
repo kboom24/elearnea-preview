@@ -26,6 +26,7 @@ const DYNAMIC = {
   'assets/js/realm.js|x.ls.say || x.ls.name': 'catalog lesson "say" lines (elearnea instruction lines)',
   'assets/js/realm.js|next.ls.say || next.ls.name': 'catalog lesson "say" lines',
   'map/index.html|r.say': 'catalog realm "say" lines',
+  'map/index.html|r.saySoon || r.say': 'catalog realm "saySoon" / "say" lines',
   'assets/js/play.js|`${msg} You earned ${stars} star${stars === 1 ? \'\' : \'s\'}!`': 'results praise (msg in Wonderful!/Great job!/Good try!, stars 0-3)',
   'assets/games/clocktower-gears.js|t': 'speak() wrapper inside Clocktower Gears',
   'assets/games/clocktower-gears.js|spoken': 'setPrompt helper: the spoken argument is checked at each setPrompt call',
@@ -91,6 +92,8 @@ function checkExpr(e, where) {
   const tq = ternary(e); if (tq) { checkExpr(tq[1], where); checkExpr(tq[2], where); return; }
   // Little Lanterns games: every line comes from assets/games/little-lines.js (LN.* / its aliases G, J, C), whose full output is verified below
   if (LITTLE.has(where.split(':')[0]) && /^(?:(?:LN|G|J|C)\.[\w.]+(?:\([^()]*\))?|q\.(?:cue|yes|here)|ln\.(?:cue|yes|here)|lines\(b\._it\)\.that|lines|cur)$/.test(e)) return;
+  // Wick's Lantern Path: every line comes from assets/games/wicks-path-lines.js (WL.*), whose full output is verified below
+  if (where.split(':')[0] === 'assets/games/wicks-path.js' && /^(?:WL\.\w+(?:\[[\w.]+\])?|\{[^{}]*\}\[why\]|rng\.pick\(WL\.praise\)|lines|line|reason|prompt|spoken|t|say\[0\]|'')$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
 const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt|sayThen|speakThen|praiseThen)\s*\(|\.(?:say|sayThen)\s*\()/g; // *Then: say, then continue when the line ended (voice/voice-then.js)
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
@@ -109,6 +112,10 @@ for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
   for (const l of LN.all(D)) { n++; if (!keys.has(norm(l.text))) problems.push(`little-lines: "${l.text}" is not in the manifest`); }
   // and every content item the games can ask about is enumerated by LN.all (spot check the data the games read)
   console.log(`voice check: ${n} Little Lanterns lines verified against the manifest`); }
+// Wick's Lantern Path: every line the game's line list can produce must be a manifest line
+{ const WL = require(path.join(APP, 'assets/games/wicks-path-lines.js')); let n = 0;
+  for (const l of WL.all()) { n++; if (!keys.has(norm(l.text))) problems.push(`wicks-path-lines: "${l.text}" is not in the manifest`); }
+  console.log(`voice check: ${n} Wick's Lantern Path lines verified against the manifest`); }
 // files + index: every shipped line has all its files (.mp3 + .opus) and is in index.json; lines still pending are reported, not failed
 let missing = 0, pending = 0; for (const it of man.items) { if (it.reserved) continue;
   if (idx.map[it.key] !== it.id) { problems.push(`index.json does not map "${it.key}" to ${it.id}`); continue; }
