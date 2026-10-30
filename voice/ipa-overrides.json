@@ -78,5 +78,12 @@
    "banana",
    "umbrella"
   ]
+ },
+ "sing.panda": {
+  "ipa": "pˈændɑ.",
+  "text": "panda.",
+  "words": [
+   "panda"
+  ]
  }
 }
