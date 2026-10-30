@@ -95,7 +95,8 @@
   .fc-prompt .bubble { font-size: 1.15rem; padding: 10px 12px; }
   .fc-prompt .bubble::before { left: 50%; top: -12px; transform: translateX(-50%); border: 10px solid transparent; border-bottom: 14px solid var(--cream); border-top: 0; }
   .fc-wick { width: 70px; margin: 0; }
-  .fc-scene { grid-column: 2; grid-row: 1; } .fc-tray { grid-column: 2; grid-row: 2; min-height: 0; padding-top: 2px; }
+  .fc-scene { grid-column: 2; grid-row: 1; } .fc-hills { left: -40vw; } /* meadow runs under the prompt column too (clipped by .fc) */
+  .fc-tray { grid-column: 2; grid-row: 2; min-height: 0; padding-top: 2px; }
   .fc-tray:empty { padding: 0; }
   .fc-card { width: 104px; height: 104px; } .fc-card.nt { width: 100px; height: 100px; } .fc-drum { width: 140px; height: 140px; }
   .hl-fly { width: 100px; height: 100px; } .hl-lantern { width: 76px; }

@@ -33,7 +33,7 @@ def target_of(it):
     if it.get('ipa'): return re.sub(r'\[\[.*?\]\]', '', it['render'])
     return it['render']
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--start', type=int, default=0); ap.add_argument('--end', type=int, default=10**9); ap.add_argument('--rescore', action='store_true'); ap.add_argument('--missing', action='store_true', help='only lines without a stored check'); ap.add_argument('--flagged', action='store_true', help='re-check flagged lines with padding + beam search (fewer recognizer false alarms)'); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--start', type=int, default=0); ap.add_argument('--end', type=int, default=10**9); ap.add_argument('--rescore', action='store_true'); ap.add_argument('--missing', action='store_true', help='only lines without a stored check'); ap.add_argument('--flagged', action='store_true', help='re-check flagged lines with padding + beam search (fewer recognizer false alarms)'); ap.add_argument('--ids', default='', help='comma list of line ids to check (e.g. one game\'s new lines)'); a = ap.parse_args(); ids = set(filter(None, a.ids.split(',')))
     if a.rescore:  # re-judge stored transcripts (no audio work)
         man = json.load(open(MANIFEST)); n = 0
         for it in man['items']:
@@ -45,6 +45,7 @@ def main():
     m = WhisperModel('base.en', device='cpu', compute_type='int8', cpu_threads=2)
     man = json.load(open(MANIFEST)); items = man['items'][a.start:a.end]; res = {}; t0 = time.time()
     for it in items:
+        if ids and it['id'] not in ids: continue
         if a.missing and it['check'].get('asr'): continue
         if a.flagged and not (it['check'].get('asr') and not it['check']['asr']['ok']): continue
         fl = it.get('files') or []
