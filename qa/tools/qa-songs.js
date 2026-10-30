@@ -48,24 +48,47 @@ function audit(MIN) { const W = document.documentElement.clientWidth, H = innerH
         await page.goto(BASE + `play/${GAME(ls)}/?lesson=${ls}&qa=1`, { waitUntil: 'load' }); await page.waitForSelector('#saGo'); await sleep(400); await sample(); await shot('start');
         await tap(await page.$('#saGo'));
         await waitFor(() => page.evaluate(() => { const a = window.__sing.audio(); return a && !a.paused && !a.muted && a.currentTime > .05; }), 40000, 'music starts after the intro');
-        const ev = await page.evaluate(() => window.__sing.song().events.filter(e => e.type !== 'roll').map(e => ({ type: e.type, word: e.word, open: e.open, close: e.close, t: e.t, letters: e.letters })));
+        const ev = await page.evaluate(() => window.__sing.song().events.filter(e => !(e.type === 'roll' && e.open == null)));
         const dur = await page.evaluate(() => window.__sing.song().dur);
         const shotDone = {}; let missDone = false; const shotOnce = async (k) => { if (!shotDone[k]) { shotDone[k] = 1; await shot(k); } };
+        const seek = (t) => page.evaluate((t) => { window.__sing.audio().currentTime = t; }, t);
+        const tapOk = async (sel, ms) => { const h = await page.waitForSelector(sel, { timeout: ms || 5000 }); await tap(h); };
+        // every moment of the song, by type (real taps; one deliberate miss on the 2nd scored moment)
         const playMoment = async (e, i) => {
-          if (e.type === 'pick') { await page.waitForSelector('.sa-opt[data-ok]', { timeout: 5000 }); await sleep(700); // cards walk in
-            if (i === 1 && !missDone) { const wrong = await page.$('.sa-opt:not([data-ok])'); if (wrong) { await tap(wrong); missDone = true; await sleep(250); } }
-            await sample(); if (i >= 1) await shotOnce('pick'); await tap(await page.$('.sa-opt[data-ok]')); await sleep(800); }
-          else { await page.waitForSelector('.sa-tile', { timeout: 5000 }); await sleep(600); await sample(); if (e.word.length >= 4) await shotOnce('spell');
-            if (i >= 1 && !missDone) { const wrong = await page.$('.sa-tile:not([data-ok]):not(.used)'); if (wrong) { await tap(wrong); missDone = true; await sleep(250); } } // deliberate miss
-            for (let k = 0; k < e.word.length; k++) { const b = await page.$('.sa-tile[data-ok]'); if (!b) break; await tap(b); await sleep(180); }
-            await sleep(300); if (e.word.length >= 4) await shotOnce('built'); } };
+          if (e.type === 'pick' || e.type === 'read') { await seek(e.open + .15); await page.waitForSelector('.sa-opt[data-ok]', { timeout: 5000 }); await sleep(700);
+            if (!missDone && i >= 2) { const wrong = await page.$('.sa-opt:not([data-ok])'); if (wrong) { await tap(wrong); missDone = true; await sleep(250); } }
+            if (e.deco) { await seek(e.deco.t + .05); await sleep(500); }
+            await sample(); await shotOnce(e.type + (e.deco ? '-rhyme' : '')); await tapOk('.sa-opt[data-ok]'); await sleep(600); }
+          else if (e.type === 'spell') { await seek(e.open + .15); await page.waitForSelector('.sa-tile', { timeout: 5000 }); await sleep(600); await sample(); if (e.word.length >= 4) await shotOnce('spell');
+            if (!missDone && i >= 2) { const wrong = await page.$('.sa-tile:not([data-ok]):not(.used)'); if (wrong) { await tap(wrong); missDone = true; await sleep(250); } }
+            for (let k = 0; k < e.word.length; k++) { const b = await page.$('.sa-spell .sa-tile[data-ok]'); if (!b) break; await tap(b); await sleep(180); }
+            await sleep(300); if (e.word.length >= 4) await shotOnce('built');
+            if (e.sneeze) { await seek(e.sneeze + .3); await page.waitForSelector('.sa-catch .sa-tile[data-ok]', { timeout: 5000 }); await sleep(900); await sample(); await shotOnce('sneeze');
+              for (let k = 0; k < e.word.length; k++) { const b = await page.$('.sa-catch .sa-tile[data-ok]'); if (!b) break; await tap(b); await sleep(200); } await sleep(300); await shotOnce('caught'); } }
+          else if (e.type === 'sound') { for (const it of e.items) { await seek(it.snd + .05); await sleep(450); await sample(); await shotOnce('sound'); await tapOk('.sa-lt[data-ok]'); await sleep(400); } }
+          else if (e.type === 'flip') { for (const w of e.words) { await seek(w.t + .05); await sleep(450); await sample(); await shotOnce('flip'); await tapOk('.sa-flip[data-ok]'); await sleep(700); } await shotOnce('flipped'); }
+          else if (e.type === 'track') { await seek(e.words[Math.min(1, e.words.length - 1)][1] + .05); await sleep(400); await sample(); await shotOnce('track-' + (e.theme || 'bubble')); await tapOk('.sa-word[data-ok]'); await sleep(250); }
+          else if (e.type === 'roll') { await seek(e.times[0] + .05); await sleep(400); await tapOk('.sa-rc[data-ok]'); await seek(e.times[e.times.length - 1] + .1); await sleep(400); await sample(); await shotOnce('roll'); }
+          else if (e.type === 'stars') { await seek(e.open + .2); await sleep(600); await sample(); await tapOk('.sa-star[data-ok]'); await sleep(300); await shotOnce('stars'); }
+          else if (e.type === 'beat') { await seek(e.open + .2); await sleep(400); await sample(); await tapOk('.sa-drum'); await sleep(250); await shotOnce('beat'); } };
+        let dead = { max: 0, at: 0 };
         if (MODE === 'fast') {
-          for (let i = 0; i < ev.length; i++) { const e = ev[i]; await page.evaluate((t) => { window.__sing.audio().currentTime = t; }, e.open + .15); await playMoment(e, i); }
-          await page.evaluate((t) => { window.__sing.audio().currentTime = t; }, dur - 1.5);
+          for (let i = 0; i < ev.length; i++) await playMoment(ev[i], i);
+          await seek(dur - 1.5);
         } else {
-          // real time: play every moment when it comes up, sample targets now and then, screenshot early/mid
-          for (let i = 0; i < ev.length; i++) { const e = ev[i]; await waitFor(() => page.evaluate((o) => window.__sing.t() >= o, e.open + .1), (e.open + 30) * 1000, 'moment ' + i);
-            await playMoment(e, i); }
+          // real time, an eager kid: taps whatever the song is asking for every ~0.45 s; samples targets; measures the longest stretch with nothing to tap
+          let last = null; const t0 = Date.now(); let shotsAt = [20, 60, 75, 79.5];
+          while (Date.now() - t0 < (dur + 40) * 1000) {
+            const st = await page.evaluate(() => { const a = window.__sing.audio(); const live = [...document.querySelectorAll('#saPlay button')].filter(b => { const r = b.getBoundingClientRect(); const cs = getComputedStyle(b);
+                return r.width > 0 && !b.disabled && !b.classList.contains('used') && !b.classList.contains('gone') && !b.classList.contains('wait') && cs.visibility !== 'hidden' && +cs.opacity > .2; }).length;
+              return { t: window.__sing.t(), ended: a.ended || !!document.querySelector('#res.on'), live, ok: !!document.querySelector('#saPlay [data-ok]') }; });
+            if (st.ended) break;
+            if (st.live) last = null; else if (st.t > 1.5) { if (last == null) last = st.t; else if (st.t - last > dead.max) dead = { max: +(st.t - last).toFixed(2), at: +last.toFixed(1) }; }
+            if (st.ok) { const h = await page.$('#saPlay [data-ok]'); if (h) await tap(h).catch(() => {}); }
+            if (shotsAt.length && st.t >= shotsAt[0]) { shotsAt.shift(); await shot('rt-' + Math.round(st.t)); }
+            if (Math.random() < .08) await sample();
+            await sleep(450); }
+          note += `longest stretch with nothing to tap ${dead.max}s (at ${dead.at}s); `; if (dead.max > 3) ok = false;
         }
         await waitFor(() => page.isVisible('#res.on'), MODE === 'fast' ? 40000 : (dur + 60) * 1000, 'results card'); await sleep(900); await sample(); await shot('results');
         const res = await page.evaluate(() => ({ stars: document.querySelectorAll('#res .stars3 .on').length, text: document.querySelector('#res p').textContent, shelf: document.querySelectorAll('.sa-chip').length }));

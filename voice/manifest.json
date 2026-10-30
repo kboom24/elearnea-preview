@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T12:52:16.780Z",
+ "generated": "2026-10-30T15:51:42.112Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -774,8 +774,8 @@
   }
  ],
  "counts": {
-  "total": 2569,
-  "spoken": 2552,
+  "total": 2570,
+  "spoken": 2553,
   "reserved": 17,
   "byGame": {
    "elearnea": 81,
@@ -790,11 +790,11 @@
    "night-garden": 175,
    "wicks-path": 39,
    "moth-bridge": 19,
-   "zoo-parade": 17,
+   "zoo-parade": 18,
    "word-stage": 1
   },
   "byType": {
-   "instruction": 733,
+   "instruction": 734,
    "label": 137,
    "feedback": 279,
    "praise": 319,
@@ -805,7 +805,7 @@
    "sentence": 430
   },
   "needsHumanCheck": 301,
-  "withClip": 2553,
+  "withClip": 2554,
   "heldForHumanCheck": 16,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
@@ -22376,6 +22376,11 @@
      "game": "mothabet",
      "screen": "Mothabet play (Spelling/Fliers)",
      "trigger": "hint button: says the letter(s) needed next"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "note": "Elearnea-rendered letter name (letters/lines.csv)",
@@ -88653,6 +88658,55 @@
    },
    "files": [
     "voice/clips/sing.then-put-the-letters-in-a-row-just-l-a9609b.mp3"
+   ]
+  },
+  {
+   "id": "sing.and-tap-each-word-when-it-lights-up",
+   "key": "and tap each word when it lights up",
+   "text": "And tap each word when it lights up!",
+   "render": "And tap each word when it lights up!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (pictures lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (letters lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (words lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (little lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "and tap each word when it lights up.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.and-tap-each-word-when-it-lights-up.mp3"
    ]
   },
   {
