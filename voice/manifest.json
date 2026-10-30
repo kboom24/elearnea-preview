@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T12:24:15.913Z",
+ "generated": "2026-10-30T12:34:36.509Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -326,8 +326,8 @@
   }
  ],
  "counts": {
-  "total": 2375,
-  "spoken": 2358,
+  "total": 2372,
+  "spoken": 2355,
   "reserved": 17,
   "byGame": {
    "elearnea": 64,
@@ -338,25 +338,25 @@
    "lantern-barn": 81,
    "picture-garden": 121,
    "glow-jars": 8,
-   "night-garden": 178
+   "night-garden": 175
   },
   "byType": {
    "instruction": 632,
    "label": 137,
-   "feedback": 263,
-   "praise": 254,
+   "feedback": 262,
+   "praise": 253,
    "number": 10,
-   "word": 577,
+   "word": 576,
    "phoneme": 47,
    "letter": 25,
    "sentence": 430
   },
   "needsHumanCheck": 290,
-  "withClip": 2359,
+  "withClip": 2357,
   "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
-  "pending": 1,
+  "pending": 0,
   "gaps": 0
  },
  "items": [
@@ -77357,8 +77357,11 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "pending": "not rendered with say.py yet"
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
     "human": false,
@@ -77422,90 +77425,6 @@
    },
    "files": [
     "voice/clips/ng.a-toy-ball-is-not-living-it-does-not-dcb6ff.mp3"
-   ]
-  },
-  {
-   "id": "ng.a-cup",
-   "key": "a cup",
-   "text": "A cup!",
-   "render": "A cup!",
-   "type": "word",
-   "uses": [
-    {
-     "game": "night-garden",
-     "screen": "Night Garden: living or not",
-     "trigger": "new thing to sort"
-    }
-   ],
-   "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
-   },
-   "check": {
-    "human": false,
-    "reasons": []
-   },
-   "files": [
-    "voice/clips/ng.a-cup.mp3"
-   ]
-  },
-  {
-   "id": "ng.yes-a-cup-is-not-living-it-does-not-41e986",
-   "key": "yes a cup is not living it does not grow or eat",
-   "text": "Yes! A cup is not living. It does not grow or eat.",
-   "render": "Yes! A cup is not living. It does not grow or eat.",
-   "type": "praise",
-   "uses": [
-    {
-     "game": "night-garden",
-     "screen": "Night Garden: living or not",
-     "trigger": "right basket (states the fact)"
-    }
-   ],
-   "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
-   },
-   "check": {
-    "human": false,
-    "reasons": []
-   },
-   "files": [
-    "voice/clips/ng.yes-a-cup-is-not-living-it-does-not-41e986.mp3"
-   ]
-  },
-  {
-   "id": "ng.a-cup-is-not-living-it-does-not-grow-or-eat",
-   "key": "a cup is not living it does not grow or eat",
-   "text": "A cup is not living. It does not grow or eat.",
-   "render": "A cup is not living. It does not grow or eat.",
-   "type": "feedback",
-   "uses": [
-    {
-     "game": "night-garden",
-     "screen": "Night Garden: living or not",
-     "trigger": "2nd wrong basket: Wick models the answer, the right basket glows"
-    }
-   ],
-   "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "elearnea-lines.csv"
-   },
-   "check": {
-    "human": false,
-    "reasons": []
-   },
-   "files": [
-    "voice/clips/ng.a-cup-is-not-living-it-does-not-grow-or-eat.mp3"
    ]
   },
   {
