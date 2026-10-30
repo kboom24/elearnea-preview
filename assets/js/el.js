@@ -75,6 +75,11 @@
     say(text, o) { o = o || {}; const set = El.store.load().set;
       if (!set.voice || !this.core || !text) { this.stop(); if (o.onend) setTimeout(o.onend, 10); return false; }
       this.core.rate = set.rate || 1; return this.core.say(text, o); },
+    // sayThen: speak, then call then() once, gap ms (default 300) after the line's onend (voice/voice-then.js; ElVoice fires onend exactly once)
+    sayThen(text, o, then, gap) { const c = this.core;
+      if (c && c.sayThen) return c.sayThen(text, o, then, gap, (t, oo) => this.say(t, oo));
+      let f = false; const once = () => { if (!f) { f = true; setTimeout(() => then && then(), gap == null ? 300 : gap); } };
+      return { heard: this.say(text, Object.assign({}, o, { onend: once })), cancel() { f = true; } }; },
     stop() { if (this.core) this.core.stop(); }
   };
   root.addEventListener('pagehide', () => V.stop());
@@ -182,7 +187,7 @@
       const config = Object.assign({ lesson: ls.id, skill: ls.skill, grade: ls.grade, standards: ls.standards, bands: ls.bands, little: !ls.bands.includes('explorer'), catalog: cat }, ls.game.config);
       let inst = null, stats = { done: 0, total: 0, first: 0 }, t0 = Date.now();
       const host = {
-        root: stage, say: (t, o) => V.say(t, o), sfx: El.sfx, learn: L, rng: El.rng(), voiceOk: () => V.ok,
+        root: stage, say: (t, o) => V.say(t, o), sayThen: (t, o, then, gap) => V.sayThen(t, o, then, gap), sfx: El.sfx, learn: L, rng: El.rng(), voiceOk: () => V.ok,
         emit(type, ev) {
           if (type === 'progress') { stats.done = ev.done; stats.total = ev.total; ui.progress && ui.progress(ev.done, ev.total); }
           else if (type === 'mastery') { L.record(config.skill, String(ev.item), !!ev.firstTry); El.store.save(); }

@@ -17,10 +17,10 @@ El.defineGame({
     const timers = []; const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     const QA = /[?&]qa=1(&|$)/.test(location.search), qa = (k, v) => { if (!QA) return; if (v == null) delete root.dataset[k]; else root.dataset[k] = v; };
     const setBusy = (b) => { busy = b; root.classList.toggle('mbr-busy', b); qa('busy', b ? '1' : null); };
-    // say + finish callback: runs once, only if this item's run is still current; a watchdog covers a voice that never ends
-    const say = (t, cb) => { const my = run; let fired = false; const n = Array.isArray(t) ? t.length : 1;
-      const fin = () => { if (fired) return; fired = true; if (alive && my === run && cb) cb(); };
-      const ok = host.say(t, { rate: .95, onend: fin }); if (cb) T(fin, ok ? 4000 + 1600 * n : 450); return ok; };
+    // say + finish callback (host.sayThen: once, 300 ms after the line really ended; ElVoice's own clip watchdog covers a stalled clip).
+    // An interrupted line also calls back, so the callback only runs while this item's run token is still current.
+    const say = (t, cb) => { const my = run; if (!cb) return host.say(t, { rate: .95 });
+      return host.sayThen(t, { rate: .95 }, () => { if (alive && my === run) cb(); }).heard; };
     const plan = L.pick(cfg.skill, pool.slice(), total, rng);
     const mothSVG = (hue, wide) => `<svg viewBox="0 0 140 110" aria-hidden="true"><path d="M62 30c-6-14-14-22-20-26M78 30c6-14 14-22 20-26" fill="none" stroke="#2A2152" stroke-width="3.5" stroke-linecap="round"/><circle cx="42" cy="4" r="4.5" fill="#F5B841"/><circle cx="98" cy="4" r="4.5" fill="#F5B841"/>
       <path d="M66 46C48 14 10 12 6 34c-3 18 22 30 60 22z" fill="${hue[0]}"/><path d="M74 46c18-32 56-34 60-12 3 18-22 30-60 22z" fill="${hue[0]}"/>

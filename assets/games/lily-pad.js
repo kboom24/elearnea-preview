@@ -22,8 +22,8 @@ El.defineGame({
       <div class="lp-field" id="lpField"></div><div class="log"></div><div class="frog" id="lpFrog">${frogSVG}</div>
       <button class="wick lp-wick" id="lpWick" aria-label="Wick"><img src="${El.url('assets/img/wick-sm.webp')}" alt=""></button></div>`;
     const $ = (id) => root.querySelector('#' + id), field = $('lpField'), sign = $('lpSign'), frog = $('lpFrog');
-    let target = '';
-    const sayWord = () => { const ok = host.say(`Find... ${target}`, { rate: .85 }); if (!ok) sign.classList.remove('hide'); return ok; };
+    let target = '', praising = false;
+    const sayWord = () => { if (praising) return true; const ok = host.say(`Find... ${target}`, { rate: .85 }); if (!ok) sign.classList.remove('hide'); return ok; };
     $('lpHear').onclick = sayWord; $('lpWick').onclick = () => { const w = $('lpWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); sayWord(); };
     function distractors(word, k) { const d = L.difficulty(cfg.skill), out = []; const add = (w) => { if (w && w !== word && !out.includes(w) && out.length < k) out.push(w); };
       if (d > .45) rng.shuffle((conf[word] || []).slice()).forEach(add); rng.shuffle(list.slice()).forEach(add); return out; }
@@ -41,8 +41,10 @@ El.defineGame({
       words.forEach((w, i) => { const p = document.createElement('button'); p.className = 'pad'; p.style.left = spots[i][0] + '%'; p.style.top = spots[i][1] + '%'; p.setAttribute('aria-label', w);
         p.innerHTML = `<span class="in" style="--d:${(3.4 + rng.next() * 1.6).toFixed(1)}s">${padSVG}<span class="word">${w}</span>${lily}<span class="ring"></span></span>`;
         p.onclick = () => { if (done || p.classList.contains('no')) return;
-          if (w === target) { done = true; p.classList.add('yes'); p.classList.remove('hint'); hop(p, () => { host.sfx.right(); host.say(`${target}! Yes!`, { rate: .95 }); });
-            const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item: target, correct: true, firstTry: ft }); const wk = $('lpWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); qi++; T(question, 1900); }
+          // the next word comes only after the praise has been heard to its end (+ 300 ms; watchdog = clip length + 1.5 s), never on a fixed timer
+          if (w === target) { done = true; praising = true; p.classList.add('yes'); p.classList.remove('hint'); const t0 = Date.now(), word = target;
+            hop(p, () => { host.sfx.right(); host.sayThen(`${word}! Yes!`, { rate: .95 }, () => { T(() => { praising = false; question(); }, Math.max(0, 1500 - (Date.now() - t0))); }); });
+            const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item: target, correct: true, firstTry: ft }); const wk = $('lpWick'); wk.classList.remove('cheer'); void wk.offsetWidth; wk.classList.add('cheer'); qi++; }
           else { misses++; host.sfx.wrong(); p.classList.add('no'); host.say([`That says ${w}.`, `Find... ${target}`], { rate: .9 });
             if (misses >= 2) { sign.classList.remove('hide'); field.querySelectorAll('.pad').forEach(x => { if (x.getAttribute('aria-label') === target) x.classList.add('hint'); }); } } };
         field.appendChild(p); });

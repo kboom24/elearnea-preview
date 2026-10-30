@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:06:16.175Z",
+ "generated": "2026-10-30T09:38:14.072Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -35,6 +35,296 @@
   "usedByCode": 1303
  },
  "elearneaCsv": "/home/box/elearnea/qa/moth-bridge/elearnea-lines.csv",
+ "sfx": [
+  {
+   "id": "sfx.animal.cow",
+   "files": [
+    "assets/sfx/animals/cow.mp3",
+    "assets/sfx/animals/cow.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 867553,
+    "title": "COW_MOO",
+    "author": "calebmills99",
+    "url": "https://freesound.org/people/calebmills99/sounds/867553/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a large cow mooing at the State Fair of Texas (Dallas, US)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.94,
+    "lufs": -16.45,
+    "truePeakDbfs": -3.4100000858306885,
+    "audiosetTop": "Cattle, bovinae",
+    "audiosetTargetProb": 0.97
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.duck",
+   "files": [
+    "assets/sfx/animals/duck.mp3",
+    "assets/sfx/animals/duck.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 456770,
+    "title": "Mallard Duck Quack Flying Away.wav",
+    "author": "WavJunction.com",
+    "url": "https://freesound.org/people/WavJunction.com/sounds/456770/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "mallard duck quacking and flying away",
+    "cutFromSec": 5.86
+   },
+   "measured": {
+    "durationSec": 1.84,
+    "lufs": -16.42,
+    "truePeakDbfs": -2.0199999809265137,
+    "audiosetTop": "Quack",
+    "audiosetTargetProb": 0.83
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.cat",
+   "files": [
+    "assets/sfx/animals/cat.mp3",
+    "assets/sfx/animals/cat.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 724088,
+    "title": "Coco cat meow 17 y-o",
+    "author": "FreqWincy",
+    "url": "https://freesound.org/people/FreqWincy/sounds/724088/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a 17-year-old long-haired tuxedo cat meowing",
+    "cutFromSec": 4.09
+   },
+   "measured": {
+    "durationSec": 1.41,
+    "lufs": -16.42,
+    "truePeakDbfs": -2.440000057220459,
+    "audiosetTop": "Cat",
+    "audiosetTargetProb": 0.9
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.dog",
+   "files": [
+    "assets/sfx/animals/dog.mp3",
+    "assets/sfx/animals/dog.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 180977,
+    "title": "Barking Dog",
+    "author": "SuperStudioBR",
+    "url": "https://freesound.org/people/SuperStudioBR/sounds/180977/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a West Highland terrier barking happily (Rio de Janeiro, BR)",
+    "cutFromSec": 24.63
+   },
+   "measured": {
+    "durationSec": 1.58,
+    "lufs": -16.42,
+    "truePeakDbfs": -4.550000190734863,
+    "audiosetTop": "Dog",
+    "audiosetTargetProb": 0.58
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.sheep",
+   "files": [
+    "assets/sfx/animals/sheep.mp3",
+    "assets/sfx/animals/sheep.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 414541,
+    "title": "Sheep Baa",
+    "author": "emilyws",
+    "url": "https://freesound.org/people/emilyws/sounds/414541/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "sheep baas (New Zealand)",
+    "cutFromSec": 3.17
+   },
+   "measured": {
+    "durationSec": 1.353,
+    "lufs": -16.43,
+    "truePeakDbfs": -2.9600000381469727,
+    "audiosetTop": "Sheep",
+    "audiosetTargetProb": 0.83
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.pig",
+   "files": [
+    "assets/sfx/animals/pig.mp3",
+    "assets/sfx/animals/pig.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 840658,
+    "title": "Pigs grunt and oink",
+    "author": "Clément_Baudet",
+    "url": "https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "pigs grunting and oinking on a farm in Ourches, Drôme (FR)",
+    "cutFromSec": 11.48
+   },
+   "measured": {
+    "durationSec": 0.93,
+    "lufs": -16.62,
+    "truePeakDbfs": -2.0199999809265137,
+    "audiosetTop": "Oink",
+    "audiosetTargetProb": 0.54
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.frog",
+   "files": [
+    "assets/sfx/animals/frog.mp3",
+    "assets/sfx/animals/frog.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 852657,
+    "title": "Pacific Tree Frogs in Secluded Pond, Petrolia, CA",
+    "author": "CVLTIV8R",
+    "url": "https://freesound.org/people/CVLTIV8R/sounds/852657/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "Pacific tree frogs in a pond, Petrolia, CA (US)",
+    "cutFromSec": 9.06
+   },
+   "measured": {
+    "durationSec": 1.83,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.75,
+    "audiosetTop": "Frog",
+    "audiosetTargetProb": 0.96
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.bird",
+   "files": [
+    "assets/sfx/animals/bird.mp3",
+    "assets/sfx/animals/bird.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 582178,
+    "title": "bird tweets 01.wav",
+    "author": "denalwa",
+    "url": "https://freesound.org/people/denalwa/sounds/582178/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a bird tweeting",
+    "cutFromSec": 9.28
+   },
+   "measured": {
+    "durationSec": 1.23,
+    "lufs": -16.44,
+    "truePeakDbfs": -2.859999895095825,
+    "audiosetTop": "Bird",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.owl",
+   "files": [
+    "assets/sfx/animals/owl.mp3",
+    "assets/sfx/animals/owl.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 558397,
+    "title": "owl_hooting_000102_0145S3 002-070 000-002 037-044.wav",
+    "author": "Gerent",
+    "url": "https://freesound.org/people/Gerent/sounds/558397/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "an owl hooting at night",
+    "cutFromSec": 0.97
+   },
+   "measured": {
+    "durationSec": 1.1,
+    "lufs": -16.44,
+    "truePeakDbfs": -3.569999933242798,
+    "audiosetTop": "Owl",
+    "audiosetTargetProb": 0.96
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  }
+ ],
  "counts": {
   "total": 2213,
   "spoken": 2196,
@@ -69988,6 +70278,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.the-cow-says-moo.mp3"
    ]
@@ -70002,7 +70293,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70016,6 +70307,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.who-says-moo.mp3"
    ]
@@ -70044,6 +70336,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.yes-the-cow-says-moo.mp3"
    ]
@@ -70077,6 +70370,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.thats-the-cow.mp3"
    ]
@@ -70138,6 +70432,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.the-duck-says-quack.mp3"
    ]
@@ -70152,7 +70447,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70166,6 +70461,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.who-says-quack.mp3"
    ]
@@ -70194,6 +70490,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.yes-the-duck-says-quack.mp3"
    ]
@@ -70227,6 +70524,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.thats-the-duck.mp3"
    ]
@@ -70288,6 +70586,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.the-cat-says-meow.mp3"
    ]
@@ -70302,7 +70601,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70316,6 +70615,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.who-says-meow.mp3"
    ]
@@ -70344,6 +70644,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.yes-the-cat-says-meow.mp3"
    ]
@@ -70377,6 +70678,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.thats-the-cat.mp3"
    ]
@@ -70438,6 +70740,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.the-dog-says-woof.mp3"
    ]
@@ -70452,7 +70755,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70466,6 +70769,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.who-says-woof.mp3"
    ]
@@ -70494,6 +70798,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.yes-the-dog-says-woof.mp3"
    ]
@@ -70527,6 +70832,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.thats-the-dog.mp3"
    ]
@@ -70588,6 +70894,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.the-sheep-says-baa.mp3"
    ]
@@ -70602,7 +70909,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70616,6 +70923,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.who-says-baa.mp3"
    ]
@@ -70644,6 +70952,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.yes-the-sheep-says-baa.mp3"
    ]
@@ -70672,6 +70981,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.thats-the-sheep.mp3"
    ]
@@ -70728,6 +71038,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.the-pig-says-oink.mp3"
    ]
@@ -70742,7 +71053,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70756,6 +71067,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.who-says-oink.mp3"
    ]
@@ -70784,6 +71096,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.yes-the-pig-says-oink.mp3"
    ]
@@ -70812,6 +71125,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.thats-the-pig.mp3"
    ]
@@ -70868,6 +71182,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.the-frog-says-ribbit.mp3"
    ]
@@ -70882,7 +71197,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70896,6 +71211,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.who-says-ribbit.mp3"
    ]
@@ -70924,6 +71240,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.yes-the-frog-says-ribbit.mp3"
    ]
@@ -70952,6 +71269,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.thats-the-frog.mp3"
    ]
@@ -71008,6 +71326,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.the-bird-says-tweet.mp3"
    ]
@@ -71022,7 +71341,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -71036,6 +71355,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.who-says-tweet.mp3"
    ]
@@ -71064,6 +71384,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.yes-the-bird-says-tweet.mp3"
    ]
@@ -71097,6 +71418,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.thats-the-bird.mp3"
    ]
@@ -71158,6 +71480,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.the-owl-says-hoo.mp3"
    ]
@@ -71172,7 +71495,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -71186,6 +71509,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.who-says-hoo.mp3"
    ]
@@ -71214,6 +71538,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.yes-the-owl-says-hoo.mp3"
    ]
@@ -71242,6 +71567,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.thats-the-owl.mp3"
    ]
