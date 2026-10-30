@@ -71,9 +71,9 @@
 @keyframes fcNext { 50% { transform: scale(1.08); } }
 .pt-branch .spot.on { background: none; box-shadow: none; }
 .fc-card.nt { width: clamp(110px, 28vw, 170px); height: clamp(110px, 28vw, 170px); border-radius: 50%; }
-.fc-play { width: clamp(96px, 22vw, 130px); height: clamp(96px, 22vw, 130px); opacity: .45; transition: opacity .2s; }
-.fc-play.ready { opacity: 1; }
-.fc-play svg { width: 56%; height: 56%; }
+.fc-songbtn { width: clamp(96px, 22vw, 130px); height: clamp(96px, 22vw, 130px); opacity: .45; transition: opacity .2s; }
+.fc-songbtn.ready { opacity: 1; }
+.fc-songbtn svg { width: 56%; height: 56%; }
 
 /* portrait phones: the song sits on two branches of four, so the repeat is easy to see and the fireflies are bigger */
 @media (max-width: 600px) { .pt-branch { grid-template-columns: repeat(4, 1fr); row-gap: 40px; width: min(88vw, 420px); }
