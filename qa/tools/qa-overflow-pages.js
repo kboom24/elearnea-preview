@@ -56,9 +56,9 @@ function measure() { // runs in the page
       return base + ` tabs=${rows.map(r => r.length).join('+')} minTabH=${Math.round(Math.min(...t.map(x => x.h)))} labelsClipped=0`; });
     await step('dashboard-device', async () => { await tap(page.locator('.seg button[data-mode=device]')); await sleep(700); return check('dashboard-device', true); });
     await step('portfolio-record', async () => { await tap(page.locator('.seg button[data-mode=sample]')); await sleep(400); await tap(page.locator('#exportB')); await sleep(700); const r = await check('portfolio-record', false); await tap(page.locator('#recClose')); return r; });
-    // age band switch (Little Lanterns): grown-ups "Who is playing" (parent-facing, >= 44px) and the map's picture switch (kid-facing, >= 64px;
-    // in the Little Lanterns band the youngest-band rule is 96px, reported as `under96` so the map owner can see it)
-    const sizes = (sel) => page.$$eval(sel, a => a.filter(e => e.getBoundingClientRect().width).map(e => { const r = e.getBoundingClientRect(); return { n: (e.id ? '#' + e.id : e.className || e.tagName) + (e.dataset.band ? '[' + e.dataset.band + ']' : ''), w: Math.round(r.width), h: Math.round(r.height), clip: e.scrollWidth > e.clientWidth + 1 }; }));
+    // age band switch (Little Lanterns): grown-ups "Who is playing" (parent-facing, >= 44px) and the map's picture switch (kid-facing, >= 64px).
+    // In the Little Lanterns band every map target (band switch, isles, Wick, sound, backpack, grown-ups) must be >= 96px and fully on screen.
+    const sizes = (sel) => page.$$eval(sel, a => a.filter(e => e.getBoundingClientRect().width).map(e => { const r = e.getBoundingClientRect(); return { n: (e.id ? '#' + e.id : e.className || e.tagName) + (e.dataset.band ? '[' + e.dataset.band + ']' : ''), w: Math.round(r.width), h: Math.round(r.height), clip: e.scrollWidth > e.clientWidth + 1, offV: r.top < -.5 || r.bottom > innerHeight + .5 }; }));
     await step('grown-ups-age-switch', async () => { const ok = await page.$('#ageC'); if (!ok) throw new Error('no #ageC');
       await page.locator('#ageC').scrollIntoViewIfNeeded(); await sleep(400); await shot('grown-ups-age-switch'); const base = await check('grown-ups-age-switch-page', true);
       const b = await sizes('.ages button'); if (b.length !== 3 || b.some(x => x.h < 44 || x.w < 44 || x.clip)) throw new Error('age buttons ' + JSON.stringify(b));
@@ -73,7 +73,9 @@ function measure() { // runs in the page
       if ((band === 'little') !== st.little || st.L !== String(band === 'little') || st.E !== String(band !== 'little')) throw new Error('switch state ' + JSON.stringify(st));
       const base = await check('map-band-' + band); const b = await sizes('#band button'); if (b.some(x => x.h < 64 || x.w < 64 || x.clip)) throw new Error('band buttons ' + JSON.stringify(b));
       const all = await sizes('header button, header a[href], #band button, #world button, .bar button, .bar a[href]'); const u96 = all.filter(x => Math.min(x.w, x.h) < 96).map(x => `${x.n} ${x.w}x${x.h}`);
-      return base + ` bandButtons=${b.map(x => x.w + 'x' + x.h).join(',')}` + (band === 'little' ? ` under96=${u96.length}${u96.length ? ' (' + u96.join('; ') + ')' : ''}` : ''); });
+      const offV = all.filter(x => x.offV).map(x => x.n); if (offV.length) throw new Error('map targets off screen vertically: ' + offV.join(', '));
+      if (band === 'little' && u96.length) throw new Error('Little Lanterns map targets under 96px: ' + u96.join('; '));
+      return base + ` bandButtons=${b.map(x => x.w + 'x' + x.h).join(',')} targets=${all.length} min=${Math.min(...all.map(x => Math.min(x.w, x.h)))}px allOnScreen` + (band === 'little' ? ' all>=96' : ''); });
     for (const [name, url] of REGRESSION) await step('regress-' + name, async () => { await page.goto(BASE + url, { waitUntil: 'networkidle' }); await sleep(1500);
       let extra = ''; if (name === 'mothabet') { const fr = page.frame({ url: /mothabet\/game/ }); const t0 = Date.now(); let v = null; while (Date.now() - t0 < 8000 && !v) { try { v = await fr.evaluate(() => window.__qa && window.__qa.scene() === 'goal' && window.__qa.view()); } catch (e) {} if (!v) await sleep(150); }
         if (!v || v.iw !== VP[vpn].width) throw new Error('mothabet frame width ' + JSON.stringify(v)); extra = ' frameInnerWidth=' + v.iw; }

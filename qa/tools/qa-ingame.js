@@ -22,7 +22,13 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
   const t = [...document.querySelectorAll('.topbar a, .topbar button, #stage button, #stage a[href], #stage [role=button], #res.on button, #res.on a[href]')].filter(vis);
   const small = [], outside = [];
   for (const e of t) { const r = e.getBoundingClientRect(); if (Math.min(r.width, r.height) < MIN - .5) small.push(`${nm(e)} ${Math.round(r.width)}x${Math.round(r.height)}`); if (r.left < -.5 || r.right > W + .5 || r.top < -.5 || r.bottom > H + .5) outside.push(`${nm(e)} [${Math.round(r.left)},${Math.round(r.top)},${Math.round(r.right)},${Math.round(r.bottom)}]`); }
-  return { W, sw: de.scrollWidth, bsw: document.body.scrollWidth, n: t.length, small, outside };
+  // Firefly Count: each drifting firefly's whole reach (size + drift amplitude, scaled like the game) must stay inside the field
+  const ffOut = []; const field = document.getElementById('ffField');
+  if (field) { const fr = field.getBoundingClientRect(); for (const f of field.querySelectorAll('.fly.drift')) { const r = f.getBoundingClientRect(), sc = r.width / 84, cs = getComputedStyle(f);
+    const dx = Math.abs(parseFloat(cs.getPropertyValue('--dx')) || 0), dy = Math.abs(parseFloat(cs.getPropertyValue('--dy')) || 0);
+    const cx = f.offsetLeft + f.offsetWidth / 2, cy = f.offsetTop + f.offsetHeight / 2, hx = sc * (42 + dx), hy = sc * (42 + dy);
+    if (cx - hx < -.5 || cy - hy < -.5 || cx + hx > field.clientWidth + .5 || cy + hy > field.clientHeight + .5 || fr.left < -.5 || fr.right > W + .5) ffOut.push(`fly@${Math.round(cx)},${Math.round(cy)} reach ${Math.round(hx)}x${Math.round(hy)} field ${field.clientWidth}x${field.clientHeight}`); } }
+  return { W, sw: de.scrollWidth, bsw: document.body.scrollWidth, n: t.length, small, outside, ffOut, flies: field ? field.querySelectorAll('.fly.drift').length : 0 };
 }
 (async () => {
   const browser = await launch();
@@ -38,14 +44,21 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
     const shot = async (n) => page.screenshot({ path: path.join(OUT, `${n}-${vpn}.png`) });
     const waitFor = async (fn, ms, what) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { try { const v = await fn(); if (v) return v; } catch (e) {} await sleep(120); } throw new Error('timeout: ' + what); };
     const resultsOn = () => page.isVisible('#res.on');
+    // kid mode (no ?qa=1): the Little Lanterns kit must not mark the right card
+    for (const ls of LESSONS.filter(l => ['ll-r1', 'll-r2', 'll-m1'].includes(l))) { errs = []; ext = []; fails = []; let note = '', ok = true;
+      try { await page.goto(BASE, { waitUntil: 'networkidle' }); await page.evaluate(() => { localStorage.clear(); localStorage.setItem('elearnea:v1', JSON.stringify({ set: { voice: true, sound: true, rate: 1, band: 'little', little: 'little' } })); });
+        await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}`, { waitUntil: 'networkidle' }); await page.waitForSelector('#llOpts .ll-card', { timeout: 15000 }); await sleep(600);
+        const marked = await page.$$eval('[data-ok]', a => a.length); if (marked) { ok = false; } note = `kidMode cards=${await page.$$eval('#llOpts .ll-card', a => a.length)} dataOk=${marked}`; } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0]; }
+      const r = { vp: vpn, page: ls + ' kid-mode (no ?qa=1)', ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note }; results.push(r);
+      console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); }
     for (const ls of LESSONS) {
       errs = []; ext = []; fails = []; let note = '', ok = true; const aud = { small: new Set(), outside: new Set(), overflow: [], n: 0, samples: 0 };
-      const sample = async () => { const a = await page.evaluate(audit, MIN(ls)); aud.samples++; aud.n = Math.max(aud.n, a.n); a.small.forEach(x => aud.small.add(x)); a.outside.forEach(x => aud.outside.add(x)); if (a.outside.length && !aud.outShot) { aud.outShot = `${ls}-outside-${vpn}.png`; await shot(`${ls}-outside`); } if (a.sw > a.W || a.bsw > a.W) aud.overflow.push(`${a.sw}/${a.bsw}>${a.W}`); };
+      const sample = async () => { const a = await page.evaluate(audit, MIN(ls)); aud.samples++; aud.n = Math.max(aud.n, a.n); a.small.forEach(x => aud.small.add(x)); a.outside.forEach(x => aud.outside.add(x)); aud.flies = (aud.flies || 0) + (a.flies || 0); (a.ffOut || []).forEach(x => aud.outside.add('FIREFLY-BOUNDS ' + x)); if (a.outside.length && !aud.outShot) { aud.outShot = `${ls}-outside-${vpn}.png`; await shot(`${ls}-outside`); } if (a.sw > a.W || a.bsw > a.W) aud.overflow.push(`${a.sw}/${a.bsw}>${a.W}`); };
       const t0 = Date.now(); let rounds = 0;
       try {
         await page.goto(BASE, { waitUntil: 'networkidle' }); // same origin (the landing page, so no favicon 404): fresh storage, then the age band a parent would pick for this lesson
         await page.evaluate((band) => { localStorage.clear(); if (band) localStorage.setItem('elearnea:v1', JSON.stringify({ set: { voice: true, sound: true, rate: 1, band: 'little', little: band } })); }, ls in LL ? (TINY.includes(ls) ? 'tiny' : 'little') : null);
-        await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}` + (GAME[ls] === 'clocktower-gears' ? '&qa=1' : ''), { waitUntil: 'networkidle' }); await sleep(900);
+        await page.goto(BASE + `play/${GAME[ls]}/?lesson=${ls}` + (GAME[ls] === 'clocktower-gears' || ls in LL ? '&qa=1' : ''), { waitUntil: 'networkidle' }); await sleep(900);
         while (!(await resultsOn()) && Date.now() - t0 < 200000) {
           if (ls in LL) { // Little Lanterns kit: one huge card (tiny), a drum to clap on, or picture cards with data-ok on the right one
             const st = await waitFor(() => page.evaluate(() => { if (document.querySelector('#res.on')) return 'end'; const d = document.querySelector('#llOpts .lb-drum');
@@ -92,7 +105,7 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
         await page.waitForSelector('#res.on #toPath', { timeout: 10000 }); await sleep(900); await sample(); await shot(`${ls}-results`);
         const card = (await page.locator('#res .paper').innerText()).replace(/\s+/g, ' ').trim(), stars = await page.locator('#res .stars3 svg.on').count();
         if (aud.overflow.length || aud.small.size || aud.outside.size) ok = false;
-        note = `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
+        note = (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies} ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
       } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0] + ` rounds=${rounds}`; await shot(`${ls}-error`).catch(() => {}); }
       await sleep(300); const r = { vp: vpn, page: ls + ' ' + GAME[ls], ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note, small: [...aud.small], outside: [...aud.outside] };
       results.push(r); console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); errs.forEach(e => console.log('   err:', e)); fails.forEach(e => console.log('   fail:', e));
