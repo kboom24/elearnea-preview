@@ -11,9 +11,14 @@ const MD = path.resolve(APP, '../VOICE-MANIFEST.md');
 // Standard voice (Hexan, 2026-10-29): Kokoro-82M (Apache-2.0), voice af_bella. Mothabet clips come from the separate Mothabet Bella batch
 // (script: MB_CSV, files: MB_DIR, copied into app/voice/mb/ by import-mothabet.js); every other line is rendered from this manifest with say.py.
 const norm = (s) => String(s).toLowerCase().replace(/[‘’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
-const VOICE = { kind: 'kokoro', voice: 'af_bella', label: 'kokoro af_bella', model: 'Kokoro-82M', license: 'Apache-2.0' };
+const VOICE = { kind: 'kokoro', voice: 'af_bella', label: 'kokoro af_bella', model: 'Kokoro-82M', license: 'Apache-2.0', speed: 0.76, speedNote: 'standard speed 0.76 for all lines (Hexan 2026-10-29; was 0.88)' };
 const MB_CSV = process.env.MB_CSV || '/workspace/mothabet-voice/mothabet-voice-script.csv';
-const MB_DIR = process.env.MB_DIR || '/home/box/elearnea/voice/mothabet/bella';
+const MB_DIR = process.env.MB_DIR || '/home/box/elearnea/voice/mothabet/bella-076';
+// Per-clip source + ASR status for every Mothabet clip the app uses (written by /home/box/elearnea/voice/tools/mb-status.py):
+// file, dir, set, status (pass | fixed | flagged | unverified), reason, text, ipa, speed. 'flagged' clips are held back (device speech) until a human listens.
+const MB_STATUS_F = process.env.MB_STATUS || '/home/box/elearnea/voice/mothabet/clip-status.tsv';
+const MB_STATUS = {}; if (fs.existsSync(MB_STATUS_F)) { const ls = fs.readFileSync(MB_STATUS_F, 'utf8').split(/\r?\n/).filter(Boolean); const h = ls.shift().split('\t'); for (const l of ls) { const c = l.split('\t'); MB_STATUS[c[0]] = Object.fromEntries(h.map((k, i) => [k, c[i] || ''])); } }
+const FIRST_NOTE = 'wording approved by Hexan 2026-10-29';
 const EL_CSV = path.resolve(APP, '../voice/elearnea-lines.csv');
 function readCsv(f) { const t = fs.readFileSync(f, 'utf8'); const rows = []; let row = [], cur = '', q = false;
   for (let i = 0; i < t.length; i++) { const c = t[i]; if (q) { if (c === '"' && t[i + 1] === '"') { cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
@@ -41,7 +46,7 @@ function add(text, m) { const key = m.reserved ? 'reserved ' + m.needsId : norm(
   let it = items.get(key);
   if (!it) { const p = prevBy.get(key);
     it = { id: p && p.id && !ids.has(p.id) ? (ids.add(p.id), p.id) : mkId(m.prefix || m.game, key), key, text, render: m.render || text, type: m.type, uses: [],
-      ...(m.ipa ? { ipa: m.ipa } : {}), ...(m.example ? { example: m.example } : {}), ...(m.needsId ? { audioNeedsId: m.needsId } : {}), ...(m.reserved ? { reserved: true } : {}), ...(m.parts !== undefined ? { parts: m.parts } : {}),
+      ...(m.ipa ? { ipa: m.ipa } : {}), ...(m.note ? { note: m.note } : {}), ...(m.example ? { example: m.example } : {}), ...(m.needsId ? { audioNeedsId: m.needsId } : {}), ...(m.reserved ? { reserved: true } : {}), ...(m.parts !== undefined ? { parts: m.parts } : {}),
       file: null, source: p && p.source ? p.source : { kind: 'device-speech' }, check: { human: false, reasons: [] }, _prev: p };
     items.set(key, it); }
   if (m.parts && !it.parts) it.parts = m.parts;
@@ -101,11 +106,12 @@ const RES = { th_v: ['ð', 'this'], ck: ['k', 'duck'], wh: ['w', 'when'], ll: ['
 for (const [k, [ipa, ex]] of Object.entries(RES)) if (!MB.PHON[k]) add(`${k} as in ${ex}`, { type: 'phoneme', game: M, prefix: 'mb.ph-reserved', render: `[[ ${ipa} ]]`, ipa, example: `as in "${ex}"`, needsId: 'ph_' + k, reserved: true, parts: P(ph(k)), screen: '(not spoken by current code)', trigger: 'reserved in AUDIO-NEEDS.md for later stages' });
 const LN = { a: 'A.', i: 'I.', qu: 'Q U.' };
 const tiles = new Set(); MB.ITEMS.forEach(it => it.band === 'f' && it.tiles.forEach(t => tiles.add(t)));
-for (const t of [...tiles].sort()) add(t, { type: 'letter', game: M, prefix: 'mb.letter', render: LN[t] || (t.length === 1 ? t.toUpperCase() + '.' : t.toUpperCase().split('').join(' ') + '.'), parts: null, screen: 'Mothabet play (Spelling/Fliers)', trigger: 'hint button: says the letter(s) needed next' });
+for (const t of [...tiles].sort()) add(t, { type: 'letter', game: M, prefix: 'mb.letter', render: LN[t] || (t.length === 1 ? t.toUpperCase() + '.' : t.toUpperCase().split('').join(' ') + '.'), parts: MB_STATUS[`l_${t}.mp3`] ? [`l_${t}.mp3`] : null, note: MB_STATUS[`l_${t}.mp3`] ? 'Elearnea-rendered letter name (letters/lines.csv)' : undefined, screen: 'Mothabet play (Spelling/Fliers)', trigger: 'hint button: says the letter(s) needed next' });
 for (const it of MB.ITEMS) { const w = it.w, st = `Mothabet ${it.band === 's' ? 'Phonics' : 'Spelling'} stage ${it.stage}`;
   add(`${w}!`, { type: 'word', game: M, prefix: 'mb.word', parts: P(wf(w)), screen: st, trigger: 'word completed (said with a cheer)' });
-  if (it.kind === 'first' || it.kind === 'last') { const pf = pr(it.kind === 'first' ? 'Find the first sound in...' : 'Find the last sound in...');
-    add(`Find the ${it.kind} sound in... ${w}.`, { type: 'instruction', game: M, prefix: 'mb.prompt', parts: P(pf, wf(w)), screen: st, trigger: 'new word card' });
+  if (it.kind === 'first') add(`Find the first sound in the word... ${w}... ${w}.`, { type: 'instruction', game: M, prefix: 'mb.prompt', parts: [`p_first_w_${w}.mp3`], note: FIRST_NOTE, screen: st, trigger: 'new word card (one Elearnea-rendered clip per word, no concatenation)' });
+  if (it.kind === 'first' || it.kind === 'last') {
+    if (it.kind === 'last') add(`Find the last sound in... ${w}.`, { type: 'instruction', game: M, prefix: 'mb.prompt', parts: P(pr('Find the last sound in...'), wf(w)), screen: st, trigger: 'new word card' });
     add(`${w}. ${w}.`, { type: 'word', game: M, prefix: 'mb.word2', parts: P(wf(w), wf(w)), screen: st, trigger: 'tap the picture card to hear the word again' }); }
   else if (it.kind === 'build') { add(`Build... ${w}.`, { type: 'instruction', game: M, prefix: 'mb.prompt', parts: P(pr('Build...'), wf(w)), screen: st, trigger: 'new word card' });
     add(`${w}.`, { type: 'word', game: M, prefix: 'mb.word', parts: P(wf(w)), screen: st, trigger: 'tap the picture card to hear the word again' }); }
@@ -137,24 +143,32 @@ for (const m of MB.MOTHS) { add(m.name, { type: 'label', game: M, prefix: 'mb.mo
 
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));
-const reviewTxt = ['REVIEW.md'].map(f => path.join(MB_DIR, f)).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8')).join('\n');
-const qaFail = {}; { const f = path.join(MB_DIR, 'qa-report.tsv'); if (fs.existsSync(f)) for (const l of fs.readFileSync(f, 'utf8').split('\n').slice(1)) { const c = l.split('\t'); if (c[5] === 'FAIL') qaFail[c[0]] = `batch QA heard "${c[3]}" for "${c[2]}"`; } }
+const reviewTxt = Object.keys(MB_STATUS).length ? '' : ['REVIEW.md'].map(f => path.join(MB_DIR, f)).filter(f => fs.existsSync(f)).map(f => fs.readFileSync(f, 'utf8')).join('\n');
+const qaFail = {}; { const f = path.join(MB_DIR, 'qa-report.tsv'); if (fs.existsSync(f)) for (const l of fs.readFileSync(f, 'utf8').split(/\r?\n/).slice(1)) { const c = l.split('\t'); if (c[5] === 'FAIL') qaFail[c[0]] = `batch QA heard "${c[3]}" for "${c[2]}"`; } }
 const reviewFlag = (f) => { if (qaFail[f]) return qaFail[f]; if (!reviewTxt) return null; const base = f.replace(/\.mp3$/, ''); const line = reviewTxt.split('\n').find(l => new RegExp(`\\b${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\.mp3|\\.opus)?\\b`).test(l)); return line ? line.trim().slice(0, 160) : null; };
 const elRows = [];
 const out = [...items.values()].map(it => { const p = it._prev; delete it._prev; delete it.file;
   if (it.parts !== undefined || it.uses[0].game === 'mothabet') {
     // Mothabet line: played as a sequence of Mothabet Bella clips (copied to app/voice/mb/ by import-mothabet.js)
     if (it.parts) { it.files = it.parts.map(f => 'voice/mb/' + f); it.parts.forEach(f => usedMb.add(f));
-      it.source = it.files.every(exists) ? { kind: VOICE.kind, voice: VOICE.voice, label: VOICE.label, set: 'mothabet-bella', csv: path.basename(MB_CSV) } : { kind: 'device-speech', pending: 'Mothabet Bella clips not imported yet' }; }
+      const sts = it.parts.map(f => MB_STATUS[f] || {}), sets = [...new Set(sts.map(x => x.set || 'mothabet-bella'))];
+      const held = [...new Set(it.parts.filter(f => (MB_STATUS[f] || {}).status === 'flagged'))];
+      it.source = !it.files.every(exists) ? { kind: 'device-speech', pending: 'Mothabet clips not imported yet' }
+        : held.length ? { kind: 'device-speech', fallback: 'ASR-flagged clip held back: plays device speech until a human listens', held, wouldPlay: { label: VOICE.label, set: sets.join('+') } }
+        : { kind: VOICE.kind, voice: VOICE.voice, label: VOICE.label, speed: VOICE.speed, set: sets.join('+'), csv: sets.includes('mothabet-bella-076') || sets.includes('mothabet-bella-phonemes') ? path.basename(MB_CSV) : sts[0].csv || '' };
+      const fx = [...new Set(it.parts.filter(f => (MB_STATUS[f] || {}).status === 'fixed'))]; if (fx.length) it.source.respelled = fx.map(f => `${f}: "${MB_STATUS[f].text}"${MB_STATUS[f].ipa ? ' ipa ' + MB_STATUS[f].ipa : ''} @${MB_STATUS[f].speed}`);
+      const ip = [...new Set(it.parts.filter(f => (MB_STATUS[f] || {}).ipa && (MB_STATUS[f] || {}).status !== 'fixed'))]; if (ip.length) it.source.ipaOverride = ip.map(f => `${f}: ${MB_STATUS[f].ipa}`); }
     else { it.parts = null; it.files = []; it.source = { kind: 'device-speech', gap: it.reserved ? 'reserved line' : 'no clip for this line in the Mothabet voice script' }; } }
   else { const f = `voice/clips/${it.id}.mp3`; it.files = [f]; elRows.push([path.basename(f), it.render.replace(/\[\[.*?\]\]/g, '').trim(), it.id]);
     it.source = exists(f) ? { kind: VOICE.kind, voice: VOICE.voice, label: VOICE.label, set: 'elearnea-lines', csv: path.basename(EL_CSV) } : { kind: 'device-speech', pending: 'not rendered with say.py yet' }; }
   const reasons = [];
   if (it.ipa || /\[\[/.test(it.render) || it.type === 'phoneme') reasons.push('phoneme: needs an ear check (pure sound, no extra vowel)');
   if (it.type === 'letter') reasons.push('letter name: check it is said as the letter, not a word');
-  for (const f of [...new Set(it.parts || [])]) { const r = reviewFlag(f); if (r) reasons.push(`${f}: ${r}`); }
+  for (const f of [...new Set(it.parts || [])]) { const st = MB_STATUS[f]; if (st && (st.status === 'flagged' || st.status === 'unverified')) reasons.push(`${f}: ${st.status}: ${st.reason}`); else if (!st) { const r = reviewFlag(f); if (r) reasons.push(`${f}: ${r}`); } }
   // speech-recognition results only count for the voice that is shipping now
   if (p && p.check && p.check.asr && p.check.asr.voice === VOICE.voice && JSON.stringify(p.files || []) === JSON.stringify(it.files)) { it.check.asr = p.check.asr; if (!p.check.asr.ok) reasons.push(`speech-recognition check heard "${p.check.asr.heard}"`); }
+  // policy (Hexan 2026-10-29): a clip still ASR-flagged after the respelling retries is held back -> device speech until a human listens
+  if (it.parts === undefined && it.check.asr && !it.check.asr.ok && it.source.kind === VOICE.kind) it.source = { kind: 'device-speech', fallback: 'ASR-flagged clip held back: plays device speech until a human listens', held: it.files.map(f => path.basename(f)), wouldPlay: { label: VOICE.label, voice: VOICE.voice, set: 'elearnea-lines' } };
   it.check.human = reasons.length > 0; it.check.reasons = reasons; return it; });
 const byGame = {}, byType = {}; for (const it of out) { const g = it.uses[0].game; byGame[g] = (byGame[g] || 0) + 1; byType[it.type] = (byType[it.type] || 0) + 1; }
 const has = (x) => x.source.kind === VOICE.kind;
@@ -164,10 +178,10 @@ const manifest = { version: 2, generated: new Date().toISOString(),
   render: "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
   voice: VOICE, credits: 'Voice: Kokoro-82M by hexgrad (Apache-2.0), voice af_bella.',
   formats: ['opus', 'mp3'], clipFormat: 'each file ships as .mp3 and .opus (same name); voice.js plays .opus where the browser supports Ogg Opus, else .mp3',
-  mothabetMapping: { csv: MB_CSV, clipsFrom: MB_DIR, copiedTo: 'app/voice/mb/', rule: 'each Mothabet line = sequence of script clips, e.g. "sun. The sun is hot. sun." = w_sun + s_sun + w_sun; "Find the first sound in... sun." = p_first + w_sun; "Try this one. sss." = p_try + ph_s', scriptClips: mbRows.length, usedByCode: usedMb.size },
+  mothabetMapping: { csv: MB_CSV, clipsFrom: MB_DIR, clipStatus: MB_STATUS_F, extraSets: { 'elearnea-first-sound': '/home/box/elearnea/voice/mothabet/first-sound/lines.csv', 'elearnea-letters': '/home/box/elearnea/voice/mothabet/letters/lines.csv', 'elearnea-fixes': '/home/box/elearnea/voice/mothabet/fixes-076/fixes.tsv (respelling retries)', 'mothabet-bella-phonemes': 'ph_* from the original Mothabet Bella batch (pure sounds; not speed-dependent; unverified)' }, copiedTo: 'app/voice/mb/', rule: 'each Mothabet line = sequence of script clips, e.g. "sun. The sun is hot. sun." = w_sun + s_sun + w_sun; "Find the first sound in the word... sun... sun." = p_first_w_sun (one Elearnea-rendered clip, wording approved by Hexan 2026-10-29); "Find the last sound in... sun." = p_last + w_sun; "Try this one. sss." = p_try + ph_s', scriptClips: mbRows.length, usedByCode: usedMb.size },
   elearneaCsv: EL_CSV,
   counts: { total: out.length, spoken: out.filter(x => !x.reserved).length, reserved: out.filter(x => x.reserved).length, byGame, byType, needsHumanCheck: out.filter(x => x.check.human).length,
-    withClip: out.filter(has).length, pending: out.filter(x => !has(x) && x.source.pending).length, gaps: out.filter(x => !x.reserved && x.source.gap).length },
+    withClip: out.filter(has).length, heldForHumanCheck: out.filter(x => x.source.fallback).length, unverifiedPhonemes: out.filter(x => (x.parts || []).some(f => (MB_STATUS[f] || {}).status === 'unverified')).length, pending: out.filter(x => !has(x) && x.source.pending).length, gaps: out.filter(x => !x.reserved && x.source.gap).length },
   items: out };
 fs.writeFileSync(OUT, JSON.stringify(manifest, null, 1));
 // CSV for say.py (filename,text) = every non-Mothabet line; ids are the file names, so a provider swap is just a re-render

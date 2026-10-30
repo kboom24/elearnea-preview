@@ -30,7 +30,7 @@
     load() { if (this._p) return this._p;
       this._p = fetch(BASE + 'index.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => { if (j && j.map) { this.map = j.map; this.files = j.files || {}; this.provider = j.voice || null;
           const fm = j.formats || ['mp3']; let a = null; try { a = document.createElement('audio'); } catch (e) {}
-          this.ext = fm.includes('opus') && a && a.canPlayType && a.canPlayType('audio/ogg; codecs="opus"') ? 'opus' : 'mp3'; } this._emit(); }).catch(() => {});
+          this.ext = fm.includes('opus') && a && a.canPlayType && a.canPlayType('audio/ogg; codecs="opus"') === 'probably' ? 'opus' : 'mp3'; } this._emit(); }).catch(() => {});
       return this._p; },
     onChange(f) { this._ls.push(f); },
     _emit() { this._ls.forEach(f => { try { f(); } catch (e) {} }); },
@@ -49,7 +49,9 @@
       const fin = (failed) => { if (ended || id !== this._t) return; ended = true; el.onended = el.onerror = null; this.speaking = false;
         if (failed) { this._device(o._text || '', o); } else if (o.onend) o.onend(); };
       const next = () => { if (id !== this._t) return; if (k >= list.length) return fin(false);
-        el.onended = () => { k++; setTimeout(next, 90); }; el.onerror = () => fin(true);
+        el.onended = () => { k++; setTimeout(next, 90); };
+        // Ogg Opus is preferred (half the bytes); Safari < 18.4 can't decode it, so on a decode error switch to the .mp3 copies for good
+        el.onerror = () => { if (this.ext === 'opus' && /\.opus$/.test(list[k])) { this.ext = 'mp3'; list = list.map(u => u.replace(/\.opus$/, '.mp3')); el.src = list[k]; const q = el.play(); if (q && q.catch) q.catch(() => fin(true)); el.onerror = () => fin(true); } else fin(true); };
         el.src = list[k]; el.playbackRate = Math.max(.7, Math.min(1.3, this.rate || 1));
         const p = el.play(); if (p && p.catch) p.catch(() => fin(true)); };
       next(); return true; },

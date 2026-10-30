@@ -323,7 +323,7 @@
       if (!voiceOn()) { // visual fallback: show the word again ("look, cover, spell") and pulse the picture
         if (it.kind !== 'first' && it.kind !== 'last') this.look = Math.max(this.look, manual ? 1.6 : 2.6); this.picPulse = 1; return; }
       const s = it.s && this.band === 'f' ? it.s : null;
-      if (it.kind === 'first') say(manual ? `${it.w}. ${it.w}.` : `Find the first sound in... ${it.w}.`, { rate: .85 });
+      if (it.kind === 'first') say(manual ? `${it.w}. ${it.w}.` : `Find the first sound in the word... ${it.w}... ${it.w}.`, { rate: .85 });
       else if (it.kind === 'last') say(manual ? `${it.w}. ${it.w}.` : `Find the last sound in... ${it.w}.`, { rate: .85 });
       else if (it.kind === 'build') say(manual ? `${it.w}.` : `Build... ${it.w}.`, { rate: .8 });
       else say(s ? `${it.w}. ${s} ${it.w}.` : `${it.w}. Spell, ${it.w}.`, { rate: .85 });

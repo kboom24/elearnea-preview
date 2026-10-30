@@ -9,7 +9,7 @@ from faster_whisper import WhisperModel
 APP = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')); MANIFEST = os.path.join(APP, 'voice', 'manifest.json')
 NUM = {str(i): w for i, w in enumerate('zero one two three four five six seven eight nine ten eleven twelve'.split())}
 # Homophones and recognizer habits that are not voice errors ("That says" is often transcribed "That's his").
-HOMO = [('to', 'too', 'two'), ('know', 'no'), ('knew', 'new'), ('by', 'buy', 'bye', 'b'), ('be', 'bee'), ('see', 'sea', 'c'), ('for', 'four'), ('would', 'wood'), ('which', 'witch'),
+HOMO = [('to', 'too', 'two'), ('know', 'no'), ('knew', 'new'), ('by', 'buy', 'bye'), ('be', 'bee', 'b'), ('see', 'sea', 'c'), ('an', 'n'), ('are', 'r'), ('for', 'four'), ('would', 'wood'), ('which', 'witch'),
         ('their', 'there', 'theyre'), ('right', 'write'), ('one', 'won'), ('eight', 'ate'), ('i', 'eye'), ('our', 'hour', 'are'), ('sun', 'son'), ('hi', 'high'), ('red', 'read'), ('blue', 'blew'),
         ('its', 'it s'), ('seem', 'seam'), ('made', 'maid'), ('tail', 'tale'), ('meat', 'meet'), ('sail', 'sale'), ('pair', 'pear'), ('flower', 'flour'), ('night', 'knight'), ('whole', 'hole'), ('ant', 'aunt'), ('mail', 'male'), ('not', 'knot'), ('week', 'weak'), ('plane', 'plain'), ('road', 'rode'), ('so', 'sew'), ('way', 'weigh'), ('hear', 'here'), ('wear', 'where'), ('wait', 'weight'), ('rain', 'reign'), ('peace', 'piece'), ('in', 'inn'), ('bear', 'bare'), ('dear', 'deer'), ('wood', 'would'), ('new', 'knew'), ('cent', 'sent', 'scent'), ('mothabet', 'martha bit', 'mother bet'), ('wick', 'wake')]
 CANON = {}
@@ -48,14 +48,14 @@ def main():
         if a.missing and it['check'].get('asr'): continue
         if a.flagged and not (it['check'].get('asr') and not it['check']['asr']['ok']): continue
         fl = it.get('files') or []
-        if it['type'] == 'phoneme' or it.get('reserved') or it.get('parts') or len(fl) != 1 or it['source'].get('kind') == 'device-speech' or not os.path.exists(os.path.join(APP, fl[0])): continue
+        if it['type'] == 'phoneme' or it.get('reserved') or it.get('parts') or len(fl) != 1 or (it['source'].get('kind') == 'device-speech' and not it['source'].get('held')) or not os.path.exists(os.path.join(APP, fl[0])): continue
         au = load(os.path.join(APP, fl[0]))
         if a.flagged: au = np.concatenate([np.zeros(8000, np.float32), au, np.zeros(8000, np.float32)])
         segs, _ = m.transcribe(au, beam_size=5 if a.flagged else 1, language='en', condition_on_previous_text=False)
         heard = ' '.join(s.text.strip() for s in segs)
         target = target_of(it)
         sc = score(target, heard); thr = 0.6 if len(norm(target).split()) <= 2 else 0.75
-        res[it['key']] = {'heard': heard, 'score': round(sc, 2), 'ok': sc >= thr, 'voice': it['source'].get('voice')}
+        res[it['key']] = {'heard': heard, 'score': round(sc, 2), 'ok': sc >= thr, 'voice': it['source'].get('voice') or (it['source'].get('wouldPlay') or {}).get('voice')}
         if time.time() - t0 > 12 * 60: print('time limit; stopped early', flush=True); break
     man = json.load(open(MANIFEST))  # re-read and merge (another chunk may have written)
     for it in man['items']:
