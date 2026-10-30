@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-# Elearnea share of the box: wait until fewer than 2 Elearnea heavy jobs (qa-slot.sh started from /home/box/elearnea/*) are running,
-# then run the command through qa-slot.sh. A wrapper and its qa-slot child count once. Usage: elslot.sh <cmd...>
-count() { local n=0 ps; ps=$(pgrep -f "games/tools/qa-slot.sh" 2>/dev/null); for p in $ps; do [ "$p" = "$$" ] && continue
-    pp=$(awk '{print $4}' /proc/$p/stat 2>/dev/null); echo "$ps" | grep -qx "$pp" && continue
-    c=$(readlink /proc/$p/cwd 2>/dev/null); a=$(tr '\0' ' ' < /proc/$p/cmdline 2>/dev/null)
-    case "$c $a" in *"/home/box/elearnea"*) n=$((n+1));; esac; done; echo $n; }
-while [ "$(count)" -ge 2 ]; do sleep 3; done
+# Elearnea share of the box (brief: Elearnea holds at most 2 qa-slot slots in total).
+# Waits until fewer than 2 of the 3 slot locks (/home/box/games/.locks/slot*) are HELD by processes whose cwd is under
+# /home/box/elearnea, then runs the command through qa-slot.sh, which applies its own FIFO queue. (v1 counted queued
+# waiters as well, which is stricter than the rule and kept this job permanently at the back of the line.)
+# elslot.sh --wait : only wait for the Elearnea share (use before taking the shared TTS flock, so the lock is never held while queued)
+held_u() { local p l; for d in /proc/[0-9]*; do case "$(readlink $d/cwd 2>/dev/null)" in /home/box/elearnea*) ;; *) continue;; esac
+    for f in $d/fd/*; do l=$(readlink $f 2>/dev/null); case "$l" in /home/box/games/.locks/slot*) echo "${l##*/}";; esac; done; done 2>/dev/null | sort -u | wc -l; }
+while [ "$(held_u)" -ge 2 ]; do sleep 10; done
+[ "$1" = "--wait" ] && exit 0
 exec /home/box/games/tools/qa-slot.sh "$@"

@@ -16,7 +16,7 @@ El.defineGame({
   id: 'night-garden',
   start(cfg, host) {
     const L = host.learn, rng = host.rng, root = host.root, mode = cfg.mode || 'sort', NL = window.NGL, A = window.NGA;
-    let alive = true, run = 0, qi = 0, firstTry = 0, attempts = 0, busy = false, prompt = [], timers = [];
+    let alive = true, run = 0, qi = 0, firstTry = 0, attempts = 0, busy = false, asks = 0, prompt = [], timers = [];
     const QA = /[?&]qa=1(&|$)/.test(location.search), qaMark = (k, v) => { if (!QA) return; if (v == null) delete root.dataset[k]; else root.dataset[k] = v; };
     const setBusy = (b) => { busy = b; qaMark('busy', b ? '1' : '0'); };
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
@@ -61,7 +61,7 @@ El.defineGame({
 
     /* ---------------- one question: choices, gentle misses, praise to the end ---------------- */
     // q: { want, choices: [{id, el}], hint(choiceId) -> line, model -> line, yes -> line, right(el, done) }
-    function ask(q) { let misses = 0; setBusy(false); qaMark('want', q.want);
+    function ask(q) { let misses = 0; setBusy(false); qaMark('want', q.want); qaMark('ask', String(++asks));
       for (const c of q.choices) c.el.onclick = () => { if (busy || !alive) return;
         if (c.id === q.want) { setBusy(true); qaMark('want', null); const ft = misses === 0; attempts++; if (ft) firstTry++; host.emit('mastery', { item: q.item, correct: true, firstTry: ft });
           q.choices.forEach(x => x.el.classList.remove('hint', 'no')); c.el.classList.add('got'); cheer(); host.sfx.right(); burst(c.el, 14);

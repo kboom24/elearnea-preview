@@ -32,3 +32,18 @@ server pid 3695401 port 8871 (kill when done)
 - old waiting jobs killed (their outer `timeout 900` counted queue time); single chain /tmp/ng/chain.sh (pid 3790248): tts round 2 -> QA phone, ipad, desktop. log /tmp/ng/qa-all.log
 - 02:50 merged origin/main f7ce709 (conflicts sw.js/manifest/index resolved: theirs + rebuild, SW v12); switched speak() to host.sayThen + run token; NEED asr re-run on ng range (merge dropped ng asr records)
 - 03:04 chain still queued (other Elearnea builders hold 3 jobs; elslot.sh waits for <2). clip 200 check: 365/365 ok (curl, server 8871)
+
+## 03:34 resume
+- Old chain pid 3790248 is gone; live chain = /tmp/ng/chain.sh pid 3869122 (started 03:14), still queued at "tts round2" (Elearnea slots held by moth-bridge x2 + map-labels). Server 3695401 :8871 alive.
+- origin/main still f7ce709 (merged). Pushed game/night-garden @ 97acc0c (first push, no force).
+- Remaining: round2 cup/ball → apply → ASR ng range → held list → QA phone/ipad/desktop → visuals → commit/push → kill server 3695401 + chain.
+- 03:46 still queued at tts round2 (Elearnea slots busy)
+- 03:57 old chain 3869122 held the shared TTS flock while queued (blocked 3 other jobs) → killed my own PIDs, added 'elslot.sh --wait', restarted chain pid 4051730 (gate first, then flock+qa-slot).
+- 04:17 chain 4051730 still gated (Elearnea jobs running: many)
+- 04:19 elslot v2: gate on Elearnea-HELD slot locks (<2) instead of counting queued waiters; restarted chain pid 4189040. NOTE another builder (loudquiet, pid 4092520) runs my elslot.sh — edit it only via atomic mv.
+- 04:24 chain 4189040 alive (gated, elslot v2). The cmdline noise in qa-all.log lines 101-107 came from the killed v1 orphan 4051735; v2 has no cmdline read and every readlink is 2>/dev/null, so no new noise (checked). Future elslot edits: atomic mv only.
+- 04:33 still gated at tts round2 (Elearnea holds 2+ slots)
+- 04:51 round2: ball → 'A bouncy ball!' PASS (1.0); cup3-5 all FLAG. Round3 cup (Look, a cup!/Here is a cup!/A cup for tea!/A cup!) queued: /tmp/ng/round3.sh pid 429421, runs after chain. Phone QA started 04:42 (gated wait). ng manifest range still 2197-2374, el 30-34.
+- 05:01 phone QA still gated/running
+- 05:02 PHONE QA 6/6 PASS (0 err/0 ext, targets>=64, voiceMisses 0, praiseCut 0); phone screenshots reviewed, no visual fixes needed. iPad running.
+- 05:11 iPad 5/6: ns-l3 FAIL 'accepted (want cleared)' q=1 = QA race (short cycle praise finished during the slow iPad screenshot, so the next want was already set; game state correct in screenshot). Fix: game marks data-ask counter (qa only), QA accepts want-cleared OR ask moved on. iPad perf l1 55.9fps p95 16.8, l2 54.5/16.8, l4 53.0/16.8. Rerun ipad after desktop; ball/cup edits deferred until the chain ends (don't change voice mid-QA).

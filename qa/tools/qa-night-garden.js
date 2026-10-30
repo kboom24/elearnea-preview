@@ -63,7 +63,7 @@ function audit(MIN) {
         if (vpn === 'ipad') await page.evaluate(() => { const f = window.__ngFrames = []; let last = performance.now(); const tick = (t) => { f.push(t - last); last = t; if (f.length < 100000) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
         while (!(await resultsOn()) && Date.now() - t0 < 240000) {
           await waitFor(async () => await resultsOn() || await page.$eval('#stage', s => !!s.dataset.want && s.dataset.busy !== '1'), 30000, 'idle'); if (await resultsOn()) break;
-          const want = await page.$eval('#stage', s => s.dataset.want); await sleep(200); await sample('q' + q); if (!q) await shot(`${ls}-play`);
+          const want = await page.$eval('#stage', s => s.dataset.want), askN = await page.$eval('#stage', s => s.dataset.ask); await sleep(200); await sample('q' + q); if (!q) await shot(`${ls}-play`);
           const right = await page.$(`#ngTray .ng-choice[data-id="${want}"]:not(.used)`); if (!right) throw new Error('no target for ' + want);
           const nMiss = q === 1 ? 1 : q === 2 ? 2 : 0;
           for (let m = 0; m < nMiss; m++) { const wr = await page.$(`#ngTray .ng-choice:not([data-id="${want}"]):not(.used)`); if (!wr) break; await tapEl(wr); aud.misses++;
@@ -71,8 +71,9 @@ function audit(MIN) {
             await waitFor(() => page.$eval('#stage', s => s.dataset.busy !== '1'), 20000, 'idle after miss');
             if (m === 1) { const glow = await page.$(`#ngTray .ng-choice.hint[data-id="${want}"]`); if (glow) aud.models++; await shot(`${ls}-miss-model`); } }
           await tapEl(right); q++; if (q === 1) { await sleep(700); await shot(`${ls}-yes`); }
-          // accepted = the answer marker is cleared at once by a right tap (a tap that missed the button leaves it set)
-          await waitFor(async () => await resultsOn() || await page.$eval('#stage', s => s.dataset.want === undefined), 6000, 'accepted (want cleared)');
+          // accepted = a right tap clears the answer marker at once, or (when the next question was already asked before we looked,
+          // e.g. a short praise during a slow iPad screenshot) the ask counter moved on; a tap that missed the button changes neither
+          await waitFor(async () => await resultsOn() || await page.$eval('#stage', (s, n) => s.dataset.want === undefined || s.dataset.ask !== n, askN), 6000, 'accepted (want cleared / next ask)');
           if (q > 60) throw new Error('too many questions');
         }
         await page.waitForSelector('#res.on #toPath', { timeout: 15000 }); await sleep(900); await sample('results'); await shot(`${ls}-results`);
