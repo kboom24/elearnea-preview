@@ -109,4 +109,9 @@ table.t td { padding: 9px 6px; border-bottom: 2px dashed rgba(42,33,82,.10); ver
   .record { padding: 20px 16px; } .record .meta { grid-template-columns: minmax(0, 1fr); }
   .hide-sm { display: none; }
 }
-@media (max-width: 480px) { .side nav a svg { display: none; } .side nav a { padding: 0 10px; } } /* phone: text-only tabs fit in two rows */
+/* phone: text-only tabs in a 3 + 2 grid (6 tracks, each tab spans 2; the 4th starts at track 2 so the last two sit centred) */
+@media (max-width: 480px) {
+  .side nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .side nav a { grid-column: span 2; justify-content: center; min-width: 0; min-height: 44px; padding: 0 6px; font-size: .95rem; } .side nav a svg { display: none; }
+  .side nav a:nth-child(4) { grid-column: 2 / span 2; }
+}
