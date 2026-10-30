@@ -85,6 +85,8 @@ function checkExpr(e, where) {
   const tq = ternary(e); if (tq) { checkExpr(tq[1], where); checkExpr(tq[2], where); return; }
   // Little Lanterns games: every line comes from assets/games/little-lines.js (LN.* / its aliases G, J, C), whose full output is verified below
   if (LITTLE.has(where.split(':')[0]) && /^(?:(?:LN|G|J|C)\.[\w.]+(?:\([^()]*\))?|q\.(?:cue|yes|here)|ln\.(?:cue|yes|here)|lines\(b\._it\)\.that|lines|cur)$/.test(e)) return;
+  // Wick's Night Garden: every line comes from assets/games/night-garden-lines.js (NL.* and the item fields it defines), whose full output is verified below
+  if (where.split(':')[0] === 'assets/games/night-garden.js' && /^(?:\.\.\.)?(?:NL\.[\w.]+(?:\([\w.]*\))?(?:\[[\w.]+\])?|q\.(?:yes|model|hint\(c\.id\))|it\.(?:ask|yes)|an\.\w+|say|prompt|spoken|end|line|t)$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
 const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt)\s*\(|\.say\s*\()/g;
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
@@ -103,6 +105,9 @@ for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
   for (const l of LN.all(D)) { n++; if (!keys.has(norm(l.text))) problems.push(`little-lines: "${l.text}" is not in the manifest`); }
   // and every content item the games can ask about is enumerated by LN.all (spot check the data the games read)
   console.log(`voice check: ${n} Little Lanterns lines verified against the manifest`); }
+{ const NGL = require(path.join(APP, 'assets/games/night-garden-lines.js')); let n = 0;
+  for (const l of NGL.all()) { n++; if (!keys.has(norm(l.text))) problems.push(`night-garden-lines: "${l.text}" is not in the manifest`); }
+  console.log(`voice check: ${n} Night Garden lines verified against the manifest`); }
 // files + index: every shipped line has all its files (.mp3 + .opus) and is in index.json; lines still pending are reported, not failed
 let missing = 0, pending = 0; for (const it of man.items) { if (it.reserved) continue;
   if (idx.map[it.key] !== it.id) { problems.push(`index.json does not map "${it.key}" to ${it.id}`); continue; }

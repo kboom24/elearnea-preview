@@ -160,6 +160,9 @@ for (const m of MB.MOTHS) { add(m.name, { type: 'label', game: M, prefix: 'mb.mo
 
 /* ================= Little Lanterns (ages 0-4): Lantern Barn, Picture Garden, Glow Jars + map age switch ================= */
 require('./early-lines.js')({ add, APP });
+/* ================= Wick's Night Garden (Nature: living/not living, needs, life cycle, animal homes) =================
+   every line comes from assets/games/night-garden-lines.js (NGL.all()), the same module the game speaks from */
+{ const NGL = require(path.join(APP, 'assets/games/night-garden-lines.js')); for (const l of NGL.all()) add(l.text, { type: l.type, game: 'night-garden', prefix: 'ng', screen: l.screen, trigger: l.trigger }); }
 
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));

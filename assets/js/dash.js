@@ -37,9 +37,13 @@
     'ELOF.P-LIT 3': 'Letters of the alphabet (preschool; shape matching only here)',
     'ELOF.P-MATH 2': 'Recognizes how many in a small set (preschool)',
     'ELOF.P-MATH 4': 'Compares numbers: more and fewer (preschool)',
-    'ELOF.P-MATH 9': 'Identifies and describes shapes (preschool)'
+    'ELOF.P-MATH 9': 'Identifies and describes shapes (preschool)',
+    // NGSS (science): Nature realm
+    'NGSS.K-LS1-1': 'What plants and animals need to live (K)',
+    'NGSS.K-ESS2-2': 'Animals and plants change their surroundings, e.g. homes (K)',
+    'NGSS.3-LS1-1': 'Life cycles: seed to flower (early look at grade 3)'
   };
-  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ');
+  const short = (c) => c.replace('CCSS.ELA-LITERACY.', 'ELA ').replace('CCSS.MATH.CONTENT.', 'Math ').replace('CCSS.MATH.PRACTICE.', 'Math practice ').replace('ELOF.', 'ELOF ').replace('NGSS.', 'NGSS ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const DAY = 864e5;
   const dayNum = (t) => { const d = new Date(t); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };

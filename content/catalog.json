@@ -1,11 +1,12 @@
 {
   "version": 1,
-  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) codes for K-3; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only.",
+  "schema": "subject > realm > skill > lesson > game. Every skill and lesson carries grade + standards tags. Standards: CCSS (ELA/Math) and NGSS (science, NGSS.<code>) codes for K-3; Head Start ELOF goal codes (ELOF.IT-* infant/toddler, ELOF.P-* preschool) for the Little Lanterns lessons, tagged as alignment only (not a claim that a goal is met). Age bands: skill/lesson \"bands\" = [\"explorer\"] (ages 4-9, the default), [\"little\"] (Little Lanterns, ages 2-4) or [\"tiny\"] (Little Lanterns, under 2, play together); the map and realm paths show the current band only.",
   "games": {
     "mothabet": { "name": "Mothabet", "path": "play/mothabet/", "tile": "assets/img/tile-mothabet.webp", "kind": "embedded", "ages": "4-9" },
     "lily-pad": { "name": "Lily Pad Hop", "path": "play/lily-pad/", "tile": "assets/img/tile-lily.webp", "kind": "module", "ages": "4-7" },
     "firefly-count": { "name": "Firefly Count", "path": "play/firefly-count/", "tile": "assets/img/tile-firefly.webp", "kind": "module", "ages": "4-7" },
     "clocktower-gears": { "name": "Clocktower Gears", "path": "play/clocktower-gears/", "tile": "assets/img/tile-clocktower.webp", "kind": "module", "ages": "4-9" },
+    "night-garden": { "name": "Wick's Night Garden", "path": "play/night-garden/", "tile": "assets/img/tile-night-garden.svg", "kind": "module", "ages": "4-9" },
     "lantern-barn": { "name": "Lantern Barn", "path": "play/lantern-barn/", "tile": "assets/img/tile-barn.svg", "kind": "module", "ages": "0-4" },
     "picture-garden": { "name": "Picture Garden", "path": "play/picture-garden/", "tile": "assets/img/tile-garden.svg", "kind": "module", "ages": "0-4" },
     "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" }
@@ -160,7 +161,28 @@
         "comingSoon": [ { "name": "Tell time", "icon": "clock" } ]
       }
     },
-    { "id": "science", "name": "Nature & Science", "realm": { "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "soon", "color": "#7CC4A4", "icon": "leaf", "img": "assets/img/isle-nature", "say": "Nature land is still growing. Coming soon!", "skills": [] } },
+    {
+      "id": "science", "name": "Nature & Science",
+      "realm": {
+        "id": "science", "name": "Nature", "landmark": "Great tree and telescope", "status": "open", "color": "#7CC4A4", "icon": "leaf",
+        "img": "assets/img/isle-nature", "say": "Nature land! Tap to go in.",
+        "comingSoonLittle": [ { "name": "Garden friends", "icon": "leaf" } ],
+        "comingSoon": [ { "name": "Weather watch", "icon": "moon" }, { "name": "Star gazing", "icon": "star" } ],
+        "skills": [
+          { "id": "ns.living", "name": "Living or not living", "grade": "K", "standards": ["NGSS.K-LS1-1"],
+            "standardsNote": "Sorting living from non-living things by the pattern that living things grow and need food, water and air: the observation base of K-LS1-1. NGSS has no separate K code for living vs non-living.",
+            "lessons": [ { "id": "ns-l1", "name": "Alive or not?", "icon": "leaf", "grade": "K", "standards": ["NGSS.K-LS1-1"], "tile": "assets/img/tile-ng-sort.svg", "say": "Is it living? Let's sort the garden!", "game": { "id": "night-garden", "config": { "mode": "sort", "rounds": 8 } } } ] },
+          { "id": "ns.needs", "name": "What plants and animals need", "grade": "K", "standards": ["NGSS.K-LS1-1"],
+            "lessons": [ { "id": "ns-l2", "name": "Garden helpers", "icon": "firefly", "grade": "K", "standards": ["NGSS.K-LS1-1"], "tile": "assets/img/tile-ng-needs.svg", "say": "What do plants and animals need? Let's help!", "game": { "id": "night-garden", "config": { "mode": "needs", "rounds": 6 } } } ] },
+          { "id": "ns.lifecycle", "name": "Seed to flower", "grade": "K", "standards": ["NGSS.K-LS1-1", "NGSS.3-LS1-1"],
+            "standardsNote": "Plants need water and light to grow (K-LS1-1); putting a plant's life cycle in order is an early, picture-based look at 3-LS1-1 (life cycles), not a grade 3 assessment.",
+            "lessons": [ { "id": "ns-l3", "name": "Seed to flower", "icon": "leaf", "grade": "K", "standards": ["NGSS.K-LS1-1", "NGSS.3-LS1-1"], "tile": "assets/img/tile-ng-cycle.svg", "say": "Grow a seed into a flower!", "game": { "id": "night-garden", "config": { "mode": "cycle", "rounds": 3 } } } ] },
+          { "id": "ns.homes", "name": "Animal homes", "grade": "K", "standards": ["NGSS.K-ESS2-2", "NGSS.K-LS1-1"],
+            "standardsNote": "Animals change their surroundings to meet their needs (K-ESS2-2): rabbits dig burrows, birds build nests, bees build hives, beavers build lodges. Shelter is also a need (K-LS1-1).",
+            "lessons": [ { "id": "ns-l4", "name": "Animal homes", "icon": "moth", "grade": "K", "standards": ["NGSS.K-ESS2-2", "NGSS.K-LS1-1"], "tile": "assets/img/tile-ng-homes.svg", "say": "Help the animals find their homes!", "game": { "id": "night-garden", "config": { "mode": "homes", "rounds": 6 } } } ] }
+        ]
+      }
+    },
     { "id": "art-music", "name": "Art & Music", "realm": { "id": "art-music", "name": "Art & Music", "landmark": "Windmill", "status": "soon", "color": "#F08A7E", "icon": "palette", "img": "assets/img/isle-art", "say": "Art and music land is coming soon!", "skills": [] } },
     { "id": "world", "name": "World & Languages", "realm": { "id": "world", "name": "World", "landmark": "Globe", "status": "soon", "color": "#7CC4A4", "icon": "globe", "img": "assets/img/isle-world", "say": "World land is coming soon!", "skills": [] } },
     { "id": "logic", "name": "Logic & Coding", "realm": { "id": "logic", "name": "Logic & Coding", "landmark": "Castle", "status": "soon", "color": "#9B8AD1", "icon": "puzzle", "img": "assets/img/isle-logic", "say": "Puzzle castle is coming soon!", "skills": [] } }

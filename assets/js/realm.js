@@ -33,7 +33,7 @@
       node.onclick = () => (x.st === 'locked' ? locked() : open(x));
       const g = cat.games[x.ls.game.id]; const t = document.createElement('button'); t.className = 'tile' + (x.st === 'locked' ? ' locked' : '');
       t._x = xPct; t._l = left; tiles.push(t); t.style.setProperty('--r', (left ? 3 : -3) + 'deg');
-      t.innerHTML = `<img src="../../${g.tile}" alt="" loading="lazy"><span class="lbl">${x.ls.name}</span>`; t.setAttribute('aria-label', x.ls.name);
+      t.innerHTML = `<img src="../../${x.ls.tile || g.tile}" alt="" loading="lazy"><span class="lbl">${x.ls.name}</span>`; t.setAttribute('aria-label', x.ls.name);
       t.onclick = node.onclick; el.appendChild(t);
       if (x.st === 'current') { curEl = el; cur = x; const m = document.createElement('img'); m.className = 'mini'; m.src = '../../assets/img/wick-sm.webp'; m.alt = ''; m.style.left = `calc(${xPct}% ${left ? '-' : '+'} 70px - 39px)`; el.appendChild(m); }
     }
