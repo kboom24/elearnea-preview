@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T11:11:28.925Z",
+ "generated": "2026-10-30T11:18:37.799Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -352,9 +352,9 @@
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 291,
-  "withClip": 2203,
-  "heldForHumanCheck": 15,
+  "needsHumanCheck": 309,
+  "withClip": 2184,
+  "heldForHumanCheck": 34,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
   "pending": 0,
@@ -417,7 +417,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Peekaboo, who is in the barn?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.peekaboo-who-is-in-the-barn.mp3"
@@ -445,7 +451,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap and look.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.tap-and-look.mp3"
@@ -473,7 +485,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says Moo? Let's listen.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.who-says-moo-lets-listen.mp3"
@@ -501,7 +519,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Sing along with the zoo.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.sing-along-with-the-zoo.mp3"
@@ -529,7 +553,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the pictures.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.find-the-pictures.mp3"
@@ -557,7 +587,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Loud or quiet, let's listen.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.loud-or-quiet-lets-listen.mp3"
@@ -585,7 +621,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Pop the balloons. Find the colors.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.pop-the-balloons-find-the-colors.mp3"
@@ -613,7 +655,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "rhyme time.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.rhyme-time.mp3"
@@ -641,7 +689,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap the beads.",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.lets-clap-the-beats.mp3"
@@ -669,7 +723,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the matching letter shapes.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.find-the-matching-letter-shapes.mp3"
@@ -731,7 +791,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Sing along with the zoo parade.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.sing-along-with-the-zoo-parade.mp3"
@@ -759,7 +825,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Sing on the word stage.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.sing-on-the-word-stage.mp3"
@@ -787,7 +859,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the letters with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.find-the-letters-with-the-song.mp3"
@@ -815,7 +893,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Spell with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.spell-with-the-song.mp3"
@@ -843,7 +927,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Read the words in the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.read-the-words-in-the-song.mp3"
@@ -871,7 +961,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Read and spell with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.read-and-spell-with-the-song.mp3"
@@ -1137,7 +1233,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the jar and count.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.tap-the-jar-and-count.mp3"
@@ -1165,7 +1267,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the jars that match.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.find-the-jars-that-match.mp3"
@@ -1193,7 +1301,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the shapes.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.find-the-shapes.mp3"
@@ -1221,7 +1335,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "1, 2, 3 fireflies.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.one-two-three-fireflies.mp3"
@@ -1254,7 +1374,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which jar has more PDTS?",
+     "score": 0.89,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/el.which-jar-has-more.mp3"
@@ -70159,7 +70285,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Little Lanterns. Games for Little Ones.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.little-lanterns-games-for-little-ones.mp3"
@@ -70187,7 +70319,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Explorers. Games for big kids.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.explorers-games-for-big-kids.mp3"
@@ -70215,7 +70353,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Knock knock, tap the door.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.knock-knock-tap-the-door.mp3"
@@ -70243,7 +70387,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The cow says moo.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
@@ -70272,7 +70422,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says Moo?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
@@ -70301,7 +70457,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the cow says moo.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
@@ -70335,7 +70497,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the cow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
@@ -70369,7 +70537,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the cow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-cow.mp3"
@@ -70397,7 +70571,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The duck says quack.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
@@ -70426,7 +70606,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says Quack?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
@@ -70455,7 +70641,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the duck says quack.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
@@ -70481,15 +70673,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.thats-the-duck.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"That's the dock.\""
+    ],
+    "asr": {
+     "heard": "That's the dock.",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
@@ -70515,15 +70720,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.heres-the-duck.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Here's the dock.\""
+    ],
+    "asr": {
+     "heard": "Here's the dock.",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-duck.mp3"
@@ -70551,7 +70769,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The cat says meow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
@@ -70580,7 +70804,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says meow?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
@@ -70609,7 +70839,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the cat says meow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
@@ -70643,7 +70879,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
@@ -70677,7 +70919,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-cat.mp3"
@@ -70705,7 +70953,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The dog says woof.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
@@ -70726,15 +70980,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.who-says-woof.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Who says wo419?\""
+    ],
+    "asr": {
+     "heard": "Who says wo419?",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
@@ -70763,7 +71030,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the dog says woof.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
@@ -70797,7 +71070,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the dog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
@@ -70831,7 +71110,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the dog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-dog.mp3"
@@ -70859,7 +71144,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The sheep says bar.",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
@@ -70880,15 +71171,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.who-says-baa.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Who says bar?\""
+    ],
+    "asr": {
+     "heard": "Who says bar?",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
@@ -70917,7 +71221,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the sheep says bar.",
+     "score": 0.8,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
@@ -70946,7 +71256,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the sheep.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
@@ -70975,7 +71291,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the sheep.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-sheep.mp3"
@@ -71003,7 +71325,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The pig says Oink.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
@@ -71032,7 +71360,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says Oink?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
@@ -71061,7 +71395,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the pig says Oink.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
@@ -71090,7 +71430,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the pig.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
@@ -71111,15 +71457,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.heres-the-pig.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Here's the peg.\""
+    ],
+    "asr": {
+     "heard": "Here's the peg.",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-pig.mp3"
@@ -71147,7 +71506,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The frog says Ribbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
@@ -71176,7 +71541,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says, Ribbit?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
@@ -71205,7 +71576,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the frog says Ribbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
@@ -71234,7 +71611,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the frog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
@@ -71263,7 +71646,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the frog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-frog.mp3"
@@ -71291,7 +71680,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The bird says tweet.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
@@ -71320,7 +71715,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Who says tweet?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
@@ -71349,7 +71750,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The bird says tweet.",
+     "score": 0.89,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
@@ -71383,7 +71790,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the bird.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
@@ -71417,7 +71830,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the bird.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-bird.mp3"
@@ -71445,7 +71864,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "The owl says who.",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
@@ -71466,15 +71891,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.who-says-hoo.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Who says who?\""
+    ],
+    "asr": {
+     "heard": "Who says who?",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
@@ -71503,7 +71941,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the owl says who.",
+     "score": 0.8,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
@@ -71532,7 +71976,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the owl.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
@@ -71561,7 +72011,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the owl.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-owl.mp3"
@@ -71589,7 +72045,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Loud or quiet.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.loud-or-quiet.mp3"
@@ -71617,7 +72079,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, that was loud like the elephant.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-that-was-loud-like-the-elephant.mp3"
@@ -71645,7 +72113,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, that was quiet like the mouse.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-that-was-quiet-like-the-mouse.mp3"
@@ -71673,7 +72147,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen again.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-again.mp3"
@@ -71701,7 +72181,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's Clap Cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-cat.mp3"
@@ -71729,7 +72215,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-cat.mp3"
@@ -71757,7 +72249,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Cat has one clap.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.cat-has-one-clap.mp3"
@@ -71785,7 +72283,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap, sun.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-sun.mp3"
@@ -71813,7 +72317,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, sun.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-sun.mp3"
@@ -71833,15 +72343,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.sun-has-one-clap.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"ideoャ\""
+    ],
+    "asr": {
+     "heard": "ideoャ",
+     "score": 0,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.sun-has-one-clap.mp3"
@@ -71869,7 +72392,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap, ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-ball.mp3"
@@ -71897,7 +72426,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-ball.mp3"
@@ -71925,7 +72460,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Ball has one clap.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.ball-has-one-clap.mp3"
@@ -71953,7 +72494,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap, Apple.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-apple.mp3"
@@ -71981,7 +72528,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, Apple.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-apple.mp3"
@@ -72009,7 +72562,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Apple has two claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.apple-has-two-claps.mp3"
@@ -72037,7 +72596,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap. Rabbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-rabbit.mp3"
@@ -72065,7 +72630,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, rabbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-rabbit.mp3"
@@ -72093,7 +72664,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Rabbit has two claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.rabbit-has-two-claps.mp3"
@@ -72121,7 +72698,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap. Flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-flower.mp3"
@@ -72149,7 +72732,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-flower.mp3"
@@ -72177,7 +72766,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Flower has two claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.flower-has-two-claps.mp3"
@@ -72207,7 +72802,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Let's Clap, Banana.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -72242,7 +72843,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Your turn, clap, banana.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -72277,7 +72884,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Banana has three claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -72310,7 +72923,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap, butterfly.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-butterfly.mp3"
@@ -72338,7 +72957,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, butterfly.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-butterfly.mp3"
@@ -72366,7 +72991,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Butterfly has three claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.butterfly-has-three-claps.mp3"
@@ -72386,15 +73017,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.lets-clap-elephant.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"\""
+    ],
+    "asr": {
+     "heard": "",
+     "score": 0,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-elephant.mp3"
@@ -72422,7 +73066,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Your turn, clap, elephant.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.your-turn-clap-elephant.mp3"
@@ -72450,7 +73100,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Elephant has three claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.elephant-has-three-claps.mp3"
@@ -72480,7 +73136,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Let's clap umbrella.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "umbrella"
@@ -72515,7 +73177,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Your turn, clap, umbrella.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "umbrella"
@@ -72550,7 +73218,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (umbrella rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Umbrella has three claps.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "umbrella"
@@ -72583,7 +73257,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Let's clap it together.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.lets-clap-it-together.mp3"
@@ -72611,7 +73291,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tapsqlite Tap the picture",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-picture.mp3"
@@ -72639,7 +73325,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look a cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-cat.mp3"
@@ -72667,7 +73359,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the cat?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-cat.mp3"
@@ -72695,7 +73393,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the cat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-cat.mp3"
@@ -72723,7 +73427,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look a dog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-dog.mp3"
@@ -72751,7 +73461,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the dog?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-dog.mp3"
@@ -72779,7 +73495,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the dog.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-dog.mp3"
@@ -72799,15 +73521,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.look-a-duck.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Look at Doc.\""
+    ],
+    "asr": {
+     "heard": "Look at Doc.",
+     "score": 0.33,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-duck.mp3"
@@ -72835,7 +73570,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the dock?",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-duck.mp3"
@@ -72855,15 +73596,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.yes-the-duck.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Yes, the dock.\""
+    ],
+    "asr": {
+     "heard": "Yes, the dock.",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-duck.mp3"
@@ -72891,7 +73645,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the cow?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-cow.mp3"
@@ -72919,7 +73679,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the cow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-cow.mp3"
@@ -72947,7 +73713,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the fish?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-fish.mp3"
@@ -72975,7 +73747,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the fish.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-fish.mp3"
@@ -73003,7 +73781,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the fish.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-fish.mp3"
@@ -73031,7 +73815,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the fish.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-fish.mp3"
@@ -73051,15 +73841,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.where-is-the-bird.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Where srfN ],\"1994 <=\""
+    ],
+    "asr": {
+     "heard": "Where srfN ],\"1994 <=",
+     "score": 0.29,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-bird.mp3"
@@ -73087,7 +73890,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the bird.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-bird.mp3"
@@ -73115,7 +73924,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look, a ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-ball.mp3"
@@ -73143,7 +73958,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the ball?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-ball.mp3"
@@ -73171,7 +73992,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-ball.mp3"
@@ -73199,7 +74026,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-ball.mp3"
@@ -73227,7 +74060,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the ball.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-ball.mp3"
@@ -73255,7 +74094,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look an apple.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-an-apple.mp3"
@@ -73283,7 +74128,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where=\\\" the Apple?",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-apple.mp3"
@@ -73311,7 +74162,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the Apple.ountain.",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-apple.mp3"
@@ -73331,15 +74188,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.thats-the-apple.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"That969 is theさ-1.\""
+    ],
+    "asr": {
+     "heard": "That969 is theさ-1.",
+     "score": 0.29,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-apple.mp3"
@@ -73359,15 +74229,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.heres-the-apple.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Apple\""
+    ],
+    "asr": {
+     "heard": "Apple",
+     "score": 0.5,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-apple.mp3"
@@ -73397,7 +74280,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Where is the banana?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -73432,7 +74321,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Yes, the banana.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -73467,7 +74362,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "That's the banana.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -73492,17 +74393,29 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.heres-the-banana.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
     "human": true,
     "reasons": [
-     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+     "weak-schwa fix (banana rendered with a final ɑ): listen that it ends in a clear \"ah\"",
+     "speech-recognition check heard \"Here's�\""
+    ],
+    "asr": {
+     "heard": "Here's�",
+     "score": 0.5,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "banana"
@@ -73535,7 +74448,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the cop?",
+     "score": 0.75,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-cup.mp3"
@@ -73563,7 +74482,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the cup.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-cup.mp3"
@@ -73591,7 +74516,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the cup.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-cup.mp3"
@@ -73611,15 +74542,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.heres-the-cup.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"Here's the cop.\""
+    ],
+    "asr": {
+     "heard": "Here's the cop.",
+     "score": 0.67,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-cup.mp3"
@@ -73647,7 +74591,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the shoe?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-shoe.mp3"
@@ -73675,7 +74625,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the shoe.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-shoe.mp3"
@@ -73703,7 +74659,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the shoe.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-shoe.mp3"
@@ -73731,7 +74693,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the shoe.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-shoe.mp3"
@@ -73759,7 +74727,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the hat?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-hat.mp3"
@@ -73787,7 +74761,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes the hat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-hat.mp3"
@@ -73807,15 +74787,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.thats-the-hat.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"That vehi-\""
+    ],
+    "asr": {
+     "heard": "That vehi-",
+     "score": 0,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-hat.mp3"
@@ -73843,7 +74836,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the hat.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-hat.mp3"
@@ -73871,7 +74870,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look, a car.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-car.mp3"
@@ -73899,7 +74904,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the car?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-car.mp3"
@@ -73927,7 +74938,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the car.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-car.mp3"
@@ -73955,7 +74972,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the car.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-car.mp3"
@@ -73983,7 +75006,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the car.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-car.mp3"
@@ -74011,7 +75040,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the tree?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-tree.mp3"
@@ -74039,7 +75074,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the tree.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-tree.mp3"
@@ -74067,7 +75108,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the tree.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-tree.mp3"
@@ -74095,7 +75142,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the tree.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-tree.mp3"
@@ -74115,15 +75168,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.where-is-the-sun.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"It's a good thing.\""
+    ],
+    "asr": {
+     "heard": "It's a good thing.",
+     "score": 0,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-sun.mp3"
@@ -74151,7 +75217,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the sun.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-sun.mp3"
@@ -74179,7 +75251,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the sun.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-sun.mp3"
@@ -74207,7 +75285,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the sun.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-sun.mp3"
@@ -74235,7 +75319,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look the moon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-the-moon.mp3"
@@ -74263,7 +75353,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the moon?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-moon.mp3"
@@ -74291,7 +75387,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the moon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-moon.mp3"
@@ -74319,7 +75421,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the moon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-moon.mp3"
@@ -74347,7 +75455,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the moon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-moon.mp3"
@@ -74375,7 +75489,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the star?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-star.mp3"
@@ -74403,7 +75523,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-star.mp3"
@@ -74431,7 +75557,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-star.mp3"
@@ -74459,7 +75591,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-star.mp3"
@@ -74487,7 +75625,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look a flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-a-flower.mp3"
@@ -74515,7 +75659,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the flower?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-flower.mp3"
@@ -74543,7 +75693,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-flower.mp3"
@@ -74571,7 +75727,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-flower.mp3"
@@ -74599,7 +75761,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the flower.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-flower.mp3"
@@ -74627,7 +75795,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the B?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-bee.mp3"
@@ -74655,7 +75829,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the B.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-bee.mp3"
@@ -74683,7 +75863,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the B.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-bee.mp3"
@@ -74711,7 +75897,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the B.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-bee.mp3"
@@ -74739,7 +75931,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Where is the rabbit?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.where-is-the-rabbit.mp3"
@@ -74767,7 +75965,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, the rabbit. traged",
+     "score": 0.86,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-the-rabbit.mp3"
@@ -74795,7 +75999,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's the rabbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-the-rabbit.mp3"
@@ -74823,7 +76033,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here's the rabbit.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.heres-the-rabbit.mp3"
@@ -74851,7 +76067,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the red balloon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-red-balloon.mp3"
@@ -74879,7 +76101,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Red.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-red.mp3"
@@ -74907,7 +76135,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is red.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-red.mp3"
@@ -74927,15 +76161,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "ll.tap-the-blue-balloon.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"TapVP balloon.\""
+    ],
+    "asr": {
+     "heard": "TapVP balloon.",
+     "score": 0.33,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-blue-balloon.mp3"
@@ -74963,7 +76210,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Blue.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-blue.mp3"
@@ -74991,7 +76244,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is blue.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-blue.mp3"
@@ -75019,7 +76278,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the yellow balloon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-yellow-balloon.mp3"
@@ -75047,7 +76312,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, yellow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-yellow.mp3"
@@ -75075,7 +76346,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is yellow.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-yellow.mp3"
@@ -75103,7 +76380,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the green balloon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-green-balloon.mp3"
@@ -75131,7 +76414,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, green.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-green.mp3"
@@ -75159,7 +76448,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is green.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-green.mp3"
@@ -75187,7 +76482,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the purple balloon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-purple-balloon.mp3"
@@ -75215,7 +76516,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Purple.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-purple.mp3"
@@ -75243,7 +76550,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is purple.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-purple.mp3"
@@ -75271,7 +76584,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the orange, balloon.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-orange-balloon.mp3"
@@ -75299,7 +76618,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, Orange.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-orange.mp3"
@@ -75327,7 +76652,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That one is orange.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.that-one-is-orange.mp3"
@@ -75355,7 +76686,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.find-the-star.mp3"
@@ -75383,7 +76720,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-a-star.mp3"
@@ -75411,7 +76754,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's a star.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-a-star.mp3"
@@ -75439,7 +76788,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the heart.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.find-the-heart.mp3"
@@ -75467,7 +76822,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, a heart.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-a-heart.mp3"
@@ -75495,7 +76856,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "That's a heart.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.thats-a-heart.mp3"
@@ -75523,7 +76890,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which one rhymes with cat, hat or sun?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-cat-hat-or-sun.mp3"
@@ -75551,7 +76924,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, cat hat they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-cat-hat-they-rhyme.mp3"
@@ -75579,7 +76958,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, cat hat they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-cat-hat-they-rhyme.mp3"
@@ -75607,7 +76992,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which one rhymes with car, star or fish?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-car-star-or-fish.mp3"
@@ -75635,7 +77026,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, car star they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-car-star-they-rhyme.mp3"
@@ -75663,7 +77060,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, car star they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-car-star-they-rhyme.mp3"
@@ -75691,7 +77094,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which one rhymes with B, tree or ball?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-bee-tree-or-ball.mp3"
@@ -75719,7 +77128,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, be tree they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-bee-tree-they-rhyme.mp3"
@@ -75747,7 +77162,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, be tree, they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-bee-tree-they-rhyme.mp3"
@@ -75775,7 +77196,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which one rhymes with moon, spoon or duck?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-moon-spoon-or-duck.mp3"
@@ -75803,7 +77230,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, moon spoon, they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-moon-spoon-they-rhyme.mp3"
@@ -75831,7 +77264,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, moon spoon they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-moon-spoon-they-rhyme.mp3"
@@ -75859,7 +77298,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Which one rhymes with frog, log or cup?",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-one-rhymes-with-frog-log-or-cup.mp3"
@@ -75887,7 +77332,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, frog log they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-frog-log-they-rhyme.mp3"
@@ -75915,7 +77366,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen, frog log, they rhyme.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.listen-frog-log-they-rhyme.mp3"
@@ -75943,7 +77400,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the same shape.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.find-the-same-shape.mp3"
@@ -75971,7 +77434,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, they match.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-they-match.mp3"
@@ -75999,7 +77468,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Look again.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.look-again.mp3"
@@ -76027,7 +77502,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the jar.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.tap-the-jar.mp3"
@@ -76055,7 +77536,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Bye bye fireflies.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.bye-bye-fireflies.mp3"
@@ -76083,7 +77570,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Find the jar that matches.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.find-the-jar-that-matches.mp3"
@@ -76111,7 +77604,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "which jar has one firefly.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-jar-has-one-firefly.mp3"
@@ -76139,7 +77638,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "which jar has two fireflies.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-jar-has-two-fireflies.mp3"
@@ -76167,7 +77672,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "which jar has three fireflies.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.which-jar-has-three-fireflies.mp3"
@@ -76195,7 +77706,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Yes, that jar has more.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.yes-that-jar-has-more.mp3"
@@ -76223,7 +77740,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "This jar has more.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/ll.this-jar-has-more.mp3"
@@ -76251,7 +77774,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Here comes the Zoo Parade.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.here-comes-the-zoo-parade.mp3"
@@ -76279,7 +77808,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Welcome to the word stage.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.welcome-to-the-word-stage.mp3"
@@ -76307,7 +77842,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "When you hear a word in the song, tap its picture.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.when-you-hear-a-word-in-the-song-tap-00845a.mp3"
@@ -76335,7 +77876,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Then put the letters in a row, just like the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.then-put-the-letters-in-a-row-just-l-a9609b.mp3"
@@ -76363,7 +77910,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the picture you hear in the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.tap-the-picture-you-hear-in-the-song.mp3"
@@ -76391,7 +77944,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Then find the letters in order.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.then-find-the-letters-in-order.mp3"
@@ -76419,7 +77978,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Now you read. Tap the words you hear in the song.",
+     "score": 0.91,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.now-you-read-tap-the-word-you-hear-i-b91be8.mp3"
@@ -76447,7 +78012,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Then spell it with the letters.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.then-spell-it-with-the-letters.mp3"
@@ -76475,7 +78046,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Listen to the song and tap the picture you hear.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.listen-to-the-song-and-tap-the-pictu-3bd94a.mp3"
@@ -76503,7 +78080,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Then tap the letters.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.then-tap-the-letters.mp3"
@@ -76531,7 +78114,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Ready, let's sing.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.ready-lets-sing.mp3"
@@ -76559,7 +78148,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Pause, tap play to keep singing.",
+     "score": 0.83,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.paused-tap-play-to-keep-singing.mp3"
@@ -76587,7 +78182,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "What a song! Look at all the words you read!",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.what-a-song-look-at-all-the-words-you-read.mp3"
@@ -76615,7 +78216,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Tap a word to hear it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.tap-a-word-to-hear-it.mp3"
@@ -76635,15 +78242,28 @@
     }
    ],
    "source": {
-    "kind": "kokoro",
-    "voice": "af_bella",
-    "label": "kokoro af_bella",
-    "set": "elearnea-lines",
-    "csv": "suno-elearnea-lines.csv"
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "sing.bear.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
    },
    "check": {
-    "human": false,
-    "reasons": []
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"There.\""
+    ],
+    "asr": {
+     "heard": "There.",
+     "score": 0.44,
+     "ok": false,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.bear.mp3"
@@ -76671,7 +78291,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Mouse.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.mouse.mp3"
@@ -76701,7 +78327,13 @@
     "human": true,
     "reasons": [
      "weak-schwa fix (panda rendered with a final ɑ): listen that it ends in a clear \"ah\""
-    ]
+    ],
+    "asr": {
+     "heard": "Panda",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "schwaFix": [
     "panda"
@@ -76734,7 +78366,13 @@
    },
    "check": {
     "human": false,
-    "reasons": []
+    "reasons": [],
+    "asr": {
+     "heard": "Pear.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
    },
    "files": [
     "voice/clips/sing.pear.mp3"
