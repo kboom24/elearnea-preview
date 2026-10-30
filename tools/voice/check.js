@@ -103,6 +103,8 @@ function checkExpr(e, where) {
   // Moth Bridge: every line comes from assets/games/moth-bridge-lines.js (B.*, sound(part) = B.partSound), whose full output is verified below
   if (where.split(':')[0] === 'assets/games/moth-bridge.js' && /^(?:B\.[\w]+(?:\([^()]*\))?|rng\.pick\(B\.yes\)|sound\([\w.\[\]]+\)|prompt\(\)|\.\.\.parts\.map\(sound\)|ps|t)$/.test(e)) return;
   if (SING.has(where.split(':')[0]) && /^(?:SL\.[\w.]+(?:\[[\w.]+\])?(?:\([^()]*\))?|intro\(\)(?:\.slice\([^()]*\))?)$/.test(e)) return;
+  // Wick's Night Garden: every line comes from assets/games/night-garden-lines.js (NL.* and the item fields it defines), whose full output is verified below
+  if (where.split(':')[0] === 'assets/games/night-garden.js' && /^(?:\.\.\.)?(?:NL\.[\w.]+(?:\([\w.]*\))?(?:\[[\w.]+\])?|q\.(?:yes|model|hint\(c\.id\))|it\.(?:ask|yes)|an\.\w+|say|prompt|spoken|end|line|t)$/.test(e)) return;
   const k = where.split(':')[0] + '|' + e; if (!DYNAMIC[k]) problems.push(`${where}: dynamic expression \`${e}\` is not covered (add it to the manifest builder and DYNAMIC in check.js)`); }
 const CALL = /(?:\b(?:say|speak|_speak|spoken|setPrompt|sayThen|speakThen|praiseThen)\s*\(|\.(?:say|sayThen)\s*\()/g; // *Then: say, then continue when the line ended (voice/voice-then.js)
 for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
@@ -138,6 +140,9 @@ for (const [p, rel] of files) { const src = fs.readFileSync(p, 'utf8');
 { const SL = require(path.join(APP, 'assets/games/sing-lines.js')), SG = JSON.parse(fs.readFileSync(path.join(APP, 'content/songs.json'), 'utf8')); let n = 0;
   for (const l of SL.all(SG)) { n++; if (!keys.has(norm(l.text))) problems.push(`sing-lines: "${l.text}" is not in the manifest`); }
   console.log(`voice check: ${n} sing-along lines verified against the manifest`); }
+{ const NGL = require(path.join(APP, 'assets/games/night-garden-lines.js')); let n = 0;
+  for (const l of NGL.all()) { n++; if (!keys.has(norm(l.text))) problems.push(`night-garden-lines: "${l.text}" is not in the manifest`); }
+  console.log(`voice check: ${n} Night Garden lines verified against the manifest`); }
 // files + index: every shipped line has all its files (.mp3 + .opus) and is in index.json; lines still pending are reported, not failed
 let missing = 0, pending = 0; for (const it of man.items) { if (it.reserved) continue;
   if (idx.map[it.key] !== it.id) { problems.push(`index.json does not map "${it.key}" to ${it.id}`); continue; }
