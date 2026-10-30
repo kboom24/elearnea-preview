@@ -42,3 +42,7 @@
 @media (min-width: 700px) and (min-height: 900px) { .ll-top { min-height: 150px; } .ll-wick { width: 150px; height: 150px; flex-basis: 150px; } .ll-card { --sz: 250px; } .ll-opts[data-n="3"] .ll-card { --sz: 230px; } .ll-card.huge { --sz: min(62vw, 44vh, 470px); } .ll-model { --sz: 260px; } }
 @media (max-height: 760px) and (min-width: 700px) { .ll-card { --sz: clamp(132px, 24vh, 200px); } .ll-opts[data-n="3"] .ll-card { --sz: clamp(120px, 24vh, 190px); } .ll-card.huge { --sz: min(46vh, 360px); } .ll-model { --sz: clamp(110px, 22vh, 180px); } .ll-top { min-height: 100px; } .ll-wick { width: 100px; height: 100px; flex-basis: 100px; } }
 .ll-barn .lb-barn { position: absolute; left: auto; right: 6%; bottom: 20%; height: auto; width: clamp(90px, 22vw, 170px); opacity: .9; }
+/* fit any picture (square pics, tall jars) inside its card without overflow */
+.ll-model { position: relative; }
+.ll-card > svg, .ll-model > svg { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); }
+.ll-card.huge > svg { inset: 18px; width: calc(100% - 36px); height: calc(100% - 36px); }
