@@ -7,10 +7,10 @@
     title: { 'zoo-parade': 'Here comes the zoo parade!', 'word-stage': 'Welcome to the word stage!' },
     // how to play, per lesson mode (said once before the music starts; tap Wick to hear it again)
     how: {
-      pictures: ['When you hear a word in the song, tap its picture.', 'Then put the letters in a row, just like the song.'],
-      letters: ['Tap the picture you hear in the song.', 'Then find the letters, in order.'],
-      words: ['Now you read! Tap the word you hear in the song.', 'Then spell it with the letters.'],
-      little: ['Listen to the song, and tap the picture you hear!', 'Then tap the letters.']
+      pictures: ['When you hear a word in the song, tap its picture.', 'Then put the letters in a row, just like the song.', 'And tap each word when it lights up!'],
+      letters: ['Tap the picture you hear in the song.', 'Then find the letters, in order.', 'And tap each word when it lights up!'],
+      words: ['Now you read! Tap the word you hear in the song.', 'Then spell it with the letters.', 'And tap each word when it lights up!'],
+      little: ['Listen to the song, and tap the picture you hear!', 'Then tap the letters.', 'And tap each word when it lights up!']
     },
     go: "Ready? Let's sing!",
     paused: 'Paused. Tap play to keep singing!',
@@ -21,7 +21,8 @@
     letter: (l) => `${l.toUpperCase()}.`
   };
   // every word a shelf chip can hold = every song moment's word
-  SL.words = (songs) => { const s = new Set(); for (const S of Object.values(songs.songs)) for (const e of S.events) if (e.word) s.add(e.word); return [...s].sort(); };
+  // (sound moments put their letters on the shelf too: "A." "B.")
+  SL.words = (songs) => { const s = new Set(); for (const S of Object.values(songs.songs)) for (const e of S.events) { if (e.word) s.add(e.word); if (e.type === 'sound') e.items.forEach(it => s.add(it.l)); } return [...s].sort(); };
   SL.all = (songs) => { const out = [], add = (text, game, screen, trigger, type) => out.push({ text, game, screen, trigger, type: type || 'instruction' });
     const g = 'zoo-parade+word-stage';
     for (const [k, v] of Object.entries(SL.title)) add(v, k, 'Sing-along start card', 'Play tapped (before the music); tap Wick to hear it again');
