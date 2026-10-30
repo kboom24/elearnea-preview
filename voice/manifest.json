@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T09:33:52.712Z",
+ "generated": "2026-10-30T09:44:13.060Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -35,6 +35,296 @@
   "usedByCode": 1303
  },
  "elearneaCsv": "/tmp/ng/elearnea-lines.csv",
+ "sfx": [
+  {
+   "id": "sfx.animal.cow",
+   "files": [
+    "assets/sfx/animals/cow.mp3",
+    "assets/sfx/animals/cow.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 867553,
+    "title": "COW_MOO",
+    "author": "calebmills99",
+    "url": "https://freesound.org/people/calebmills99/sounds/867553/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a large cow mooing at the State Fair of Texas (Dallas, US)",
+    "cutFromSec": 0
+   },
+   "measured": {
+    "durationSec": 1.94,
+    "lufs": -16.45,
+    "truePeakDbfs": -3.4100000858306885,
+    "audiosetTop": "Cattle, bovinae",
+    "audiosetTargetProb": 0.97
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.duck",
+   "files": [
+    "assets/sfx/animals/duck.mp3",
+    "assets/sfx/animals/duck.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 456770,
+    "title": "Mallard Duck Quack Flying Away.wav",
+    "author": "WavJunction.com",
+    "url": "https://freesound.org/people/WavJunction.com/sounds/456770/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "mallard duck quacking and flying away",
+    "cutFromSec": 5.86
+   },
+   "measured": {
+    "durationSec": 1.84,
+    "lufs": -16.42,
+    "truePeakDbfs": -2.0199999809265137,
+    "audiosetTop": "Quack",
+    "audiosetTargetProb": 0.83
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.cat",
+   "files": [
+    "assets/sfx/animals/cat.mp3",
+    "assets/sfx/animals/cat.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 724088,
+    "title": "Coco cat meow 17 y-o",
+    "author": "FreqWincy",
+    "url": "https://freesound.org/people/FreqWincy/sounds/724088/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a 17-year-old long-haired tuxedo cat meowing",
+    "cutFromSec": 4.09
+   },
+   "measured": {
+    "durationSec": 1.41,
+    "lufs": -16.42,
+    "truePeakDbfs": -2.440000057220459,
+    "audiosetTop": "Cat",
+    "audiosetTargetProb": 0.9
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.dog",
+   "files": [
+    "assets/sfx/animals/dog.mp3",
+    "assets/sfx/animals/dog.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 180977,
+    "title": "Barking Dog",
+    "author": "SuperStudioBR",
+    "url": "https://freesound.org/people/SuperStudioBR/sounds/180977/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a West Highland terrier barking happily (Rio de Janeiro, BR)",
+    "cutFromSec": 24.63
+   },
+   "measured": {
+    "durationSec": 1.58,
+    "lufs": -16.42,
+    "truePeakDbfs": -4.550000190734863,
+    "audiosetTop": "Dog",
+    "audiosetTargetProb": 0.58
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.sheep",
+   "files": [
+    "assets/sfx/animals/sheep.mp3",
+    "assets/sfx/animals/sheep.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 414541,
+    "title": "Sheep Baa",
+    "author": "emilyws",
+    "url": "https://freesound.org/people/emilyws/sounds/414541/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "sheep baas (New Zealand)",
+    "cutFromSec": 3.17
+   },
+   "measured": {
+    "durationSec": 1.353,
+    "lufs": -16.43,
+    "truePeakDbfs": -2.9600000381469727,
+    "audiosetTop": "Sheep",
+    "audiosetTargetProb": 0.83
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.pig",
+   "files": [
+    "assets/sfx/animals/pig.mp3",
+    "assets/sfx/animals/pig.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 840658,
+    "title": "Pigs grunt and oink",
+    "author": "Clément_Baudet",
+    "url": "https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "pigs grunting and oinking on a farm in Ourches, Drôme (FR)",
+    "cutFromSec": 11.48
+   },
+   "measured": {
+    "durationSec": 0.93,
+    "lufs": -16.62,
+    "truePeakDbfs": -2.0199999809265137,
+    "audiosetTop": "Oink",
+    "audiosetTargetProb": 0.54
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.frog",
+   "files": [
+    "assets/sfx/animals/frog.mp3",
+    "assets/sfx/animals/frog.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 852657,
+    "title": "Pacific Tree Frogs in Secluded Pond, Petrolia, CA",
+    "author": "CVLTIV8R",
+    "url": "https://freesound.org/people/CVLTIV8R/sounds/852657/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "Pacific tree frogs in a pond, Petrolia, CA (US)",
+    "cutFromSec": 9.06
+   },
+   "measured": {
+    "durationSec": 1.83,
+    "lufs": -16.45,
+    "truePeakDbfs": -2.75,
+    "audiosetTop": "Frog",
+    "audiosetTargetProb": 0.96
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.bird",
+   "files": [
+    "assets/sfx/animals/bird.mp3",
+    "assets/sfx/animals/bird.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 582178,
+    "title": "bird tweets 01.wav",
+    "author": "denalwa",
+    "url": "https://freesound.org/people/denalwa/sounds/582178/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "a bird tweeting",
+    "cutFromSec": 9.28
+   },
+   "measured": {
+    "durationSec": 1.23,
+    "lufs": -16.44,
+    "truePeakDbfs": -2.859999895095825,
+    "audiosetTop": "Bird",
+    "audiosetTargetProb": 0.63
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  },
+  {
+   "id": "sfx.animal.owl",
+   "files": [
+    "assets/sfx/animals/owl.mp3",
+    "assets/sfx/animals/owl.opus"
+   ],
+   "missing": [],
+   "source": {
+    "site": "Freesound",
+    "soundId": 558397,
+    "title": "owl_hooting_000102_0145S3 002-070 000-002 037-044.wav",
+    "author": "Gerent",
+    "url": "https://freesound.org/people/Gerent/sounds/558397/",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "what": "an owl hooting at night",
+    "cutFromSec": 0.97
+   },
+   "measured": {
+    "durationSec": 1.1,
+    "lufs": -16.44,
+    "truePeakDbfs": -3.569999933242798,
+    "audiosetTop": "Owl",
+    "audiosetTargetProb": 0.96
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "recorded animal sound: no human has listened yet"
+    ]
+   }
+  }
+ ],
  "counts": {
   "total": 2375,
   "spoken": 2358,
@@ -61,9 +351,9 @@
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 294,
-  "withClip": 2356,
-  "heldForHumanCheck": 19,
+  "needsHumanCheck": 290,
+  "withClip": 2360,
+  "heldForHumanCheck": 15,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
   "pending": 0,
@@ -1033,13 +1323,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Nature land. Tap to go in.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/el.nature-land-tap-to-go-in.mp3"
@@ -1067,13 +1351,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Is it living? Let's sort the garden.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/el.is-it-living-lets-sort-the-garden.mp3"
@@ -1101,13 +1379,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "What do plants and animals need? Let's help.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/el.what-do-plants-and-animals-need-lets-help.mp3"
@@ -1135,13 +1407,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Grow a seed into a flower.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/el.grow-a-seed-into-a-flower.mp3"
@@ -1169,13 +1435,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Help the animals find their homes.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/el.help-the-animals-find-their-homes.mp3"
@@ -69829,6 +70089,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.the-cow-says-moo.mp3"
    ]
@@ -69843,7 +70104,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -69857,6 +70118,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.who-says-moo.mp3"
    ]
@@ -69885,6 +70147,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.yes-the-cow-says-moo.mp3"
    ]
@@ -69918,6 +70181,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cow.mp3 (Freesound #867553 by calebmills99, CC0-1.0, https://freesound.org/people/calebmills99/sounds/867553/)",
    "files": [
     "voice/clips/ll.thats-the-cow.mp3"
    ]
@@ -69979,6 +70243,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.the-duck-says-quack.mp3"
    ]
@@ -69993,7 +70258,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70007,6 +70272,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.who-says-quack.mp3"
    ]
@@ -70035,6 +70301,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.yes-the-duck-says-quack.mp3"
    ]
@@ -70068,6 +70335,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/duck.mp3 (Freesound #456770 by WavJunction.com, CC0-1.0, https://freesound.org/people/WavJunction.com/sounds/456770/)",
    "files": [
     "voice/clips/ll.thats-the-duck.mp3"
    ]
@@ -70129,6 +70397,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.the-cat-says-meow.mp3"
    ]
@@ -70143,7 +70412,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70157,6 +70426,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.who-says-meow.mp3"
    ]
@@ -70185,6 +70455,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.yes-the-cat-says-meow.mp3"
    ]
@@ -70218,6 +70489,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/cat.mp3 (Freesound #724088 by FreqWincy, CC0-1.0, https://freesound.org/people/FreqWincy/sounds/724088/)",
    "files": [
     "voice/clips/ll.thats-the-cat.mp3"
    ]
@@ -70279,6 +70551,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.the-dog-says-woof.mp3"
    ]
@@ -70293,7 +70566,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70307,6 +70580,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.who-says-woof.mp3"
    ]
@@ -70335,6 +70609,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.yes-the-dog-says-woof.mp3"
    ]
@@ -70368,6 +70643,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/dog.mp3 (Freesound #180977 by SuperStudioBR, CC0-1.0, https://freesound.org/people/SuperStudioBR/sounds/180977/)",
    "files": [
     "voice/clips/ll.thats-the-dog.mp3"
    ]
@@ -70429,6 +70705,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.the-sheep-says-baa.mp3"
    ]
@@ -70443,7 +70720,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70457,6 +70734,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.who-says-baa.mp3"
    ]
@@ -70485,6 +70763,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.yes-the-sheep-says-baa.mp3"
    ]
@@ -70513,6 +70792,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/sheep.mp3 (Freesound #414541 by emilyws, CC0-1.0, https://freesound.org/people/emilyws/sounds/414541/)",
    "files": [
     "voice/clips/ll.thats-the-sheep.mp3"
    ]
@@ -70569,6 +70849,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.the-pig-says-oink.mp3"
    ]
@@ -70583,7 +70864,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70597,6 +70878,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.who-says-oink.mp3"
    ]
@@ -70625,6 +70907,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.yes-the-pig-says-oink.mp3"
    ]
@@ -70653,6 +70936,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/pig.mp3 (Freesound #840658 by Clément_Baudet, CC0-1.0, https://freesound.org/people/Cl%C3%A9ment_Baudet/sounds/840658/)",
    "files": [
     "voice/clips/ll.thats-the-pig.mp3"
    ]
@@ -70709,6 +70993,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.the-frog-says-ribbit.mp3"
    ]
@@ -70723,7 +71008,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70737,6 +71022,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.who-says-ribbit.mp3"
    ]
@@ -70765,6 +71051,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.yes-the-frog-says-ribbit.mp3"
    ]
@@ -70793,6 +71080,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/frog.mp3 (Freesound #852657 by CVLTIV8R, CC0-1.0, https://freesound.org/people/CVLTIV8R/sounds/852657/)",
    "files": [
     "voice/clips/ll.thats-the-frog.mp3"
    ]
@@ -70849,6 +71137,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.the-bird-says-tweet.mp3"
    ]
@@ -70863,7 +71152,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -70877,6 +71166,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.who-says-tweet.mp3"
    ]
@@ -70905,6 +71195,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.yes-the-bird-says-tweet.mp3"
    ]
@@ -70938,6 +71229,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/bird.mp3 (Freesound #582178 by denalwa, CC0-1.0, https://freesound.org/people/denalwa/sounds/582178/)",
    "files": [
     "voice/clips/ll.thats-the-bird.mp3"
    ]
@@ -70999,6 +71291,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.the-owl-says-hoo.mp3"
    ]
@@ -71013,7 +71306,7 @@
     {
      "game": "lantern-barn",
      "screen": "Lantern Barn: who says that?",
-     "trigger": "after \"Listen!\" and the synthesized animal sound; tap Wick to hear it again"
+     "trigger": "after \"Listen!\" and the recorded animal sound (assets/sfx/animals); tap Wick to hear it again"
     }
    ],
    "source": {
@@ -71027,6 +71320,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.who-says-hoo.mp3"
    ]
@@ -71055,6 +71349,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.yes-the-owl-says-hoo.mp3"
    ]
@@ -71083,6 +71378,7 @@
     "human": false,
     "reasons": []
    },
+   "sfx": "after sound effect assets/sfx/animals/owl.mp3 (Freesound #558397 by Gerent, CC0-1.0, https://freesound.org/people/Gerent/sounds/558397/)",
    "files": [
     "voice/clips/ll.thats-the-owl.mp3"
    ]
@@ -75799,13 +76095,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Welcome to Wix Night Garden. Living things grow and need food or water. Is it living or not living?",
-     "score": 0.95,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.welcome-to-wicks-night-garden-living-dc4537.mp3"
@@ -75833,13 +76123,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "living or not living.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.living-or-not-living.mp3"
@@ -75867,13 +76151,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Some does it grow. Does it need food or water?",
-     "score": 0.9,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.hmm-does-it-grow-does-it-need-food-or-water.mp3"
@@ -75901,13 +76179,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "You sorted the whole garden.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.you-sorted-the-whole-garden.mp3"
@@ -75935,13 +76207,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "on living.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.living.mp3"
@@ -75969,13 +76235,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "It's not living.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.not-living.mp3"
@@ -76003,13 +76263,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Fox.",
-     "score": 0.6,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fox.mp3"
@@ -76037,13 +76291,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a fox is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-fox-is-living-it-grows-and-it-ef5bb0.mp3"
@@ -76071,13 +76319,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A fox is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fox-is-living-it-grows-and-it-need-2f0d55.mp3"
@@ -76105,13 +76347,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A tree.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-tree.mp3"
@@ -76139,13 +76375,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a tree is living. It grows, and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-tree-is-living-it-grows-and-it-980c41.mp3"
@@ -76173,13 +76403,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A tree is living. It grows, and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-tree-is-living-it-grows-and-it-nee-d6cc02.mp3"
@@ -76235,13 +76459,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a moth is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-moth-is-living-it-grows-and-it-debbdd.mp3"
@@ -76269,13 +76487,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A moth is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-moth-is-living-it-grows-and-it-nee-faa34a.mp3"
@@ -76303,13 +76515,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A rabbit.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-rabbit.mp3"
@@ -76337,13 +76543,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a rabbit is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-rabbit-is-living-it-grows-and-f65af4.mp3"
@@ -76371,13 +76571,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A rabbit is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-rabbit-is-living-it-grows-and-it-n-0c30c9.mp3"
@@ -76410,13 +76604,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The flower.",
-     "score": 0.75,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-flower.mp3"
@@ -76444,13 +76632,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a flower is living. It grows, and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-flower-is-living-it-grows-and-64dc3f.mp3"
@@ -76478,13 +76660,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A flower is living. It grows and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-flower-is-living-it-grows-and-it-n-f742b0.mp3"
@@ -76512,13 +76688,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Then Owl.",
-     "score": 0.67,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.an-owl.mp3"
@@ -76546,13 +76716,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, an owl is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-an-owl-is-living-it-grows-and-it-29da0e.mp3"
@@ -76580,13 +76744,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "An owl is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.an-owl-is-living-it-grows-and-it-nee-c0183d.mp3"
@@ -76614,13 +76772,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A fish.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fish.mp3"
@@ -76648,13 +76800,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a fish is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-fish-is-living-it-grows-and-it-2ea7b4.mp3"
@@ -76682,13 +76828,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A fish is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fish-is-living-it-grows-and-it-nee-05dad7.mp3"
@@ -76716,13 +76856,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Frog.",
-     "score": 0.67,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-frog.mp3"
@@ -76750,13 +76884,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a frog is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-frog-is-living-it-grows-and-it-aa0a8f.mp3"
@@ -76784,13 +76912,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A frog is living. It grows and it needs food and water. //",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-frog-is-living-it-grows-and-it-nee-36c91a.mp3"
@@ -76846,13 +76968,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a bee is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-bee-is-living-it-grows-and-it-da46f7.mp3"
@@ -76880,13 +76996,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A bee is living. It grows and it needs food and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-bee-is-living-it-grows-and-it-need-bf3126.mp3"
@@ -76914,13 +77024,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A mushroom.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-mushroom.mp3"
@@ -76948,13 +77052,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a mushroom is living. It grows and it needs water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-mushroom-is-living-it-grows-an-b63ad6.mp3"
@@ -76982,13 +77080,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A mushroom is living. It grows and it needs water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-mushroom-is-living-it-grows-and-it-4ae51c.mp3"
@@ -77021,13 +77113,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-seed.mp3"
@@ -77055,13 +77141,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a seed is living. It can grow into a new plant.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-seed-is-living-it-can-grow-int-d3b54e.mp3"
@@ -77089,13 +77169,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A seed is living. It can grow into a new plant.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-seed-is-living-it-can-grow-into-a-a3a3c3.mp3"
@@ -77123,13 +77197,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Grass",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.grass.mp3"
@@ -77157,13 +77225,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, grass is living. It grows, and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-grass-is-living-it-grows-and-it-f485fd.mp3"
@@ -77191,13 +77253,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Grass is living. It grows and it needs water and light.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.grass-is-living-it-grows-and-it-need-53df2a.mp3"
@@ -77225,13 +77281,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Rock.",
-     "score": 0.67,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-rock.mp3"
@@ -77259,13 +77309,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a rock is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-rock-is-not-living-it-does-not-96dc6b.mp3"
@@ -77293,13 +77337,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The rock is not living. It does not grow or eat.",
-     "score": 0.91,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-rock-is-not-living-it-does-not-grow-or-eat.mp3"
@@ -77319,28 +77357,15 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
-    "held": [
-     "ng.a-toy-ball.mp3"
-    ],
-    "wouldPlay": {
-     "label": "kokoro af_bella",
-     "voice": "af_bella",
-     "set": "elearnea-lines"
-    }
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
-    "human": true,
-    "reasons": [
-     "speech-recognition check heard \"The Toyball.\""
-    ],
-    "asr": {
-     "heard": "The Toyball.",
-     "score": 0,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "human": false,
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-ball.mp3"
@@ -77368,13 +77393,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a toy ball is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-toy-ball-is-not-living-it-does-d5ba75.mp3"
@@ -77402,13 +77421,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The toy ball is not living. It does not grow or eat.",
-     "score": 0.92,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-ball-is-not-living-it-does-not-dcb6ff.mp3"
@@ -77428,28 +77441,15 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
-    "held": [
-     "ng.a-cup.mp3"
-    ],
-    "wouldPlay": {
-     "label": "kokoro af_bella",
-     "voice": "af_bella",
-     "set": "elearnea-lines"
-    }
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
-    "human": true,
-    "reasons": [
-     "speech-recognition check heard \"Look up.\""
-    ],
-    "asr": {
-     "heard": "Look up.",
-     "score": 0.4,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "human": false,
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-cup.mp3"
@@ -77477,13 +77477,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a cup is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-cup-is-not-living-it-does-not-41e986.mp3"
@@ -77511,13 +77505,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A cup is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-cup-is-not-living-it-does-not-grow-or-eat.mp3"
@@ -77545,13 +77533,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A shoe.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-shoe.mp3"
@@ -77579,13 +77561,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a shoe is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-shoe-is-not-living-it-does-not-6411d5.mp3"
@@ -77613,13 +77589,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A shoe is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-shoe-is-not-living-it-does-not-grow-or-eat.mp3"
@@ -77647,13 +77617,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A spoon.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-spoon.mp3"
@@ -77681,13 +77645,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a spoon is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-spoon-is-not-living-it-does-no-986b31.mp3"
@@ -77715,13 +77673,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A spoon is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-spoon-is-not-living-it-does-not-gr-701814.mp3"
@@ -77749,13 +77701,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The hat.",
-     "score": 0.6,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-hat.mp3"
@@ -77783,13 +77729,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a hat is not living. It does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-hat-is-not-living-it-does-not-98a294.mp3"
@@ -77817,13 +77757,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The hat is not living. It does not grow or eat.",
-     "score": 0.91,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-hat-is-not-living-it-does-not-grow-or-eat.mp3"
@@ -77843,28 +77777,15 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
-    "held": [
-     "ng.a-toy-car.mp3"
-    ],
-    "wouldPlay": {
-     "label": "kokoro af_bella",
-     "voice": "af_bella",
-     "set": "elearnea-lines"
-    }
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
-    "human": true,
-    "reasons": [
-     "speech-recognition check heard \"The Toy Car\""
-    ],
-    "asr": {
-     "heard": "The Toy Car",
-     "score": 0.67,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "human": false,
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-car.mp3"
@@ -77892,13 +77813,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a toy car is not living. It can move, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-toy-car-is-not-living-it-can-m-5f8133.mp3"
@@ -77926,13 +77841,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The toy car is not living. It can move, but it does not grow or eat.",
-     "score": 0.94,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-car-is-not-living-it-can-move-b649ab.mp3"
@@ -77960,13 +77869,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Sun.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-sun.mp3"
@@ -77994,13 +77897,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, the sun is not living. It shines, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-the-sun-is-not-living-it-shines-c83ba6.mp3"
@@ -78028,13 +77925,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The sun is not living. It shines, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-sun-is-not-living-it-shines-but-d5ab52.mp3"
@@ -78062,13 +77953,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The moon.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-moon.mp3"
@@ -78096,13 +77981,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, the moon is not living. It glows, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-the-moon-is-not-living-it-glows-e51430.mp3"
@@ -78130,13 +78009,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The moon is not living. It glows, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-moon-is-not-living-it-glows-but-3efa92.mp3"
@@ -78164,13 +78037,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A toy robot.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-robot.mp3"
@@ -78198,13 +78065,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a toy robot is not living. It can walk, but it does not grow or eat.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-toy-robot-is-not-living-it-can-4751cc.mp3"
@@ -78232,13 +78093,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The toy robot is not living. It can walk, but it does not grow or eat.",
-     "score": 0.94,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-toy-robot-is-not-living-it-can-wal-975f53.mp3"
@@ -78266,13 +78121,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Plants and animals need things to live. Help the garden.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.plants-and-animals-need-things-to-li-c67d24.mp3"
@@ -78300,13 +78149,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Plants make their own food from light and water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.plants-make-their-own-food-from-ligh-4f06d5.mp3"
@@ -78334,13 +78177,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "You helped the whole garden grow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.you-helped-the-whole-garden-grow.mp3"
@@ -78368,13 +78205,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Look, the ground is so dry.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.look-the-ground-is-so-dry.mp3"
@@ -78402,13 +78233,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Living things need water. Here it is.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.living-things-need-water-here-it-is.mp3"
@@ -78436,13 +78261,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Look, it is very dark in there.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.look-it-is-very-dark-in-there.mp3"
@@ -78470,13 +78289,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Plants need light. Here it is.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.plants-need-light-here-it-is.mp3"
@@ -78504,13 +78317,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Listen, a rumbly empty tummy.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.listen-a-rumbly-empty-tummy.mp3"
@@ -78538,13 +78345,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Animals need food. Here it is.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.animals-need-food-here-it-is.mp3"
@@ -78572,13 +78373,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Look, the lid is shot. Can it breathe?",
-     "score": 0.88,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.look-the-lid-is-shut-can-it-breathe.mp3"
@@ -78606,13 +78401,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Living things need air to breathe. Here it is.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.living-things-need-air-to-breathe-here-it-is.mp3"
@@ -78640,13 +78429,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Look, the rain and wind are coming.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.look-the-rain-and-wind-are-coming.mp3"
@@ -78674,13 +78457,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Animals need shelter, a safe place. Here it is.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.animals-need-shelter-a-safe-place-here-it-is.mp3"
@@ -78708,13 +78485,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The flower is drooping. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-flower-is-drooping-what-does-it-need.mp3"
@@ -78742,13 +78513,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, plants need water to live.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-plants-need-water-to-live.mp3"
@@ -78776,13 +78541,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The little plant is in the dark. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-little-plant-is-in-the-dark-what-3ab2b8.mp3"
@@ -78810,13 +78569,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, plants need light to grow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-plants-need-light-to-grow.mp3"
@@ -78844,13 +78597,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The rabbit is hungry. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-rabbit-is-hungry-what-does-it-need.mp3"
@@ -78878,13 +78625,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, animals need food. Rabbits eat plants.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-animals-need-food-rabbits-eat-plants.mp3"
@@ -78912,13 +78653,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The Fox is thirsty. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-fox-is-thirsty-what-does-it-need.mp3"
@@ -78946,13 +78681,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, animals need water too.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-animals-need-water-too.mp3"
@@ -78980,13 +78709,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Rain is coming. What does the bird need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.rain-is-coming-what-does-the-bird-need.mp3"
@@ -79014,13 +78737,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, animals need shelter a safe home.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-animals-need-shelter-a-safe-home.mp3"
@@ -79048,13 +78765,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The B is hungry. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-bee-is-hungry-what-does-it-need.mp3"
@@ -79082,13 +78793,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, bees drink sweet nectar from flowers.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-bees-drink-sweet-nectar-from-flowers.mp3"
@@ -79116,13 +78821,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The tree has dry leaves. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-tree-has-dry-leaves-what-does-it-need.mp3"
@@ -79150,13 +78849,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, trees drink water with their roots.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-trees-drink-water-with-their-roots.mp3"
@@ -79184,13 +78877,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The box is hiding the flower. What does it need?",
-     "score": 0.9,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-box-is-hiding-the-flower-what-does-it-need.mp3"
@@ -79218,13 +78905,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, plants need light. Plants use light to make their food.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-plants-need-light-plants-use-lig-3fc94c.mp3"
@@ -79252,13 +78933,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The jar lid is shut tight. What does the moth need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-jar-lid-is-shut-tight-what-does-289385.mp3"
@@ -79286,13 +78961,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, animals need air to breathe. Let it fly free.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-animals-need-air-to-breathe-let-4c35c9.mp3"
@@ -79320,13 +78989,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "It is cold and windy. What does the mouse need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.it-is-cold-and-windy-what-does-the-m-29b998.mp3"
@@ -79354,13 +79017,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a cozy shelter keeps the mouse warm.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-cozy-shelter-keeps-the-mouse-warm.mp3"
@@ -79388,13 +79045,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The pond is drying up. What does the fish need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-pond-is-drying-up-what-does-the-357819.mp3"
@@ -79422,13 +79073,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, fish need water to live and breathe.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-fish-need-water-to-live-and-breathe.mp3"
@@ -79456,13 +79101,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The owl is hungry. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-owl-is-hungry-what-does-it-need.mp3"
@@ -79490,13 +79129,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, animals need food to grow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-animals-need-food-to-grow.mp3"
@@ -79524,13 +79157,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The frog is in a shut box. What does it need?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-frog-is-in-a-shut-box-what-does-it-need.mp3"
@@ -79558,13 +79185,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, frogs need air to breathe just like you.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-frogs-need-air-to-breathe-just-like-you.mp3"
@@ -79592,13 +79213,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Help the seed grow. What comes first?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.help-the-seed-grow-what-comes-first.mp3"
@@ -79626,13 +79241,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Everything starts very, very small.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.everything-starts-very-very-small.mp3"
@@ -79660,13 +79269,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Look at the last one. What grows from it?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.look-at-the-last-one-what-grows-from-it.mp3"
@@ -79694,13 +79297,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Your garden is in bloom.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.your-garden-is-in-bloom.mp3"
@@ -79728,13 +79325,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "First comes the seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.first-comes-the-seed.mp3"
@@ -79762,13 +79353,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A sprout.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-sprout.mp3"
@@ -79796,13 +79381,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Next comes the sprout.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.next-comes-the-sprout.mp3"
@@ -79830,13 +79409,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "a young plant.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-young-plant.mp3"
@@ -79864,13 +79437,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Next comes the young plant.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.next-comes-the-young-plant.mp3"
@@ -79898,13 +79465,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Labid.",
-     "score": 0.67,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-bud.mp3"
@@ -79932,13 +79493,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Next comes the bud.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.next-comes-the-bud.mp3"
@@ -79966,13 +79521,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Next comes the flower.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.next-comes-the-flower.mp3"
@@ -80000,13 +79549,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "fruit with new seeds.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.fruit-with-new-seeds.mp3"
@@ -80034,13 +79577,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Next comes the fruit.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.next-comes-the-fruit.mp3"
@@ -80068,13 +79605,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Let's grow a sunflower.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.lets-grow-a-sunflower.mp3"
@@ -80102,13 +79633,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The sunflower grew from a tiny seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-sunflower-grew-from-a-tiny-seed.mp3"
@@ -80136,13 +79661,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Let's grow a apple tree.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.lets-grow-a-apple-tree.mp3"
@@ -80170,13 +79689,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The apple tree grew from a tiny seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-apple-tree-grew-from-a-tiny-seed.mp3"
@@ -80204,13 +79717,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Let's grow a pumpkin.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.lets-grow-a-pumpkin.mp3"
@@ -80230,28 +79737,15 @@
     }
    ],
    "source": {
-    "kind": "device-speech",
-    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
-    "held": [
-     "ng.the-pumpkin-grew-from-a-tiny-seed.mp3"
-    ],
-    "wouldPlay": {
-     "label": "kokoro af_bella",
-     "voice": "af_bella",
-     "set": "elearnea-lines"
-    }
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
    },
    "check": {
-    "human": true,
-    "reasons": [
-     "speech-recognition check heard \"The pump can grow from a tiny seed.\""
-    ],
-    "asr": {
-     "heard": "The pump can grow from a tiny seed.",
-     "score": 0.67,
-     "ok": false,
-     "voice": "af_bella"
-    }
+    "human": false,
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-pumpkin-grew-from-a-tiny-seed.mp3"
@@ -80279,13 +79773,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Let's grow a bean plant.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.lets-grow-a-bean-plant.mp3"
@@ -80313,13 +79801,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The bean plant grew from a tiny seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-bean-plant-grew-from-a-tiny-seed.mp3"
@@ -80347,13 +79829,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Let's grow a poppy.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.lets-grow-a-poppy.mp3"
@@ -80381,13 +79857,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The poppy grew from a tiny seed.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-poppy-grew-from-a-tiny-seed.mp3"
@@ -80443,13 +79913,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Seed Sprout Plant Flower",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.seed-sprout-plant-flower.mp3"
@@ -80477,13 +79941,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Seed Sprout Plant Bud Flower",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.seed-sprout-plant-bud-flower.mp3"
@@ -80511,13 +79969,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "seed sprout plant bud flower fruit. The fruit has new seeds so it starts again.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.seed-sprout-plant-bud-flower-fruit-t-d62332.mp3"
@@ -80545,13 +79997,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "The animals are going home for the night. Help them find their homes.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.the-animals-are-going-home-for-the-n-7d7db2.mp3"
@@ -80579,13 +80025,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Everyone is home, safe and cozy.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.everyone-is-home-safe-and-cozy.mp3"
@@ -80613,13 +80053,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the owl live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-owl-live.mp3"
@@ -80647,13 +80081,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, an owl rests in a tree hollow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-an-owl-rests-in-a-tree-hollow.mp3"
@@ -80681,13 +80109,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Owls sleep up high inside a tree.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.owls-sleep-up-high-inside-a-tree.mp3"
@@ -80715,13 +80137,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "An owl lives in a tree hollow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.an-owl-lives-in-a-tree-hollow.mp3"
@@ -80749,13 +80165,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the fish live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-fish-live.mp3"
@@ -80783,13 +80193,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a fish swims in the pond.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-fish-swims-in-the-pond.mp3"
@@ -80817,13 +80221,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Fish need water to swim.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.fish-need-water-to-swim.mp3"
@@ -80851,13 +80249,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A fish lives in a pond.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fish-lives-in-a-pond.mp3"
@@ -80885,13 +80277,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the bee lie?",
-     "score": 0.8,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-bee-live.mp3"
@@ -80919,13 +80305,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, bees build a hive out of wax.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-bees-build-a-hive-out-of-wax.mp3"
@@ -80953,13 +80333,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Bees buzz home to make honey.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.bees-buzz-home-to-make-honey.mp3"
@@ -80987,13 +80361,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A bee lives in a hive.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-bee-lives-in-a-hive.mp3"
@@ -81021,13 +80389,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the rabbit live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-rabbit-live.mp3"
@@ -81055,13 +80417,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a rabbit digs a burrow under the ground.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-rabbit-digs-a-burrow-under-the-ground.mp3"
@@ -81089,13 +80445,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Rabbits dig a hole in the ground.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.rabbits-dig-a-hole-in-the-ground.mp3"
@@ -81123,13 +80473,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A rabbit lives in a burrow.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-rabbit-lives-in-a-burrow.mp3"
@@ -81157,13 +80501,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the bird live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-bird-live.mp3"
@@ -81191,13 +80529,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a bird builds a nest out of twigs.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-bird-builds-a-nest-out-of-twigs.mp3"
@@ -81225,13 +80557,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Birds lay their eggs in a cozy cup of twigs.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.birds-lay-their-eggs-in-a-cozy-cup-of-twigs.mp3"
@@ -81259,13 +80585,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A bird lives�� in a nest.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-bird-lives-in-a-nest.mp3"
@@ -81293,13 +80613,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the Fox live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-fox-live.mp3"
@@ -81327,13 +80641,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a Fox digs a den to keep its cubs safe.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-fox-digs-a-den-to-keep-its-cubs-safe.mp3"
@@ -81361,13 +80669,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Foxes dig a cozy den in the hillside.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.foxes-dig-a-cozy-den-in-the-hillside.mp3"
@@ -81395,13 +80697,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A fox lives in a den.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-fox-lives-in-a-den.mp3"
@@ -81429,13 +80725,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the spider live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-spider-live.mp3"
@@ -81463,13 +80753,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a spider spins a web out of silk.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-spider-spins-a-web-out-of-silk.mp3"
@@ -81497,13 +80781,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Spiders spin silky threads.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.spiders-spin-silky-threads.mp3"
@@ -81531,13 +80809,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A spider lives on a web.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-spider-lives-on-a-web.mp3"
@@ -81565,13 +80837,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the beaver live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-beaver-live.mp3"
@@ -81599,13 +80865,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes,celer builds a lodge with sticks and mud.",
-     "score": 0.84,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-beaver-builds-a-lodge-with-sti-7ed598.mp3"
@@ -81633,13 +80893,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Beavers build with sticks in the water.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.beavers-build-with-sticks-in-the-water.mp3"
@@ -81667,13 +80921,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A beaver lives in a lodge.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-beaver-lives-in-a-lodge.mp3"
@@ -81701,13 +80949,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Where does the frog live?",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.where-does-the-frog-live.mp3"
@@ -81735,13 +80977,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Yes, a frog lives in and near the pond.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.yes-a-frog-lives-in-and-near-the-pond.mp3"
@@ -81769,13 +81005,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Frogs swim and hump by the water.",
-     "score": 0.86,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.frogs-swim-and-hop-by-the-water.mp3"
@@ -81803,13 +81033,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "A frog lives by a pond.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.a-frog-lives-by-a-pond.mp3"
@@ -81837,13 +81061,7 @@
    },
    "check": {
     "human": false,
-    "reasons": [],
-    "asr": {
-     "heard": "Tap the glowing one.",
-     "score": 1,
-     "ok": true,
-     "voice": "af_bella"
-    }
+    "reasons": []
    },
    "files": [
     "voice/clips/ng.tap-the-glowing-one.mp3"

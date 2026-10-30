@@ -23,9 +23,11 @@ El.defineGame({
     const lvl = L.levelIndex(cfg.skill, 4);
     // speak(line | [lines], cb, minMs): cb runs once, when the clip has played to its end (voice.js onend), and only if no newer
     // question/round/stop happened meanwhile (run token). With no voice at all, cb waits minMs so the child can still see the result.
-    const speak = (t, cb, minMs) => { const tok = run, t0 = Date.now(); let fired = false;
-      const ok = host.say(t, { rate: 1, onend: () => { if (fired) return; fired = true; if (!alive || tok !== run || !cb) return; const wait = ok ? 0 : Math.max(0, (minMs || 0) - (Date.now() - t0)); if (wait) T(() => { if (tok === run) cb(); }, wait); else cb(); } });
-      return ok; };
+    const speak = (t, cb, minMs) => { const tok = run, t0 = Date.now();
+      const done = () => { if (!alive || tok !== run || !cb) return; const wait = h.heard ? 0 : Math.max(0, (minMs || 0) - (Date.now() - t0)); if (wait) T(() => { if (tok === run) cb(); }, wait); else cb(); };
+      // host.sayThen (voice/voice-then.js over ElVoice's exactly-once onend): then() runs once the line has really ended
+      const h = host.sayThen ? host.sayThen(t, { rate: 1 }, done, 150) : { heard: host.say(t, { rate: 1, onend: () => setTimeout(done, 150) }) };
+      return h.heard; };
     const setPrompt = (shown, spoken, cb) => { prompt = spoken; txt.textContent = shown; return speak(spoken, cb, 400); };
 
     root.innerHTML = `<div class="ng ng-m-${mode}">
@@ -38,7 +40,7 @@ El.defineGame({
       <div class="ng-tray" id="ngTray"></div><div class="ng-fx" id="ngFx"></div></div>`;
     const $ = (id) => root.querySelector('#' + id), txt = $('ngTxt'), scene = $('ngScene'), tray = $('ngTray'), fx = $('ngFx');
     const cheer = () => { const w = $('ngWick'); w.classList.remove('cheer'); void w.offsetWidth; w.classList.add('cheer'); };
-    const replay = () => { if (!prompt || (Array.isArray(prompt) && !prompt.length)) return; host.sfx.tap(); speak(prompt); };
+    const replay = () => { if (busy) return; if (!prompt || (Array.isArray(prompt) && !prompt.length)) return; host.sfx.tap(); speak(prompt); };
     $('ngSay').onclick = replay; $('ngWick').onclick = () => { cheer(); replay(); };
 
     /* ---------------- sound + fx ---------------- */

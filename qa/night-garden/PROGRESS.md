@@ -27,3 +27,6 @@ server pid 3695401 port 8871 (kill when done)
 - waiting: round 2 (cup/ball) -> /tmp/ng/retry/score2.log. If a candidate passes: change NGL item `name` for cup/ball to it, rebuild manifest, cp /tmp/ng/retry/out/{mp3,opus}/<cand>.* voice/clips/<newid>.*
 - then: asr-check the ng range again (find indices: node -e on manifest, game==='night-garden'), rebuild manifest -> held list = lines still flagged
 - then: full QA (server pid in /tmp/ng/serve.pid, port 8871): qa/night-garden/elslot.sh node qa/tools/qa-night-garden.js http://127.0.0.1:8871/elearnea-preview/ /home/box/elearnea/qa/night-garden phone  (then ipad, desktop separately, each <15 min)
+- 02:40 queued full QA chain: /tmp/ng/qa-all.sh -> /tmp/ng/qa-all.log
+## 02:44 resume
+- old waiting jobs killed (their outer `timeout 900` counted queue time); single chain /tmp/ng/chain.sh (pid 3790248): tts round 2 -> QA phone, ipad, desktop. log /tmp/ng/qa-all.log

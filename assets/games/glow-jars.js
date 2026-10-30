@@ -30,7 +30,7 @@ El.defineGame({
         kit.show.innerHTML = q.model != null ? `<div class="ll-model gj-model">${J1(q.model)}</div>` : '';
         const btns = kit.options(q.list, n => J1(n), n => 'Jar'), right = btns.find(b => b._it === q.right); kit.mark(right);
         kit.speak(q.cue);
-        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); T(() => say(q.yes), 350); finish(miss === 0, { wait: 2100 }); return; }
+        btns.forEach(b => { b.onclick = () => { if (b === right) { kit.lock(); kit.yes(b); finish(miss === 0, { say: q.yes, delay: 350 }); return; }
           miss++; kit.soft(b);
           if (miss === 1) T(() => say(C.countTogether, () => q.recount(b, () => say(q.cue))), 350); else { kit.hint(right); T(() => say(q.here), 350); } }; });
       });
