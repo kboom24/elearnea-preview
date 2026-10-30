@@ -11,7 +11,8 @@ const CORE = ['./', 'map/', 'realm/reading/', 'realm/math/', 'realm/logic/', 'pl
   ...['ll-r0', 'll-r00', 'll-r1', 'll-r2', 'll-r3', 'll-r4', 'll-r5', 'll-r6', 'll-r7', 'll-m0', 'll-m1', 'll-m2', 'll-m3', 'll-m4'].map(id => `assets/img/tile-${id}.svg`),
   ...['cow', 'duck', 'cat', 'dog', 'sheep', 'pig', 'frog', 'bird', 'owl'].flatMap(a => ['mp3', 'opus'].map(x => `assets/sfx/animals/${a}.${x}`)),
   'play/moth-bridge/', 'assets/games/moth-bridge-lines.js', 'assets/games/moth-bridge-pics.js', 'assets/games/moth-bridge.js', 'assets/games/moth-bridge.css', 'assets/img/tile-bridge.svg',
-  ...['lion', 'kitten', 'bigdrum', 'bell', 'siren', 'bikebell', 'thunder', 'rain', 'chick', 'trumpet', 'flute', 'whimper', 'elephant', 'mouse'].flatMap(a => ['mp3', 'opus'].map(x => `assets/sfx/loudquiet/${a}.${x}`))];
+  ...['lion', 'kitten', 'bigdrum', 'bell', 'siren', 'bikebell', 'thunder', 'rain', 'chick', 'trumpet', 'flute', 'whimper', 'elephant', 'mouse'].flatMap(a => ['mp3', 'opus'].map(x => `assets/sfx/loudquiet/${a}.${x}`)),
+  'play/zoo-parade/', 'play/word-stage/', 'content/songs.json', 'assets/js/pics-songs.js', 'assets/games/sing-lines.js', 'assets/games/sing-along.js', 'assets/games/sing-along.css', 'assets/img/tile-zoo-parade.webp', 'assets/img/tile-word-stage.webp'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('elearnea-') && k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {

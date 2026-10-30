@@ -166,6 +166,8 @@ require('./early-lines.js')({ add, APP });
 require('./wicks-lines.js')({ add, APP });
 /* ================= Moth Bridge (reading, ages 5-7): reuses Mothabet sound + word clips, adds prompts and rimes ================= */
 require('./bridge-lines.js')({ add, APP });
+/* ================= Sing-along games (Zoo Parade, Word Stage): Bella's lines before/after the songs + shelf words ================= */
+require('./song-lines.js')({ add, APP });
 
 /* ================= finalize ================= */
 const exists = (rel) => fs.existsSync(path.join(APP, rel));

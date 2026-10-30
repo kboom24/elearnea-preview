@@ -10,7 +10,9 @@
     "lantern-barn": { "name": "Lantern Barn", "path": "play/lantern-barn/", "tile": "assets/img/tile-barn.svg", "kind": "module", "ages": "0-4" },
     "picture-garden": { "name": "Picture Garden", "path": "play/picture-garden/", "tile": "assets/img/tile-garden.svg", "kind": "module", "ages": "0-4" },
     "glow-jars": { "name": "Glow Jars", "path": "play/glow-jars/", "tile": "assets/img/tile-jars.svg", "kind": "module", "ages": "0-4" },
-    "wicks-path": { "name": "Wick's Lantern Path", "path": "play/wicks-path/", "tile": "assets/img/tile-wicks-path.svg", "kind": "module", "ages": "4-9" }
+    "wicks-path": { "name": "Wick's Lantern Path", "path": "play/wicks-path/", "tile": "assets/img/tile-wicks-path.svg", "kind": "module", "ages": "4-9" },
+    "zoo-parade": {"name": "Zoo Parade", "path": "play/zoo-parade/", "tile": "assets/img/tile-zoo-parade.webp", "kind": "module", "ages": "3-7"},
+    "word-stage": {"name": "Word Stage", "path": "play/word-stage/", "tile": "assets/img/tile-word-stage.webp", "kind": "module", "ages": "4-7"}
   },
   "subjects": [
     {
@@ -18,7 +20,7 @@
       "realm": {
         "id": "reading", "name": "Reading", "landmark": "Storybook", "status": "open", "color": "#9B8AD1", "icon": "book",
         "img": "assets/img/isle-reading", "say": "Reading land! Tap to go in.",
-        "comingSoonLittle": [ { "name": "Story time", "icon": "book" }, { "name": "Sing along", "icon": "ear" } ],
+        "comingSoonLittle": [ { "name": "Story time", "icon": "book" } ],
         "skills": [
           {"id": "ll.peekaboo", "name": "Peekaboo sounds (play together)", "grade": "Toddler", "bands": ["tiny"], "standards": ["ELOF.IT-C 2", "ELOF.IT-LC 1"],
             "lessons": [
@@ -31,6 +33,10 @@
           {"id": "ll.animal-sounds", "name": "Listening: animal sounds", "grade": "Toddler", "bands": ["little"], "standards": ["ELOF.IT-LC 1", "ELOF.P-LC 1"],
             "lessons": [
               {"id": "ll-r1", "name": "Who says that?", "tile": "assets/img/tile-ll-r1.svg", "icon": "ear", "grade": "Toddler", "standards": ["ELOF.IT-LC 1", "ELOF.P-LC 1"], "say": "Who says moo? Let's listen!", "game": {"id": "lantern-barn", "config": {"mode": "animals", "rounds": 5}}}
+            ] },
+          {"id": "ll.sing-along", "name": "Sing along (songs)", "grade": "PreK", "bands": ["little"], "standards": ["ELOF.P-LIT 2", "ELOF.P-LIT 3"], "standardsNote": "Print awareness with music: the word she sings matches its picture and its printed label, and a word's letters go in order. Alignment only.",
+            "lessons": [
+              {"id": "ll-r8", "name": "Zoo sing-along", "tile": "assets/img/tile-zoo-parade.webp", "icon": "ear", "grade": "PreK", "standards": ["ELOF.P-LIT 2", "ELOF.P-LIT 3"], "say": "Sing along with the zoo!", "game": {"id": "zoo-parade", "config": {"song": "read-it-sing-it", "mode": "pictures"}}}
             ] },
           {"id": "ll.first-words", "name": "First words", "grade": "Toddler", "bands": ["little"], "standards": ["ELOF.IT-LC 7", "ELOF.P-LC 6"],
             "lessons": [
@@ -60,6 +66,16 @@
             "lessons": [
               { "id": "rd-l1", "name": "First sounds", "tag": "s a t p", "icon": "moth", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.A"], "say": "First sounds with Mothabet",
                 "game": { "id": "mothabet", "config": { "band": "s", "stage": 0, "stageId": "s1" } } }
+            ] },
+          { "id": "rd.sing-read", "name": "Sing and read (songs)", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.1.A", "CCSS.ELA-LITERACY.RF.K.1.B", "CCSS.ELA-LITERACY.RF.K.1.D", "CCSS.ELA-LITERACY.RF.K.3.D", "CCSS.ELA-LITERACY.L.K.2.D"],
+            "standardsNote": "Songs by Hexan (made with Suno). Each lesson goes with one song: match the sung word to its picture and printed word, build the word from letters as the song spells it, then (reader lessons) read look-alike words with no pictures.",
+            "lessons": [
+              {"id": "zp-1", "name": "Zoo parade", "tile": "assets/img/tile-zoo-parade.webp", "tag": "cat · duck", "icon": "ear", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.1.B", "CCSS.ELA-LITERACY.RF.K.1.A"], "say": "Sing along with the zoo parade!", "game": {"id": "zoo-parade", "config": {"song": "read-it-sing-it", "mode": "pictures"}}},
+              {"id": "ws-1", "name": "Word stage", "tile": "assets/img/tile-word-stage.webp", "tag": "red · dot", "icon": "ear", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.1.B", "CCSS.ELA-LITERACY.RF.K.1.A"], "say": "Sing on the word stage!", "game": {"id": "word-stage", "config": {"song": "read-it", "mode": "pictures"}}},
+              {"id": "zp-2", "name": "Parade letters", "tile": "assets/img/tile-zoo-parade.webp", "tag": "d u c k", "icon": "pencil", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.1.D", "CCSS.ELA-LITERACY.RF.K.1.B"], "say": "Find the letters with the song!", "game": {"id": "zoo-parade", "config": {"song": "read-it-sing-it", "mode": "letters"}}},
+              {"id": "ws-2", "name": "Stage spellers", "tile": "assets/img/tile-word-stage.webp", "tag": "m a p", "icon": "pencil", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.1.D", "CCSS.ELA-LITERACY.L.K.2.D"], "say": "Spell with the song!", "game": {"id": "word-stage", "config": {"song": "read-it", "mode": "letters"}}},
+              {"id": "zp-3", "name": "Parade reader", "tile": "assets/img/tile-zoo-parade.webp", "tag": "frog · bear", "icon": "book", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.D", "CCSS.ELA-LITERACY.RF.K.1.B"], "say": "Read the words in the song!", "game": {"id": "zoo-parade", "config": {"song": "read-it-sing-it", "mode": "words"}}},
+              {"id": "ws-3", "name": "Stage reader", "tile": "assets/img/tile-word-stage.webp", "tag": "fox · six", "icon": "book", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.D", "CCSS.ELA-LITERACY.L.K.2.D"], "say": "Read and spell with the song!", "game": {"id": "word-stage", "config": {"song": "read-it", "mode": "words"}}}
             ] },
           { "id": "rd.sight-words-pp", "name": "Sight words: pre-primer", "grade": "K", "standards": ["CCSS.ELA-LITERACY.RF.K.3.C"],
             "lessons": [

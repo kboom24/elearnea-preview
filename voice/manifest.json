@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-30T12:47:16.320Z",
+ "generated": "2026-10-30T12:48:31.680Z",
  "about": "Every spoken line in the Elearnea app (single source of truth). Code speaks text; voice/voice.js normalizes it to a key, finds the line id in voice/index.json (generated from this file) and plays the line's files in order. Build: tools/voice/build-manifest.js. Render: tools/voice/regen.py. Mothabet clips: tools/voice/import-mothabet.js. Coverage check: tools/voice/check.js.",
  "normalize": "lowercase; curly apostrophes -> '; every character other than a-z 0-9 ' and space -> space; collapse spaces; trim",
  "render": "`render` is the text a TTS engine should read. Inline IPA uses [[ ... ]] (Piper syntax), only on phoneme lines, which come from the Mothabet batch.",
@@ -774,11 +774,11 @@
   }
  ],
  "counts": {
-  "total": 2338,
-  "spoken": 2321,
+  "total": 2363,
+  "spoken": 2346,
   "reserved": 17,
   "byGame": {
-   "elearnea": 66,
+   "elearnea": 73,
    "lily-pad-hop": 327,
    "firefly-count": 72,
    "clocktower-gears": 35,
@@ -787,22 +787,24 @@
    "picture-garden": 136,
    "glow-jars": 8,
    "wicks-path": 39,
-   "moth-bridge": 19
+   "moth-bridge": 19,
+   "zoo-parade": 17,
+   "word-stage": 1
   },
   "byType": {
-   "instruction": 660,
+   "instruction": 679,
    "label": 135,
-   "feedback": 217,
-   "praise": 254,
+   "feedback": 218,
+   "praise": 255,
    "number": 10,
-   "word": 551,
+   "word": 555,
    "phoneme": 56,
    "letter": 25,
    "sentence": 430
   },
-  "needsHumanCheck": 299,
-  "withClip": 2323,
-  "heldForHumanCheck": 15,
+  "needsHumanCheck": 301,
+  "withClip": 2347,
+  "heldForHumanCheck": 16,
   "playingButFlaggedShort": 171,
   "unverifiedPhonemes": 77,
   "pending": 0,
@@ -925,6 +927,40 @@
    },
    "files": [
     "voice/clips/el.who-says-moo-lets-listen.mp3"
+   ]
+  },
+  {
+   "id": "el.sing-along-with-the-zoo",
+   "key": "sing along with the zoo",
+   "text": "Sing along with the zoo!",
+   "render": "Sing along with the zoo!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Zoo sing-along\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Sing along with the zoo.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.sing-along-with-the-zoo.mp3"
    ]
   },
   {
@@ -1127,6 +1163,210 @@
    },
    "files": [
     "voice/clips/el.first-sounds-with-mothabet.mp3"
+   ]
+  },
+  {
+   "id": "el.sing-along-with-the-zoo-parade",
+   "key": "sing along with the zoo parade",
+   "text": "Sing along with the zoo parade!",
+   "render": "Sing along with the zoo parade!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Zoo parade\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Sing along with the zoo parade.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.sing-along-with-the-zoo-parade.mp3"
+   ]
+  },
+  {
+   "id": "el.sing-on-the-word-stage",
+   "key": "sing on the word stage",
+   "text": "Sing on the word stage!",
+   "render": "Sing on the word stage!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Word stage\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Sing on the word stage.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.sing-on-the-word-stage.mp3"
+   ]
+  },
+  {
+   "id": "el.find-the-letters-with-the-song",
+   "key": "find the letters with the song",
+   "text": "Find the letters with the song!",
+   "render": "Find the letters with the song!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Parade letters\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Find the letters with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.find-the-letters-with-the-song.mp3"
+   ]
+  },
+  {
+   "id": "el.spell-with-the-song",
+   "key": "spell with the song",
+   "text": "Spell with the song!",
+   "render": "Spell with the song!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Stage spellers\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Spell with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.spell-with-the-song.mp3"
+   ]
+  },
+  {
+   "id": "el.read-the-words-in-the-song",
+   "key": "read the words in the song",
+   "text": "Read the words in the song!",
+   "render": "Read the words in the song!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Parade reader\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Read the words in the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.read-the-words-in-the-song.mp3"
+   ]
+  },
+  {
+   "id": "el.read-and-spell-with-the-song",
+   "key": "read and spell with the song",
+   "text": "Read and spell with the song!",
+   "render": "Read and spell with the song!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "elearnea",
+     "screen": "Reading realm path",
+     "trigger": "tap lesson stop \"Stage reader\" (also tap Wick when it is the current stop)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Read and spell with the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/el.read-and-spell-with-the-song.mp3"
    ]
   },
   {
@@ -14772,6 +15012,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s5",
      "trigger": "tap the picture card to hear the word again"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "source": {
@@ -20972,6 +21217,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -21890,6 +22140,11 @@
      "game": "moth-bridge",
      "screen": "Moth Bridge",
      "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -22566,6 +22821,11 @@
      "game": "moth-bridge",
      "screen": "Moth Bridge",
      "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -23489,6 +23749,11 @@
      "game": "moth-bridge",
      "screen": "Moth Bridge",
      "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -24868,6 +25133,11 @@
      "game": "moth-bridge",
      "screen": "Moth Bridge",
      "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -24987,6 +25257,11 @@
      "game": "moth-bridge",
      "screen": "Moth Bridge",
      "trigger": "the word after a blend, a picked picture, or the segmenting prompt"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -25107,6 +25382,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f3",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -26547,6 +26827,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -33352,6 +33637,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f2",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -35221,6 +35511,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -35289,6 +35584,11 @@
      "game": "mothabet",
      "screen": "Mothabet Phonics stage s9",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -39567,6 +39867,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f1",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -48342,6 +48647,11 @@
      "game": "mothabet",
      "screen": "Mothabet Spelling stage f7",
      "trigger": "word completed (said with a cheer)"
+    },
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
     }
    ],
    "parts": [
@@ -81161,6 +81471,632 @@
    },
    "files": [
     "voice/clips/mbr.you-found-every-sound.mp3"
+   ]
+  },
+  {
+   "id": "sing.here-comes-the-zoo-parade",
+   "key": "here comes the zoo parade",
+   "text": "Here comes the zoo parade!",
+   "render": "Here comes the zoo parade!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start card",
+     "trigger": "Play tapped (before the music); tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Here comes the Zoo Parade.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.here-comes-the-zoo-parade.mp3"
+   ]
+  },
+  {
+   "id": "sing.welcome-to-the-word-stage",
+   "key": "welcome to the word stage",
+   "text": "Welcome to the word stage!",
+   "render": "Welcome to the word stage!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "word-stage",
+     "screen": "Sing-along start card",
+     "trigger": "Play tapped (before the music); tap Wick to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Welcome to the word stage.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.welcome-to-the-word-stage.mp3"
+   ]
+  },
+  {
+   "id": "sing.when-you-hear-a-word-in-the-song-tap-00845a",
+   "key": "when you hear a word in the song tap its picture",
+   "text": "When you hear a word in the song, tap its picture.",
+   "render": "When you hear a word in the song, tap its picture.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (pictures lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "When you hear a word in the song, tap its picture.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.when-you-hear-a-word-in-the-song-tap-00845a.mp3"
+   ]
+  },
+  {
+   "id": "sing.then-put-the-letters-in-a-row-just-l-a9609b",
+   "key": "then put the letters in a row just like the song",
+   "text": "Then put the letters in a row, just like the song.",
+   "render": "Then put the letters in a row, just like the song.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (pictures lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Then put the letters in a row, just like the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.then-put-the-letters-in-a-row-just-l-a9609b.mp3"
+   ]
+  },
+  {
+   "id": "sing.tap-the-picture-you-hear-in-the-song",
+   "key": "tap the picture you hear in the song",
+   "text": "Tap the picture you hear in the song.",
+   "render": "Tap the picture you hear in the song.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (letters lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Tap the picture you hear in the song.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.tap-the-picture-you-hear-in-the-song.mp3"
+   ]
+  },
+  {
+   "id": "sing.then-find-the-letters-in-order",
+   "key": "then find the letters in order",
+   "text": "Then find the letters, in order.",
+   "render": "Then find the letters, in order.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (letters lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Then find the letters in order.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.then-find-the-letters-in-order.mp3"
+   ]
+  },
+  {
+   "id": "sing.now-you-read-tap-the-word-you-hear-i-b91be8",
+   "key": "now you read tap the word you hear in the song",
+   "text": "Now you read! Tap the word you hear in the song.",
+   "render": "Now you read! Tap the word you hear in the song.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (words lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Now you read. Tap the words you hear in the song.",
+     "score": 0.91,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.now-you-read-tap-the-word-you-hear-i-b91be8.mp3"
+   ]
+  },
+  {
+   "id": "sing.then-spell-it-with-the-letters",
+   "key": "then spell it with the letters",
+   "text": "Then spell it with the letters.",
+   "render": "Then spell it with the letters.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (words lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Then spell it with the letters.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.then-spell-it-with-the-letters.mp3"
+   ]
+  },
+  {
+   "id": "sing.listen-to-the-song-and-tap-the-pictu-3bd94a",
+   "key": "listen to the song and tap the picture you hear",
+   "text": "Listen to the song, and tap the picture you hear!",
+   "render": "Listen to the song, and tap the picture you hear!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (little lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Listen to the song and tap the picture you hear.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.listen-to-the-song-and-tap-the-pictu-3bd94a.mp3"
+   ]
+  },
+  {
+   "id": "sing.then-tap-the-letters",
+   "key": "then tap the letters",
+   "text": "Then tap the letters.",
+   "render": "Then tap the letters.",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start (little lessons)",
+     "trigger": "Play tapped, after the title line; tap Wick before the song to hear it again"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Then tap the letters.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.then-tap-the-letters.mp3"
+   ]
+  },
+  {
+   "id": "sing.ready-lets-sing",
+   "key": "ready let's sing",
+   "text": "Ready? Let's sing!",
+   "render": "Ready? Let's sing!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along start",
+     "trigger": "right before the music starts"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Ready, let's sing.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.ready-lets-sing.mp3"
+   ]
+  },
+  {
+   "id": "sing.paused-tap-play-to-keep-singing",
+   "key": "paused tap play to keep singing",
+   "text": "Paused. Tap play to keep singing!",
+   "render": "Paused. Tap play to keep singing!",
+   "type": "feedback",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along pause card",
+     "trigger": "pause button tapped (music stops first)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Pause, tap play to keep singing.",
+     "score": 0.83,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.paused-tap-play-to-keep-singing.mp3"
+   ]
+  },
+  {
+   "id": "sing.what-a-song-look-at-all-the-words-you-read",
+   "key": "what a song look at all the words you read",
+   "text": "What a song! Look at all the words you read.",
+   "render": "What a song! Look at all the words you read.",
+   "type": "praise",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along finale",
+     "trigger": "song ended (then the results card)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "What a song! Look at all the words you read!",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.what-a-song-look-at-all-the-words-you-read.mp3"
+   ]
+  },
+  {
+   "id": "sing.tap-a-word-to-hear-it",
+   "key": "tap a word to hear it",
+   "text": "Tap a word to hear it!",
+   "render": "Tap a word to hear it!",
+   "type": "instruction",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along finale / pause card",
+     "trigger": "after the end line; while paused"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Tap a word to hear it.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.tap-a-word-to-hear-it.mp3"
+   ]
+  },
+  {
+   "id": "sing.bear",
+   "key": "bear",
+   "text": "bear.",
+   "render": "bear.",
+   "type": "word",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
+    }
+   ],
+   "source": {
+    "kind": "device-speech",
+    "fallback": "ASR-flagged clip held back: plays device speech until a human listens",
+    "held": [
+     "sing.bear.mp3"
+    ],
+    "wouldPlay": {
+     "label": "kokoro af_bella",
+     "voice": "af_bella",
+     "set": "elearnea-lines"
+    }
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "speech-recognition check heard \"There.\""
+    ],
+    "asr": {
+     "heard": "There.",
+     "score": 0.44,
+     "ok": false,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.bear.mp3"
+   ]
+  },
+  {
+   "id": "sing.mouse",
+   "key": "mouse",
+   "text": "mouse.",
+   "render": "mouse.",
+   "type": "word",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Mouse.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.mouse.mp3"
+   ]
+  },
+  {
+   "id": "sing.panda",
+   "key": "panda",
+   "text": "panda.",
+   "render": "panda.",
+   "type": "word",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": true,
+    "reasons": [
+     "weak-schwa fix (panda rendered with a final ɑ): listen that it ends in a clear \"ah\""
+    ],
+    "asr": {
+     "heard": "Panda",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "schwaFix": [
+    "panda"
+   ],
+   "renderIpa": "pˈændɑ.",
+   "ipaNote": "final ə of \"panda\" rendered as ɑ (clear \"ah\"), Hexan 2026-10-29",
+   "files": [
+    "voice/clips/sing.panda.mp3"
+   ]
+  },
+  {
+   "id": "sing.pear",
+   "key": "pear",
+   "text": "pear.",
+   "render": "pear.",
+   "type": "word",
+   "uses": [
+    {
+     "game": "zoo-parade",
+     "screen": "Sing-along word shelf",
+     "trigger": "a collected word chip tapped while the music is stopped (its label lights up)"
+    }
+   ],
+   "source": {
+    "kind": "kokoro",
+    "voice": "af_bella",
+    "label": "kokoro af_bella",
+    "set": "elearnea-lines",
+    "csv": "elearnea-lines.csv"
+   },
+   "check": {
+    "human": false,
+    "reasons": [],
+    "asr": {
+     "heard": "Pear.",
+     "score": 1,
+     "ok": true,
+     "voice": "af_bella"
+    }
+   },
+   "files": [
+    "voice/clips/sing.pear.mp3"
    ]
   }
  ]

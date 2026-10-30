@@ -123,5 +123,12 @@
   "ipa": "ˈʌp.",
   "text": "upp",
   "note": "Moth Bridge pure rime: IPA override so say.py speaks the sound, not letter names"
+ },
+ "sing.panda": {
+  "ipa": "pˈændɑ.",
+  "text": "panda.",
+  "words": [
+   "panda"
+  ]
  }
 }
