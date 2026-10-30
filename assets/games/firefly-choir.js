@@ -161,7 +161,8 @@
       const TOL = [.45, .38, .32, .28];
       function setupEcho() { playEl.innerHTML = `<div class="ec-dots" id="ecDots"></div><div class="ec-wick" id="ecFly">${fly('#F5B841')}</div>`;
         tray.innerHTML = `<button class="fc-drum" id="ecDrum" aria-label="Moon drum">${drumSVG}</button>`;
-        $('ecDrum').addEventListener('pointerdown', (e) => { e.preventDefault(); drumTap(e.timeStamp); }); }
+        // tap time = performance.now() in the handler (event timeStamp bases differ across browsers and synthetic input)
+        $('ecDrum').addEventListener('pointerdown', (e) => { e.preventDefault(); drumTap(performance.now()); }); }
       function drawDots(p) { const n = p.length + 1, sum = p.reduce((a, b) => a + b, 0); let x = 0, h = '';
         for (let i = 0; i < n; i++) { h += `<i style="left:${(6 + 88 * x / sum).toFixed(2)}%"></i>`; if (i < p.length) x += p[i]; } $('ecDots').innerHTML = h; }
       const dot = (i, cls) => { const d = $('ecDots').children[i]; if (d) d.classList.add(cls); };
@@ -173,23 +174,23 @@
       let taps = [], tapWatch = null, guide = false;
       function drumTap(ts) { const d = $('ecDrum'); pulse(d); tok(0, .32); if (busy || !cur || cur.mode !== 'echo') return;
         taps.push(ts); dot(taps.length - 1, 'me'); clearTimeout(tapWatch);
-        const n = cur.p.length + 1; if (taps.length >= n) { const r = judge(cur.p, taps, guide ? 9 : TOL[cur.lv], BEAT); cur.last = r; root.dispatchEvent(new CustomEvent('fc:echo', { detail: r })); qaMark('judge', JSON.stringify(r));
+        const n = cur.p.length + 1; if (taps.length >= n) { setBusy(true); const r = judge(cur.p, taps, guide ? 9 : TOL[cur.lv], BEAT); cur.last = r; root.dispatchEvent(new CustomEvent('fc:echo', { detail: r })); qaMark('judge', JSON.stringify(Object.assign({ taps: taps.map(t => Math.round(t - taps[0])) }, r)));
           return T(() => ecResult(r.ok || guide), 260); }
         // stopped tapping: gently treat as a miss after a long pause
-        tapWatch = T(() => { if (taps.length && taps.length < n) { const r = { ok: false, why: 'few', errs: [] }; cur.last = r; qaMark('judge', JSON.stringify(r)); ecResult(false); } }, 2600); }
-      function ecTurn() { taps = []; clearDots(); setBusy(false); qaMark('phase', 'echo'); handOff(); }
+        tapWatch = T(() => { if (!busy && taps.length && taps.length < n) { setBusy(true); const r = { ok: false, why: 'few', errs: [] }; cur.last = r; qaMark('judge', JSON.stringify(r)); ecResult(false); } }, 2600); }
+      function ecTurn() { taps = []; clearDots(); setBusy(false); qaMark('judge', null); qaMark('phase', 'echo'); handOff(); }
       function ecResult(ok) { setBusy(true); clearTimeout(tapWatch); const d = $('ecDrum');
         if (ok) { glow(d); right(rid(cur.p), d); speak('Yes! You echoed it!', () => { glow(d, false); next(); }, 2400); return; }
         miss++; wob(d); [...$('ecDots').children].forEach(x => x.classList.add('off'));
         if (miss === 1) speak('Listen again.', () => ecPlay(cur.p, () => { setText('Your turn!'); speak('Your turn!', ecTurn, 1400); }), 2000);
         else { guide = true; speak('Tap with the lights.', () => { const fr = root.getBoundingClientRect(), r = d.getBoundingClientRect(); handEl.style.left = (r.left - fr.left + r.width / 2 - 20) + 'px'; handEl.style.top = (r.top - fr.top + r.height / 2 - 8) + 'px'; handEl.classList.add('on');
-          ecPlay(cur.p, () => { taps = []; clearDots(); handOff(); setBusy(false); qaMark('phase', 'echo'); }, true); }, 2400); } }
+          ecPlay(cur.p, () => { taps = []; clearDots(); handOff(); setBusy(false); qaMark('judge', null); qaMark('phase', 'echo'); }, true); }, 2400); } }
       let ecPlan = null;
       ROUND.echo = () => { const p = ecPlan[qi]; guide = false; cur = { mode: 'echo', p, lv: lvl() }; drawDots(p); qaMark('want', p.map(v => Math.round(v * BEAT)).join(',')); qaMark('phase', 'listen'); setBusy(true);
         replay = () => ecPlay(cur.p, ecTurn);
         const go = () => { setText('Your turn!'); speak('Listen, then tap it back!', () => ecPlay(p, () => speak('Your turn!', ecTurn, 1400)), 2600); };
         if (!demoDone.ec) { demoDone.ec = 1; setText('Watch me first.');
-          speak('Watch me first.', () => ecPlay(p, () => { const d = $('ecDrum'), fr = root.getBoundingClientRect(), r = d.getBoundingClientRect(); handEl.style.left = (r.left - fr.left + r.width / 2 - 20) + 'px'; handEl.style.top = (r.top - fr.top + r.height / 2 - 8) + 'px'; handEl.classList.add('on');
+          speak('Watch me first.', () => ecPlay(p, () => { setBusy(true); const d = $('ecDrum'), fr = root.getBoundingClientRect(), r = d.getBoundingClientRect(); handEl.style.left = (r.left - fr.left + r.width / 2 - 20) + 'px'; handEl.style.top = (r.top - fr.top + r.height / 2 - 8) + 'px'; handEl.classList.add('on');
             clearDots(); let t = 0; const times = [0]; p.forEach(v => { t += v * BEAT; times.push(t); }); times.forEach((ms, i) => T(() => { pulse(d); tok(0, .32); dot(i, 'me'); handEl.classList.add('tap'); T(() => handEl.classList.remove('tap'), 140); }, 400 + ms));
             T(() => { handOff(); clearDots(); setText('Your turn!'); speak('Your turn!', ecTurn, 1400); }, 400 + t + 800); }), 2200); }
         else go(); };
