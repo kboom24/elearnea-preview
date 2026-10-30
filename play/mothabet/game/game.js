@@ -7,9 +7,11 @@
   HX.pageStyle();
   const { UI, Button, Ads, Daily, Audio } = HX, C = MB.C, SLUG = 'elearnea-mothabet', TAU = Math.PI * 2;
   const clamp = MB.clamp, lerp = MB.lerp;
+  // Elearnea lesson mode (?lesson=1): straight into one stage's El.Learn-picked words; Elearnea's shell shows results and the way back to the path.
+  const EB = window.ElearneaBridge || null, LESSON = !!(EB && EB.lesson);
   Object.assign(HX.theme, { bgTop: '#16123f', bgBottom: '#14113a', letterbox: '#0b0920', panel: 'rgba(29,24,80,.96)',
     primary: ['#ffd36b', '#f5b335', '#a8740e'], secondary: ['#4a3f94', '#3a3184', '#221c58'], accent: ['#ffe48f', '#f5b335', '#b97c0e'], danger: ['#ff9a8a', '#f07a6a', '#9e3b33'] });
-  // Child-directed by design: tell any ad/analytics provider (in memory only; the platform-wide consent key is not touched).
+  // Child-directed by design: tell any ad/analytics provider (in memory; el-consent.js also forces it in the Elearnea-owned consent key).
   try { if (HX.consent && HX.consent._s) HX.consent._s.childDirected = true; } catch (e) {}
 
   /* ------------------------------------------------------------------ helpers */
@@ -191,24 +193,35 @@
   };
 
   /* ------------------------------------------------------------------ GOAL card (overlay) */
+  /* ------------------------------------------------------------------ LESSON: Elearnea lesson base (night backdrop under the lesson card) */
+  const Lesson = {
+    hud: true, pausable: false,
+    enter(d) { M = MB.data(game.save); this.t = 0; this.done = !!(d && d.done); this.buttons = []; music('night');
+      if (!this.done) { const t = EB.target || EB.resolve(MB); setTimeout(() => { if (game.base === this && game.scene === this) game.push('goal', { mode: 'lesson', band: t.band, stage: t.stage }); }, 0); } },
+    update(dt) { this.t += dt; },
+    draw(ctx) { backdrop(ctx); fireflies(ctx, this.t); }
+  };
+
   const Goal = {
     overlay: true, hud: true, pausable: false,
     enter(d) { this.d = d; this.t = 0; const s = this; const today = Daily.key();
       if (d.mode === 'jar') { this.jarDone = M.jar[d.band + ':' + today]; }
       this.bGo = B(d.mode === 'jar' && this.jarDone ? 'Practice' : 'Go!', 'gold', spoken('Go!', () => s.go()), { ico: 'next', glowPulse: true });
       this.bX = B('', 'indigo', () => game.pop(), { ico: 'close' });
-      this.buttons = [this.bGo, this.bX];
+      this.buttons = d.mode === 'lesson' ? [this.bGo] : [this.bGo, this.bX]; // lesson: Elearnea's top bar is the way out
+      if (d.mode === 'lesson') this.bGo.enabled = !!EB.plan;
       if (d.mode === 'jar') { this.bBs = B('Phonics', 'mint', spoken('Phonics', () => this.setBand('s')), { ico: 'ear' }); this.bBf = B('Spelling', 'coral', spoken('Spelling', () => this.setBand('f')), { ico: 'pencil' }); this.buttons.push(this.bBs, this.bBf); this.bBs.selected = d.band === 's'; this.bBf.selected = d.band === 'f'; }
       if (voiceOn()) say(d.mode === 'jar' ? 'The daily jar. Everyone gets the same ten words today.' : 'Catch the letter moths. Put them in the jar.', { rate: 1 });
     },
     setBand(b) { this.d.band = b; M.set.band = b; game.save.write(); this.enter(this.d); this.resize(game.W, game.H); },
-    go() { const d = this.d; game.pop(); if (d.mode === 'jar') game.go('play', { mode: 'jar', band: d.band, practice: !!this.jarDone }, { fade: .2 }); else game.go('play', { mode: 'stage', band: d.band, stage: d.stage, seed: d.seed }, { fade: .2 }); },
-    resize(W, H) { hudFix(); const t = T(), pw = Math.min(W - 40, 640), ph = Math.min(H - hudBottom() - 30, Math.max(560, t * 7.5)); this.px = W / 2 - pw / 2; this.py = Math.max(hudBottom() + 6, H / 2 - ph / 2); this.pw = pw; this.ph = ph;
+    go() { const d = this.d; if (d.mode === 'lesson') { if (!EB.plan) return; game.pop(); game.go('play', { mode: 'lesson', band: d.band, stage: d.stage, items: EB.plan.items, d: EB.plan.d }, { fade: .2 }); return; }
+      game.pop(); if (d.mode === 'jar') game.go('play', { mode: 'jar', band: d.band, practice: !!this.jarDone }, { fade: .2 }); else game.go('play', { mode: 'stage', band: d.band, stage: d.stage, seed: d.seed }, { fade: .2 }); },
+    resize(W, H) { hudFix(); const t = T(), pw = Math.min(W - 40, 640), ph = Math.min(H - hudBottom() - 30, this.d.mode === 'lesson' ? Math.max(480, t * 6.6, pw * .95) : Math.max(560, t * 7.5)); this.px = W / 2 - pw / 2; this.py = Math.max(hudBottom() + 6, H / 2 - ph / 2); this.pw = pw; this.ph = ph;
       const gw = Math.min(pw - 60, 420); place(this.bGo, W / 2 - gw / 2, this.py + ph - t * 1.3 - 26, gw, t * 1.3); this.bGo.size = Math.round(t * .5);
       place(this.bX, this.px + pw - t - 12, this.py + 12, t, t);
       if (this.bBs) { const bw = (pw - 60) / 2; place(this.bBs, this.px + 20, this.bGo.y - t - 22, bw, t); place(this.bBf, this.px + 40 + bw, this.bGo.y - t - 22, bw, t); } },
-    keyDown(c) { if (c === 'Enter' || c === 'Space') this.go(); if (c === 'Escape') game.pop(); },
-    update(dt) { this.t += dt; },
+    keyDown(c) { if (c === 'Enter' || c === 'Space') this.go(); if (c === 'Escape' && this.d.mode !== 'lesson') game.pop(); },
+    update(dt) { this.t += dt; if (this.d.mode === 'lesson') this.bGo.enabled = !!EB.plan; },
     draw(ctx) { const { W, H } = game, d = this.d; ctx.fillStyle = 'rgba(8,6,28,.62)'; ctx.fillRect(0, 0, W, H);
       MB.patch(ctx, this.px, this.py, this.pw, this.ph, '#251f63', { r: 40 }); const cx = W / 2; let y = this.py + 70; const fs = FS(18, 30);
       if (d.mode === 'jar') { const key = Daily.key(); UI.text(ctx, `Daily Jar #${MB.jarNo(key)}`, cx, y, { size: fs * 1.25, color: C.gold, weight: 700, display: true, maxWidth: this.pw - 150 }); y += fs * 1.3;
@@ -216,6 +229,11 @@
         MB.drawJar(ctx, cx, y + fs * 2.3, fs * 4, fs * 4.2, .7 + .3 * Math.sin(this.t * 2), this.t);
         if (this.jarDone) UI.text(ctx, `Done today: ${this.jarDone.right}/10 · ${this.jarDone.score}`, cx, y + fs * 5.2, { size: fs * .75, color: C.mint, weight: 900 });
         else UI.text(ctx, `Streak: ${Daily.status(game.save).streak} 🔥`, cx, y + fs * 5.2, { size: fs * .75, color: '#fff7dc', weight: 900 });
+        return; }
+      if (d.mode === 'lesson') { const st = MB.STAGES[d.band][d.stage]; UI.text(ctx, st.name, cx, y, { size: fs * 1.25, color: C.gold, weight: 700, display: true, maxWidth: this.pw - 60 }); y += fs * 1.2;
+        const top = y + fs * .8, jh = Math.max(fs * 3, Math.min(this.pw * .5, (this.bGo.y - top - fs * 1.2) / 1.22)); y = top + jh * .22; MB.drawJar(ctx, cx, y + jh / 2, jh * .82, jh, .7 + .3 * Math.sin(this.t * 2), this.t); // jar handle needs ~.2 jh above
+        MB.drawMoth(ctx, cx - jh * .75, y + jh * .3, Math.min(40, jh * .16), { col: C.mint, label: 'a', open: .6 + .4 * Math.sin(this.t * 6) });
+        MB.drawMoth(ctx, cx + jh * .75, y + jh * .55, Math.min(40, jh * .16), { col: C.marigold, label: 's', open: .6 + .4 * Math.sin(this.t * 6 + 1) });
         return; }
       const st = MB.STAGES[d.band][d.stage]; UI.text(ctx, `${d.stage + 1}. ${st.name}`, cx, y, { size: fs * 1.25, color: C.gold, weight: 700, display: true, maxWidth: this.pw - 150 }); y += fs * 1.15;
       UI.text(ctx, `${MB.BANDS[d.band].name} · ${st.sub}`, cx, y, { size: fs * .72, color: '#fff7dc', weight: 800, maxWidth: this.pw - 60 }); y += fs * 1.25;
@@ -235,7 +253,8 @@
     enter(d) {
       M = MB.data(game.save); this.cfg = d; this.band = d.band; this.mode = d.mode; this.t = 0; this.over = false;
       const today = Daily.key(); this.seed = d.seed != null ? d.seed >>> 0 : (Date.now() ^ (Math.random() * 1e9)) >>> 0; this.rng = HX.RNG(this.seed);
-      if (d.mode === 'jar') { this.items = MB.pickJar(this.band, today); this.stage = -1; this.dFixed = MB.JAR_D[this.band]; HX.track.dailyStart({ band: this.band, jar: MB.jarNo(today) }); }
+      if (d.mode === 'lesson') { this.stage = d.stage | 0; this.items = d.items.slice(0, ROUND_WORDS); this.dFixed = d.d != null ? d.d : null; }
+      else if (d.mode === 'jar') { this.items = MB.pickJar(this.band, today); this.stage = -1; this.dFixed = MB.JAR_D[this.band]; HX.track.dailyStart({ band: this.band, jar: MB.jarNo(today) }); }
       else { this.stage = d.stage | 0; this.items = MB.pickRound(M, this.band, this.stage, HX.RNG(this.seed), ROUND_WORDS); this.dFixed = null; HX.track.levelStart(this.stage + 1, { band: this.band }); }
       M.stats.started++; game.save.write(); // rounds started vs finished (grown-ups dashboard); also persists first-launch settings
       this.queue = this.items.map(it => ({ it, retry: false })); this.idx = -1; this.results = []; // per word {it, perfect, helped, done}
@@ -251,6 +270,8 @@
     exit() { MB.Voice.stop(); },
     restart() { game.go('play', Object.assign({}, this.cfg, { seed: this.cfg.mode === 'challenge' ? this.cfg.seed : undefined }), { fade: .12 }); },
     get word() { return this.queue[this.idx]; },
+    // words per round: 10; a lesson keeps every planned (El.Learn-picked) word and adds up to 3 easier retries on top
+    cap() { return this.mode === 'lesson' ? this.items.length + 3 : ROUND_WORDS; },
     tuning() { const w = this.word; return MB.tuning(this.dFixed != null ? this.dFixed : M.prof[this.band].d, w.it, w.retry); },
     resize(W, H) {
       hudFix(); const sa = SA(), t = T(), p = por(), z = zone();
@@ -304,8 +325,9 @@
 
     /* ---- word flow ---- */
     nextWord() {
-      this.idx++; if (this.idx >= this.queue.length || this.idx >= ROUND_WORDS) return this.endRound('done');
+      this.idx++; if (this.idx >= this.queue.length || this.idx >= this.cap()) return this.endRound('done');
       const w = this.word; w.misses = 0; w.hinted = false; w.filled = 0; w.t0 = this.t;
+      if (this.mode === 'lesson') EB.progress(this.results.filter(x => !x.retry).length, this.items.length);
       this.layoutJar(); this.slots = w.it.tiles.map(() => null);
       // moths: the word's tiles + decoys, entering from the edges
       for (const m of this.moths) if (m.state !== 'gone') { m.state = 'leave'; m.lt = 0; }
@@ -323,7 +345,7 @@
       if (!voiceOn()) { // visual fallback: show the word again ("look, cover, spell") and pulse the picture
         if (it.kind !== 'first' && it.kind !== 'last') this.look = Math.max(this.look, manual ? 1.6 : 2.6); this.picPulse = 1; return; }
       const s = it.s && this.band === 'f' ? it.s : null;
-      if (it.kind === 'first') say(manual ? `${it.w}. ${it.w}.` : `Find the first sound in... ${it.w}.`, { rate: .85 });
+      if (it.kind === 'first') say(manual ? `${it.w}. ${it.w}.` : `Find the first sound in the word... ${it.w}... ${it.w}.`, { rate: .85 });
       else if (it.kind === 'last') say(manual ? `${it.w}. ${it.w}.` : `Find the last sound in... ${it.w}.`, { rate: .85 });
       else if (it.kind === 'build') say(manual ? `${it.w}.` : `Build... ${it.w}.`, { rate: .8 });
       else say(s ? `${it.w}. ${s} ${it.w}.` : `${it.w}. Spell, ${it.w}.`, { rate: .85 });
@@ -361,12 +383,14 @@
       game.fx.floatText(this.jar.cx, this.jar.y - 20, `+${pts}`, { color: C.gold, size: FS(22, 44) });
       if (!reduce()) game.fx.burst(this.jar.cx, this.jar.cy, { count: 36, colors: [C.gold, '#fff3c4', C.marigold, C.mint], speed: [120, 420], life: [.4, 1], size: [3, 8], shape: 'spark', glow: true });
       this.results.push({ it: w.it, perfect, helped: !perfect, done: true, retry: w.retry });
-      // learning: SRS + adaptive + mastery points
-      MB.recordWord(M, w.it, perfect, today);
-      if (this.dFixed == null) MB.adapt(M.prof[this.band], perfect);
-      if (perfect) for (const p of w.it.pats) M.pts[p] = (M.pts[p] || 0) + 1;
+      // learning. Lesson mode: El.Learn (parent) is the only SRS/difficulty source; one record per planned word, first attempt only.
+      if (this.mode === 'lesson') { if (!w.retry) EB.word({ item: w.it.w, correct: true, firstTry: perfect }); }
+      else { // standalone Mothabet: its own SRS + adaptive + mastery points
+        MB.recordWord(M, w.it, perfect, today);
+        if (this.dFixed == null) MB.adapt(M.prof[this.band], perfect);
+        if (perfect) for (const p of w.it.pats) M.pts[p] = (M.pts[p] || 0) + 1; }
       // a missed word comes back later this round in an easier form (fewer decoys, slower moths)
-      if (!perfect && !w.retry && this.queue.length - this.idx > 2) { const at = Math.min(this.queue.length, this.idx + 3); this.queue.splice(at, 0, { it: w.it, retry: true }); if (this.queue.length > ROUND_WORDS) this.queue.splice(ROUND_WORDS); }
+      if (!perfect && !w.retry && this.queue.length - this.idx > 2) { const at = Math.min(this.queue.length, this.idx + 3); this.queue.splice(at, 0, { it: w.it, retry: true }); if (this.queue.length > this.cap()) this.queue.splice(this.cap()); }
       if (voiceOn()) setTimeout(() => { if (game.base === this) say(w.it.w + '!', { rate: .95, pitch: 1.2 }); }, 180);
       game.save.write();
     },
@@ -377,6 +401,9 @@
       // marks for the Daily Jar (per planned word)
       if (this.mode === 'jar') { r.marks = this.items.map(it => { const rs = this.results.filter(x => x.it === it); return rs.some(x => x.perfect && !x.retry) ? 2 : rs.length ? 1 : 0; }); r.right = r.marks.filter(k => k === 2).length; }
       r.stars = HX.Stars.evaluate(MB.STAR_RULES, r).count;
+      if (this.mode === 'lesson') { // planned words not reached before the timer count as not first-try right; Elearnea's starsFor scores the lesson
+        r.total = this.items.length; r.firstTry = this.results.filter(x => x.perfect && !x.retry).length; r.done = this.results.filter(x => !x.retry).length;
+        EB.progress(r.done, r.total); EB.results(r); game.go('lesson', { done: true }, { fade: .25 }); return; }
       game.go('results', r, { fade: .25 });
     },
 
@@ -490,10 +517,11 @@
       UI.text(ctx, `x${this.combo}`, 14 + SA().l + ph * .95, cy + 1, { size: ph * .44, align: 'left', color: hot ? C.gold : '#fff7dc', weight: 900 });
       if (this.mult() > 1) UI.text(ctx, `×${this.mult()} pts`, 14 + SA().l + cw / 2, cy + ph * .78, { size: ph * .28, color: C.gold, weight: 900 });
       // progress dots
-      const n = ROUND_WORDS, dr = Math.max(FS(7, 12), 11), gap = dr * 1.2, tw = n * dr * 2 + (n - 1) * gap, dx = game.W / 2 - tw / 2 + dr, dy = this.dotsY;
+      const L = this.mode === 'lesson', rs = L ? this.results.filter(x => !x.retry) : this.results, cur = L && this.word && this.word.retry ? -1 : rs.length; // lesson: one dot per planned word
+      const n = L ? this.items.length : ROUND_WORDS, dr = Math.max(FS(7, 12), 11), gap = dr * 1.2, tw = n * dr * 2 + (n - 1) * gap, dx = game.W / 2 - tw / 2 + dr, dy = this.dotsY;
       pill(ctx, dx - dr * 2, dy - dr * 1.9, tw + dr * 2, dr * 3.8, '#1b1650');
-      for (let i = 0; i < n; i++) { const res = this.results[i], cx = dx + i * (dr * 2 + gap); ctx.fillStyle = res ? (res.perfect ? C.gold : C.mint) : 'rgba(170,160,230,.35)'; ctx.beginPath(); ctx.arc(cx, dy, dr, 0, TAU); ctx.fill();
-        if (i === this.results.length && this.phase === 'word') { ctx.strokeStyle = MB.rgba(C.gold, .5 + .5 * Math.sin(t * 5)); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(cx, dy, dr + 4, 0, TAU); ctx.stroke(); } }
+      for (let i = 0; i < n; i++) { const res = rs[i], cx = dx + i * (dr * 2 + gap); ctx.fillStyle = res ? (res.perfect ? C.gold : C.mint) : 'rgba(170,160,230,.35)'; ctx.beginPath(); ctx.arc(cx, dy, dr, 0, TAU); ctx.fill();
+        if (i === cur && this.phase === 'word') { ctx.strokeStyle = MB.rgba(C.gold, .5 + .5 * Math.sin(t * 5)); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(cx, dy, dr + 4, 0, TAU); ctx.stroke(); } }
     }
   };
 
@@ -721,9 +749,9 @@
   /* ------------------------------------------------------------------ boot */
   // Backing-store cap (rule 9): full DPR up to ~3.2 MP, then scale DPR down so big screens (iPad Pro 12.9" @2x = 5.6 MP) stay smooth. Read by the engine on every resize.
   const PX_CAP = 3.2e6, MAX_DPR = () => Math.max(1, Math.min(3, Math.sqrt(PX_CAP / Math.max(1, innerWidth * innerHeight))));
-  game = HX.createGame({ slug: SLUG, canvas: document.getElementById('game'), start: 'title', menuScene: 'title', get maxDpr() { return MAX_DPR(); }, letterbox: '#0b0920',
+  game = HX.createGame({ slug: SLUG, canvas: document.getElementById('game'), start: LESSON ? 'lesson' : 'title', menuScene: LESSON ? 'lesson' : 'title', bridge: false, get maxDpr() { return MAX_DPR(); }, letterbox: '#0b0920',
     brand: { splash: false, badge: false },
-    scenes: { title: Title, path: Path, goal: Goal, play: Play, results: Results, book: Book, gate: Gate, grown: Grown, share: Share, challenge: Challenge } });
+    scenes: { lesson: Lesson, title: Title, path: Path, goal: Goal, play: Play, results: Results, book: Book, gate: Gate, grown: Grown, share: Share, challenge: Challenge } });
   M = MB.data(game.save); MB.Voice.enabled = M.set.voice; MB.Voice.rate = M.set.rate; MB.Voice.init(); MB.Voice.onChange(() => { if (game.scene && game.scene.layout && game.scene === game.scenes.grown) game.scene.layout(); });
   // finger-sized pause overlay
   const ps = game.scenes.pause, psl = ps.layout; if (psl) ps.layout = function () { psl.call(this); const bh = Math.max(T(), 74); const W = game.W, H = game.H, bw = Math.min(420, W - 60); this.buttons.forEach((b, i) => Object.assign(b, { x: W / 2 - bw / 2, y: H / 2 - bh * 1.2 + i * (bh + 16), w: bw, h: bh })); };
@@ -736,7 +764,8 @@
   game.start();
   try { if (window.ElearneaBridge) window.ElearneaBridge.boot(game, MB, M); } catch (e) { console.warn('[Elearnea] bridge', e); }
   /*@qa*/
-  window.__qa = {
+  // QA-only debug hook: defined only with ?qa=1 on the frame URL (the Elearnea adapter forwards ?qa=1 from the play page). Never on by default.
+  if (EB && EB.qa) window.__qa = {
     start: (o) => game.go('play', Object.assign({ mode: 'stage', band: 's', stage: 0 }, o || {})),
     forceGameOver: (s) => { const p = game.scenes.play; if (game.base !== p) window.__qa.start(); p.score = s; p.endRound('qa'); },
     state: () => { const p = game.scenes.play, w = p.word; return { scene: game.scene && game.scene.name, base: game.base && game.base.name, phase: p.phase, idx: p.idx, word: w && w.it.w, tiles: w && w.it.tiles, filled: w && w.filled, need: p.need && p.need(), score: p.score, combo: p.combo, time: p.time, moths: (p.moths || []).filter(m => m.state === 'fly').map(m => ({ ch: m.ch, x: Math.round(m.x), y: Math.round(m.y) })), voice: MB.Voice.ok }; },
@@ -744,6 +773,9 @@
     place: (ok) => { const p = game.scenes.play, need = p.need(); const m = p.moths.find(x => x.state === 'fly' && (ok === false ? x.ch !== need : x.ch === need)); if (m) p.attempt(m); return !!m; },
     solveWord: () => { const p = game.scenes.play; let n = 0; while (p.phase === 'word' && n++ < 12) { if (!window.__qa.place(true)) break; } return p.phase; },
     toScreen: (x, y) => { const v = game.view; return { x: v.ox / 1 + x * v.scale, y: v.oy + y * v.scale }; },
+    // lesson mode: current scene name + a named button's rect (game units), e.g. button('bGo') on the lesson card
+    scene: () => game.scene && game.scene.name, plan: () => EB && EB.plan && { words: EB.plan.items.map(i => i.w), d: EB.plan.d, local: !!EB.plan.local },
+    button: (n) => { const b = game.scene && game.scene[n]; return b ? { x: b.x, y: b.y, w: b.w, h: b.h, enabled: b.enabled !== false } : null; },
     M: () => M, MB
   };
   /*@qa-end*/

@@ -17,11 +17,13 @@ El.defineGame({
     const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six'];
     const FACT = { circle: 'Round, with no corners. A circle!', square: 'Four sides, all the same. A square!', triangle: 'Three sides. A triangle!',
       rectangle: 'Four sides. Two long, two short. A rectangle!', hexagon: 'Six sides. A hexagon!' };
-    const PRAISE = ['Yes! The gears turn!', 'You fixed the pattern!', 'Tick tock! Great job!'];
+    const PRAISE = ['Yes! The gears turn!', 'You fixed the pattern!']; // 'Tick tock! Great job!' rendered but held: speech-recognition flag, awaiting a human listen
     const COLORS = ['#F08A7E', '#7CC4A4', '#F5B841', '#9B8AD1', '#5DA9D6'];
     const LOOK = { square: 'rectangle', rectangle: 'square', circle: 'hexagon', hexagon: 'circle', triangle: 'square' };
     let alive = true, qi = 0, firstTry = 0, timers = [], prompt = '', hexIntro = false, busy = false;
-    const setBusy = (b) => { busy = b; root.dataset.busy = b ? '1' : '0'; }; // dataset.busy: read by automated QA only
+    // QA mode only (?qa=1): the stage carries data-want (the answer) and data-busy so automated QA can play; never set for kids
+    const QA = /[?&]qa=1(&|$)/.test(location.search), qaMark = (k, v) => { if (!QA) return; if (v == null) delete root.dataset[k]; else root.dataset[k] = v; };
+    const setBusy = (b) => { busy = b; qaMark('busy', b ? '1' : '0'); };
     const T = (fn, ms) => { const h = setTimeout(() => { if (alive) fn(); }, ms); timers.push(h); return h; };
     const lvl = () => L.levelIndex(cfg.skill, 4);
     // speech: every line below is in voice/manifest.json (tools/voice/build-manifest.js, Clocktower Gears section)
@@ -31,7 +33,10 @@ El.defineGame({
 
     /* ---------------- art: paper-cut shapes, brass gears, clock (inline SVG, original) ---------------- */
     const pts = (a) => a.map(p => p.map(v => +v.toFixed(1)).join(',')).join(' ');
-    function geom(kind, v) { v = v || {}; const k = v.k || 1;
+    function geom(kind, v) { v = v || {}; const g = geom0(kind, v); if (!v.fit) return g;
+      // fit: shapes riding a gear are scaled so every corner (at any turn) stays inside the gear's cream plate
+      const rm = g.r || Math.max(...g.p.map(q => Math.hypot(q[0], q[1]))), f = Math.min(1, v.fit / rm); return g.r ? { r: g.r * f } : { p: g.p.map(q => [q[0] * f, q[1] * f]) }; }
+    function geom0(kind, v) { const k = v.k || 1;
       if (kind === 'circle') return { r: 40 * k };
       if (kind === 'square') { const h = 34 * k; return { p: [[-h, -h], [h, -h], [h, h], [-h, h]] }; }
       if (kind === 'rectangle') { const a = v.aspect || 1.75, h = 40 * k / Math.sqrt(a) * 1.05, w = h * a; const W = Math.min(w, 47), H = W / a; return { p: [[-W, -H], [W, -H], [W, H], [-W, H]] }; }
@@ -115,17 +120,19 @@ El.defineGame({
       if (lv >= 2 && kind !== 'circle') v.rot = rng.pick(kind === 'square' && lv < 3 ? [0, 10, -12, 20] : [0, 15, -20, 30, 90, 180, -35]);
       if (kind === 'rectangle') v.aspect = lv >= 2 ? rng.pick([1.6, 2, 2.4]) : 1.75; if (kind === 'triangle' && lv >= 2) v.tri = rng.int(0, 2); return v; };
     const colorFor = (i) => COLORS[i % COLORS.length];
+    const onGear = (v) => Object.assign({}, v || {}, { fit: 41 }); // shapes on a gear stay inside its cream plate
 
     /* ---------------- round flow ---------------- */
     const PT = { 0: ['AB'], 1: ['AB', 'AAB'], 2: ['AB', 'AAB', 'ABB', 'ABC'], 3: ['AAB', 'ABB', 'ABC', 'AABB'] };
+    // Finale: the bell chime only; the line "Ding, dong! The clocktower sings!" is rendered but held (ASR flag) until a human listens.
     const pool = () => mode === 'pattern' ? PT[lvl()] : SHAPES.slice();
     const plan = L.pick(cfg.skill, pool(), total, rng);
     function next() { setBusy(false); if (qi >= total) return finale(); host.emit('progress', { done: qi, total }); win.innerHTML = ''; tray.innerHTML = ''; tray.className = 'cg-tray';
       const item = plan[qi]; (mode === 'pattern' ? patternQ : mode === 'name' ? nameQ : sortQ)(item); }
     function solved(item, misses, el) { setBusy(true); if (qi >= total) return; const ft = misses === 0; if (ft) firstTry++; host.emit('mastery', { item, correct: true, firstTry: ft });
       cheer(); host.sfx.right(); advanceClock(false); spinAll(1); if (el) burst(el, 14); qi++; }
-    function finale() { setBusy(true); delete root.dataset.want; host.emit('progress', { done: total, total }); win.classList.add('done'); advanceClock(true); spinAll(4); cgRoot.classList.add('ring');
-      sfx.chime(); speak('Ding, dong! The clocktower sings!'); burst(root.querySelector('.cg-clock'), 22); T(() => burst(root.querySelector('.cg-bell'), 16), 600);
+    function finale() { setBusy(true); qaMark('want', null); host.emit('progress', { done: total, total }); win.classList.add('done'); advanceClock(true); spinAll(4); cgRoot.classList.add('ring');
+      sfx.chime(); burst(root.querySelector('.cg-clock'), 22); T(() => burst(root.querySelector('.cg-bell'), 16), 600);
       T(() => host.end({ total, done: total, firstTry }), 3600); }
 
     // ----- pattern: gear train with one empty gear
@@ -136,18 +143,18 @@ El.defineGame({
       // narrow (phone portrait) windows: two rows of three, read like a book; wider windows: one row of six
       const rows = win.clientHeight > win.clientWidth * .9; if (rows) train.classList.add('rows'); let row = null;
       const gears = seq.map((u, i) => { if (!row || (rows && i === 3)) { row = document.createElement('div'); row.className = 'grow'; train.appendChild(row); }
-        const g = document.createElement('div'); g.className = 'gear' + (i % 2 ? ' odd' : '') + (i === miss ? ' empty' : ''); g.innerHTML = gearSVG() + `<div class="tok">${i === miss ? '<b>?</b>' : shapeSVG(tok[u].kind, tok[u].color)}</div>`; g._u = u; row.appendChild(g); return g; });
+        const g = document.createElement('div'); g.className = 'gear' + (i % 2 ? ' odd' : '') + (i === miss ? ' empty' : ''); g.innerHTML = gearSVG() + `<div class="tok">${i === miss ? '<b>?</b>' : shapeSVG(tok[u].kind, tok[u].color, onGear())}</div>`; g._u = u; row.appendChild(g); return g; });
       win.appendChild(train);
       // choices: the right token + distractors (other tokens in the pattern first, then new shapes)
       const nc = lv === 0 ? 2 : lv === 3 ? 4 : 3, opts = [want]; uniq.forEach(u => { if (opts.length < nc && !opts.includes(u)) opts.push(u); });
       const extra = ['circle', 'square', 'triangle', 'rectangle', 'hexagon'].filter(k => !Object.values(tok).some(t => t.kind === k)); let xi = 0;
       while (opts.length < nc && xi < extra.length) { const id = 'x' + xi; tok[id] = { kind: extra[xi], color: mono ? colorFor(base) : colorFor(base + 2 + xi) }; opts.push(id); xi++; }
       let misses = 0; const chips = rng.shuffle(opts.slice()).map(u => { const b = document.createElement('button'); b.className = 'chip'; b.innerHTML = shapeSVG(tok[u].kind, tok[u].color); b.setAttribute('aria-label', tok[u].kind); b._u = u;
-        b.onclick = () => { if (busy) return; if (u === want) { const slot = gears[miss]; b.classList.add('used'); fly(b.querySelector('.shp'), slot.querySelector('.tok'), shapeSVG(tok[u].kind, tok[u].color), 480);
-            T(() => { slot.classList.remove('empty'); slot.querySelector('.tok').innerHTML = shapeSVG(tok[u].kind, tok[u].color); solved(type, misses, slot); speak(rng.pick(PRAISE)); }, 470); setBusy(true); T(next, 2600); }
+        b.onclick = () => { if (busy) return; if (u === want) { const slot = gears[miss]; b.classList.add('used'); fly(b.querySelector('.shp'), slot.querySelector('.tok'), shapeSVG(tok[u].kind, tok[u].color, onGear()), 480);
+            T(() => { slot.classList.remove('empty'); slot.querySelector('.tok').innerHTML = shapeSVG(tok[u].kind, tok[u].color, onGear()); solved(type, misses, slot); speak(rng.pick(PRAISE)); }, 470); setBusy(true); T(next, 2600); }
           else { misses++; wobble(b); b.classList.add('no'); if (misses === 1) { setBusy(true); speak('Listen to the pattern.', () => sing(0)); } else hint(); } };
         tray.appendChild(b); return b; });
-      root.dataset.want = tok[want].kind; // answer for automated QA (no visible effect)
+      qaMark('want', tok[want].kind);
       const hint = () => { chips.forEach(c => { if (c._u === want) c.classList.add('hint'); }); speak('This one fits!'); };
       // Wick sings the pattern along the gears (highlight + shape name), pausing on the empty gear
       const sing = (i) => { gears.forEach(g => g.classList.remove('hl')); if (i >= n) { setBusy(false); speak('What comes next?'); return; } const g = gears[i]; g.classList.add('hl'); host.sfx.step(i % 5);
@@ -161,20 +168,20 @@ El.defineGame({
       const hub = document.createElement('div'); hub.className = 'gear hub'; hub.innerHTML = gearSVG() + '<div class="tok"></div>'; play.appendChild(hub); win.appendChild(play); tray.classList.add('none');
       let misses = 0; const cards = rng.shuffle(kinds.slice()).map((k, i) => { const v = variant(k, lv), col = colorFor(rng.int(0, 4)); const b = document.createElement('button'); b.className = 'card'; b.style.setProperty('--d', (i * .07) + 's');
         b.innerHTML = `<span class="plate"></span>${shapeSVG(k, col, v)}`; b.setAttribute('aria-label', k); b._k = k;
-        b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('got'); fly(b.querySelector('.shp'), hub.querySelector('.tok'), shapeSVG(k, col, v), 520);
-            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, v); solved(t, misses, hub); speak(`Yes! A ${t}!`); }, 500); setBusy(true); T(next, 2600); }
+        b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('got'); fly(b.querySelector('.shp'), hub.querySelector('.tok'), shapeSVG(k, col, onGear(v)), 520);
+            T(() => { hub.querySelector('.tok').innerHTML = shapeSVG(k, col, onGear(v)); solved(t, misses, hub); speak(`Yes! A ${t}!`); }, 500); setBusy(true); T(next, 2600); }
           else { misses++; wobble(b); b.classList.add('no');
             if (misses === 1) speak([`That's a ${k}.`, `Find the ${t}!`]);
             else if (misses === 2) { const c = cards.find(x => x._k === t); setBusy(true); speak("Let's count the sides.", () => countSides(c, t, () => { setBusy(false); c.classList.add('hint'); speak(`Find the ${t}!`); })); }
             else speak('Here it is!'); } };
         grid.appendChild(b); return b; });
-      root.dataset.want = t; setPrompt(`Find the ${t}!`, `Find the ${t}!`); }
+      qaMark('want', t); setPrompt(`Find the ${t}!`, `Find the ${t}!`); }
 
     // ----- sort: the shape on the big gear goes into its drawer
     function sortQ(t) { const lv = lvl(), nd = lv === 0 ? 2 : lv === 3 ? 4 : 3; const kinds = [t]; if (lv >= 2 && SHAPES.includes(LOOK[t])) kinds.push(LOOK[t]);
       rng.shuffle(SHAPES.filter(k => !kinds.includes(k))).forEach(k => { if (kinds.length < nd) kinds.push(k); });
       const v = variant(t, lv), col = colorFor(rng.int(0, 4));
-      const stage = document.createElement('div'); stage.className = 'cg-conveyor'; stage.innerHTML = `<div class="gear big">${gearSVG()}<div class="tok">${shapeSVG(t, col, v)}</div></div>`; win.appendChild(stage);
+      const stage = document.createElement('div'); stage.className = 'cg-conveyor'; stage.innerHTML = `<div class="gear big">${gearSVG()}<div class="tok">${shapeSVG(t, col, onGear(v))}</div></div>`; win.appendChild(stage);
       const ride = stage.querySelector('.gear'); ride.classList.add('arrive');
       let misses = 0; const drawers = [...kinds].sort((a, b) => SHAPES.indexOf(a) - SHAPES.indexOf(b)).map(k => { const b = document.createElement('button'); b.className = 'drawer'; b.innerHTML = drawerFront(k); b.setAttribute('aria-label', k + ' drawer'); b._k = k;
         b.onclick = () => { if (busy) return; if (k === t) { b.classList.add('open'); setBusy(true); fly(ride.querySelector('.shp'), b.querySelector('.dr-box'), shapeSVG(t, col, v), 560, 'sm'); ride.querySelector('.tok').innerHTML = '';
@@ -183,7 +190,7 @@ El.defineGame({
             if (misses === 1) { setBusy(true); speak("Let's count the sides.", () => countSides(ride, t, () => { setBusy(false); speak('Which drawer does it go in?'); })); }
             else { drawers.forEach(d => { if (d._k === t) d.classList.add('hint'); }); speak('Here it is!'); } } };
         tray.appendChild(b); return b; });
-      tray.classList.add('drawers', 'n' + drawers.length); root.dataset.want = t;
+      tray.classList.add('drawers', 'n' + drawers.length); qaMark('want', t);
       if (t === 'hexagon' && !hexIntro) { hexIntro = true; setPrompt('A hexagon!', 'This is a hexagon. It has six sides!'); T(() => { prompt = 'Which drawer does it go in?'; txt.textContent = 'Which drawer?'; }, 3200); }
       else if (qi === 0) setPrompt('Which drawer?', 'Put the shape in its drawer!');
       else setPrompt('Which drawer?', 'Which drawer does it go in?'); }

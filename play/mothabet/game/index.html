@@ -8,8 +8,9 @@
 <title>Mothabet · Elearnea</title>
 <link rel="icon" href="../../../assets/img/icon-32.png" type="image/png">
 <script>
-/* Elearnea copy of Mothabet 1.0.0 (source: /home/box/games/reading-spelling, copied, never edited in place).
-   Minimal engine config: local fonts only, no portal origins, no splash, no badge. */
+/* Elearnea copy of Mothabet 1.0.0 (originally copied from the Playtoom build; this repo folder is now the versioned source).
+   Minimal engine config: local fonts only, no portal origins, no splash, no badge. PLAYTOOM_BRAND is the shared engine's
+   config API name (hexan.js reads it); it carries no Playtoom branding here. Consent: el-consent.js (Elearnea-owned key). */
 window.PLAYTOOM_BRAND = { name: 'Elearnea', path: './', portalOrigins: [], files: {}, favicons: [],
   fonts: [
     { family: 'Nunito', weight: 800, file: 'fonts/nunito-800.woff2' }, { family: 'Nunito', weight: 900, file: 'fonts/nunito-900.woff2' },
@@ -19,6 +20,7 @@ window.PLAYTOOM_BRAND = { name: 'Elearnea', path: './', portalOrigins: [], files
 </head>
 <body>
 <canvas id="game"></canvas>
+<script src="el-consent.js"></script>
 <script src="hexan.js"></script>
 <script src="words.js"></script>
 <script src="learn.js"></script>
