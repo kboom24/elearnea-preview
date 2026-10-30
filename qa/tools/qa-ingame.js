@@ -38,7 +38,8 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
     page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
     page.on('pageerror', e => errs.push('pageerror: ' + e.message));
     page.on('request', r => { const u = r.url(); if (!u.startsWith(origin) && !u.startsWith('data:') && !u.startsWith('blob:')) ext.push(u); });
-    page.on('requestfailed', r => fails.push(r.url() + ' ' + (r.failure() && r.failure().errorText)));
+    // a voice clip load cancelled because a newer line replaced it (net::ERR_ABORTED on voice/*) is normal speech behaviour, not a failure
+    let aborted = 0, abortedAt = [], lessonT0 = Date.now(); page.on('requestfailed', r => { const e = r.failure() && r.failure().errorText; if (/ERR_ABORTED/.test(e || '') && /\/voice\/(clips|mb)\//.test(r.url())) { aborted++; abortedAt.push(r.url().split('/voice/')[1] + '@' + ((Date.now() - lessonT0) / 1000).toFixed(1) + 's'); return; } fails.push(r.url() + ' ' + e); });
     page.on('response', r => { if (r.status() >= 400) fails.push(r.status() + ' ' + r.url()); });
     const tapEl = async (h) => { const b = await h.boundingBox(); if (!b) throw new Error('no box'); const x = b.x + b.width / 2, y = b.y + b.height / 2; if (VP[vpn].hasTouch) await page.touchscreen.tap(x, y); else await page.mouse.click(x, y); };
     const shot = async (n) => page.screenshot({ path: path.join(OUT, `${n}-${vpn}.png`) });
@@ -52,7 +53,7 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
       const r = { vp: vpn, page: ls + ' kid-mode (no ?qa=1)', ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note }; results.push(r);
       console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); }
     for (const ls of LESSONS) {
-      errs = []; ext = []; fails = []; let note = '', ok = true; const aud = { small: new Set(), outside: new Set(), overflow: [], n: 0, samples: 0 };
+      errs = []; ext = []; fails = []; aborted = 0; abortedAt = []; lessonT0 = Date.now(); let note = '', ok = true; const aud = { small: new Set(), outside: new Set(), overflow: [], n: 0, samples: 0 };
       const sample = async () => { const a = await page.evaluate(audit, MIN(ls)); aud.samples++; aud.n = Math.max(aud.n, a.n); a.small.forEach(x => aud.small.add(x)); a.outside.forEach(x => aud.outside.add(x)); aud.flies = (aud.flies || 0) + (a.flies || 0); (a.ffOut || []).forEach(x => aud.outside.add('FIREFLY-BOUNDS ' + x)); if (a.outside.length && !aud.outShot) { aud.outShot = `${ls}-outside-${vpn}.png`; await shot(`${ls}-outside`); } if (a.sw > a.W || a.bsw > a.W) aud.overflow.push(`${a.sw}/${a.bsw}>${a.W}`); };
       const t0 = Date.now(); let rounds = 0;
       try {
@@ -104,8 +105,18 @@ function audit(MIN) { // in page: overflow + interactive targets (game stage + t
         }
         await page.waitForSelector('#res.on #toPath', { timeout: 10000 }); await sleep(900); await sample(); await shot(`${ls}-results`);
         const card = (await page.locator('#res .paper').innerText()).replace(/\s+/g, ' ').trim(), stars = await page.locator('#res .stars3 svg.on').count();
+        if (GAME[ls] === 'firefly-count' && ls === 'ma-l1') { // bounds stress: 40 fresh count rounds at the top level (up to 10 fireflies), same stage and CSS
+          const st = await page.evaluate(async () => { const stage = document.getElementById('stage'), mod = El.games['firefly-count'], sleep = (ms) => new Promise(r => setTimeout(r, ms)); document.getElementById('res').classList.remove('on');
+            const host = { root: stage, say: () => true, sfx: El.sfx, learn: El.Learn, rng: El.rng(), voiceOk: () => false, emit() {}, end() {} }; let flies = 0, bad = [];
+            for (let t = 0; t < 40; t++) { const inst = mod.start({ mode: 'count', rounds: 1, levels: [10], skill: 'qa.ff-stress' }, host); await sleep(380);
+              const field = document.getElementById('ffField'); for (const f of field.querySelectorAll('.fly.drift')) { flies++; const r = f.getBoundingClientRect(), sc = r.width / 84, cs = getComputedStyle(f);
+                const dx = Math.abs(parseFloat(cs.getPropertyValue('--dx')) || 0), dy = Math.abs(parseFloat(cs.getPropertyValue('--dy')) || 0), cx = f.offsetLeft + f.offsetWidth / 2, cy = f.offsetTop + f.offsetHeight / 2;
+                if (cx - sc * (42 + dx) < -.5 || cy - sc * (42 + dy) < -.5 || cx + sc * (42 + dx) > field.clientWidth + .5 || cy + sc * (42 + dy) > field.clientHeight + .5) bad.push(`${Math.round(cx)},${Math.round(cy)} d${dx},${dy} in ${field.clientWidth}x${field.clientHeight}`); }
+              inst.stop(); }
+            const fr = document.getElementById('ffField').getBoundingClientRect(); return { flies, bad: bad.slice(0, 5), nBad: bad.length, fieldInViewport: fr.left >= -.5 && fr.right <= innerWidth + .5 && fr.top >= -.5 && fr.bottom <= innerHeight + .5 }; });
+          await shot(`${ls}-bounds-stress`); aud.stress = st; if (st.nBad || !st.fieldInViewport) aud.outside.add('FIREFLY-STRESS ' + JSON.stringify(st)); }
         if (aud.overflow.length || aud.small.size || aud.outside.size) ok = false;
-        note = (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies} ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
+        note = (GAME[ls] === 'firefly-count' ? `fliesChecked=${aud.flies}` + (aud.stress ? ` stress=${aud.stress.flies}flies/${aud.stress.nBad}out fieldInViewport=${aud.stress.fieldInViewport}` : '') + ' ' : '') + (aborted ? `abortedClipLoads=${aborted} [${abortedAt.join(' ')}] ` : '') + `rounds=${rounds} oneMiss=${aud.missed ? 'yes' : 'no'} card="${card}" stars=${stars} samples=${aud.samples} targets<=${aud.n} secs=${Math.round((Date.now() - t0) / 1000)}` + (aud.overflow.length ? ` OVERFLOW ${aud.overflow[0]}` : ' noOverflow') + (aud.small.size ? ` SMALL ${[...aud.small].join('; ')}` : ' allTargets>=' + MIN(ls)) + (aud.outside.size ? ` OUTSIDE ${[...aud.outside].join('; ')} shot=${aud.outShot}` : ' allInside');
       } catch (e) { ok = false; note = 'EXC ' + e.message.split('\n')[0] + ` rounds=${rounds}`; await shot(`${ls}-error`).catch(() => {}); }
       await sleep(300); const r = { vp: vpn, page: ls + ' ' + GAME[ls], ok: ok && !errs.length && !ext.length && !fails.length, consoleErrors: errs.slice(), external: ext.slice(), failed: fails.slice(), note, small: [...aud.small], outside: [...aud.outside] };
       results.push(r); console.log(`${r.ok ? 'PASS' : 'FAIL'} ${vpn} ${r.page} errors=${errs.length} ext=${ext.length} failed=${fails.length} ${note}`); errs.forEach(e => console.log('   err:', e)); fails.forEach(e => console.log('   fail:', e));
